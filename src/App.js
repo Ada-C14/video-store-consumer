@@ -56,13 +56,13 @@ export default function App() {
 
         <Switch>
           <Route path="/search">
-            <VideoSearch />
+            <Search />
           </Route>
           <Route path="/library">
-            <VideoLibrary />
+            <Library />
           </Route>
           <Route path="/customers">
-            <CustomerList />
+            <Customers />
           </Route>
           <Route path="/">
             <Home />
@@ -77,15 +77,15 @@ function Home() {
   return <h2>Home</h2>;
 }
 
-function VideoSearch() {
+function Search() {
   return <h2>Video Search</h2>;
 }
 
-function CustomerList() {
+function Customers() {
   return <h2>Customer List</h2>;
 }
 
-function VideoLibrary() {
+function Library() {
   let match = useRouteMatch();
   
 
