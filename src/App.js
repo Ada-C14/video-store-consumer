@@ -1,6 +1,7 @@
 import React, { Component, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import CustomerList from 'CustomerList.js'
 import {
   BrowserRouter as Router,
   Switch,
@@ -41,6 +42,7 @@ class App extends Component {
           </Route>
           <Route path="/customers">
             <Customers />
+            {Customers}
           </Route>
           <Route path="/library">
             <Library />
