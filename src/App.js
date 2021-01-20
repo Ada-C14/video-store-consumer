@@ -68,8 +68,9 @@ const App = () => {
           </ul>
         </nav>
 
-        {errorMessage ? <div><h2 className="error-msg">{errorMessage}</h2></div> : ''}
+        
         <main>
+          {errorMessage ? <div><h2 className="error-msg">{errorMessage}</h2></div> : ''}
           {/* A <Switch> looks through its children <Route>s and
               renders the first one that matches the current URL. */}
           <Switch>
@@ -77,7 +78,11 @@ const App = () => {
               <Search />
             </Route>
             <Route path='/library'>
-              <Library videos={videoList} selectedVideo={selectedVideo} onSelectVideoCallback= {selectVideo}/>
+              <Library 
+                videos={videoList} 
+                selectedVideo={selectedVideo} 
+                onSelectVideoCallback= {selectVideo}
+              />
             </Route>
             <Route path='/customers'>
               <CustomerList customers={customerList}/>

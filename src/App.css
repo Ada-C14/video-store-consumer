@@ -79,3 +79,8 @@ nav ul {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+
+.error-msg {
+  background-color: rgba(139, 0, 0, 0.6);
+  font-weight: bold;
+}
