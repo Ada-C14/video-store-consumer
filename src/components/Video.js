@@ -4,7 +4,7 @@ import './Video.css';
 const Video = (props) => {
 
   const onVideoClick = () => {
-    props.onClickCallback(props.video)
+    props.onClickCallBack(props.video);
   }
 
   return (
