@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './NewVideoForm.css'
 
 const NewVideoForm = ({item, addVideoCallback}) => {
   const [startingInventory, setStartingInventory] = useState(0)
@@ -14,8 +15,8 @@ const NewVideoForm = ({item, addVideoCallback}) => {
 
   const showDropdown = () => {
     return (
-      <div>
-        <label>Stock Video</label>
+      <div className='add-video-form'>
+        <h4><label>Stock Video</label></h4>
         <select onChange={(e) => {setStartingInventory(e.target.value)}}>
           {[...Array(21).keys()].map(i => (
             <option value={i} key={i} >{i}</option>
