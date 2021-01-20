@@ -17,7 +17,8 @@ const Search = ({setErrorMessage, addVideoCallback, baseUrl}) => {
         setErrorMessage('')
       })
       .catch( error => {
-        setErrorMessage(error.message)
+        const errors = error.response.data.errors
+        setErrorMessage(errors)
       })
   }
 
