@@ -18,7 +18,7 @@ const customers = [
 
 const App = () => {
   const [videoList, setVideoList] = useState([]);
-  const [allCustomers, setAllCustomers] = useState(customers);
+  const [customerList, setCustomerList] = useState(customers);
   const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
@@ -45,6 +45,9 @@ const App = () => {
           <Link to={'/'}>Aloha Video Store</Link>
         </h1>
       </header>
+      <div>
+        <p>{errorMessage}</p>
+      </div>
       <nav>
         <NavBar />
       </nav>
@@ -60,9 +63,13 @@ const App = () => {
         )} 
       />
 
-      <Route 
+      <Route
+        path={'/library'} 
+        render={(props) => <VideoList {...props} videoList={videoList}/>}
+      />
+      <Route
         path={'/customers'} 
-        render={(props) => <CustomerCollection {...props} allCustomers={allCustomers}/>}
+        render={(props) => <CustomerCollection {...props} customerList={customerList}/>}
       />
       <footer>
         Copyright

@@ -4,7 +4,7 @@ import Customer from './Customer';
 
 const CustomerCollection = (props) => {
 
-  const customerList = props.allCustomers.map((customer, i) => {
+  const customerList = props.customerList.map((customer, i) => {
     return (
       <li key={i}>
         <Customer name={customer.name} email={customer.email} phone={customer.phone} />
