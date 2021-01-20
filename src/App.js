@@ -18,6 +18,7 @@ const API_URL_BASE = 'http://localhost:3000/'
 const App = () => {
   
     const [customerList, setCustomerList] = useState([]);
+    const [currentCustomer, setCurrentCustomer] = useState(null);
     const [errorMessage, setErrorMessage] = useState(null);
   
   
@@ -31,6 +32,13 @@ const App = () => {
           setErrorMessage(error.message);
         });
     }, []);
+
+    const selectedCustomer = (id) => {
+      const customer = customerList.find((customer) => {
+        return customer.id === id;
+      });
+      setCurrentCustomer(customer);
+    };
   
     return (
       <Router>
@@ -49,6 +57,9 @@ const App = () => {
             <li>
               <Link to='/customers'>Customers</Link>
             </li>
+            <li>
+            {currentCustomer ? `Customer Selected: ${currentCustomer.name}` : ''}
+            </li>
           </ul>
         </nav>
 
@@ -62,7 +73,7 @@ const App = () => {
             <Library />
           </Route>
           <Route path='/customers'>
-            <CustomerList customers={customerList}/>
+            <CustomerList customers={customerList} selectCustomerCallback={selectedCustomer} currentCustomer={currentCustomer}/>
           </Route>
           <Route path='/'>
             <Homepage />

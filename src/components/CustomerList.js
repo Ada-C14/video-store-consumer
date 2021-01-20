@@ -10,6 +10,9 @@ const CustomerList = (props) => {
       <Customer
         customer_id={customer.id}
         customer_name={customer.name}
+        videos_checked_out_count={customer.videos_checked_out_count}
+        selectCustomerCallback={props.selectCustomerCallback}
+        currentCustomer={props.currentCustomer}
       />
     </li>
   );
@@ -17,7 +20,7 @@ const CustomerList = (props) => {
 
   return (
     <ul>
-      <h1>CUSTOMER INFORMATION</h1>
+      <h1>CUSTOMERS</h1>
       {customerComponents}
     </ul>
   );
