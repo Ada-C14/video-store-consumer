@@ -6,9 +6,10 @@ const Customer = (props) => {
 
     return (
         <div>
-            <h3>{props.id}</h3>
-            <h4>{props.name}</h4>
-            <h4>{props.videosCheckedOut}</h4>
+            <h3>ID: {props.id}</h3>
+            <h4>Customer Name: {props.name}</h4>
+            <h4>Videos Checked Out: {props.videosCheckedOut}</h4>
+            <button>Select Customer</button>
         </div>
     )
 }
