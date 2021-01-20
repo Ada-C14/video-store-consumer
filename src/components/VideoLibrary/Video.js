@@ -2,6 +2,7 @@ import React from 'react'
 import Moment from 'react-moment';
 import { Button } from 'react-bootstrap'
 import './Video.css'
+import { propTypes } from 'react-bootstrap/esm/Image';
 
 const Video = ({ video, setVideo }) => {
   const {
@@ -17,20 +18,19 @@ const Video = ({ video, setVideo }) => {
   // }
 
   return (
-
     <div className="video">
-      <Button onClick={() => { setVideo(id, title) }} variant="light">
-        <img src={imageUrl} alt={`Poster for ${title}`} />
+ 
+      <img src={imageUrl} alt={`Poster for ${title}`} />
 
-        <div className='video__content'>
-          <h3>{title}</h3>
-          <p><Moment format='LL'>{releaseDate}</Moment></p>
+      <div className='video__content'>
+        <h3>{title}</h3>
+        <p><Moment format='LL'>{releaseDate}</Moment></p>
 
-          {/* <div className={ selected ? 'show-details popup' : null }>
-            <p className='popup__content'>{overview}</p>
-          </div> */}
-        </div>
-      </Button>
+        {/* <div className={ selected ? 'show-details popup' : null }>
+          <p className='popup__content'>{overview}</p>
+        </div> */}
+      </div>
+      <Button className='button' variant='link' size="sm" onClick={() => {setVideo(title)}}>Select</Button>
     </div>
   )
 }

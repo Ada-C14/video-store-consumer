@@ -34,10 +34,8 @@ img {
   max-height: 200px;
   object-fit: cover;
   justify-self: center;
-  margin-top: 1rem;
-
 }
 
-Button > * {
-  align-self: center;
+.button {
+  justify-self: center;
 }
