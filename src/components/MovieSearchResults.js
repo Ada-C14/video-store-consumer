@@ -4,7 +4,8 @@ import Movie from './Movie.js'
 import './MovieSearchResults.css';
 
 const MovieSearchResults = props => {
-  console.log(props.location.state)
+  const searchResults = props.location.state.results;
+  const searchTerm = props.location.state.searchTerm;
 
   const generateMovieComponents = movies => {
     const currentMovieList = [];
@@ -25,8 +26,11 @@ const MovieSearchResults = props => {
   };
 
   return (
-    <div className='search-results-container'>
-      { generateMovieComponents(props.location.state.results) }
+    <div>
+      <h4>We found {searchResults.length} results for the movie '{searchTerm}':</h4>
+      <div className='search-results-container'>
+        { generateMovieComponents(searchResults) }
+      </div>
     </div>
   );
 };
@@ -35,7 +39,8 @@ const MovieSearchResults = props => {
 MovieSearchResults.propTypes = {
   location: PropTypes.shape({
     state: PropTypes.shape({
-      results: PropTypes.array.isRequired
+      results: PropTypes.array.isRequired,
+      searchTerm: PropTypes.string.isRequired
     })
   })
 };

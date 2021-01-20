@@ -29,15 +29,19 @@ const MovieSearchBar = props => {
         const newQueryResults = response.data;
         newFormFields.searchResults = newQueryResults;
         setFormFields(newFormFields);
-        // setAlert(`Found ${newQueryResults.length} results for your search:`);
       })
       .catch((error) => {
-        setAlert(error.message);
+        if (error.message === 'Request failed with status code 500'){
+          setAlert(`Sorry! No movies found for '${formFields.searchQuery}'.`);
+        } else {
+          setAlert(error.message);
+        }
       })
   };
 
   return (
     <div>
+      { alert ? alert : '' }
       <form onSubmit={onFormSubmit}>
         <input name='searchQuery' onChange={onInputChange} value={formFields.searchQuery} placeholder='Search for a movie' />
         <button type='submit' value='Search'>Search</button>
@@ -45,7 +49,7 @@ const MovieSearchBar = props => {
       { formFields.searchResults.length > 0 &&
         <Redirect to={{
           pathname: '/results',
-          state: { results: formFields.searchResults }
+          state: { results: formFields.searchResults, searchTerm: formFields.searchQuery }
         }}/>
       }
     </div>
