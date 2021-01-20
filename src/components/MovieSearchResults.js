@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import Movie from './Movie.js'
 import Popup from './Popup.js'
@@ -6,8 +7,10 @@ import './MovieSearchResults.css';
 
 const MovieSearchResults = props => {
   const [clickedMovie, setClickedMovie] = useState(null);
+  const [alert, setAlert] = useState(null);
   const searchResults = props.location.state.results;
   const searchTerm = props.location.state.searchTerm;
+  const baseURL = props.location.state.baseURL;
 
   const generateMovieComponents = movies => {
     const currentMovieList = [];
@@ -23,6 +26,7 @@ const MovieSearchResults = props => {
           imageURL={movie.image_url}
           handleClickCallback={moreInfoOnClick}
           location='search'
+          addMovieClickback={addToLibrary}
         />
       )
     }
@@ -39,8 +43,19 @@ const MovieSearchResults = props => {
     setClickedMovie(null);
   };
 
+  const addToLibrary = newMovie => {
+    axios.post(baseURL + '/videos', newMovie)
+      .then((response) => {
+        setAlert(`Successfully added ${newMovie.title} to the video library.`);
+      })
+      .catch((error) => {
+        setAlert(error.message);
+      })
+  };
+
   return (
-    <div>
+    <div className='search-results'>
+      { alert ? alert : '' }
       <h4>We found {searchResults.length} results for the movie '{searchTerm}':</h4>
       { clickedMovie ? <Popup clickedMovieInfo={clickedMovie} exitCallbackFn={exitPopup} /> : null }
       <div className={`search-results-container ${ clickedMovie ? 'search-results-fade' : null }`}>
@@ -57,7 +72,8 @@ MovieSearchResults.propTypes = {
       results: PropTypes.array.isRequired,
       searchTerm: PropTypes.string.isRequired
     })
-  })
+  }),
+  baseURL: PropTypes.string.isRequired
 };
 
 export default MovieSearchResults;

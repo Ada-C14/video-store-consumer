@@ -14,6 +14,10 @@ const Movie = props => {
         onClick={() => props.handleClickCallback(props)} 
       />
       <h5>{props.title}</h5>
+      { props.location === 'search' 
+        ? <button onClick={() => props.addMovieClickback(props)}>Add to Library</button>
+        : ''
+      }
     </div>
   );
 };
@@ -25,7 +29,8 @@ Movie.propTypes = {
   releaseDate: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   handleClickCallback: PropTypes.func.isRequired,
-  location: PropTypes.string.isRequired
+  location: PropTypes.string.isRequired,
+  addMovieClickback: PropTypes.func
 };
 
 export default Movie;
