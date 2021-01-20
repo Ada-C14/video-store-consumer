@@ -26,7 +26,7 @@ const MovieSearchResults = props => {
 
   return (
     <div>
-
+      { generateMovieComponents(props.location.state.results) }
     </div>
   );
 };
