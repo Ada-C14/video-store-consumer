@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import VideoLibrary from './components/VideoLibrary'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
-} from "react-router-dom";
+} from 'react-router-dom';
 // import child components: search, customerlist, videolibrary
 
 import './App.css';
 
 
 class App extends Component {
+
   render() {
     return (
       <Router>
@@ -34,18 +35,18 @@ class App extends Component {
           </nav>
 
           <Switch>
-            <Route path="/search">
+            {/* <Route path="/search">
               <Search />
-            </Route>
-            <Route path="/customers">
+            </Route> */}
+            {/* <Route path="/customers">
               <CustomerList />
-            </Route>
+            </Route> */}
             <Route path="/library">
               <VideoLibrary />
             </Route>
-            <Route path="/">
+            {/* <Route path="/">
               <Home />
-            </Route>
+            </Route> */}
           </Switch>
         </div>
       </Router>
