@@ -11,6 +11,7 @@ import Search from './components/Search'
 import Library from './components/Library'
 import CustomerList from './components/CustomerList'
 import './App.css';
+import CheckoutReturn from './components/CheckoutReturn';
 
 const API_URL_BASE = 'http://localhost:3000/'
 
@@ -45,7 +46,7 @@ const App = () => {
         });
     }, []);
 
-     const selectedCustomer = (id) => {
+    const selectedCustomer = (id) => {
       const customer = customerList.find((customer) => {
         return customer.id === id;
       });
@@ -53,8 +54,12 @@ const App = () => {
     };
   
     const selectVideo = (id) => {
-      setSelectedVideo(id)
+      const video = videoList.find((video) => {
+        return video.id === id;
+      });
+      setSelectedVideo(video)
     };
+    
   
     return (
       <Router>
@@ -78,30 +83,31 @@ const App = () => {
             </li>
           </ul>
         </nav>
-
-
         <main>
           {errorMessage ? <div><h2 className="error-msg">{errorMessage}</h2></div> : ''}
-          {/* A <Switch> looks through its children <Route>s and
-              renders the first one that matches the current URL. */}
-          <Switch>
-            <Route path='/search'>
-              <Search />
-            </Route>
-            <Route path='/library'>
-              <Library 
-                videos={videoList} 
-                selectedVideo={selectedVideo} 
-                onSelectVideoCallback= {selectVideo}
-              />
-            </Route>
-            <Route path='/customers'>
-              <CustomerList customers={customerList} selectCustomerCallback={selectedCustomer} currentCustomer={currentCustomer}/>
-            </Route>
-            <Route path='/'>
-              <Homepage />
-            </Route>
-          </Switch>
+          <section className={`selected-container ${currentCustomer || selectedVideo ? '' : 'hide'}`}>
+            <CheckoutReturn currentCustomer={currentCustomer} selectedVideo={selectedVideo}/>
+          </section>
+          <section className={`${currentCustomer || selectedVideo ? 'lower' : ''}`}>
+            <Switch>
+              <Route path='/search'>
+                <Search />
+              </Route>
+              <Route path='/library'>
+                <Library 
+                  videos={videoList} 
+                  selectedVideo={selectedVideo} 
+                  onSelectVideoCallback= {selectVideo}
+                />
+              </Route>
+              <Route path='/customers'>
+                <CustomerList customers={customerList} selectCustomerCallback={selectedCustomer} currentCustomer={currentCustomer}/>
+              </Route>
+              <Route path='/'>
+                <Homepage />
+              </Route>
+            </Switch>
+          </section>
         </main>
       </div>
     </Router>
