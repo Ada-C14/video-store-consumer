@@ -10,8 +10,13 @@ import Library from './Components/Library'
 import Search from './Components/Search'
 import Home from './Components/Home'
 
-
 export default function App() {
+  // BASE URL FOR API
+  const BASE_URL = 'http://localhost:3000/'
+
+  // state for selected video
+  const [currentVideo, setVideo] = useState('');
+
   return (
     <Router>
       <div>
@@ -36,7 +41,7 @@ export default function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/customers">
-            <Customers />
+            <Customers url = {BASE_URL}/>
           </Route>
           <Route path="/library">
             <Library />
