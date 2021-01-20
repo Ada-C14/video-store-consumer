@@ -1,70 +1,69 @@
 import React, { useState, useEffect, Component } from 'react';
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route,
-//   Link,
-//   useRouteMatch,
-//   useParams
-// } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import Video from './Video'
+import SelectedVideo from './SelectedVideo'
 
 const Library = (props) => {
   const [videoLibrary, setVideoLibrary] = useState([]);
+  const [selectedVideo, setSelectedVideo] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
-
 
   useEffect(() => {
     axios.get('http://localhost:3000/')
       .then((response) => {
         const apiVideoLibrary = response.data;
         setVideoLibrary(apiVideoLibrary);
-        console.log(videoLibrary)
-        console.log(response.data)
       })
       .catch((error) => {
         setErrorMessage(error.message);
       });
   }, []);
 
+  const selectVideo = (title) => {
+    axios.get(`http://localhost:3000/videos/${ title }`)
+      .then((response) => {
+        const newSelectedVideo = response.data
+        setSelectedVideo(newSelectedVideo)
+        setErrorMessage(`"${ title }" is selected`);
+      })
+      .catch((error) => {
+        setErrorMessage(`Unable to select "${ title }"`);
+      });
+  }
 
   const renderTableData = videoLibrary.map((video) => {
-    // const {id, title, overview, releaseDate, inventory} = video
     return (
-      <tr key={video.id}>
-        <td>{video.title}</td>
-        <td>{video.overview}</td>
-        <td>{video.release_date}</td>
-        {/* <td>{video.inventory}</td> */}
-        {/* <td>{imageUrl}</td>
-        <td>{externalId}</td> */}
-      </tr>
+      <div>
+        <tr>
+          <th>Video ID</th>  
+          <th>Title</th>
+          <th>Overview</th>
+          <th>Release Date</th>
+          <th>Select</th>
+        </tr>
+        <tr key={video.id}>
+          <td>{video.id}</td>
+          <td>{video.title}</td>
+          <td>{video.overview}</td>
+          <td>{video.release_date}</td>
+          <td>
+            <button
+              onClick={() => selectVideo(video.title)}
+            >
+              Select
+            </button>
+          </td>
+        </tr>
+      </div>
     )
-    // return (
-    //   <div key={video.id}> 
-    //     <Video
-    //       id={video.id}
-    //       title={video.title}
-    //       overview={video.overview}
-    //       release_date={video.release_date}
-    //       image_url={video.image_url}
-    //       external_id={video.external_id}
-    //     />
-    //   </div>
-    // )
   });
-
-
-
-  // const renderTableData = () => {}
-
-  
 
   return (
     <div>
       <h1>Video Library</h1>
+      {errorMessage ? <div><h2 className="validation-errors-display">{errorMessage}</h2></div> : ''}
+      {selectedVideo? < SelectedVideo selectedVideo={selectedVideo}/> : 'No video selected'}
+
         <table>
           <tbody>
             {renderTableData}
@@ -72,7 +71,6 @@ const Library = (props) => {
         </table>
     </div>
   )
-
 }
 
 export default Library
