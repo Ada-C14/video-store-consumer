@@ -1,6 +1,16 @@
 /* library-video__select
 library-video__content */
 .library-video {
-  padding: 2rem;
+  /* padding: 2rem; */
+  margin: 2rem;
+  /* width: 15rem; */
+
   /* border: 1px solid lightgrey; */
+}
+.library-video__title {
+  width: 11.563rem;
+}
+
+.library-video__content:hover {
+  outline: 5px solid yellow;
 }
