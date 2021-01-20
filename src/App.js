@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Customers from './components/Customers'
+import Videos from './components/Videos'
 import {
   BrowserRouter as Router,
   Switch,
@@ -33,7 +35,7 @@ export default function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/customers">
-            <Customers />
+            <Customer />
           </Route>
           <Route path="/library">
             <Library />
@@ -54,7 +56,8 @@ function Home() {
   return <h2>Home</h2>;
 }
 
-function Customers() {
+// re-named to customer singular (problem with import Customers otherwise
+function Customer() {
   return <h2>Customers</h2>;
 }
 
