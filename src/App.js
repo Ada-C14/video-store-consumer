@@ -1,20 +1,19 @@
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import VideoList from './components/VideoList';
 // import { BrowserRouter } from 'react-router-dom';
-import { NavLink, Switch, Route, Link} from 'react-router-dom';
+import { NavLink, Switch, Route, Link } from 'react-router-dom';
 import CustomerCollection from './components/CustomerCollection';
 import NavBar from './components/NavBar';
 import { Container, Row, Col } from 'react-bootstrap';
 
-const API_URL_BASE = 'http://localhost:3000/library';
+const API_URL_BASE = 'http://localhost:3000/videos';
 
 const customers = [
-  {name: 'Lisa', email: 'lisa@ada.org', phone: '321-123-1234'},
-  {name: 'Jessica', email: 'jessica@lovelace.com', phone: '432-432-4321'},
-  {name: 'Zoe', email: 'zoe@summerday.com', phone: '987-654-4321'},
- ];
+  { name: 'Lisa', email: 'lisa@ada.org', phone: '321-123-1234' },
+  { name: 'Jessica', email: 'jessica@lovelace.com', phone: '432-432-4321' },
+  { name: 'Zoe', email: 'zoe@summerday.com', phone: '987-654-4321' },
+];
 
 const App = () => {
   const [videoList, setVideoList] = useState([]);
@@ -34,9 +33,6 @@ const App = () => {
         console.log(error.message);
       });
   }, []);
-    
-  
-
 
   return (
     <main>
@@ -51,7 +47,10 @@ const App = () => {
       <nav>
         <NavBar />
       </nav>
-      <Route exact={true} path={'/'} render={() => (
+      <Route
+        exact={true}
+        path={'/'}
+        render={() => (
           <div>
             <h2>Latest</h2>
             <Container>
@@ -60,23 +59,22 @@ const App = () => {
                 <Col>video 2 with pic</Col>
                 <Col>video 3 with pic</Col>
               </Row>
-              
             </Container>
           </div>
-        )} 
+        )}
       />
 
       <Route
-        path={'/library'} 
-        render={(props) => <VideoList {...props} videoList={videoList}/>}
+        path={'/library'}
+        render={(props) => <VideoList {...props} videoList={videoList} />}
       />
       <Route
-        path={'/customers'} 
-        render={(props) => <CustomerCollection {...props} customerList={customerList}/>}
+        path={'/customers'}
+        render={(props) => (
+          <CustomerCollection {...props} customerList={customerList} />
+        )}
       />
-      <footer>
-        Copyright
-      </footer>
+      <footer>Copyright</footer>
     </main>
   );
 };
