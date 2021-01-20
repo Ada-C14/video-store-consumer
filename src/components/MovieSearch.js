@@ -8,6 +8,12 @@ const MovieSearch = () => {
     searchResults: []
   });
 
+  const onInputChange = event => {
+    const newFormFields = { ...formFields }
+    newFormFields[event.target.name] = event.target.value;
+    setFormFields(newFormFields);
+  };
+
   return (
     <div></div>
   );
