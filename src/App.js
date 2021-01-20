@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios'
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, NavLink, Link} from 'react-router-dom';
+import {Navbar, Nav} from 'react-bootstrap'
+import {LinkContainer} from 'react-router-bootstrap'
 import Search from './components/Search/Search'
 import CustomerList from './components/CustomerList'
 
@@ -33,32 +35,39 @@ const App = () => {
     };
     
     return (
+      
       <Router>
         <div className='App'>
           <header className='App-header'>
-
+          
           </header>
           
           <nav>
-              <ul>
+              <ul className='nav-links'>
                 <li>
-                  <Link to='/customers'>Customer List</Link>
+                  <NavLink exact activeClassName='current' to='/'>Home</NavLink>
                 </li>
                 <li>
-                  <Link to='/search'>Search The Movie DB</Link>
+                  <NavLink exact activeClassName='current' to='/videos'>Video List</NavLink>
                 </li>
+                <li>
+                  <NavLink exact activeClassName='current'to='/customers'>Customer List</NavLink>
+                </li>
+                <li>
+                  <NavLink exact activeClassName='current' to='/search'>Search The Movie DB</NavLink>
+                </li>
+                {selectedCustomer ? <li className='selected'>Customer: {selectedCustomer.name}</li> : ''}
               </ul>
-            
+              
+              
           </nav>
           
           { errorMessage ? errorMessage : null}
-
-          
-          <Route path='/search'>
-            <Search setErrorMessage={setErrorMessage} addVideoCallback={addVideo} baseUrl={BASE_URL}/>
-          </Route>
       
           <Switch>
+              <Route path='/search'>
+                <Search setErrorMessage={setErrorMessage} addVideoCallback={addVideo} baseUrl={BASE_URL}/>
+              </Route>
               <Route path='/customers'>
                 <CustomerList setCustomer={setCustomer} />
               </Route>
