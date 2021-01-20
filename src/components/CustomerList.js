@@ -1,50 +1,45 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Customer from './Customer';
 import axios from 'axios';
 
 const CustomerList = () => {
-    const fakeCustomers = [
-        {
-            name: 'Dipper Pines',
-            id: 1,
-            registeredAt: 'today',
-            addressed: 'The Mystery Shack',
-            city: 'Gravity Falls',
-            state: 'OR',
-            postalCode: '98087',
-            phone: '203 203 2039',
-            accountCredit: 12,
-            videosCheckedOutCount: 2,
-        },
-        {
-            name: 'Mabel Pines',
-            id: 2,
-            registeredAt: 'today',
-            addressed: 'The Mystery Shack',
-            city: 'Gravity Falls',
-            state: 'OR',
-            postalCode: '98087',
-            phone: '203 203 2039',
-            accountCredit: 12,
-            videosCheckedOutCount: 2,
-        }
-    ]
-    // const [customerList, setCustomerList] = useState([])
-    // API call to GET the customers
-    // .map to pass the customers one at a time to Customer component
-    // return the mapped array
+    const [customers, setCustomers] = useState([]);
+    const [error, setError] = useState('');
 
-    const getCustomers = () => {
-        return (
-            fakeCustomers.map((customer) => {
-                return <Customer customer={customer} />
+    useEffect(() => {
+        axios.get(`http://localhost:3000/customers/`)
+            .then((response) => {
+                const allCustomers = [];
+                response.data.forEach((customer) => {
+                    allCustomers.push(customer);
+                });
+                setCustomers(allCustomers);
             })
-        )
+            .catch((error) => {
+                setError(`Error: ${error.response.statusText}`);
+            })
+    }, []);
+
+    const formatCustomer = customer => {
+        return <Customer 
+            key={customer.id}
+            id={customer.id}
+            name={customer.name}
+            registeredAt={customer.registered_at}
+            address={customer.address}
+            city={customer.city}
+            state={customer.state}
+            postalCode={customer.postal_code}
+            phone={customer.phone}
+            accountCredit={customer.account_credit}
+            videosCheckedOutCount={customer.videos_checked_out_count}
+        />
     }
 
     return (
         <div>
-            { getCustomers() }
+            { customers.map(formatCustomer) }
+            { error ? error : '' }
         </div>
     );
 }
