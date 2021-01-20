@@ -22,19 +22,19 @@ class App extends Component {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <Link to="/videos">Videos</Link>
           </li>
           <li>
-            <Link to="/topics">Topics</Link>
+            <Link to="/customers">Customers</Link>
           </li>
         </ul>
 
         <Switch>
-          <Route path="/about">
-            <About />
+          <Route path="/videos">
+            <Video />
           </Route>
-          <Route path="/users">
-            <Users />
+          <Route path="/customers">
+            <Customer />
           </Route>
           <Route path="/">
             <Home />
@@ -50,12 +50,12 @@ function Home() {
   return <h2>Home</h2>;
 }
 
-function About() {
-  return <h2>About</h2>;
+function Video() {
+  return <h2>Video</h2>;
 }
 
-function Users() {
-  return <h2>Users</h2>;
+function Customer() {
+  return <h2>Customers</h2>;
 }
 
 export default App;
