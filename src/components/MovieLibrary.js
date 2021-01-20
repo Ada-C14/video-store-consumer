@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import './MovieLibrary.css';
 import propTypes from 'prop-types';
 import axios from 'axios';
@@ -13,7 +13,7 @@ export default function MovieLibrary() {
     useEffect(() => {
         axios.get('http://localhost:3000/videos')
             .then((response) => {
-                console.log(response)
+                // console.log(response)
                 setMovies(
                     response.data
                 );
@@ -28,6 +28,7 @@ export default function MovieLibrary() {
             <ul>
                 {movies.map((movie) => 
                 <li key={movie.id}>
+                    <img src={movie.image_url} alt={movie.title}></img>
                     {movie.title}
                 </li>)}
             </ul>
