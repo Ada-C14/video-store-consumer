@@ -1,11 +1,13 @@
 import React, { Component, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import CustomerList from './Components/CustomerList';
+import CustomerList from './components/CustomerList';
+import VideoLibrary from './components/VideoLibrary';
+
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
+  Switch,
   Link
 } from 'react-router-dom';
 
@@ -17,7 +19,7 @@ class App extends Component {
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/" exact={true}>Home</Link>
             </li>
             <li>
               <Link to="/search">Search</Link>
@@ -26,7 +28,7 @@ class App extends Component {
               <Link to="/customers">Customers</Link>
             </li>
             <li>
-              <Link to="/library">Library</Link>
+              <Link to="/library" exact={true}>Library</Link>
             </li>
           </ul>
         </nav>
@@ -35,17 +37,16 @@ class App extends Component {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route exact={true} path="/">
-            <Home />
+            {/* <Home /> */}
           </Route>
           <Route path="/search">
-            <Search />
+            {/* <Search /> */}
           </Route>
           <Route path="/customers">
-            <Customers />
-            {Customers}
+            {/* <Customers /> */}
           </Route>
           <Route path="/library">
-            <Library />
+            <VideoLibrary />
           </Route>
         </Switch>
       </div>
@@ -54,22 +55,22 @@ class App extends Component {
 }
 }
 
-function Home() {
-  return <h2>Home</h2>;
-}
+// function Home() {
+//   return <h2>Home</h2>;
+// }
 
-function Search() {
-  return <h2>Search</h2>;
-}
+// function Search() {
+//   return <h2>Search</h2>;
+// }
 
-function Customers() {
-  return <h2>Customers</h2>;
-}
+// function Customers() {
+//   return <h2>Customers</h2>;
+// }
 
-function Library() {
-  return <h2>Video Library</h2>;
+// function Library() {
+//   return <h2>Video Library</h2>;
 
-}
+// }
 
 
 export default App;
