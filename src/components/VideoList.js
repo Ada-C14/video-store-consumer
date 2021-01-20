@@ -6,25 +6,25 @@ const BASE_URL = 'localhost:3000/videos';
 const axios = require('axios');
 
 const VideoList = (props) => {
-  // const [videos, setVideos] = useState([]);
+  const [videos, setVideos] = useState([]);
 
-  // useEffect(() => {
-  //   axios.get(BASE_URL)
+  useEffect(() => {
+    axios.get(BASE_URL)
 
-  //   .then((response) => {
-  //     setVideos(response.data);
-  //   });
+    .then((response) => {
+      setVideos(response.data);
+    });
 
-  // }, []);
+  }, []);
 
-  // const generateVideo = videos.map(video => {
-  //   return <Video key={ video.id } video={ video } onClickCallBack= { props.setSelectedVideoCallBack } />
-  // })
+  const generateVideo = videos.map(video => {
+    return <Video key={ video.id } video={ video } onClickCallBack= { props.setSelectedVideoCallBack } />
+  })
 
   return (
   <div className="VideoList">
     <h3>Video List:</h3>
-    {/* { generateVideo } */}
+    { generateVideo }
   </div>);
 }
 
