@@ -10,7 +10,7 @@ const Customer = (props) => {
       {props.customerName}  
       <button
         onClick={() => props.selectCustomerCallback(props.customerId)}>
-        {props.currentCustomer ? props.customerId === props.currentCustomer.id ? 'Selected' : 'Select': 'Select'}
+        {props.currentCustomer && props.customerId === props.currentCustomer.id ? 'Selected' : 'Select'}
       </button>
       
 
