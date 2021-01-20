@@ -23,7 +23,6 @@ const App = () => {
     const [selectedVideo, setSelectedVideo] = useState(null)
     const [errorMessage, setErrorMessage] = useState(null);
   
-  
     useEffect(() => {
       axios.get(`${API_URL_BASE}/customers`)
         .then((response) => {
@@ -60,13 +59,23 @@ const App = () => {
       setSelectedVideo(video)
     };
 
-    // const checkout = () => {
+    const checkoutVideo = (params) => {
+      axios.post(`${API_URL_BASE}/rentals/${selectedVideo.title}/check-out`, params)
+      .then((response) => {
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      });
+    }
 
-    // }
-
-    // const return = () => {
-      
-    // }
+    const returnVideo = (params) => {
+      axios.post(`${API_URL_BASE}/rentals/${selectedVideo.title}/return`, params)
+      .then((response) => {
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      });
+    }
     
   
     return (
@@ -94,7 +103,12 @@ const App = () => {
         <main>
           {errorMessage ? <div><h2 className="error-msg">{errorMessage}</h2></div> : ''}
           <section className={`selected-container ${currentCustomer || selectedVideo ? '' : 'hide'}`}>
-            <CheckoutReturn currentCustomer={currentCustomer} selectedVideo={selectedVideo}/>
+            <CheckoutReturn 
+                currentCustomer={currentCustomer} 
+                selectedVideo={selectedVideo}
+                onCheckoutVideo={checkoutVideo}
+                onReturnVideo={returnVideo}
+            />
           </section>
           <section className={`${currentCustomer || selectedVideo ? 'lower' : ''}`}>
             <Switch>

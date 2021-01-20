@@ -16,3 +16,9 @@
 .hide {
   visibility: hidden;
 }
+
+.checkout-video, .return-video {
+  font-size: 20px;
+  border-radius: 12px;
+  padding: 10px 24px;
+}
