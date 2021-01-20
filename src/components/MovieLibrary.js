@@ -2,17 +2,16 @@ import { useEffect, useState } from 'react';
 import Movie from './Movie.js'
 import './MovieLibrary.css';
 import './MovieSearchResults.css';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 
-// From the video library page, I can see a list of all videos in the video library
-
-export default function MovieLibrary() {
+const MovieLibrary = props => {
   const [movies, setMovies] = useState([])
   const [errorMessage, setErrorMessage] = useState(null)
+  const url = props.url + '/videos'
 
   useEffect(() => {
-    axios.get('http://localhost:3000/videos')
+    axios.get(url)
       .then((response) => {
         setMovies(response.data);
       })
@@ -32,8 +31,13 @@ export default function MovieLibrary() {
           imageURL={movie.image_url}
         />
       )}
-      {errorMessage ? <div><h2 className="error-display">{errorMessage}</h2></div> : ''}
+      { errorMessage ? <div><h2 className="error-display">{errorMessage}</h2></div> : '' }
     </div>
   )
 }
 
+MovieLibrary.propTypes = {
+  url: PropTypes.string.isRequired,
+};
+
+export default MovieLibrary;
