@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
+import { Dropdown, DropdownButton, Button } from 'react-bootstrap'
 import './NewVideoForm.css'
+
+
 
 const NewVideoForm = ({item, addVideoCallback}) => {
   const [startingInventory, setStartingInventory] = useState(0)
@@ -17,13 +20,13 @@ const NewVideoForm = ({item, addVideoCallback}) => {
     return (
       <div className='add-video-form'>
         <h4><label>Stock Video</label></h4>
-        <select onChange={(e) => {setStartingInventory(e.target.value)}}>
+        <DropdownButton  id='inventory' title={startingInventory}>
           {[...Array(21).keys()].map(i => (
-            <option value={i} key={i} >{i}</option>
+            <Dropdown.Item onSelect={(eventKey) => {setStartingInventory(eventKey)}} value={i} eventKey={i} >{i}</Dropdown.Item>
           ))}
-        </select> 
+        </DropdownButton> 
 
-        <button onClick={onAddToLibrary} value={startingInventory}>Add to Library</button>
+        <Button onClick={onAddToLibrary} value={startingInventory} variant="outline-secondary">Add to Library</Button>
       </div> 
     )
   }
@@ -31,7 +34,7 @@ const NewVideoForm = ({item, addVideoCallback}) => {
 
  return(
     <div>
-      {addedToLibrary ? <div>Added to Library</ div> : showDropdown()}
+      {addedToLibrary ? <Button variant="secondary" disabled>In Video Library</ Button> : showDropdown()}
     </div>
       
  )

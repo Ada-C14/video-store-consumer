@@ -37,15 +37,15 @@ const App = () => {
       if (selectedCustomer && id === selectedCustomer.id) {
         setSelectedCustomer(null)
       } else {
-        setSelectedCustomer({id: id, name: name})
+        setSelectedCustomer({name: name})
       }
     };
 
-    const setVideo = (id, title) => {
-      if (selectedVideo && id === selectedVideo.id) {
+    const setVideo = (title) => {
+      if (selectedVideo && title === selectedVideo) {
         setSelectedVideo(null)
       } else {
-        setSelectedVideo({id: id, title: title})
+        setSelectedVideo(title)
       }
     }
     
@@ -84,7 +84,7 @@ const App = () => {
                   <NavLink exact activeClassName='current' to='/search'>Search The Movie DB</NavLink>
                 </li>
                 {selectedCustomer ? <li className='selected'>Customer: {selectedCustomer.name}</li> : ''}
-                {selectedVideo ? <li className='selected'>Video: {selectedVideo.title}</li> : ''}
+                {selectedVideo ? <li className='selected'>Video: {selectedVideo}</li> : ''}
               </ul>
           </nav>
           
@@ -98,7 +98,7 @@ const App = () => {
                 <CustomerList setCustomer={setCustomer} />
               </Route>
               <Route path='/library'>
-                <VideoLibrary baseUrl={BASE_URL} videoLibrary={videoLibrary} setVideoLibraryCallback={setVideoLibrary} setSelectedVideoCallback={setSelectedVideo} setErrorMessage={setErrorMessage}/>
+                <VideoLibrary baseUrl={BASE_URL} videoLibrary={videoLibrary} setVideoLibraryCallback={setVideoLibrary} setSelectedVideoCallback={setVideo} setErrorMessage={setErrorMessage}/>
               </Route>
             </Switch>
         </div>

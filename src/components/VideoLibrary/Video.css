@@ -33,3 +33,7 @@ img {
   object-fit: cover;
   justify-self: center;
 }
+
+.button {
+  justify-self: center;
+}
