@@ -1,0 +1,17 @@
+.search-result-item {
+  display: flex;
+  margin-bottom: 2rem;
+  max-width: 50rem;
+}
+
+img {
+  float: left;
+  width:  100px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.details {
+  text-align: left;
+  margin-left: 2rem
+}
