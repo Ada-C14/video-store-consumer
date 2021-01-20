@@ -1,12 +1,13 @@
 import React from 'react';
+import './Checkout.css'
 
 const Checkout = (props) => {
   const {video, customer} = props
   return (
-    <div className='checkout'>
-      {video && <h3>Video Selected: {video.title}</h3>}
-      {customer && <h3>Customer Selected: {customer.name}</h3>}
-      {(video && customer) && <button>CHECKOUT</button>}
+    <div className="checkout">
+      {video && <h3 className="checkout__text">Video Selected: <em>{video.title}</em></h3>}
+      {customer && <h3 className="checkout__text">Customer Selected: <em>{customer.name}</em></h3>}
+      {(video && customer) && <button className="checkout__btn">CHECKOUT</button>}
     </div>
   )
 }
