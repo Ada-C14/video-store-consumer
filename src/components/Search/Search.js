@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import axios from 'axios'
 import SearchBar from './SearchBar'
 import SearchResultItem from './SearchResultItem';
-import axios from 'axios'
+import './Search.css'
 
 
 const Search = () => {

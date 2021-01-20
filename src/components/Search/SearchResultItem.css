@@ -1,5 +1,7 @@
 .search-result-item {
   display: flex;
+  margin-bottom: 2rem;
+  max-width: 50rem;
 }
 
 img {

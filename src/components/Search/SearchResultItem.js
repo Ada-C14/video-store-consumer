@@ -1,5 +1,6 @@
 import React from 'react'
 import './SearchResultItem.css'
+import Moment from 'react-moment';
 
 const SearchResultItem = ({item}) => {
 
@@ -10,13 +11,15 @@ const SearchResultItem = ({item}) => {
     image_url: imageUrl, 
   } = item
 
+
+
  return(
    <div className='search-result-item'>
      <img src={imageUrl} alt={`Poster for ${title}`}/>
 
      <div className='details'>
       <h3>{title}</h3>
-      <p>{releaseDate}</p>
+      <p><Moment format='LL'>{releaseDate}</Moment></p>
       <p>{overview}</p>
      </div>
    </div>
