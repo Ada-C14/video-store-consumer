@@ -1,0 +1,30 @@
+.popup {
+  position: fixed;
+  margin: auto auto auto 20%;
+  z-index: 1;  
+  background-color: white;
+  display: flex;
+  width: 50vw;
+  padding: 3%;
+}
+
+.popup-movie-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5%;
+}
+
+.popup-movie-info__exit-button {
+  display: flex;
+}
+
+.popup-movie-info__exit-button button {
+  width: 5%;
+  border-radius: 5px;
+  margin: auto 0 auto auto;
+}
+
+.exit-button {
+  text-align: center;
+  font-size: smaller;
+}

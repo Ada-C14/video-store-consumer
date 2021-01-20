@@ -1,5 +1,5 @@
 h5 {
-  margin-bottom: 0.5em;
+  margin: auto;
 }
 
 p {
@@ -8,11 +8,16 @@ p {
   text-align: justify;
 }
 
-.movieCard {
-  padding: 0.5rem 0;
-  margin: 0.5rem;
+img {
+  height: 250px;
+  width: auto;
+}
 
-  /* max-height: 300px; */
+.movie-card {
+  padding: 0.5rem 0;
+  margin: 0 auto 0.5rem auto;
+
+  height: 325px;
   max-width: 275px;
 
   display: flex;
@@ -20,4 +25,23 @@ p {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.movie-card:hover img {
+  opacity: 60%;
+}
+
+.click-alert {
+  position: absolute;
+  background-color: white;
+  opacity: 1;
+  z-index: 1;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+button {
+  margin: auto;
 }

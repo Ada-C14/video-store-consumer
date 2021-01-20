@@ -67,7 +67,7 @@ export default function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/library">
-            <MovieLibrary />
+            <MovieLibrary url={BASE_API_URL} />
           </Route>
           <Route path="/customers">
             <CustomerList selectCustomerCallback={selectCustomer}/>
