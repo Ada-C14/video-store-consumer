@@ -8,7 +8,6 @@ import './Library.css';
 const Library = (props) => {
     // state variables
     const [videoList, setVideoList] = useState([]);
-    const [errorMessage, setErrorMessage] = useState('');
 
     // get all videos 
     useEffect(() => {
@@ -16,14 +15,18 @@ const Library = (props) => {
         axios.get(`${props.url}videos`)
         .then((response) => {
             setVideoList(response.data);
-            setErrorMessage(null);
+            props.setError(null);
         })
         .catch((error) => {
-            setErrorMessage(['Failed to retrieve videos in library.'])
+            props.setError(['Failed to retrieve videos in library.'])
             console.log(error.message);
         });
-    }, [props.url]);
+    }, [props]);
 
+
+    const selectVideo = () => {
+        props.curVid(props.id, props.title, props.imageUrl);
+    }
 
     // create all videos into components
     const allVideos = (vidList) => {
@@ -35,30 +38,19 @@ const Library = (props) => {
                             releaseDate = {video.release_date}
                             imageUrl = {video.image_url}
                             externalId = {video.external_id}
-                            curVid = {props.curVid}/>
-            newVidList.push(vid);
+                            />
+            newVidList.push( <article className = 'video'>
+                {vid}
+                <button className = 'video__select' onClick = {selectVideo}> select video </button>
+                </article>
+                );
         }
 
         return newVidList;
     }
 
-    // errors 
-    const allErrors = (errorData) => {
-        const errors = [];
-        for(const error of errorData) {
-        errors.push(<li>{error}</li>);
-        }
-    
-        return errors;
-    }
     return (
         <div className = 'library-page'>
-            <article className = 'validation-errors-display'>
-                <h3>{errorMessage ? 'Errors detected!' : ''}</h3>
-                <ul className = 'validation-errors-display__list'>
-                    {errorMessage ? allErrors(errorMessage) : ''}
-                </ul>
-            </article> 
             <h1>video library.</h1>
             <section className = 'library'>
                 {allVideos(videoList)}

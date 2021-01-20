@@ -14,6 +14,18 @@ export default function App() {
   // BASE URL FOR API
   const BASE_URL = 'http://localhost:3000/'
 
+  // error state
+  const [errorMessage, setErrorMessage] = useState('');
+  // errors 
+  const allErrors = (errorData) => {
+      const errors = [];
+      for(const error of errorData) {
+      errors.push(<li>{error}</li>);
+      }
+  
+      return errors;
+  }
+
   // state for selected video
   const [currentVideo, setVideo] = useState({id: NaN, title: '', imgUrl: 'favicon.ico'});
   const getCurrentVideo = (curId, curTitle, curImg) => {
@@ -59,7 +71,12 @@ export default function App() {
             </article>
           </section>
         </nav>
-
+        <article className = 'validation-errors-display'>
+                <h3>{errorMessage ? 'Errors detected!' : ''}</h3>
+                <ul className = 'validation-errors-display__list'>
+                    {errorMessage ? allErrors(errorMessage) : ''}
+                </ul>
+        </article> 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
@@ -67,7 +84,7 @@ export default function App() {
             <Customers url = {BASE_URL} curCustomer = {getCurrentCustomer} />
           </Route>
           <Route path="/library">
-            <Library url = {BASE_URL} curVid = {getCurrentVideo}/>
+            <Library url = {BASE_URL} curVid = {getCurrentVideo} setError = {setErrorMessage}/>
           </Route>
           <Route path="/search">
             <Search />
