@@ -7,16 +7,16 @@ import VideoLibrary from './VideoLibrary'
 
 const SelectedVideo = (props) => {
     
-    const title = props.video.value.title
-    const overview = props.video.value.overview
+    const video = props.video
     
     return(
+        video &&(
         <div>
-            <h3>{title}</h3>
-            <p>{overview}</p>
+            <h3>{video.title}</h3>
+            <p>{video.overview}</p>
             {/* <img>{image}</img> */}
         </div>
-        )
+        ))
     }
 
     export default SelectedVideo;

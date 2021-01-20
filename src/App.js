@@ -12,11 +12,20 @@ import {
   Link
 } from 'react-router-dom';
 
-class App extends Component {
-  render() {
+const App = () => {
+  
+  const [selectedVideo, setSelectedVideo] = useState(null)
+
+  const handleChange = ((selectedData) => {
+      setSelectedVideo(selectedData.value)
+  })
+  
     return (
 
       <Router>
+
+      <SelectedVideo video={selectedVideo}/>
+
         {/* <VideoLibrary/> */}
         {/* <SelectedVideo video={selectedVideo}/> */}
       <div>
@@ -50,14 +59,14 @@ class App extends Component {
             <CustomerList />
           </Route>
           <Route path="/library">
-            {/* <VideoLibrary /> */}
+            <VideoLibrary onSelectVideo={handleChange} selectedVideo={selectedVideo}/>
           </Route>
         </Switch>
       </div>
     </Router>
   );
 }
-}
+
 
 // function Home() {
 //   return <h2>Home</h2>;
