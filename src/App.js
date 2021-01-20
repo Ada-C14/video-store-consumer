@@ -13,6 +13,7 @@ const App = () => {
   const [errorMessage, setErrorMessage] = useState({})
   const [videoLibrary, setVideoLibrary] = useState([])
   const [selectedCustomer, setSelectedCustomer] = useState(null)
+  const [selectedVideo, setSelectedVideo] = useState(null)
   
   const addVideo = (video) => {
     axios.post(BASE_URL+'videos', video)
@@ -34,6 +35,14 @@ const App = () => {
         setSelectedCustomer({id: id, name: name})
       }
     };
+
+    const setVideo = (id, title) => {
+      if (selectedVideo && id === selectedVideo.id) {
+        setSelectedVideo(null)
+      } else {
+        setSelectedVideo({id: id, title: title})
+      }
+    }
     
 
     const parseErrorMessages = (errors) => {
@@ -71,6 +80,7 @@ const App = () => {
                   <NavLink exact activeClassName='current' to='/search'>Search The Movie DB</NavLink>
                 </li>
                 {selectedCustomer ? <li className='selected'>Customer: {selectedCustomer.name}</li> : ''}
+                {selectedVideo ? <li className='selected'>Video: {selectedVideo.title}</li> : ''}
               </ul>
           </nav>
           
