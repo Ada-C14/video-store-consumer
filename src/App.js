@@ -1,6 +1,7 @@
 import VideoSearch from './components/VideoSearch';
 import VideoLibrary from './components/VideoLibrary';
 import CustomerList from './components/CustomerList';
+import VideoSearchBar from './components/VideoSearchBar';
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';

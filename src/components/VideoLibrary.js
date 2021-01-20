@@ -7,7 +7,7 @@ import axios from 'axios';
 
 
 
-const VideoLibrary = (props) {
+const VideoLibrary = (props) => {
   const [videos, setVideos] = useState([])
   const [errorMessage, setErrorMessage] = useState(null)
 
@@ -21,18 +21,28 @@ const VideoLibrary = (props) {
       });
   }, []);
 
-  return (
-    <div className='search-results-container'>
-      {videos.map((video) => 
-        <Video 
-          key={video.external_id}  
-          title={video.title} 
-          overview={video.overview}
-          releaseDate={video.release_date}
-          imageURL={video.image_url}
+  const videoLibraryComponent = videos.map((video) => {
+    return ( <Video 
+      key={video.id}
+      id={video.id}
+      title={video.title}
+      imageURL={video.image_url}
+      overview={video.overview}
         />
-      )}
-      {errorMessage ? <div><h3 className="error-display">{errorMessage}</h3></div> : ''}
+    )
+  })
+
+  return (
+    <div className='VideoLibrary'>
+      <h3> Video Library</h3>
+      { videoLibraryComponent }
+      {/* {errorMessage ? <div><h2 className="error-display">{errorMessage}</h2></div> : ''} */}
     </div>
-  )
-}
+  );
+};
+
+VideoLibrary.propTypes = {
+  url: propTypes.string.isRequired
+};
+
+export default VideoLibrary;
