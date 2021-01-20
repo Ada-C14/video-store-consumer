@@ -23,10 +23,8 @@ const Search = ({setErrorMessage, addVideoCallback, baseUrl}) => {
   }
 
   return(
-    <div>
-
+    <div className='search'>
       <SearchBar onSearchCallback={onSearch} />
-
 
       <div className='search-results'>
         {searchResults.map( (item, id) => (

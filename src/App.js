@@ -4,9 +4,12 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route, NavLink, Link} from 'react-router-dom';
 import {Navbar, Nav} from 'react-bootstrap'
 import {LinkContainer} from 'react-router-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Search from './components/Search/Search'
 import CustomerList from './components/CustomerList'
 import VideoLibrary from './components/VideoLibrary/VideoLibrary'
+
+
 
 const App = () => {
   const BASE_URL = 'http://localhost:3000/'
