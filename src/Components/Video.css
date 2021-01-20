@@ -1,5 +1,21 @@
 .video {
+    flex: 25%;
     background-color:	#ededed;
     padding: 1em 0;
     margin: 0.5rem;
+    max-width: 23%;
+    max-height: 100%;
+    text-align: center;
+}
+
+.video__img {
+    width: 100%;
+}
+.video__overview {
+    align-content: flex-start;
+    padding: 0.5em;
+}
+
+span {
+    color: grey
 }

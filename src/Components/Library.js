@@ -2,6 +2,9 @@ import React, { Component, useState, useEffect }  from 'react';
 import PropTypes from 'prop-types';
 import Video from './Video.js'
 import axios from 'axios'
+
+import './Library.css';
+
 const Library = (props) => {
     // state variables
     const [videoList, setVideoList] = useState([]);
@@ -48,15 +51,15 @@ const Library = (props) => {
         return errors;
     }
     return (
-        <div>
+        <div className = 'library-page'>
             <article className = 'validation-errors-display'>
                 <h3>{errorMessage ? 'Errors detected!' : ''}</h3>
                 <ul className = 'validation-errors-display__list'>
                     {errorMessage ? allErrors(errorMessage) : ''}
                 </ul>
             </article> 
-            <h1>Library</h1>
-            <section>
+            <h1>video library.</h1>
+            <section className = 'library'>
                 {allVideos(videoList)}
             </section>
         </div>
