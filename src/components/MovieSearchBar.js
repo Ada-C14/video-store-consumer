@@ -29,7 +29,7 @@ const MovieSearchBar = props => {
         const newQueryResults = response.data;
         newFormFields.searchResults = newQueryResults;
         setFormFields(newFormFields);
-        setAlert(`Found ${formFields.searchResults.length} results for your search:`);
+        // setAlert(`Found ${newQueryResults.length} results for your search:`);
       })
       .catch((error) => {
         setAlert(error.message);
@@ -45,7 +45,7 @@ const MovieSearchBar = props => {
       { formFields.searchResults.length > 0 &&
         <Redirect to={{
           pathname: '/results',
-          state: { results: formFields.searchResults, alert: alert }
+          state: { results: formFields.searchResults }
         }}/>
       }
     </div>

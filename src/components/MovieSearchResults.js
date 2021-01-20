@@ -5,7 +5,7 @@ import axios from 'axios';
 import './MovieSearchResults.css';
 
 const MovieSearchResults = props => {
-  console.log(props)
+  console.log(props.location.state)
   return (
     <div></div>
   );
@@ -13,7 +13,11 @@ const MovieSearchResults = props => {
 
 
 MovieSearchResults.propTypes = {
-  // url: PropTypes.string.isRequired,
+  location: PropTypes.shape({
+    state: PropTypes.shape({
+      results: PropTypes.array.isRequired
+    })
+  })
 };
 
 export default MovieSearchResults;
