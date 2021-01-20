@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 
 import './CustomerList.css';
 
-const CustomerList = () => {
+const CustomerList = (props) => {
   return (
     <div>
+      {props.customers}
       CustomerList Component
     </div>
   )

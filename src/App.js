@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component,useState, useEffect } from 'react';
+import axios from 'axios';
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,11 +13,25 @@ import CustomerList from './components/CustomerList'
 import logo from './logo.svg';
 import './App.css';
 
-API_URL_BASE = 'http://localhost:3000/'
+const API_URL_BASE = 'http://localhost:3000/'
 
-class App extends Component {
+const App = () => {
   
-  render() {
+    const [customerList, setCustomerList] = useState([]);
+    const [errorMessage, setErrorMessage] = useState(null);
+  
+  
+    useEffect(() => {
+      axios.get(`${API_URL_BASE}/customers`)
+        .then((response) => {
+          const apiCustomerList = response.data;
+          setCustomerList(apiCustomerList);
+        })
+        .catch((error) => {
+          setErrorMessage(error.message);
+        });
+    }, []);
+  
     return (
       <Router>
       <div>
@@ -47,7 +62,7 @@ class App extends Component {
             <Library />
           </Route>
           <Route path='/customers'>
-            <CustomerList />
+            <CustomerList customers={customerList}/>
           </Route>
           <Route path='/'>
             <Homepage />
@@ -56,7 +71,7 @@ class App extends Component {
       </div>
     </Router>
     );
-  }
+  
 }
 
 export default App;
