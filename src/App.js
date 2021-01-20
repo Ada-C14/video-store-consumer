@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
-} from "react-router-dom";
-// import child components: search, customerlist, videolibrary
+} from 'react-router-dom';
+import CustomerList from './components/CustomerList';
+
+// import child components: search, videolibrary
 
 import './App.css';
 
@@ -18,34 +19,34 @@ class App extends Component {
         <div>
           <nav>
             <ul>
-              <li>
+              {/* <li>
                 <Link to="/">Home</Link>
               </li>
               <li>
                 <Link to="/search">Search</Link>
-              </li>
+              </li> */}
               <li>
-                <Link to="/customers">Customers</Link>
+                <Link to='/customers'>Customers</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/library">Library</Link>
-              </li>
+              </li> */}
             </ul>
           </nav>
 
           <Switch>
-            <Route path="/search">
+            {/* <Route path="/search">
               <Search />
-            </Route>
+            </Route> */}
             <Route path="/customers">
               <CustomerList />
             </Route>
-            <Route path="/library">
+            {/* <Route path="/library">
               <VideoLibrary />
             </Route>
             <Route path="/">
               <Home />
-            </Route>
+            </Route> */}
           </Switch>
         </div>
       </Router>
