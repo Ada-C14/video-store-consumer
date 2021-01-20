@@ -19,7 +19,7 @@ const Customer = (props) => {
 }
 
 Customer.propTypes = {
-  customerId: PropTypes.number.isRequired,
+  customerId: PropTypes.number,
   customerName: PropTypes.string.isRequired,
   videosCheckedOutCount: PropTypes.number,
   selectCustomerCallback: PropTypes.func.isRequired,
