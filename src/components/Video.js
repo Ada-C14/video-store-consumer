@@ -1,18 +1,33 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import './Video.css';
 
-const Video = () => {
+const Video = (props) => {
+  const selectThisVideo = (event) => {
+    event.preventDefault();
+    props.onSelectVideoCallback(props.id)
+  }
+
   return (
-    <div>
-      Video Component
+    <div 
+      className={`container ${props.id === props.selectedVideo ? 'selected' : ''}`} 
+      onClick={selectThisVideo}
+    >
+      <section className='video-image'>
+        <img src={props.imageUrl} alt={`${props.title} movie cover`}/>
+      </section>
+      <section className='video-description'>
+        <h2>{props.title}</h2>
+        <h3>{props.releaseDate}</h3>
+        <p>{props.overview}</p>
+      </section>
     </div>
   )
 }
 
 Video.propTypes = {
-
+  onSelectVideoCallback: PropTypes.func
 };
 
 export default Video;
