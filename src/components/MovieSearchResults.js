@@ -25,7 +25,7 @@ const MovieSearchResults = props => {
   };
 
   return (
-    <div>
+    <div className='search-results-container'>
       { generateMovieComponents(props.location.state.results) }
     </div>
   );
