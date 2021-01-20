@@ -5,6 +5,7 @@ import axios from 'axios';
 import './App.css';
 import AddMovieForm from './components/AddMovieForm';
 import VideoCollection from './components/VideoCollection';
+import CustomerCollection from './components/CustomerCollection';
 
 const API_URL_BASE = 'http://localhost:3000/';
 
@@ -38,7 +39,7 @@ class App extends Component {
             <VideoCollection />
           </Route>
           <Route path="/customers">
-            <Customer />
+            <CustomerCollection />
           </Route>
           <Route path="/">
             <Home />
@@ -54,8 +55,8 @@ function Home() {
   return <h2>Home</h2>;
 }
 
-function Customer() {
-  return <h2>Customers</h2>;
-}
+// function Customer() {
+//   return <h2>Customers</h2>;
+// }
 
 export default App;

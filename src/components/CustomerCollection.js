@@ -1,19 +1,19 @@
 import React, { useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
-import Video from './Video';
+import Customer from './Customer';
 import axios from 'axios';
 
-const API_URL_BASE = 'http://localhost:3000/videos';
+const API_URL_BASE = 'http://localhost:3000/customers';
 
-const VideoCollection = (props) => {
+const CustomerCollection = (props) => {
 
-    const [videoList, setVideoList] = useState([]);
+    const [customerList, setCustomerList] = useState([]);
     const [errorMessage, setErrorMessage] = useState(null);
 
     useEffect(() => {
         axios.get(API_URL_BASE)
         .then((response) => {
-            setVideoList(response.data);
+            setCustomerList(response.data);
         })
         .catch((error) => {
             // Still need to handle errors
@@ -21,24 +21,22 @@ const VideoCollection = (props) => {
         });
     }, []);
 
-    const videoComponents = videoList.map((video, i) => {
+    const customerComponents = customerList.map((customer, i) => {
         return (
-          <div key={i}>
-            <Video
-              video={video}
+            <div key={i}>
+            <Customer
+                customer={customer}
             />
-          </div>
+            </div>
         );
-      });
+        });
 
     return (
-        <div className = "VideoCollection">
+        <div className = "CustomerCollection">
             {errorMessage ? <div><h2 className="error-msg">{errorMessage}</h2></div> : ''}
-            {videoComponents}
+            {customerComponents}
         </div>
         );
-
-  
 };
 
 // StudentCollection.propTypes = {
@@ -55,4 +53,4 @@ const VideoCollection = (props) => {
 
 
 
-export default VideoCollection;
+export default CustomerCollection;
