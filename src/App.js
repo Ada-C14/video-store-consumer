@@ -12,8 +12,10 @@ import CustomerList from './components/CustomerList'
 import logo from './logo.svg';
 import './App.css';
 
+API_URL_BASE = 'http://localhost:3000/'
 
 class App extends Component {
+  
   render() {
     return (
       <Router>
