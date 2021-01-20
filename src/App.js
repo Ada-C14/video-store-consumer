@@ -39,7 +39,13 @@ export default function App() {
             </li>
           </ul>
           <section> 
-            <h1>{currentVideo.title ? currentVideo.title : 'none selected'}</h1>
+            <article>
+            </article>
+            <article>
+            <h1>current video</h1>
+            <h2>{currentVideo.title ? currentVideo.title : 'none selected'}</h2> 
+            <img src = {currentVideo.imgUrl} alt = {`Poster for ${currentVideo.title}`}/>         
+            </article>
           </section>
         </nav>
 
