@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Video from './Video';
 
 const VideoList = (props) => {
+  console.log(props.videos);
   const videoComponents = props.videos.map((video, i) => {
     return (
       <li key={i}>
@@ -14,6 +15,7 @@ const VideoList = (props) => {
           imageUrl={video.image_url}
           //   inventory={props.inventory}
           id={video.external_id}
+          key={i}
         />
       </li>
     );
@@ -27,7 +29,7 @@ VideoList.propTypes = {
     PropTypes.shape({
       title: PropTypes.string.isRequired,
       overview: PropTypes.string,
-      releaseDate: PropTypes.bool, //not sure yet
+      releaseDate: PropTypes.string,
       inventory: PropTypes.number,
       imageUrl: PropTypes.string,
       id: PropTypes.number.isRequired,
