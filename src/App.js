@@ -2,7 +2,8 @@ import React, { Component, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import CustomerList from './components/CustomerList';
-// import VideoLibrary from './components/VideoLibrary';
+import VideoLibrary from './components/VideoLibrary';
+import SelectedVideo from './components/SelectedVideo';
 
 import {
   BrowserRouter as Router,
@@ -14,7 +15,10 @@ import {
 class App extends Component {
   render() {
     return (
+
       <Router>
+        {/* <VideoLibrary/> */}
+        {/* <SelectedVideo video={selectedVideo}/> */}
       <div>
         <nav>
           <ul>
@@ -71,6 +75,7 @@ class App extends Component {
 //   return <h2>Video Library</h2>;
 
 // }
+
 
 
 export default App;
