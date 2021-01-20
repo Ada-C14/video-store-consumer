@@ -57,7 +57,7 @@ const VideoLibrary = (props) => {
     return (
         <div>
             <h3>Video Library</h3>
-            <h4>Selected Video: </h4>
+            <h4>Search or Select a Video: </h4>
             <Select options={TitleOptions}/>
             <VideoList/>
         </div>
