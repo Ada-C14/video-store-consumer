@@ -19,6 +19,17 @@ const Library = (props) => {
             console.log(error.message);
         });
     }, [props.url]);
+
+
+    // create all videos into components
+    const allVideos = (vidList) => {
+        let newVidList = []
+        for(const video of vidList) {
+
+        }
+
+        return()
+    }
     return (
         <h1>Library</h1>
     );
