@@ -1,0 +1,13 @@
+.popup {
+  position: fixed;
+  z-index: 1;  
+  background-color: white;
+  display: flex;
+  width: 50%;
+  padding: 5%;
+}
+
+.popup-movie-info {
+  display: flex;
+  flex-direction: column;
+}
