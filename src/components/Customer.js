@@ -8,15 +8,15 @@ const Customer = (props) => {
       <span>{props.name}</span>
       <span>{props.email}</span>
       <span>{props.phone}</span>
-      <button onClick={onClickSelect}>
+      <button >
         {props.selected ? 'unselect' : 'select'}
       </button>
     </div>
   );
 };
 
-Customer.PropTypes = {
+// Customer.PropTypes = {
 
-};
+// };
 
 export default Customer;

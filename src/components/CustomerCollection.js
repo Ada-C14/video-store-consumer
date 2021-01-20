@@ -19,8 +19,8 @@ const CustomerCollection = (props) => {
   );
 };
 
-CustomerCollection.PropTypes = {
+// CustomerCollection.PropTypes = {
 
-};
+// };
 
 export default CustomerCollection
