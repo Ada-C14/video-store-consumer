@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 const Customers = (props) => {
   return(
     <div>
-
+Customers!!
     </div>
   )
 

@@ -64,9 +64,9 @@ export default function App() {
           <Route path="/library" component={Library}>
             <Library />
           </Route>
-          {/* <Route path="/customers" component={Customers}>
+          <Route path="/customers" component={Customers}>
             <Customers />
-          </Route> */}
+          </Route>
           <Route path="/">
             <Home />
           </Route>
