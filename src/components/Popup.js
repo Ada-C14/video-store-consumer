@@ -10,7 +10,9 @@ const Popup = props => {
     <div className='popup'>
       <img src={movie.imageURL} alt={movie.title} />
       <div className='popup-movie-info'>
-        <button onClick={props.exitCallbackFn}>X</button>
+        <div className='popup-movie-info__exit-button'>
+          <button onClick={props.exitCallbackFn} className='exit-button'>X</button>
+        </div>
         <h4>{movie.title}</h4>
         <p>Released: {movie.releaseDate}</p>
         <p>Summary: {movie.overview}</p>

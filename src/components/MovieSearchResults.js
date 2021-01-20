@@ -41,8 +41,8 @@ const MovieSearchResults = props => {
   return (
     <div>
       <h4>We found {searchResults.length} results for the movie '{searchTerm}':</h4>
-      <div className='search-results-container'>
-        { clickedMovie ? <Popup clickedMovieInfo={clickedMovie} exitCallbackFn={exitPopup} /> : null }
+      { clickedMovie ? <Popup clickedMovieInfo={clickedMovie} exitCallbackFn={exitPopup} /> : null }
+      <div className={`search-results-container ${ clickedMovie ? 'search-results-fade' : null }`}>
         { generateMovieComponents(searchResults) }
       </div>
     </div>

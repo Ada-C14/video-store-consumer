@@ -1,11 +1,16 @@
 h5 {
-  margin-bottom: 0.5em;
+  margin: auto;
 }
 
 p {
   font-size: smaller;
   margin: 0.5em;
   text-align: justify;
+}
+
+img {
+  height: 250px;
+  width: auto;
 }
 
 img:hover {
@@ -16,7 +21,7 @@ img:hover {
   padding: 0.5rem 0;
   margin: 0 auto 0.5rem auto;
 
-  /* max-height: 300px; */
+  height: 300px;
   max-width: 275px;
 
   display: flex;

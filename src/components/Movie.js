@@ -5,16 +5,6 @@ import './Movie.css';
 const Movie = props => {
   const [showMsg, setShowMsg] = useState(false);
 
-  // const handleClick = event => {
-  //   // const popup = document.querySelector('.popup')
-  //   // const closeBtn = document.querySelector('.closeBtn')
-  //   // popup.style.display = 'block';
-  //   // closeBtn.addEventListener('click', () => {
-  //   //   popup.style.display = 'none';
-  //   // })
-  //   console.log(event)
-  // };
-
   return (
     <div className='movieCard'>
       { showMsg && (<div>Click for more info</div>) }
@@ -26,8 +16,6 @@ const Movie = props => {
         onClick={() => props.handleClickCallback(props)} 
       />
       <h5>{props.title}</h5>
-      {/* <p>Released: {props.releaseDate}</p>
-      <p>Summary: {props.overview}</p> */}
     </div>
   );
 };
