@@ -21,7 +21,8 @@ const App = () => {
       .catch( error => {
         setErrorMessage(error.message)
       })
-  
+    };
+    
     return (
       <Router>
         <div className='App'>
