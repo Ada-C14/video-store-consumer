@@ -4,7 +4,7 @@ import axios from 'axios';
 import Select from 'react-select';
 
 const VideoLibrary = (props) => { 
-  const fullUrl = 'localhost:3000/videos';
+  const fullUrl = 'http://localhost:3000/videos';
 
   const [videos, setVideos] = useState([]);
   const [errors, setErrors] = useState(null);
@@ -23,11 +23,18 @@ const VideoLibrary = (props) => {
   }, [])
 
   const options = videos.map( (video) => {
-    return (video.name);
+    return ({value: video.id, label: video.name});
   })
 
-  // <Select options={options} />
 
+
+
+
+  return (
+    <div className='videoLibrary'>
+      
+    </div>
+  )
       // if ( ! videos) {
       //   return (errors)
       // } else {
@@ -39,11 +46,11 @@ const VideoLibrary = (props) => {
       //   </ul>)
       // }
 
-      return (
-        <div className='videoLibrary'>
-          {options ? options : errors }
-        </div>
-      )
+      // return (
+      //   <div className='videoLibrary'>
+      //     {options ? options : errors }
+      //   </div>
+      // )
   
 
 }
