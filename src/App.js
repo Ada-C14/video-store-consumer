@@ -25,7 +25,6 @@ const App = () => {
         const errors = error.response.data.errors
         setErrorMessage(errors)
       })
-<<<<<<< HEAD
     };
 
     const setCustomer = (id, name) => {
@@ -35,8 +34,7 @@ const App = () => {
         setSelectedCustomer({id: id, name: name})
       }
     };
-=======
-    }
+    
 
     const parseErrorMessages = (errors) => {
       return (
@@ -49,7 +47,6 @@ const App = () => {
         </ul>
       );
     }
->>>>>>> 19d157c265d473347d7623f2f6a13f73bd64bf8c
     
     return (
       
@@ -75,13 +72,6 @@ const App = () => {
                 </li>
                 {selectedCustomer ? <li className='selected'>Customer: {selectedCustomer.name}</li> : ''}
               </ul>
-<<<<<<< HEAD
-              
-              
-          </nav>
-          
-          { errorMessage ? errorMessage : null}
-=======
           </nav>
           
           { errorMessage ? parseErrorMessages(errorMessage) : null}
@@ -90,7 +80,6 @@ const App = () => {
           <Route path='/search'>
             <Search setErrorMessage={setErrorMessage} addVideoCallback={addVideo} baseUrl={BASE_URL}/>
           </Route>
->>>>>>> 19d157c265d473347d7623f2f6a13f73bd64bf8c
       
           <Switch>
               <Route path='/search'>
