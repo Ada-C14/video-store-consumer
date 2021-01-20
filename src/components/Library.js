@@ -3,9 +3,11 @@ import axios from 'axios';
 import LibraryVideo from './LibraryVideo.js';
 import './Library.css';
 
-const Library = () => {
+const Library = (props) => {
   const API_BASE_URL = 'http://localhost:3000'
   const [libraryVideos, setLibraryVideos] = useState([])
+
+  console.log(props)
 
   useEffect(() => {
     axios.get(API_BASE_URL + '/videos')
@@ -20,7 +22,7 @@ const Library = () => {
   }, [])
 
   const libraryVideoComponents = libraryVideos.map(video => {
-    return <LibraryVideo key={video.id} data={video}  />
+    return <LibraryVideo key={video.id} data={video} videoCallback={props.videoCallback} />
   })
 
   return (
