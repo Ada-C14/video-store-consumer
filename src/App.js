@@ -41,10 +41,10 @@ export default function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/customers">
-            <Customers url = {BASE_URL}/>
+            <Customers />
           </Route>
           <Route path="/library">
-            <Library />
+            <Library url = {BASE_URL}/>
           </Route>
           <Route path="/search">
             <Search />

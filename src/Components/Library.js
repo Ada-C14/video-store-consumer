@@ -9,6 +9,7 @@ const Library = (props) => {
 
     // get all videos 
     useEffect(() => {
+        console.log(`${props.url}videos`);
         axios.get(`${props.url}videos`)
         .then((response) => {
             setVideoList(response.data);
@@ -25,13 +26,40 @@ const Library = (props) => {
     const allVideos = (vidList) => {
         let newVidList = []
         for(const video of vidList) {
-
+            let vid = <Video id = {video.id} 
+                            title = {video.title} 
+                            overview = {video.overview} 
+                            releaseDate = {video.release_date}
+                            imageUrl = {video.image_url}
+                            externalId = {video.external_id}/>
+            newVidList.push(vid);
         }
 
-        return()
+        return newVidList;
+    }
+
+    // errors 
+    const allErrors = (errorData) => {
+        const errors = [];
+        for(const error of errorData) {
+        errors.push(<li>{error}</li>);
+        }
+    
+        return errors;
     }
     return (
-        <h1>Library</h1>
+        <div>
+            <article className = 'validation-errors-display'>
+                <h3>{errorMessage ? 'Errors detected!' : ''}</h3>
+                <ul className = 'validation-errors-display__list'>
+                    {errorMessage ? allErrors(errorMessage) : ''}
+                </ul>
+            </article> 
+            <h1>Library</h1>
+            <section>
+                {allVideos(videoList)}
+            </section>
+        </div>
     );
 }
 
