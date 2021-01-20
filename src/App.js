@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import { Switch } from 'react-router';
 import VideoList from './components/VideoList';
+import CustomerList from './components/CustomerList';
 
 class App extends Component {
   render() {
@@ -22,7 +23,7 @@ class App extends Component {
               <Link to="/about">About</Link>
             </li>
             <li>
-              <Link to="/users">Users</Link>
+              <Link to="/customers">Customers</Link>
             </li>
             <li>
               <Link to="/videos">Videos</Link>
@@ -32,6 +33,9 @@ class App extends Component {
         <Switch>
           <Route path="/videos">
             <VideoList />
+          </Route>
+          <Route path="/customers">
+            <CustomerList />
           </Route>
         </Switch>
       </Router>
