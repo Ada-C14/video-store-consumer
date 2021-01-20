@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import CustomerList from './components/Customers';
+import Customers from './components/Customers';
+import Videos from './components/Videos';
 
 class App extends Component {
   render() {
@@ -14,7 +15,8 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        < CustomerList />
+        <Customers />
+        <Videos />
       </div>
     );
   }
