@@ -6,11 +6,11 @@ import './Customer.css';
 const Customer = (props) => {
   return (
     <div>
-      {props.customer_id} 
-      {props.customer_name}  
+      {props.customerId} 
+      {props.customerName}  
       <button
-        onClick={() => props.selectCustomerCallback(props.customer_id)}>
-        {props.currentCustomer ? props.customer_id === props.currentCustomer.id ? 'Selected' : 'Select': 'Select'}
+        onClick={() => props.selectCustomerCallback(props.customerId)}>
+        {props.currentCustomer ? props.customerId === props.currentCustomer.id ? 'Selected' : 'Select': 'Select'}
       </button>
       
 
@@ -18,10 +18,12 @@ const Customer = (props) => {
   )
 }
 
-
-
 Customer.propTypes = {
-
+  customerId: PropTypes.number.isRequired,
+  customerName: PropTypes.string.isRequired,
+  videosCheckedOutCount: PropTypes.number,
+  selectCustomerCallback: PropTypes.func.isRequired,
+  currentCustomer: PropTypes.object,
 };
 
 export default Customer;

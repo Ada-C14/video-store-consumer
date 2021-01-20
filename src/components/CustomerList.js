@@ -8,9 +8,9 @@ const CustomerList = (props) => {
   return (
     <li key = {customer.id}>
       <Customer
-        customer_id={customer.id}
-        customer_name={customer.name}
-        videos_checked_out_count={customer.videos_checked_out_count}
+        customerId={customer.id}
+        customerName={customer.name}
+        videosCheckedOutCount={customer.videos_checked_out_count}
         selectCustomerCallback={props.selectCustomerCallback}
         currentCustomer={props.currentCustomer}
       />
@@ -28,7 +28,15 @@ const CustomerList = (props) => {
 
 
 CustomerList.propTypes = {
-
+  customers: PropTypes.arrayOf(PropTypes.shape(
+    {
+      customerId: PropTypes.number.isRequired,
+      customerName: PropTypes.string.isRequired,
+      videosCheckedOutCount: PropTypes.number,
+    },
+  )),
+  selectCustomerCallback: PropTypes.func.isRequired,
+  currentCustomer: PropTypes.object,
 };
 
 export default CustomerList;
