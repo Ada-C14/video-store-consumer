@@ -6,9 +6,9 @@ import VideoList from './components/VideoList';
 import { NavLink, Switch, Route, Link} from 'react-router-dom';
 import CustomerCollection from './components/CustomerCollection';
 import NavBar from './components/NavBar';
-import { Container } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
-const API_URL_BASE = 'http://localhost:3000/videos';
+const API_URL_BASE = 'http://localhost:3000/library';
 
 const customers = [
   {name: 'Lisa', email: 'lisa@ada.org', phone: '321-123-1234'},
@@ -55,9 +55,12 @@ const App = () => {
           <div>
             <h2>Latest</h2>
             <Container>
-              <col>Video 1 with pic</col>
-              <col>video 2 with pic</col>
-              <col>video 3 with pic</col>
+              <Row>
+                <Col>Video 1 with pic</Col>
+                <Col>video 2 with pic</Col>
+                <Col>video 3 with pic</Col>
+              </Row>
+              
             </Container>
           </div>
         )} 
