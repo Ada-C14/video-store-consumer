@@ -1,15 +1,17 @@
+
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
 import axios from 'axios';
 import VideoList from './components/VideoList';
 // import { BrowserRouter } from 'react-router-dom';
 import { NavLink, Switch, Route } from 'react-router-dom';
+import CustomerCollection from './components/CustomerCollection';
+import NavBar from './components/NavBar';
 
 const API_URL_BASE = 'http://localhost:3000/videos';
 
 const App = () => {
   const [videoList, setVideoList] = useState([]);
+  const [allCustomers, setAllCustomers] = useState(customers);
   const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
@@ -25,20 +27,25 @@ const App = () => {
         console.log(error.message);
       });
   }, []);
+    
+  const customers = [
+  {name: 'Lisa', email: 'lisa@ada.org', phone: '321-123-1234'},
+  {name: 'Jessica', email: 'jessica@lovelace.com', phone: '432-432-4321'},
+  {name: 'Zoe', email: 'zoe@summerday.com', phone: '987-654-4321'},
+ ];
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1 className="App-title">Welcome to React</h1>
+    <main>
+      <header>
+        <h1>Aloha Video Store</h1>
       </header>
-      <Switch>
-        <Route
-          path="/videos"
-          render={(props) => <VideoList {...props} videos={videoList} />}
-        />
-      </Switch>
-    </div>
+      <nav>
+        <NavBar />
+      </nav>
+      <footer>
+        Copyright
+      </footer>
+    </main>
   );
 };
 
