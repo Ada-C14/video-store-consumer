@@ -1,5 +1,4 @@
 import React from 'react';
 
 
-
-export default Video;
+export default AddVideo
