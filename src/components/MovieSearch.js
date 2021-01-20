@@ -3,8 +3,13 @@ import PropTypes from 'prop-types';
 import './MovieSearch.css';
 
 const MovieSearch = () => {
+  const [formFields, setFormFields] = useState({
+    searchQuery: '',
+    searchResults: []
+  });
+
   return (
-    
+    <div></div>
   );
 };
 
