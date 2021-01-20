@@ -22,6 +22,7 @@ const MovieSearchResults = props => {
           releaseDate={movie.release_date}
           imageURL={movie.image_url}
           handleClickCallback={moreInfoOnClick}
+          location='search'
         />
       )
     }

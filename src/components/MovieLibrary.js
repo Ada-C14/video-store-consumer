@@ -44,6 +44,7 @@ const MovieLibrary = props => {
             releaseDate={movie.release_date}
             imageURL={movie.image_url}
             handleClickCallback={moreInfoOnClick}
+            location='library'
           />
         )}
         { errorMessage ? <div><h2 className="error-display">{errorMessage}</h2></div> : '' }

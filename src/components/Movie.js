@@ -24,7 +24,8 @@ Movie.propTypes = {
   overview: PropTypes.string.isRequired,
   releaseDate: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
-  handleClickCallback: PropTypes.func.isRequired
+  handleClickCallback: PropTypes.func.isRequired,
+  location: PropTypes.string.isRequired
 };
 
 export default Movie;
