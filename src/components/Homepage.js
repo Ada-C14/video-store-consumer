@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+// import PropTypes from 'prop-types';
 
 import './Homepage.css';
 
@@ -11,8 +11,8 @@ const Homepage = () => {
   )
 }
 
-Homepage.propTypes = {
+// Homepage.propTypes = {
 
-};
+// };
 
 export default Homepage;
