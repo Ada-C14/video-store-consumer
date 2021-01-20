@@ -5,7 +5,7 @@ import axios from 'axios';
 
 
 
-export default function CustomerList() {
+export default function CustomerList({selectCustomerCallback}) {
 
     const [customers, setCustomers] = useState([])
     const [errorMessage, setErrorMessage] = useState(null)
@@ -25,17 +25,20 @@ export default function CustomerList() {
 
     return (
         <div className='list'>
-            <ul>
-                {customers.map((customer) => <li key={customer.id}>{customer.name}</li>)}
+            <ul className='customer-list'>
+                {customers.map((customer) => 
+                    <li key={customer.id} className='customer-id'>
+                        {customer.name}
+                            <button className='select-button' onClick={() => {selectCustomerCallback(customer)}}>select</button>
+                        </li>
+                )}
             </ul>
             {errorMessage ? <div><h2 className="error-display">{errorMessage}</h2></div> : ''}
         </div>
     );
 
     CustomerList.propTypes = {
-        customers: propTypes.array,
         selectCustomerCallback: propTypes.func.isRequired
     }
-
 
 }
