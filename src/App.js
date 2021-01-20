@@ -11,6 +11,8 @@ import Customers from './components/Customers'
 import './App.css';
 
 class App extends Component {
+  // const localAPI = 'http://localhost:3000/'
+  
   render() {
     return (
       <Router>
@@ -36,7 +38,7 @@ class App extends Component {
             <Library />
           </Route>
           <Route path="/customers">
-            <Customers />
+            <Customers url='http://localhost:3000' />
           </Route>
           <Route path="/">
             <Home />
