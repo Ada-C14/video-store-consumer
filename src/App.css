@@ -39,10 +39,16 @@ nav ul li a {
   color: white;
   text-decoration: none;
 }
+
 .selected {
   color: rgb(158, 152, 152);
 }
 .current {
   border-bottom: 4px solid white;
+}
+
+
+ul {
+  list-style-type: none;
 }
 

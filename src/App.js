@@ -10,7 +10,7 @@ import CustomerList from './components/CustomerList'
 const App = () => {
   const BASE_URL = 'http://localhost:3000/'
 
-  const [errorMessage, setErrorMessage] = useState(null)
+  const [errorMessage, setErrorMessage] = useState({})
   const [videoLibrary, setVideoLibrary] = useState([])
   const [selectedCustomer, setSelectedCustomer] = useState(null)
   
@@ -22,8 +22,10 @@ const App = () => {
         setErrorMessage('')
       })
       .catch( error => {
-        setErrorMessage(error.message)
+        const errors = error.response.data.errors
+        setErrorMessage(errors)
       })
+<<<<<<< HEAD
     };
 
     const setCustomer = (id, name) => {
@@ -33,6 +35,21 @@ const App = () => {
         setSelectedCustomer({id: id, name: name})
       }
     };
+=======
+    }
+
+    const parseErrorMessages = (errors) => {
+      return (
+        <ul>
+          {
+            Object.entries(errors).map(([key, value]) => (
+              <li>Error: {value}</li>
+            )) 
+          }
+        </ul>
+      );
+    }
+>>>>>>> 19d157c265d473347d7623f2f6a13f73bd64bf8c
     
     return (
       
@@ -58,11 +75,22 @@ const App = () => {
                 </li>
                 {selectedCustomer ? <li className='selected'>Customer: {selectedCustomer.name}</li> : ''}
               </ul>
+<<<<<<< HEAD
               
               
           </nav>
           
           { errorMessage ? errorMessage : null}
+=======
+          </nav>
+          
+          { errorMessage ? parseErrorMessages(errorMessage) : null}
+
+          
+          <Route path='/search'>
+            <Search setErrorMessage={setErrorMessage} addVideoCallback={addVideo} baseUrl={BASE_URL}/>
+          </Route>
+>>>>>>> 19d157c265d473347d7623f2f6a13f73bd64bf8c
       
           <Switch>
               <Route path='/search'>

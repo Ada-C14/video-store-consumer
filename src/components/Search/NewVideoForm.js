@@ -23,7 +23,7 @@ const NewVideoForm = ({item, addVideoCallback}) => {
           ))}
         </select> 
 
-        <button onClick={onAddToLibrary}>Add to Library</button>
+        <button onClick={onAddToLibrary} value={startingInventory}>Add to Library</button>
       </div> 
     )
   }
