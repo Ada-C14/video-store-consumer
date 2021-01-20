@@ -4,9 +4,9 @@ import './Movie.css';
 
 const Movie = props => {
   return (
-    <div>
+    <div className='movieCard'>
       <img src={props.imageURL} alt={props.title}/>
-      <p>{props.title}</p>
+      <h5>{props.title}</h5>
       <p>Released: {props.releaseDate}</p>
       <p>Summary: {props.overview}</p>
     </div>
