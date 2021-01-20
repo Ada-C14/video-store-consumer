@@ -9,6 +9,7 @@ import {
 import { Switch } from 'react-router';
 import VideoList from './components/VideoList';
 import CustomerList from './components/CustomerList';
+import Search from './components/Search';
 
 class App extends Component {
   render() {
@@ -20,7 +21,7 @@ class App extends Component {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/search">Search</Link>
             </li>
             <li>
               <Link to="/customers">Customers</Link>
@@ -36,6 +37,9 @@ class App extends Component {
           </Route>
           <Route path="/customers">
             <CustomerList />
+          </Route>
+          <Route path="/search">
+            <Search />
           </Route>
         </Switch>
       </Router>
