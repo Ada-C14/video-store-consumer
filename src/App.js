@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { NavLink, Switch, Route } from 'react-router-dom';
+import VideoLibrary from './components/VideoLibrary';
 
 // class App extends Component {
 //   render() {
@@ -55,9 +56,11 @@ const Search = () => (
   </div>
 );
 
+
 const Library = () => (
   <div className = 'library'>
     <h1>Peruse our video library</h1>
+    <VideoLibrary/>
   </div>
 );
 
