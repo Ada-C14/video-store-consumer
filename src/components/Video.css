@@ -1,0 +1,12 @@
+.video-row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin: auto;
+}
+
+.movie-text {
+  width: 50vw;
+}
