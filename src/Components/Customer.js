@@ -1,16 +1,16 @@
 import React, { Component }  from 'react';
 import PropTypes from 'prop-types';
 
-const Home = (props) => {
+const Customer = (props) => {
 
 
     return (
-        <h1>Home</h1>
+        <h1>Customer</h1>
     )
 }
 
-Home.propTypes = {
+Customer.propTypes = {
 
 };
 
-export default Home;
+export default Customer;

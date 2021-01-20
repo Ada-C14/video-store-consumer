@@ -1,16 +1,16 @@
 import React, { Component }  from 'react';
 import PropTypes from 'prop-types';
 
-const Home = (props) => {
+const Video = (props) => {
 
 
     return (
-        <h1>Home</h1>
+        <h1>Video</h1>
     )
 }
 
-Home.propTypes = {
+Video.propTypes = {
 
 };
 
-export default Home;
+export default Video;

@@ -1,32 +1,15 @@
-// import React, { Component } from 'react';
-// import logo from './logo.svg';
-// import './App.css';
-
-// class App extends Component {
-//   render() {
-//     return (
-//       <div className="App">
-//         <header className="App-header">
-//           <img src={logo} className="App-logo" alt="logo" />
-//           <h1 className="App-title">Welcome to React</h1>
-//         </header>
-//         <p className="App-intro">
-//           To get started, edit <code>src/App.js</code> and save to reload.
-//         </p>
-//       </div>
-//     );
-//   }
-// }
-
-// export default App;
-
-import React from 'react';
+import React, {Component, useState} from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from 'react-router-dom';
+import Customers from './Components/Customers'
+import Library from './Components/Library'
+import Search from './Components/Search'
+import Home from './Components/Home'
+
 
 export default function App() {
   return (
@@ -38,10 +21,13 @@ export default function App() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/search">Search</Link>
             </li>
             <li>
-              <Link to="/users">Users</Link>
+              <Link to="/library">Video Library</Link>
+            </li>
+            <li>
+              <Link to="/customers">Customer List</Link>
             </li>
           </ul>
         </nav>
@@ -49,11 +35,14 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/about">
-            <About />
+          <Route path="/customers">
+            <Customers />
           </Route>
-          <Route path="/users">
-            <Users />
+          <Route path="/library">
+            <Library />
+          </Route>
+          <Route path="/search">
+            <Search />
           </Route>
           <Route path="/">
             <Home />
@@ -62,17 +51,5 @@ export default function App() {
       </div>
     </Router>
   );
-}
-
-function Home() {
-  return <h2>Home</h2>;
-}
-
-function About() {
-  return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
 }
 
