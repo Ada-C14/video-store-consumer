@@ -1,3 +1,6 @@
+import VideoSearch from './components/VideoSearch';
+import VideoLibrary from './components/VideoLibrary';
+import CustomerList from './components/CustomerList';
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -6,7 +9,7 @@ import {
   Switch,
   Route,
   Link
-} from "react-router-dom";
+} from 'react-router-dom';
 
 class App extends Component {
   render() {
@@ -16,31 +19,33 @@ class App extends Component {
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to='/'>Home</Link>
             </li>
             <li>
-              <Link to="/search">Video Search</Link>
+              <Link to='/search'>Video Search</Link>
             </li>
             <li>
-              <Link to="/library">Video Library</Link>
+              <Link to='/library'>Video Library</Link>
             </li>
             <li>
-              <Link to="/customers">Customers</Link>
+              <Link to='/customers'>Customers</Link>
             </li>
           </ul>
         </nav>
 
         <Switch>
-          <Route path="/search">
-            <Search />
+          <Route path='/search'>
+            component={ props =>
+            <VideoSearch {...props}/>
+            }</Route>
+          <Route path='/library'>
+            <VideoLibrary />
           </Route>
-          <Route path="/library">
-            <Library />
+          <Route path='/customers'>
+            component={props =>
+            <CustomerList {...props} />}
           </Route>
-          <Route path="/customers">
-            <Customers />
-          </Route>
-          <Route path="/">
+          <Route path='/'>
             <Home />
           </Route>
         </Switch>
