@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
+import Video from './Video';
+
 const Library = (props) => {
     const [videos, setVideos] = useState([]);
     const [errorMessage, setErrorMessage] = useState([]);
@@ -17,13 +19,18 @@ const Library = (props) => {
         console.log(error.message);})
     }, []);
     
+    
 
-    const showVideos = videos.map((video,i) => {
+    const showVideos = videos.map((video) => {
         return(
-        <p>title={video.title}
-        </p>  
+            <div>
+            <input type='radio' id={video.id} name='video' value={video.title} />
+            <label htmlFor={video.title}><Video key={video.id} id={video.id} title={video.title} overview={video.overview} release_date={video.release_date} /></label>
+            </div>
         );
     });
+
+
     
     return (
         <div>
