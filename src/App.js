@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios'
 import './App.css';
-import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import Search from './components/Search/Search'
+import CustomerList from './components/CustomerList'
 
 const App = () => {
   const BASE_URL = 'http://localhost:3000/'
@@ -20,9 +21,7 @@ const App = () => {
       .catch( error => {
         setErrorMessage(error.message)
       })
-  }
-
-
+  
     return (
       <Router>
         <div className='App'>
@@ -31,7 +30,15 @@ const App = () => {
           </header>
           
           <nav>
-            <Link to='/search'>Search The Movie DB</Link>
+              <ul>
+                <li>
+                  <Link to='/customers'>Customer List</Link>
+                </li>
+                <li>
+                  <Link to='/search'>Search The Movie DB</Link>
+                </li>
+              </ul>
+            
           </nav>
           
           { errorMessage ? errorMessage : null}
@@ -40,10 +47,25 @@ const App = () => {
           <Route path='/search'>
             <Search setErrorMessage={setErrorMessage} addVideoCallback={addVideo} baseUrl={BASE_URL}/>
           </Route>
+      
+          <Switch>
+              <Route path='/customers'>
+                <Customers />
+              </Route>
+            </Switch>
         </div>
       </Router>
     );
   
-}
+};
+
+const Customers = () => {
+  return(
+    <div>
+      <h2>Customers</h2>
+      < CustomerList />
+    </div>
+  ) 
+};
 
 export default App;
