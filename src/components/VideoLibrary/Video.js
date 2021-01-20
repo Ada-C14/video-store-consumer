@@ -1,5 +1,6 @@
 import React from 'react'
 import Moment from 'react-moment';
+import {Button} from 'react-bootstrap'
 import './Video.css'
 
 const Video = ({video, setSelectedVideoCallback}) => {
@@ -26,7 +27,7 @@ const Video = ({video, setSelectedVideoCallback}) => {
           <p className='popup__content'>{overview}</p>
         </div> */}
       </div>
-    
+      <Button className='button' variant='link' size="sm" onClick={() => {setSelectedVideoCallback(title)}}>Select</Button>
     </div>
   )
 }
