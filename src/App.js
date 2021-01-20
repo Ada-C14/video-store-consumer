@@ -11,6 +11,8 @@ import {
 import logo from './logo.svg';
 import './App.css';
 
+const BASE_API_URL = 'http://localhost:3000';
+
 // class App extends Component {
 //   render() {
 //     return (
@@ -54,7 +56,7 @@ export default function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/library">
-            <MovieLibrary />
+            <MovieLibrary url={BASE_API_URL}/>
           </Route>
           <Route path="/customers">
             <CustomerList />
