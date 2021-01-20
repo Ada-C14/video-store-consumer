@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Video from './Video'
 import PropTypes from 'prop-types';
 
