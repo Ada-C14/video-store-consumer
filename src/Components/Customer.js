@@ -5,7 +5,11 @@ const Customer = (props) => {
 
 
     return (
-        <h1>Customer</h1>
+        <div>
+            <h3>{props.id}</h3>
+            <h4>{props.name}</h4>
+            <h4>{props.videosCheckedOut}</h4>
+        </div>
     )
 }
 
