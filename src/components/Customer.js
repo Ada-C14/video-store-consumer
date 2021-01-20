@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 
 import './Customer.css';
 
-const Customer = () => {
+const Customer = (props) => {
   return (
     <div>
-      Customer Component
+      {props.customer_id} 
+      {props.customer_name}    
     </div>
   )
 }
+
+
 
 Customer.propTypes = {
 
