@@ -11,7 +11,7 @@ const Video = (props) => {
 
   return (
     <div 
-      className={`container ${props.id === props.selectedVideo ? 'selected' : ''}`} 
+      className={`container ${props.selectedVideo && props.id === props.selectedVideo.id ? 'selected' : ''}`} 
       onClick={selectThisVideo}
     >
       <section className='video-image'>

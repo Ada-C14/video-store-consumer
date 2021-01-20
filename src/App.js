@@ -24,7 +24,7 @@ const App = () => {
     const [searchResult, setSearchResult] = useState([]);
   
     useEffect(() => {
-      axios.get(`${API_URL_BASE}/customers`)
+      axios.get(`${API_URL_BASE}customers`)
         .then((response) => {
           const apiCustomerList = response.data;
           setCustomerList(apiCustomerList);
@@ -35,7 +35,7 @@ const App = () => {
     }, []);
 
     useEffect(() => {
-      axios.get(`${API_URL_BASE}/videos`)
+      axios.get(`${API_URL_BASE}videos`)
         .then((response) => {
           const apiVideoList = response.data;
           setVideoList(apiVideoList);
@@ -53,11 +53,13 @@ const App = () => {
     };
   
     const selectVideo = (id) => {
-      setSelectedVideo(id)
+      const video = videoList.find((video) => {
+        return video.id === id;
+      });
+      setSelectedVideo(video);
     };
 
     const searchVideo = (video) => {
-
       axios.get(`${API_URL_BASE}videos?query=${video}`)
       .then((response) => {
         const results = response.data;
@@ -69,6 +71,18 @@ const App = () => {
         setErrorMessage(error.message);
       });
     }
+
+    const addVideo = (video) => {
+      axios.post(`${API_URL_BASE}videos`, video)
+      .then( response => {
+        const newVideoList = [...videoList, response.data]
+        setVideoList(newVideoList)
+      })
+      .catch( error => {
+        const errors = error.response.data.errors
+        setErrorMessage(errors)
+      })
+    };
   
     return (
       <Router>
@@ -100,7 +114,7 @@ const App = () => {
               renders the first one that matches the current URL. */}
           <Switch>
             <Route path='/search'>
-              <Search searchVideoCallback={searchVideo} searchResult={searchResult}/>
+              <Search searchVideoCallback={searchVideo} searchResult={searchResult} addVideoCallback={addVideo}/>
             </Route>
             <Route path='/library'>
               <Library 
