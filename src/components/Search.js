@@ -1,5 +1,7 @@
 import React, { useState, Component } from 'react';
 import PropTypes from 'prop-types';
+import SearchResult from './SearchResult';
+
 
 import './Search.css';
 
@@ -9,17 +11,13 @@ const Search = (props) => {
   });
 
   const onInputChange = (event) => {
-    const newFormFields = {
-      ...formFields,
-    }
-    newFormFields[event.target.name] = event.target.value;
-    setFormFields(newFormFields);
-  }
+    setFormFields({searchTerm: event.target.value});
+    };
 
   const onFormSubmit = (event) => {
     event.preventDefault();
 
-    props.searchVideoCallback(formFields);
+    props.searchVideoCallback(formFields.searchTerm);
 
     setFormFields({
       searchTerm: '',
@@ -27,21 +25,25 @@ const Search = (props) => {
   };
 
   return (
-    <form onSubmit={onFormSubmit}><div>
-    <label htmlFor="searchTerm">Search</label>
-    <input
-      name="searchTerm"
-      id="searchTerm"
-      onChange={onInputChange}
-      value={formFields.searchTerm}
-      placeholder="Enter Video Title"
-    />
-  </div>
-  <input
-    type="submit"
-    name="submit"
-  />
+    <div>
+      <form onSubmit={onFormSubmit}><div>
+        <label htmlFor="searchTerm">Search</label>
+        <input
+          name="searchTerm"
+          id="searchTerm"
+          onChange={onInputChange}
+          value={formFields.searchTerm}
+          placeholder="Enter Video Title"
+        />
+      <input
+        type="submit"
+        name="Submit"
+      />
+      </div>
     </form>
+    {props.searchResult.map( (result, id) => (
+      <SearchResult result={result} key={id} />
+))}  </div>
   )
 }
 

@@ -58,9 +58,11 @@ const App = () => {
 
     const searchVideo = (video) => {
 
-      axios.get(`${API_URL_BASE}/videos?query=<${video}>`)
+      axios.get(`${API_URL_BASE}videos?query=${video}`)
       .then((response) => {
         const results = response.data;
+        console.log(response)
+
         setSearchResult(results);
       })
       .catch((error) => {
@@ -98,7 +100,7 @@ const App = () => {
               renders the first one that matches the current URL. */}
           <Switch>
             <Route path='/search'>
-              <Search searchVideoCallback={searchVideo}/>
+              <Search searchVideoCallback={searchVideo} searchResult={searchResult}/>
             </Route>
             <Route path='/library'>
               <Library 
