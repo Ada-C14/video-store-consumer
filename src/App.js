@@ -1,10 +1,13 @@
+import CustomerList from './components/CustomerList.js'
+import MovieLibrary from './components/MovieLibrary.js'
+import MovieSearch from './components/MovieSearch.js'
 import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
-} from "react-router-dom";
+} from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 
@@ -36,10 +39,13 @@ export default function App() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/library">Movie Library</Link>
             </li>
             <li>
-              <Link to="/users">Users</Link>
+              <Link to="/customers">Customer List</Link>
+            </li>
+            <li>
+              <Link to="/search">Search Movies</Link>
             </li>
           </ul>
         </nav>
@@ -47,11 +53,14 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/about">
-            <About />
+          <Route path="/library">
+            <MovieLibrary />
           </Route>
-          <Route path="/users">
-            <Users />
+          <Route path="/customers">
+            <CustomerList />
+          </Route>
+          <Route path="/search">
+            <MovieSearch />
           </Route>
           <Route path="/">
             <Home />
