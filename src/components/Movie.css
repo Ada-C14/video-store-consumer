@@ -13,11 +13,7 @@ img {
   width: auto;
 }
 
-img:hover {
-  opacity: 70%;
-}
-
-.movieCard {
+.movie-card {
   padding: 0.5rem 0;
   margin: 0 auto 0.5rem auto;
 
@@ -31,4 +27,17 @@ img:hover {
   overflow: hidden;
 
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.movie-card:hover img {
+  opacity: 60%;
+}
+
+.click-alert {
+  position: absolute;
+  background-color: white;
+  opacity: 1;
+  z-index: 1;
+  padding: 5px;
+  border-radius: 5px;
 }

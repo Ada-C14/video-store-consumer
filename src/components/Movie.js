@@ -6,13 +6,11 @@ const Movie = props => {
   const [showMsg, setShowMsg] = useState(false);
 
   return (
-    <div className='movieCard'>
-      { showMsg && (<div>Click for more info</div>) }
+    <div className='movie-card' onMouseEnter={() => setShowMsg(true)} onMouseLeave={() => setShowMsg(false)} >
+      { showMsg && (<div className='click-alert'>Click for more info</div>) }
       <img 
         src={props.imageURL} 
         alt={props.title} 
-        onMouseEnter={() => setShowMsg(true)} 
-        onMouseLeave={() => setShowMsg(false)}
         onClick={() => props.handleClickCallback(props)} 
       />
       <h5>{props.title}</h5>
