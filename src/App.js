@@ -1,9 +1,10 @@
-import CustomerList from './components/CustomerList.js'
-import MovieLibrary from './components/MovieLibrary.js'
-import MovieSearchBar from './components/MovieSearchBar.js'
-import MovieSearchResults from './components/MovieSearchResults.js'
+import React, { useState, useEffect } from 'react'
+import CustomerList from './components/CustomerList.js';
+import MovieLibrary from './components/MovieLibrary.js';
+import MovieSearchBar from './components/MovieSearchBar.js';
+import MovieSearchResults from './components/MovieSearchResults.js';
 
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
 
 import {
   BrowserRouter as Router,
@@ -35,6 +36,13 @@ const BASE_API_URL = 'http://localhost:3000';
 // export default App;
 
 export default function App() {
+
+  const [customers, setCustomers] = useState(null)
+
+  const selectCustomer = (singleCustomer) => {
+    setCustomers(singleCustomer)
+  }
+
   return (
     <Router>
       <div>
@@ -62,7 +70,7 @@ export default function App() {
             <MovieLibrary />
           </Route>
           <Route path="/customers">
-            <CustomerList />
+            <CustomerList selectCustomerCallback={selectCustomer}/>
           </Route>
           <Route path='/results' render={props => <MovieSearchResults {...props} />}/>
           <Route path="/">
