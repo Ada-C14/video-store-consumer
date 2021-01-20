@@ -98,7 +98,7 @@ const App = () => {
                 <CustomerList setCustomer={setCustomer} />
               </Route>
               <Route path='/library'>
-                <VideoLibrary baseUrl={BASE_URL} videoLibrary={videoLibrary} setVideoLibraryCallback={setVideoLibrary} setSelectedVideoCallback={setSelectedVideo} setErrorMessage={setErrorMessage}/>
+                <VideoLibrary baseUrl={BASE_URL} videoLibrary={videoLibrary} setVideoLibraryCallback={setVideoLibrary} setVideo={setVideo} setErrorMessage={setErrorMessage}/>
               </Route>
             </Switch>
         </div>

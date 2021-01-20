@@ -1,13 +1,15 @@
 import React from 'react'
 import Moment from 'react-moment';
+import { Button } from 'react-bootstrap'
 import './Video.css'
 
-const Video = ({video, setSelectedVideoCallback}) => {
-  const { 
-    title, 
-    overview, 
-    release_date: releaseDate, 
-    image_url: imageUrl, 
+const Video = ({ video, setVideo }) => {
+  const {
+    id,
+    title,
+    overview,
+    release_date: releaseDate,
+    image_url: imageUrl,
   } = video
 
   // const toggleActive = () => {
@@ -15,8 +17,9 @@ const Video = ({video, setSelectedVideoCallback}) => {
   // }
 
   return (
-    <div className='video'>
-      <img src={imageUrl} alt={`Poster for ${title}`}/>
+
+    <div className="video">
+      <img src={imageUrl} alt={`Poster for ${title}`} />
 
       <div className='video__content'>
         <h3>{title}</h3>
@@ -26,7 +29,8 @@ const Video = ({video, setSelectedVideoCallback}) => {
           <p className='popup__content'>{overview}</p>
         </div> */}
       </div>
-    
+
+      <Button onClick={() => { setVideo(id, title) }} variant="outline-secondary">select</Button>
     </div>
   )
 }

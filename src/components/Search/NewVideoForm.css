@@ -1,5 +1,6 @@
 .add-video-form {
   padding-top: 1rem;
+  overflow: visible
 }
 
 .add-video-form select {

@@ -3,7 +3,7 @@ import axios from 'axios'
 import Video from './Video'
 import './VideoLibrary.css'
 
-const VideoLibrary = ({ baseUrl, videoLibrary, setVideoLibraryCallback, setSelectedVideoCallback, setErrorMessage }) => {
+const VideoLibrary = ({ baseUrl, videoLibrary, setVideoLibraryCallback, setVideo, setErrorMessage }) => {
 
   useEffect(() => {
     axios.get(baseUrl+'videos')
@@ -18,7 +18,7 @@ const VideoLibrary = ({ baseUrl, videoLibrary, setVideoLibraryCallback, setSelec
 
 
   const videoComponents = videoLibrary.map((video) => {
-    return(<Video key={video.id} video={video} setSelectedVideoCallback={setSelectedVideoCallback}/>)
+    return(<Video key={video.id} video={video} setVideo={setVideo}/>)
   })
 
   return(
