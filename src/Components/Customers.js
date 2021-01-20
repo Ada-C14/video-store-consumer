@@ -2,6 +2,7 @@ import React, { Component, useState, useEffect }  from 'react';
 import PropTypes from 'prop-types';
 import Customer from './Customer.js';
 import axios from 'axios';
+import './Customers.css'
 
 const CUSTOMERS_URL = 'http://localhost:3000/customers'
 
@@ -39,7 +40,7 @@ const Customers = (props) => {
 
 
     return (
-      <div>
+      <div className='customers'>
          {customerComponents}
       </div>
     )
