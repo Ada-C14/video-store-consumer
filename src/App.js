@@ -15,7 +15,7 @@ export default function App() {
   const BASE_URL = 'http://localhost:3000/'
 
   // state for selected video
-  const [currentVideo, setVideo] = useState({id: NaN, title: '', imgUrl: ''});
+  const [currentVideo, setVideo] = useState({id: NaN, title: '', imgUrl: 'favicon.ico'});
   const getCurrentVideo = (curId, curTitle, curImg) => {
     setVideo({id: curId, title: curTitle, imgUrl: curImg});
   }
