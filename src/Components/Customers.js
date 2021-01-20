@@ -30,6 +30,7 @@ const Customers = (props) => {
         id={customer.id}
         name={customer.name}
         videosCheckedOut={customer.videos_checked_out_count}
+        curCustomer={props.curCustomer}
       />
     )
   })

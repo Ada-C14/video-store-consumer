@@ -20,6 +20,15 @@ export default function App() {
     setVideo({id: curId, title: curTitle, imgUrl: curImg});
   }
 
+  // state for selected customer
+  const [currentCustomer, setCurrentCustomer] = useState({id: NaN, name: ''})
+  const getCurrentCustomer = (custId, custName) => {
+    setCurrentCustomer({
+      id: custId,
+      name: custName
+    })
+  }
+
   return (
     <Router>
       <div>
@@ -40,11 +49,13 @@ export default function App() {
           </ul>
           <section> 
             <article>
+              <h1>current customer</h1>
+              <h2>{currentCustomer.name ? currentCustomer.name : 'none selected'}</h2> 
             </article>
             <article>
-            <h1>current video</h1>
-            <h2>{currentVideo.title ? currentVideo.title : 'none selected'}</h2> 
-            <img src = {currentVideo.imgUrl} alt = {`Poster for ${currentVideo.title}`}/>         
+              <h1>current video</h1>
+              <h2>{currentVideo.title ? currentVideo.title : 'none selected'}</h2> 
+              <img src = {currentVideo.imgUrl} alt = {`Poster for ${currentVideo.title}`}/>         
             </article>
           </section>
         </nav>
@@ -53,7 +64,7 @@ export default function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/customers">
-            <Customers />
+            <Customers url = {BASE_URL} curCustomer = {getCurrentCustomer} />
           </Route>
           <Route path="/library">
             <Library url = {BASE_URL} curVid = {getCurrentVideo}/>
