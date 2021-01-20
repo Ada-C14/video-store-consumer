@@ -22,10 +22,16 @@ const Customers = (props) => {
       });
   }, []);
 
+  const onChangeValue = (event) => {
+    console.log(event)
+    props.setCustomerCallback(event.target.value)
+
+  }
+
   const customerComponents = customerList.map((cust) => {
     return (
       <div>
-        <input type='radio' id={cust.id} name='customer' value={cust.name} />
+        <input type='radio' id={cust.id} name='customer' value={cust.name} onChange={ onChangeValue } />
         <label htmlFor={cust.name}><Customer key={cust.id} id={cust.id} name={cust.name} tel={cust.phone} videosCheckedCount={cust.videos_checked_out_count} /></label>
       </div>
     );
@@ -44,6 +50,7 @@ const Customers = (props) => {
 
 Customers.propTypes = {
   url: PropTypes.string,
+  setCustomerCallback: PropTypes.func
 };
 
 export default Customers;
