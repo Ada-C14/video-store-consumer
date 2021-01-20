@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,44 +10,51 @@ import Library from './components/Library'
 import Customers from './components/Customers'
 import './App.css';
 
-class App extends Component {
+const App = () => {
   // const localAPI = 'http://localhost:3000/'
-  
-  render() {
-    return (
-      <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/library">Library</Link>
-            </li>
-            <li>
-              <Link to="/customers">Customers</Link>
-            </li>
-          </ul>
-        </nav>
+  const [selectedCustomer, setSelectedCustomer] = useState(null);
 
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/library">
-            <Library />
-          </Route>
-          <Route path="/customers">
-            <Customers url='http://localhost:3000' />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-    );
-  }
+  const selectCustomer = (cust) => {
+    setSelectedCustomer(cust);
+  };
+
+  return (
+    <Router>
+    <div>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/library">Library</Link>
+          </li>
+          <li>
+            <Link to="/customers">Customers</Link>
+          </li>
+        </ul>
+        <span>
+          Selected Video: 
+          Selected Customer:  { selectedCustomer !== null ? selectedCustomer : null }
+        </span>
+      </nav>
+
+      {/* A <Switch> looks through its children <Route>s and
+          renders the first one that matches the current URL. */}
+      <Switch>
+        <Route path="/library">
+          <Library />
+        </Route>
+        <Route path="/customers">
+          <Customers url='http://localhost:3000' setCustomerCallback={selectCustomer} />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </div>
+  </Router>
+  );
 }
 
 function Home() {
