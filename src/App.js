@@ -2,7 +2,7 @@ import React, { Component, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import CustomerList from './components/CustomerList';
-import VideoLibrary from './components/VideoLibrary';
+// import VideoLibrary from './components/VideoLibrary';
 
 import {
   BrowserRouter as Router,
@@ -25,7 +25,7 @@ class App extends Component {
               <Link to="/search">Search</Link>
             </li>
             <li>
-              <Link to="/customers">Customers</Link>
+              <Link to="/customers" exact={true}>Customers</Link>
             </li>
             <li>
               <Link to="/library" exact={true}>Library</Link>
@@ -43,10 +43,10 @@ class App extends Component {
             {/* <Search /> */}
           </Route>
           <Route path="/customers">
-            {/* <Customers /> */}
+            <CustomerList />
           </Route>
           <Route path="/library">
-            <VideoLibrary />
+            {/* <VideoLibrary /> */}
           </Route>
         </Switch>
       </div>
