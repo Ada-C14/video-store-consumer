@@ -1,13 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import logo from './logo.svg';
 import axios from 'axios';
 import './App.css';
 import AddMovieForm from './components/AddMovieForm';
+import VideoCollection from './components/VideoCollection';
 
-const API_URL_BASE = 'http://localhost:3001/videos';
+const API_URL_BASE = 'http://localhost:3000/';
 
 class App extends Component {
+  
   render() {
+
     return (
 
       <Router>
@@ -31,7 +35,7 @@ class App extends Component {
 
         <Switch>
           <Route path="/videos">
-            <Video />
+            <VideoCollection />
           </Route>
           <Route path="/customers">
             <Customer />
@@ -48,10 +52,6 @@ class App extends Component {
 
 function Home() {
   return <h2>Home</h2>;
-}
-
-function Video() {
-  return <h2>Video</h2>;
 }
 
 function Customer() {
