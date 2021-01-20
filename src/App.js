@@ -1,21 +1,34 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, useState } from 'react';
+import CustomerCollection from './components/CustomerCollection'
+import NavBar from './components/NavBar'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+const customers = [
+  {name: 'Lisa', email: 'lisa@ada.org', phone: '321-123-1234'},
+  {name: 'Jessica', email: 'jessica@lovelace.com', phone: '432-432-4321'},
+  {name: 'Zoe', email: 'zoe@summerday.com', phone: '987-654-4321'},
+];
+
+const App = () => {
+  const [allCustomers, setAllCustomers] = useState(customers);
+  const [errorMessage, setErrorMessage] = useState(null);
+  
+  const checkout = (customer, video) => {
+
+  };
+
+  return (
+    <main>
+      <header>
+        <h1>Aloha Video Store</h1>
+      </header>
+      <nav>
+        <NavBar />
+      </nav>
+      <footer>
+        Copyright
+      </footer>
+    </main>
+  );
+};
 
 export default App;
