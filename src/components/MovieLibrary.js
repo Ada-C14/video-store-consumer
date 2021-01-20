@@ -6,9 +6,9 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 const MovieLibrary = props => {
-  const [movies, setMovies] = useState([])
-  const [errorMessage, setErrorMessage] = useState(null)
-  const url = props.url + '/videos'
+  const [movies, setMovies] = useState([]);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const url = props.url + '/videos';
 
   useEffect(() => {
     axios.get(url)
