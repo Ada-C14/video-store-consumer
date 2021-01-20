@@ -6,6 +6,7 @@ const Customer = (props) => {
 
   return(
     <div className="customer">
+      <button onClick={() => {props.setCustomer(props.id, props.name)}}>select</button>
       <h3 className="customer__content">{props.name}</h3>
     </div>
     

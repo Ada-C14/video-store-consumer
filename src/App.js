@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios'
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, NavLink, Link} from 'react-router-dom';
+import {Navbar, Nav} from 'react-bootstrap'
+import {LinkContainer} from 'react-router-bootstrap'
 import Search from './components/Search/Search'
 import CustomerList from './components/CustomerList'
 import VideoLibrary from './components/VideoLibrary/VideoLibrary'
@@ -11,7 +13,9 @@ const App = () => {
 
   const [errorMessage, setErrorMessage] = useState({})
   const [videoLibrary, setVideoLibrary] = useState([])
-  const [selectedVideo, setSelectedVideo] = useState({})
+  const [selectedCustomer, setSelectedCustomer] = useState(null)
+  const [selectedVideo, setSelectedVideo] = useState(null)
+
   
   const addVideo = (video) => {
     axios.post(BASE_URL+'videos', video)
@@ -24,73 +28,81 @@ const App = () => {
         const errors = error.response.data.errors
         setErrorMessage(errors)
       })
+    };
+
+    const setCustomer = (id, name) => {
+      if (selectedCustomer && id === selectedCustomer.id) {
+        setSelectedCustomer(null)
+      } else {
+        setSelectedCustomer({id: id, name: name})
+      }
+    };
+
+    const setVideo = (id, title) => {
+      if (selectedVideo && id === selectedVideo.id) {
+        setSelectedVideo(null)
+      } else {
+        setSelectedVideo({id: id, title: title})
+      }
     }
-
-  const parseErrorMessages = (errors) => {
-
-
+    
+    const parseErrorMessages = (errors) => {
+      return (
+        <ul>
+          {
+            Object.entries(errors).map(([key, value]) => (
+              <li>Error: {value}</li>
+            )) 
+          }
+        </ul>
+      );
+    }
+    
     return (
-      <ul>
-        {
-          Object.entries(errors).map(([key, value]) => (
-            <li>Error: {value}</li>
-          )) 
-        }
-      </ul>
+      
+      <Router>
+        <div className='App'>
+          <header className='App-header'>
+          
+          </header>
+          
+          <nav>
+              <ul className='nav-links'>
+                <li>
+                  <NavLink exact activeClassName='current' to='/'>Home</NavLink>
+                </li>
+                <li>
+                  <NavLink exact activeClassName='current' to='/library'>Video List</NavLink>
+                </li>
+                <li>
+                  <NavLink exact activeClassName='current'to='/customers'>Customer List</NavLink>
+                </li>
+                <li>
+                  <NavLink exact activeClassName='current' to='/search'>Search The Movie DB</NavLink>
+                </li>
+                {selectedCustomer ? <li className='selected'>Customer: {selectedCustomer.name}</li> : ''}
+                {selectedVideo ? <li className='selected'>Video: {selectedVideo.title}</li> : ''}
+              </ul>
+          </nav>
+          
+          { errorMessage ? parseErrorMessages(errorMessage) : null}
+
+          <Switch>
+              <Route path='/search'>
+                <Search setErrorMessage={setErrorMessage} addVideoCallback={addVideo} baseUrl={BASE_URL}/>
+              </Route>
+              <Route path='/customers'>
+                <CustomerList setCustomer={setCustomer} />
+              </Route>
+              <Route path='/library'>
+                <VideoLibrary baseUrl={BASE_URL} videoLibrary={videoLibrary} setVideoLibraryCallback={setVideoLibrary} setSelectedVideoCallback={setSelectedVideo} setErrorMessage={setErrorMessage}/>
+              </Route>
+            </Switch>
+        </div>
+      </Router>
     );
   }
-    
-  return (
-    <Router>
-      <div className='App'>
-        <header className='App-header'>
 
-        </header>
-        
-        <nav>
-            <ul>
-              <li>
-                <Link to='/customers'>Customer List</Link>
-              </li>
-              <li>
-                <Link to='/search'>Search The Movie DB</Link>
-              </li>
-              <li>
-                <Link to='/library'>Video Library</Link>
-              </li>
-            </ul>
-        </nav>
-        
-        { errorMessage ? parseErrorMessages(errorMessage) : null}
 
-        
-
-    
-        <Switch>
-            <Route path='/customers'>
-              <Customers />
-            </Route>
-
-            <Route path='/search'>
-              <Search setErrorMessage={setErrorMessage} addVideoCallback={addVideo} baseUrl={BASE_URL}/>
-            </Route>
-
-            <Route path='/library'>
-              <VideoLibrary baseUrl={BASE_URL} videoLibrary={videoLibrary} setVideoLibraryCallback={setVideoLibrary} setSelectedVideoCallback={setSelectedVideo} setErrorMessage={setErrorMessage}/>
-            </Route>
-          </Switch>
-      </div>
-    </Router>
-  );
-};
-
-const Customers = () => {
-  return(
-    <div>
-      <h2>Customers</h2>
-      < CustomerList />
-    </div>
-  ) 
-};
 
 export default App;
