@@ -27,16 +27,6 @@ const Customers = () => {
       });
   }, []);
 
-  // const Customer = customersList.map(({customer}) => {
-  //   return (
-  //     <Customer
-  //       key={customer.id}
-  //       id={customer.id}
-  //       name={customer.name}
-  //     />
-  //   );
-  // });
-
   const generateCustomers = (customers) => {
     let customerComponentArray = [];
 
