@@ -1,6 +1,6 @@
 import CustomerList from './components/CustomerList.js'
 import MovieLibrary from './components/MovieLibrary.js'
-import MovieSearch from './components/MovieSearch.js'
+import MovieSearchBar from './components/MovieSearchBar.js'
 import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
@@ -61,12 +61,12 @@ export default function App() {
           <Route path="/customers">
             <CustomerList />
           </Route>
-          {/* <Route path="/search">
-            <MovieSearch />
-          </Route> */}
+          <Route path="/results">
+            <MovieSearchResults />
+          </Route>
           <Route path="/">
             <Home />
-            <MovieSearch />
+            <MovieSearchBar />
           </Route>
         </Switch>
       </div>
