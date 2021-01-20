@@ -59,17 +59,15 @@ export default function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/library">
-            <MovieLibrary url={BASE_API_URL}/>
+            <MovieLibrary />
           </Route>
           <Route path="/customers">
             <CustomerList />
           </Route>
-          <Route path="/results">
-            <MovieSearchResults />
-          </Route>
+          <Route path='/results' render={props => <MovieSearchResults {...props} />}/>
           <Route path="/">
             <Home />
-            <MovieSearchBar />
+            <MovieSearchBar url={BASE_API_URL} />
           </Route>
         </Switch>
       </div>

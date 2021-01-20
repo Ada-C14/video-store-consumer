@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import './MovieSearchBar.css';
 
-const MovieSearch = props => {
+const MovieSearchBar = props => {
   const [formFields, setFormFields] = useState({
     searchQuery: '',
     searchResults: []
@@ -20,7 +20,7 @@ const MovieSearch = props => {
   
   const onFormSubmit = event => {
     event.preventDefault();
-
+    
     const url = props.url + '/videos?query=' + formFields.searchQuery;
 
     axios.get(url)
@@ -45,15 +45,15 @@ const MovieSearch = props => {
       { formFields.searchResults.length > 0 &&
         <Redirect to={{
           pathname: '/results',
-          state: { results: formFields.searchResults }
+          state: { results: formFields.searchResults, alert: alert }
         }}/>
       }
     </div>
   );
 };
 
-MovieSearch.propTypes = {
+MovieSearchBar.propTypes = {
   url: PropTypes.string.isRequired,
 };
 
-export default MovieSearch;
+export default MovieSearchBar;
