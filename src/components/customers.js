@@ -22,9 +22,8 @@ const Customers = () => {
   const showCustomers = customerList.map((customer) => {
     return (
       <div>
-        {customer.id}
-        {customer.name}
-        {/* TODO, what else?
+          <p>{customer.id} {customer.name}</p>
+        {/* TODO, decide what else to include?
         Choices are:
         registered_at
         address

@@ -37,15 +37,16 @@ export default function App() {
           <Route path="/customers">
             <Customers />
           </Route>
-          {/* <Route path="/library">
-            <Library />
+          <Route path="/library">
+            {/* note that library and videos names don't match*/}
+            <Videos />
           </Route>
           <Route path="/search">
-            <Search />
+            {/* <Search /> */}
           </Route>
           <Route path="/">
-            <Home /> */}
-          {/* </Route> */}
+            {/* <Home /> */}
+          </Route>
         </Switch>
       </div>
     </Router>
