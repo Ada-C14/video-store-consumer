@@ -19,18 +19,18 @@ const Video = ({ video, setVideo }) => {
   return (
 
     <div className="video">
-      <img src={imageUrl} alt={`Poster for ${title}`} />
+      <Button onClick={() => { setVideo(id, title) }} variant="light">
+        <img src={imageUrl} alt={`Poster for ${title}`} />
 
-      <div className='video__content'>
-        <h3>{title}</h3>
-        <p><Moment format='LL'>{releaseDate}</Moment></p>
+        <div className='video__content'>
+          <h3>{title}</h3>
+          <p><Moment format='LL'>{releaseDate}</Moment></p>
 
-        {/* <div className={ selected ? 'show-details popup' : null }>
-          <p className='popup__content'>{overview}</p>
-        </div> */}
-      </div>
-
-      <Button onClick={() => { setVideo(id, title) }} variant="outline-secondary">select</Button>
+          {/* <div className={ selected ? 'show-details popup' : null }>
+            <p className='popup__content'>{overview}</p>
+          </div> */}
+        </div>
+      </Button>
     </div>
   )
 }

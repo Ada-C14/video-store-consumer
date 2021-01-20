@@ -9,7 +9,7 @@
   border-radius: 5px;
 
   display: grid;
-  grid-template-columns: 1fr 5fr 1fr;
+  grid-template-columns: 1fr 10fr 1fr;
 }
 
 .video > * {
@@ -17,19 +17,27 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   
-
   font-weight: 100;
   overflow: hidden;
   font-size: smaller;
+}
 
-  padding-top:0.2rem ;
+.video__content h3 {
+  font-size: medium;
+  padding-top: 0.5rem;
 }
 
 img {
+  border-radius: 5px;
   float: left;
   max-height: 200px;
   object-fit: cover;
   justify-self: center;
+  margin-top: 1rem;
+
+}
+
+Button > * {
+  align-self: center;
 }
