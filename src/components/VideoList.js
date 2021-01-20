@@ -5,7 +5,7 @@ import Video from './Video';
 
 const VideoList = (props) => {
   console.log(props.videos);
-  const videoComponents = props.videos.map((video, i) => {
+  const videoComponents = props.videoList.map((video, i) => {
     return (
       <li key={i}>
         <Video
