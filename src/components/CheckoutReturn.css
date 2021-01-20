@@ -1,0 +1,18 @@
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.movie {
+  display: flex;
+  align-items: center;
+}
+.thumbnail {
+  height: 80px;
+  margin: 0 5px;
+}
+
+.hide {
+  visibility: hidden;
+}
