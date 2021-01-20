@@ -45,7 +45,7 @@ const MovieSearch = props => {
       { formFields.searchResults.length > 0 &&
         <Redirect to={{
           pathname: '/results',
-          state: { results: this.state.results }
+          state: { results: formFields.searchResults }
         }}/>
       }
     </div>

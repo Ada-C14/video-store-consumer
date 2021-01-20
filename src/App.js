@@ -1,14 +1,17 @@
 import CustomerList from './components/CustomerList.js'
 import MovieLibrary from './components/MovieLibrary.js'
 import MovieSearchBar from './components/MovieSearchBar.js'
+import MovieSearchResults from './components/MovieSearchResults.js'
+
 import React, { Component } from 'react';
+
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from 'react-router-dom';
-import logo from './logo.svg';
+
 import './App.css';
 
 const BASE_API_URL = 'http://localhost:3000';
@@ -76,10 +79,6 @@ export default function App() {
 
 function Home() {
   return <h2>Home</h2>;
-}
-
-function About() {
-  return <h2>About</h2>;
 }
 
 function Users() {
