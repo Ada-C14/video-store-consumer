@@ -31,7 +31,7 @@ CustomerList.propTypes = {
   customers: PropTypes.arrayOf(PropTypes.shape(
     {
       customerId: PropTypes.number,
-      customerName: PropTypes.string.isRequired,
+      customerName: PropTypes.string,
       videosCheckedOutCount: PropTypes.number,
     },
   )),

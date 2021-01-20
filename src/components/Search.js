@@ -26,7 +26,6 @@ const Search = (props) => {
     });
   };
 
-
   return (
     <form onSubmit={onFormSubmit}><div>
     <label htmlFor="searchTerm">Search</label>
