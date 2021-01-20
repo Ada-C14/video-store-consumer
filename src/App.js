@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
-import Search from './components/Search'
+import Search from './components/Search/Search'
 
 class App extends Component {
   render() {
@@ -16,6 +15,8 @@ class App extends Component {
           <nav>
             <Link to='/search'>Search The Movie DB</Link>
           </nav>
+          
+
           
           <Route path='/search'>
             <Search />
