@@ -12,13 +12,11 @@ const LibraryVideo = (props) => {
   }
 
   return (
-    <div className="library-video">
+    <div className="library-video" onClick={handleClick}>
       <div className='library-video__content'>
         <img className='library-video__img' src={props.data.image_url} alt={title} />
         <h2 className='library-video__title'>{title}</h2>
       </div>
-
-      <button className='library-video__select' onClick={handleClick}>Select</button>
     </div>
   )
 }
