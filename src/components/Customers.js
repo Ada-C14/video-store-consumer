@@ -8,25 +8,26 @@ import Customer from './Customer';
 const Customers = () => {
   
   const [customersList, setCustomersList] = useState([]);
+  const [errorMessage, setErrorMessage] = useState(null);
+
   const CUSTOMER_URL = 'http://localhost:3000/customers'
 
   useEffect(() => {
     axios.get(CUSTOMER_URL)
       .then((response) => {
-        // Get the list of students
         // console.log(response.data);
-        const apiCustomerResponse = response.data;
-        console.log(apiCustomerResponse[0].name)
+        const railsCustomerList = response.data;
+        // console.log(apiCustomerResponse[0].name)
         // Set the state
-        setCustomersList(apiCustomerResponse);
+        setCustomersList(railsCustomerList);
       })
       .catch((error) => {
-        // setErrorMessage(error.message);
-        // console.log(error.message);
+        setErrorMessage(error.message);
+        console.log(error.message);
       });
   }, []);
 
-  // const generateCustomers = customersList.map(({customer}) => {
+  // const Customer = customersList.map(({customer}) => {
   //   return (
   //     <Customer
   //       key={customer.id}
@@ -38,18 +39,15 @@ const Customers = () => {
 
   const generateCustomers = (customers) => {
     let customerComponentArray = [];
-    // console.log(cards)
 
   for (const customer of customers) 
-  // console.log(card[`card`][`id`])
+
   {
     customerComponentArray.push(
       <Customer
           key={customer.id}
           id={customer.id}
           name={customer.name}
-          // emoji={card[`card`][`emoji`]}
-          // deleteCard={deleteCard}
       />
     )
   }
@@ -66,6 +64,7 @@ const Customers = () => {
   }
 
 Customers.propTypes = {
+  // DONT FORGET TO FILL ME OUT!
   // addCardCallback: PropTypes.func.isRequired
   };
   

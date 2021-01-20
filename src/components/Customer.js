@@ -7,6 +7,7 @@ const Customer = (props) => {
 }
 
 Customer.propTypes = {
+  // DONT FORGET TO FILL ME OUT!
   // addCardCallback: PropTypes.func.isRequired
   };
   
