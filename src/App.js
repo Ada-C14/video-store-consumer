@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import CustomerList from './components/CustomerList';
+import VideoSearch from './components/VideoSearch';
+import VideoLibrary from './components/VideoLibrary';
+
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
-} from "react-router-dom";
+} from 'react-router-dom';
 
 class App extends Component {
+
+  API_URL = 'https://localhost:3000'
+  
   render() {
+    
     return (
       <Router>
       <div>
@@ -31,15 +38,19 @@ class App extends Component {
         </nav>
 
         <Switch>
-          <Route path="/search">
-            <Search />
-          </Route>
+          <Route path="/search"
+            component={ props =>
+            <VideoSearch { ...props }/>
+            }/>
           <Route path="/library">
             <Library />
           </Route>
-          <Route path="/customers">
-            <Customers />
-          </Route>
+          <Route path="/customers" 
+            component={ props => 
+            <CustomerList { ...props }
+            selectCustomerCallback={this.selectCustomer}
+            url={this.API_URL}/>
+          }/>
           <Route path="/">
             <Home />
           </Route>
@@ -53,11 +64,11 @@ function Home() {
   return <h2>Home</h2>;
 }
 
-function About() {
+function Library() {
   return <h2>About</h2>;
 }
 
-function Users() {
+function Customers() {
   return <h2>Users</h2>;
 }
 
