@@ -17,6 +17,7 @@ const API_URL_BASE = 'http://localhost:3000/'
 const App = () => {
   
     const [customerList, setCustomerList] = useState([]);
+    const [currentCustomer, setCurrentCustomer] = useState(null);
     const [videoList, setVideoList] = useState([]);
     const [selectedVideo, setSelectedVideo] = useState(null)
     const [errorMessage, setErrorMessage] = useState(null);
@@ -44,9 +45,16 @@ const App = () => {
         });
     }, []);
 
+     const selectedCustomer = (id) => {
+      const customer = customerList.find((customer) => {
+        return customer.id === id;
+      });
+      setCurrentCustomer(customer);
+    };
+  
     const selectVideo = (id) => {
       setSelectedVideo(id)
-    }
+    };
   
     return (
       <Router>
@@ -65,10 +73,13 @@ const App = () => {
             <li>
               <Link to='/customers'>Customers</Link>
             </li>
+            <li>
+            {currentCustomer ? `Customer Selected: ${currentCustomer.name}` : ''}
+            </li>
           </ul>
         </nav>
 
-        
+
         <main>
           {errorMessage ? <div><h2 className="error-msg">{errorMessage}</h2></div> : ''}
           {/* A <Switch> looks through its children <Route>s and
@@ -85,7 +96,7 @@ const App = () => {
               />
             </Route>
             <Route path='/customers'>
-              <CustomerList customers={customerList}/>
+              <CustomerList customers={customerList} selectCustomerCallback={selectedCustomer} currentCustomer={currentCustomer}/>
             </Route>
             <Route path='/'>
               <Homepage />
