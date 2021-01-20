@@ -5,15 +5,13 @@ import SearchResultItem from './SearchResultItem';
 import './Search.css'
 
 
-const Search = () => {
-  const BASE_URL = 'http://localhost:3000/'
-  const SEARCH_API_PATH = '/videos?query='
+const Search = ({setErrorMessage, addVideoCallback, baseUrl}) => {
+  const SEARCH_API_PATH = 'videos?query='
 
   const [searchResults, setSearchResults] = useState([])
-  const [errorMessage, setErrorMessage] = useState(null)
 
   const onSearch = (searchTerm) => {  
-    axios.get(BASE_URL + SEARCH_API_PATH + searchTerm)
+    axios.get(baseUrl + SEARCH_API_PATH + searchTerm)
       .then( response => {
         setSearchResults(response.data)
         setErrorMessage('')
@@ -25,13 +23,13 @@ const Search = () => {
 
   return(
     <div>
-      { errorMessage ? errorMessage : null}
+
       <SearchBar onSearchCallback={onSearch} />
 
 
       <div className='search-results'>
         {searchResults.map( (item, id) => (
-          <SearchResultItem item={item} key={id} />
+          <SearchResultItem item={item} key={id} addVideoCallback={addVideoCallback}/>
         ))}
       </div>
     </div>
