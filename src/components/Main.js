@@ -6,7 +6,13 @@ import Home from './Home';
 import Navigation from './Navigation';
 
 const Main = () => {
-
+  //
+  //   <Route
+  //   path='/dashboard'
+  //   render={(props) => (
+  //     <Dashboard {...props} isAuthed={true} />
+  //   )}
+  // />
   return (
     <Switch>
       <Route exact path='/' component={Home}></Route>
