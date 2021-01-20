@@ -15,7 +15,10 @@ export default function App() {
   const BASE_URL = 'http://localhost:3000/'
 
   // state for selected video
-  const [currentVideo, setVideo] = useState('');
+  const [currentVideo, setVideo] = useState({id: NaN, title: '', imgUrl: ''});
+  const getCurrentVideo = (curId, curTitle, curImg) => {
+    setVideo({id: curId, title: curTitle, imgUrl: curImg});
+  }
 
   return (
     <Router>
@@ -35,6 +38,9 @@ export default function App() {
               <Link to="/customers">Customer List</Link>
             </li>
           </ul>
+          <section> 
+            <h1>{currentVideo.title ? currentVideo.title : 'none selected'}</h1>
+          </section>
         </nav>
 
         {/* A <Switch> looks through its children <Route>s and
@@ -44,7 +50,7 @@ export default function App() {
             <Customers />
           </Route>
           <Route path="/library">
-            <Library url = {BASE_URL}/>
+            <Library url = {BASE_URL} curVid = {getCurrentVideo}/>
           </Route>
           <Route path="/search">
             <Search />

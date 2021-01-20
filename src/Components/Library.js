@@ -34,7 +34,8 @@ const Library = (props) => {
                             overview = {video.overview} 
                             releaseDate = {video.release_date}
                             imageUrl = {video.image_url}
-                            externalId = {video.external_id}/>
+                            externalId = {video.external_id}
+                            curVid = {props.curVid}/>
             newVidList.push(vid);
         }
 
