@@ -59,11 +59,12 @@ export default function App() {
           <Route path="/customers">
             <CustomerList />
           </Route>
-          <Route path="/search">
+          {/* <Route path="/search">
             <MovieSearch />
-          </Route>
+          </Route> */}
           <Route path="/">
             <Home />
+            <MovieSearch />
           </Route>
         </Switch>
       </div>
