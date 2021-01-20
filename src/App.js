@@ -10,6 +10,7 @@ const App = () => {
 
   const [errorMessage, setErrorMessage] = useState(null)
   const [videoLibrary, setVideoLibrary] = useState([])
+  const [selectedCustomer, setSelectedCustomer] = useState(null)
   
   const addVideo = (video) => {
     axios.post(BASE_URL+'videos', video)
@@ -21,6 +22,14 @@ const App = () => {
       .catch( error => {
         setErrorMessage(error.message)
       })
+    };
+
+    const setCustomer = (id, name) => {
+      if (selectedCustomer && id === selectedCustomer.id) {
+        setSelectedCustomer(null)
+      } else {
+        setSelectedCustomer({id: id, name: name})
+      }
     };
     
     return (
@@ -51,7 +60,7 @@ const App = () => {
       
           <Switch>
               <Route path='/customers'>
-                <Customers />
+                <CustomerList setCustomer={setCustomer} />
               </Route>
             </Switch>
         </div>
@@ -60,13 +69,6 @@ const App = () => {
   
 };
 
-const Customers = () => {
-  return(
-    <div>
-      <h2>Customers</h2>
-      < CustomerList />
-    </div>
-  ) 
-};
+
 
 export default App;

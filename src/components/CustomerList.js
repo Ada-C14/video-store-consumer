@@ -19,7 +19,7 @@ const CustomerList = (props) => {
   },[]);
 
   const customerComponents = customers.map((customer) => {
-    return(< Customer key={customer.id} name={customer.name} />)
+    return(< Customer key={customer.id} name={customer.name} id={customer.id} setCustomer={props.setCustomer} />)
   })
 
   return(
