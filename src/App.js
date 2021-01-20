@@ -1,20 +1,38 @@
-import React, { Component, useState } from 'react';
-import CustomerCollection from './components/CustomerCollection'
-import NavBar from './components/NavBar'
 
-const customers = [
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import VideoList from './components/VideoList';
+// import { BrowserRouter } from 'react-router-dom';
+import { NavLink, Switch, Route } from 'react-router-dom';
+import CustomerCollection from './components/CustomerCollection';
+import NavBar from './components/NavBar';
+
+const API_URL_BASE = 'http://localhost:3000/videos';
+
+const App = () => {
+  const [videoList, setVideoList] = useState([]);
+  const [allCustomers, setAllCustomers] = useState(customers);
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get(API_URL_BASE)
+      .then((response) => {
+        const apiVideoList = response.data;
+        console.log(apiVideoList);
+        setVideoList(apiVideoList);
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+        console.log(error.message);
+      });
+  }, []);
+    
+  const customers = [
   {name: 'Lisa', email: 'lisa@ada.org', phone: '321-123-1234'},
   {name: 'Jessica', email: 'jessica@lovelace.com', phone: '432-432-4321'},
   {name: 'Zoe', email: 'zoe@summerday.com', phone: '987-654-4321'},
-];
-
-const App = () => {
-  const [allCustomers, setAllCustomers] = useState(customers);
-  const [errorMessage, setErrorMessage] = useState(null);
-  
-  const checkout = (customer, video) => {
-
-  };
+ ];
 
   return (
     <main>
