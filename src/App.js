@@ -1,7 +1,7 @@
 import React, { Component, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import CustomerList from 'CustomerList.js'
+import CustomerList from './Components/CustomerList';
 import {
   BrowserRouter as Router,
   Switch,
