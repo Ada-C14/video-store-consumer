@@ -20,7 +20,7 @@ const Customer = (props) => {
             <p className="customer__details">{props.phone}</p>
             <p className="customer__details">{props.address}</p>
             <p className="customer__details">{props.city}, {props.state} {props.postalCode}</p>
-            {props.isSelected? <button className="selected" onClick={onButtonClick}>SELECTED</button> : <button className="select" onClick={onButtonClick}>SELECT</button> }
+            {props.isSelected? <button className="btn btn-primary selected" onClick={onButtonClick}>SELECTED</button> : <button className="btn btn-primary select" onClick={onButtonClick}>SELECT</button> }
         </div>
     )
 }

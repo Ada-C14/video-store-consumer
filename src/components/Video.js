@@ -32,15 +32,15 @@ const Video = (props) => {
         }
 
         if (props.buttonText === 'ADD') {
-            buttonValues.className = 'add-film';
+            buttonValues.className = 'btn btn-primary add-film';
             buttonValues.onClick = onAddFilm;
             buttonValues.buttonText = props.buttonText;
         } else if (props.isSelected) {
-            buttonValues.className = 'selected';
+            buttonValues.className = 'btn btn-primary selected';
             buttonValues.onClick = onButtonClick;
             buttonValues.buttonText = 'SELECTED';
         } else {
-            buttonValues.className = 'select';
+            buttonValues.className = 'btn btn-primary select';
             buttonValues.onClick = onButtonClick;
             buttonValues.buttonText = 'SELECT';
         }
