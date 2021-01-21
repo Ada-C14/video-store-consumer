@@ -72,9 +72,9 @@ const App = () => {
         <Navbar fixed='top' bg="dark" variant="dark">
           <Nav className="mr-auto">
             <Link to='/'>Home</Link>
-            <Link to='/videos'>Videos</Link>
+            <Link to='/library'>Library</Link>
             <Link to='/customers'>Customers</Link>
-            <Link to='/add'>Add Movie</Link>
+            <Link to='/search'>Search</Link>
           </Nav>
           <span>Currently Selected Video: {selectedVideo}</span>
           <span>Currently Selected Customer: {selectedCustomer.name}</span>
@@ -92,13 +92,13 @@ const App = () => {
         {/* <AddMovieForm /> */}
         
         <Switch>
-          <Route path="/videos">
+          <Route path="/library">
             <VideoCollection onSelectVideo={selectVideo} showButton='select'/>
           </Route>
           <Route path="/customers">
             <CustomerCollection onSelectCustomer={selectCustomer}/>
           </Route>
-          <Route path="/add">
+          <Route path="/search">
             <AddMovieForm showButton='add'/> 
           </Route>
           <Route path="/">
