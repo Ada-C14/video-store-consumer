@@ -16,7 +16,7 @@ const Movie = props => {
       <h5>{props.title}</h5>
       { props.location === 'search' 
         ? <button onClick={() => props.addMovieClickback(props)}>Add to Library</button>
-        : ''
+        : <button onClick={() => props.addMovieRentalCallback(props)}>Add to Library</button>
       }
     </div>
   );
@@ -30,7 +30,8 @@ Movie.propTypes = {
   id: PropTypes.number.isRequired,
   handleClickCallback: PropTypes.func.isRequired,
   location: PropTypes.string.isRequired,
-  addMovieClickback: PropTypes.func
+  addMovieClickback: PropTypes.func,
+  addMovieRentalCallback: PropTypes.func
 };
 
 export default Movie;

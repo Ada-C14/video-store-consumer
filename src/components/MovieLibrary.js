@@ -31,6 +31,10 @@ const MovieLibrary = props => {
     setClickedMovie(null);
   };
 
+  const addMovieRental = rentalMovie => {
+    props.selectMovieCallback(rentalMovie);
+  };
+
   return (
     <div>
       { clickedMovie ? <Popup clickedMovieInfo={clickedMovie} exitCallbackFn={exitPopup} /> : null }
@@ -45,6 +49,7 @@ const MovieLibrary = props => {
             imageURL={movie.image_url}
             handleClickCallback={moreInfoOnClick}
             location='library'
+            addMovieRentalCallback={addMovieRental}
           />
         )}
         { errorMessage ? <div><h2 className="error-display">{errorMessage}</h2></div> : '' }
@@ -55,6 +60,7 @@ const MovieLibrary = props => {
 
 MovieLibrary.propTypes = {
   url: PropTypes.string.isRequired,
+  selectMovieCallback: PropTypes.func.isRequired
 };
 
 export default MovieLibrary;

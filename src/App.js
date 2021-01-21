@@ -38,23 +38,17 @@ export default function App() {
   }
 
   const rentMovie = () => {
-    axios.post(`http://localhost:3000/rentals/${movie.title}/checkout`, {
+    axios.post(BASE_API_URL + '/rentals/' + movie.title + '/checkout', {
       customerId: customer.id,
       dueDate: dueDate()
     })
       .then(() => {
-        // console.log(response)
-        setMessage(
-          'Movie Rented!'
-        );
+        setMessage('Movie Rented!');
       })
       .catch((error) => {
         setMessage(error.message);
       });
-}
-
-
-
+  }
 
   return (
     <Router>
@@ -77,7 +71,7 @@ export default function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/library">
-            <MovieLibrary url={BASE_API_URL} />
+            <MovieLibrary selectMovieCallback={selectMovie} url={BASE_API_URL} />
           </Route>
           <Route path="/customers">
             <CustomerList selectCustomerCallback={selectCustomer} url={BASE_API_URL} />
