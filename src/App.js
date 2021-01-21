@@ -64,6 +64,13 @@ export default function App() {
           </nav>
         </div>
 
+        {/* <section className='rental body'>
+          <Rental {...{movie, customer, rentMovie}} />
+          <div className='message wrap'>
+            <p>{message}</p>
+          </div>
+        </section> */}
+
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
