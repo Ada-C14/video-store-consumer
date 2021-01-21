@@ -107,8 +107,4 @@ function Home() {
   );
 }
 
-// function Customer() {
-//   return <h2>Customers</h2>;
-// }
-
 export default App;
