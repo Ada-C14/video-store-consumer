@@ -22,19 +22,18 @@ const Customers = (props) => {
     });
   }, []);
 
-  const getCustomers = () => {
-    return customerList.map((cust) => {
-        return (<Customer 
-            id={cust.id}
-            name={cust.name}
-            // overview={cust.overview}
-            // release_date={cust.releaseDate}
-            // image_url={cust.imageUrl}
-            // external_id={cust.externalId} 
-            // key={cust.id} 
-        />);
-    });
-}
+  const customerComponents = customerList.map((cust) => {
+    return (<Customer 
+        id={cust.id}
+        name={cust.name}
+        // overview={cust.overview}
+        // release_date={cust.releaseDate}
+        // image_url={cust.imageUrl}
+        // external_id={cust.externalId} 
+        // key={cust.id} 
+    />);
+  });
+
 
 const selectCustomer = (id) => {
     if (selectedCustomer === null) {
@@ -52,7 +51,7 @@ return (
         <h3>Our Loyal Customers</h3>
         <h6>Current Selected Customer: {selectedCustomer}</h6>
         <p>{errorMessage}</p>
-        {getCustomers()}
+        {customerComponents}
     </div>
 );
 };
