@@ -1,7 +1,9 @@
 import React from 'react';
 
-const Customer = () => {
-    return <h1>This is the customer page.</h1>
+const Customer = (props) => {
+    return (
+        <div>{props.name}</div>
+    )
 }
 
 export default Customer; 
