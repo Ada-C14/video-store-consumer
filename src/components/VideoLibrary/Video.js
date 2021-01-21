@@ -28,7 +28,6 @@ const Video = ({ currentPathname, video, setVideo, addVideoCallback }) => {
 
   return (
     <div className="video">
- 
       <img src={imageUrl} alt={`Poster for ${title}`} />
 
       <div className='video__content'>
