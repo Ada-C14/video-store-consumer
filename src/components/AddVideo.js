@@ -16,6 +16,9 @@ const AddVideo = (props) => {
     }
 
     useEffect(() => {
+        if (AddedVideo.title == undefined) {
+            return;
+        }
         axios.post(BASE_URL, humps.decamelizeKeys({
             externalId: AddedVideo.external_id,
             title: AddedVideo.title,
