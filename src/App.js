@@ -18,16 +18,16 @@ const App = () => {
     id: null,
     name: 'none',
   });
-  const [errorMessage, setErrorMessage] = useState(null);
+  const [checkoutMessage, setcheckoutMessage] = useState(null);
 
 
   const selectVideo = (title) => {
-    setErrorMessage('');
+    setcheckoutMessage('');
     setSelectedVideo(title);
   };
 
   const selectCustomer = (id, name) => {
-    setErrorMessage('');
+    setcheckoutMessage('');
     setSelectedCustomer({
       id: id,
       name: name,
@@ -39,14 +39,14 @@ const App = () => {
     today.setDate(today.getDate() + 7);
 
     if (selectedCustomer === null || selectedVideo === null) {
-      setErrorMessage('Need to select a customer and video')
+      setcheckoutMessage('Need to select a customer and video')
       return null
     }
 
     axios.post(API_URL_BASE + 'rentals/' + selectedVideo + '/check-out?customer_id=' + selectedCustomer.id + '&due_date=' + today.toString())
     .then((response) => {
       console.log(response);
-      setErrorMessage(`Checked out ${selectedVideo} successfully to ${selectedCustomer.name}!`);
+      setcheckoutMessage(`Checked out ${selectedVideo} successfully to ${selectedCustomer.name}!`);
       setSelectedVideo(null);
       setSelectedCustomer({
         id: null,
@@ -55,20 +55,26 @@ const App = () => {
     })
     .catch((error) => {
       console.log(error);
-      setErrorMessage(error.message);
+      setcheckoutMessage(error.message);
     });
   };
 
-  // setErrorMessage('')
+  const checkoutMessageNav = () => {
+    if (checkoutMessage) {
+      return (<span>{checkoutMessage}</span>);
+    } else {
+      return (
+      <div>
+        <span>Currently Selected Video: {selectedVideo}</span>
+        <span>Currently Selected Customer: {selectedCustomer.name}</span>
+      </div>)
+    }
+  };
 
     return (
 
       <Router>
       <div className="App">
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to Hollywood Video</h1>
-        </header> */}
         <Navbar fixed='top' bg="dark" variant="dark">
           <Nav className="mr-auto">
             <Link to='/'>Home</Link>
@@ -76,21 +82,10 @@ const App = () => {
             <Link to='/customers'>Customers</Link>
             <Link to='/search'>Search</Link>
           </Nav>
-          <span>Currently Selected Video: {selectedVideo}</span>
-          <span>Currently Selected Customer: {selectedCustomer.name}</span>
+          {checkoutMessageNav()}
           <Button variant="outline-info" onClick={checkOut}>Check Out</Button>
-          {/* <Form inline>
-            <FormControl type="text" placeholder="Search Movies" className="mr-sm-2" />
-            <Button variant="outline-info">Search</Button>
-          </Form> */}
         </Navbar>
-      
-
-        { errorMessage ? <div><h2 className="error-msg">{errorMessage}</h2></div> : '' }
-
-
-        {/* <AddMovieForm /> */}
-        
+            
         <Switch>
           <Route path="/library">
             <VideoCollection onSelectVideo={selectVideo} showButton='select'/>
