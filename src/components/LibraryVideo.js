@@ -3,9 +3,7 @@ import './LibraryVideo.css'
 
 const LibraryVideo = (props) => {
   const {title} = props.data
-  console.log(props)
   const handleClick = () => {
-    console.log(`${title} is selected`)
     props.videoCallback(props.data)
     // need to define a callback function to save video title to state to eventually checkout
     // props.videoSelectCallback(title);
