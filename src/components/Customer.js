@@ -1,9 +1,12 @@
 const Customer = (props) => {
   return (
-    <div>
-      <h1>{props.name}</h1>
-    </div>
-  )
+    <tr class="table-active">
+        <th scope="row">{props.name}</th>
+        <td>{props.phone}</td>
+        <td>{props.accountCredit}</td>
+        <td>{props.videosCheckedOutCount}</td>
+    </tr>
+)
 }
 
 Customer.propTypes = {

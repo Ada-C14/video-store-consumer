@@ -1,8 +1,10 @@
 const Video = (props) => {
     return (
-      <div>
-        <h1>{props.title}</h1>
-      </div>
+        <tr class="table-active">
+            <th scope="row"><img src={props.imageUrl} className="w-75" alt="poster" /></th>
+            <th scope="row">{props.overview}</th>
+            <td>{props.releaseDate}</td>
+        </tr>
     )
   }
   

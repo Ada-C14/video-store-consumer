@@ -114,7 +114,26 @@ function App() {
             <h4>Is there a video you wish we carried??  Search our order catalog to see if we can add it to our library!</h4>
             <br></br>
             <SearchForm searchCallback={searchVideo} />
-            { searchResultList.length === 0 ? <h4>Search for a title keyword above!</h4> : <div><br></br><h4>Search Results</h4><br></br> {generateSearchResults(searchResultList)}</div> }
+            { searchResultList.length === 0 ? 
+              <h4>Search for a title keyword above!</h4> 
+              : 
+              <div><br></br><h4>Search Results</h4><br></br> 
+              <section className="container w-75">
+                <table className="table table-hover">
+                <thead>
+                <tr className="table-primary">
+                  <th scope="col">Poster</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Release Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                  {generateSearchResults(searchResultList)}
+                </tbody>
+                </table>
+              </section>
+              </div> 
+            }
           </Route>
         </Switch>
         </section>
