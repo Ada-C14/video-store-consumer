@@ -28,6 +28,7 @@ const VideoLibrary = (props) => {
       title={video.title}
       imageURL={video.image_url}
       overview={video.overview}
+      // onVideoClickCallback={}
         />
     )
   })
