@@ -4,7 +4,10 @@ import PropTypes from 'prop-types';
 import './Video.css';
 
 const Video = (props) => {
-    const [inventory, setInventory] = useState(0)
+    // inventory button
+    const VALID_KEYS = ['ArrowUp', 'ArrowDown', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+    const [inventory, setInventory] = useState(1)
     const selectVideo = () => {
         props.clickButton(props.id, props.title, props.imageUrl);
     }
@@ -23,8 +26,8 @@ const Video = (props) => {
                 < div className = "video__inventory">
                     <h4> add inventory</h4>
                     <input className="video__inventory-button" name="inventory" value={inventory} onChange={changeInventory}
-                    type="number" min = '1' max = '25' onKeyDown={(event) => {
-                        if(event.code !== 'ArrowUp'  && event.code !== 'ArrowDown') {event.preventDefault();}}}/>
+                    type="number" min = '1' onKeyDown={(event) => {
+                        if(VALID_KEYS.includes(event.key)) {event.preventDefault();}}}/>
                 </div>
             );
         }

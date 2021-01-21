@@ -47,4 +47,21 @@ span {
     color: grey
 }
 
+input[type=number] {
+    /*for absolutely positioning spinners*/
+    position: relative; 
+    padding: 5px;
+    padding-right: 25px;
+}
 
+/* Chrome, Safari, Edge, Opera - remove spinners */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox  - remove spinners*/
+input[type=number] {
+    -moz-appearance: textfield;
+}
