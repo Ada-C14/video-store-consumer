@@ -45,7 +45,7 @@ export default function App() {
           setErrorMessage(null);
       })
       .catch((error) => {
-          setErrorMessage(['Failed to retrieve videos in library.'])
+          setErrorMessage([error.message, 'failed to retrieve videos in library.'])
           console.log(error.message);
       });
   }, [vidAdded]);
@@ -85,6 +85,7 @@ export default function App() {
     })
     .catch((error) => {
       console.log(error);
+      setErrorMessage([error.message.toLowerCase(), 'rental failed - please check inventory and that customer and video are valid']);
     });
 
     setVideo({id: NaN, title: '', imgUrl: 'favicon.ico'})
