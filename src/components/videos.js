@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-const Videos = () => {
-  const VIDEO_URL = 'http://localhost:3000/videos';
+const Videos = ( {videoURL, newVideo} ) => {
   const [videoList, setvideoList] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
-    axios.get(VIDEO_URL)
+    if (newVideo !== undefined) {
+      setvideoList(newVideo);
+    }
+    axios.get(videoURL)
       .then((response) => {
         const videos = response.data;
         console.log(videos)
@@ -16,13 +18,17 @@ const Videos = () => {
       })
       .catch((error) => {
         setErrorMessage(error.message);
+        console.log(errorMessage);
       });
   }, []);
 
-  const showvideos = videoList.map((video) => {
+  
+
+  const showVideos = videoList.map((video) => {
     return (
       <div>
-          <p>{video.id} {video.title}</p>
+          {/* <p>{video.id} {video.title}</p>  */}
+          <img src={video.image_url} alt={video.title}/>
         {/* TODO, decide what else to include?
         Choices are:
         overview
@@ -36,7 +42,7 @@ const Videos = () => {
 
   return (
     <div>
-      {showvideos}
+      {showVideos}
     </div>
   )
 

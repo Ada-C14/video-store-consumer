@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Customers from './components/Customers'
 import Videos from './components/Videos'
+import Search from './components/Search'
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,6 +12,7 @@ import {
 } from 'react-router-dom';
 
 export default function App() {
+  const VIDEO_URL = 'http://localhost:3000/videos'
   return (
     <Router>
       <div>
@@ -39,10 +41,10 @@ export default function App() {
           </Route>
           <Route path="/library">
             {/* note that library and videos names don't match*/}
-            <Videos />
+            <Videos videoURL={VIDEO_URL} />
           </Route>
           <Route path="/search">
-            {/* <Search /> */}
+            <Search videoURL={VIDEO_URL} />
           </Route>
           <Route path="/">
             {/* <Home /> */}
