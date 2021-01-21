@@ -22,10 +22,10 @@ const App = () => {
     setSelectedCustomer(id.id)
   }
 
-  const [selectVideo, setSelectedVideo] = useState(null)
+  const [selectedVideo, setSelectedVideo] = useState(null)
 
-  const chooseVideo = (props) => {
-    setSelectedVideo(props.title)
+  const chooseVideo = (videoData) => {
+    setSelectedVideo(videoData)
   }
 
 
@@ -57,10 +57,11 @@ const App = () => {
                     focus='videos'/>
           </Route>
           <Route path="/library" component={Library}>
-          <p>Selected Video - {selectVideo}</p>
+          <p>{ selectedVideo ? `Selected Video - ${selectedVideo.title}` : 'No video selected'}</p>
             <Library url={BASE_URL}
                        focus='videos/'
-                       selectVideoCallback={chooseVideo}/>
+                       selectVideoCallback={chooseVideo}
+                       selectedVideo={selectedVideo}/>
           </Route>
           <Route path="/customers" component={Customers}>
             <p>Selected Customer - {selectCustomer}</p>

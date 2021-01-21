@@ -61,7 +61,7 @@ const Library = (props) => {
     <div>
       <h1>Video Library</h1>
       {errorMessage ? <div><h2 className="validation-errors-display">{errorMessage}</h2></div> : ''}
-      {props.selectVideoCallback? < SelectedVideo selectedVideo={props.selectVideoCallback}/> : 'No video selected'}
+      {props.selectedVideo? < SelectedVideo selectedVideo={props.selectedVideo}/> : ''}
 
         <table>
           <tbody>
