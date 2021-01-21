@@ -1,21 +1,91 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Customers from './components/Customers'
+import Videos from './components/Videos'
+import Search from './components/Search'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+export default function App() {
+  const VIDEO_URL = 'http://localhost:3000/videos'
+  return (
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/search">Search</Link>
+            </li>
+            <li>
+              <Link to="/library">Library</Link>
+            </li>
+            <li>
+              <Link to="/customers">Customers</Link>
+            </li>
+          </ul>
+        </nav>
+
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route path="/customers">
+            <Customers />
+          </Route>
+          <Route path="/library">
+            {/* note that library and videos names don't match*/}
+            <Videos videoURL={VIDEO_URL} />
+          </Route>
+          <Route path="/search">
+            <Search videoURL={VIDEO_URL} />
+          </Route>
+          <Route path="/">
+            {/* <Home /> */}
+          </Route>
+        </Switch>
       </div>
-    );
-  }
+    </Router>
+  );
 }
 
-export default App;
+// function Home() {
+//   return <h2>Home</h2>;
+// }
+
+// // re-named to customer singular (problem with import Customers otherwise
+// function Customer() {
+//   return <h2>Customers</h2>;
+// }
+
+// function Search() {
+//   return <h2>Search</h2>;
+// }
+
+// function Library() {
+//   return <h2>Library</h2>;
+// }
+
+// class App extends Component {
+//   render() {
+//     return (
+//       <div className="App">
+//         <header className="App-header">
+//           <img src={logo} className="App-logo" alt="logo" />
+//           <h1 className="App-title">Welcome to React</h1>
+//         </header>
+//         <p className="App-intro">
+//           To get started, edit <code>src/App.js</code> and save to reload.
+//         </p>
+//       </div>
+//     );
+//   }
+// }
+
+// export default App;
