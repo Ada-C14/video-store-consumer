@@ -3,17 +3,10 @@ import Search from './Search';
 import Library from './Library';
 import Customers from './Customers';
 import Home from './Home';
-import Navigation from './Navigation';
+import './Main.css';
 
 const Main = (props) => {
-  console.log(props.videoCallback)
-  //
-  //   <Route
-  //   path='/dashboard'
-  //   render={(props) => (
-  //     <Dashboard {...props} isAuthed={true} />
-  //   )}
-  // />
+
   return (
     <Switch>
       <Route exact path='/' component={Home}></Route>

@@ -12,8 +12,9 @@ const App = () => {
     return (
       <div className="App">
         <Navigation />
+        <Checkout video={video} customer={customer} videoCallback={setVideo} customerCallback={setCustomer} />
         <div className="main-content">
-          <Checkout video={video} customer={customer} videoCallback={setVideo} customerCallback={setCustomer} />
+          
           <Main videoCallback={setVideo} customerCallback={setCustomer} className="main" />
         </div>
         

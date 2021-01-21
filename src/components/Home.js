@@ -1,9 +1,11 @@
 import React from 'react';
+import './Home.css';
+
 
 const Home = () => {
   return (
     <div>
-      <h1>HOME</h1>
+      <h1 className="home-page__header">legend video</h1>
     </div>
   )
 }

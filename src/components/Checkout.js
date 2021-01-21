@@ -9,8 +9,16 @@ const Checkout = (props) => {
   const {video, customer} = props
   const [alert, setAlert] = useState('');
 
+  if (alert) {
+    setTimeout(() => {
+      setAlert('');
+    }, 3000)
+  }
+
+
   const handleClick = () => {
-    const date = new Date(Date.now() + 7)
+    const date = new Date();
+    date.setDate(date.getDate() + 7);
 
     axios.post(
       `${BASE_API_URL}/rentals/${video.title}/check-out`, 
@@ -19,7 +27,7 @@ const Checkout = (props) => {
         dueDate: date
       }))
     .then( (response) => {
-      setAlert(`${video.title} successfully checked out to ${customer.name}`)
+      setAlert(` successfully checked out ${video.title} to ${customer.name}`)
       props.videoCallback(null);
       props.customerCallback(null);
     })
@@ -28,11 +36,13 @@ const Checkout = (props) => {
     })
   }
   return (
-    <div className="checkout">
-      {alert && <p>{alert}</p>}
-      {video && <h3 className="checkout__text">Video Selected: <em>{video.title}</em></h3>}
-      {customer && <h3 className="checkout__text">Customer Selected: <em>{customer.name}</em></h3>}
-      {(video && customer) && <button className="checkout__btn" onClick={handleClick}>CHECKOUT</button>}  
+    <div className="checkout__content">
+      <div className="checkout">
+        {alert && <p>{alert}</p>}
+        {video && <h3 className="checkout__text">Video Selected: <em>{video.title}</em></h3>}
+        {customer && <h3 className="checkout__text">Customer Selected: <em>{customer.name}</em></h3>}
+        {(video && customer) && <button className="checkout__btn" onClick={handleClick}>CHECKOUT</button>}  
+      </div>
     </div>
   )
 }

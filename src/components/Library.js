@@ -7,6 +7,7 @@ const Library = (props) => {
   const API_BASE_URL = 'http://localhost:3000';
 
   const [libraryVideos, setLibraryVideos] = useState([])
+  const [active, setActive] = useState('')
 
   useEffect(() => {
     axios.get(API_BASE_URL + '/videos')
@@ -20,12 +21,11 @@ const Library = (props) => {
   }, [])
 
   const libraryVideoComponents = libraryVideos.map(video => {
-    return <LibraryVideo key={video.id} data={video} videoCallback={props.videoCallback} />
+    return <LibraryVideo key={video.id} data={video} videoCallback={props.videoCallback} activeCallback={setActive} isActive={active === video.id} />
   })
 
   return (
     <div className="library">
-      <h1>Library</h1>
       <div className="library__content">
         {libraryVideoComponents}
       </div>
