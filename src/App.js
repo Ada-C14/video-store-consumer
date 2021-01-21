@@ -52,11 +52,11 @@ const App = () => {
         <Route path="/customers">
           <Customers url='http://localhost:3000' setCustomerCallback={selectCustomer} />
         </Route>
+        <Route path="/search">
+          <Search />
+        </Route>
         <Route path="/">
           <Home />
-        </Route>
-        <Route path='/search'>
-          <Search />
         </Route>
       </Switch>
     </div>

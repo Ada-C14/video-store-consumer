@@ -6,15 +6,12 @@ const Search = () => {
   const [errorMessage, setErrorMessage] = useState([]);
   const [query, setQuery] = useState([]);
   const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
+
   const API_URL_BASE = 'http://localhost:3000'
 
-  const searchQueryOnChange = (event) => {
-    console.log('new query', event.target.value)
-    setQuery({
-      inputValue: event.target.value
-    })
-  }
-  useEffect(() => {
+  const fetchSearchResults = (query) => {
     axios.get(`${API_URL_BASE}/videos?query=${query}`)
     .then((response) => {
       let newSearch = response.data;
@@ -26,7 +23,20 @@ const Search = () => {
       setErrorMessage(error.message);
       console.log(error.message);
     });
-  }, []);
+  }
+
+  const searchQueryOnChange = (event) => {
+    const query = event.target.value;
+	if ( ! query ) {
+		this.setState({ query, results: {}, message: '' } );
+	} else {
+		this.setState({ query, loading: true, message: '' }, () => {
+			this.fetchSearchResults(query);
+		});
+	}
+};
+  }
+  
 
   const submitSearch = (event) => {
     event.preventDefault();
@@ -53,7 +63,15 @@ const Search = () => {
   })
 
     return (
-      <div> helllooooo </div>
+        <form>
+          <input
+            type="text"
+            className="search-box"
+            placeholder="Search for..."
+            onChange={searchQueryOnChange}
+          />
+          {searchResults}
+        </form>
     );
 };
 
