@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import Navbar from './Navbar.js';
 import './CustomerList.css';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 
 const CustomerList = props => {
@@ -29,28 +30,33 @@ const CustomerList = props => {
   };
 
   return (
-    <div className='list'>
-      { alert ? alert : '' }
-      <ul className='customer-list'>
-        { customers.map((customer) => 
-          <li key={customer.id} className='customer-id'>
-            { customer.name }
-            <button 
-              className='select-button' 
-              onClick={() => { addCustomerRental(customer); scrollToTop(); }}
-            >
-              select
-            </button>
-          </li>
-        )}
-      </ul>
+    <div>
+      <Navbar customer={props.customer} movie={props.movie} />
+      <div className='list'>
+        { alert ? alert : '' }
+        <ul className='customer-list'>
+          { customers.map((customer) => 
+            <li key={customer.id} className='customer-id'>
+              { customer.name }
+              <button 
+                className='select-button' 
+                onClick={() => { addCustomerRental(customer); scrollToTop(); }}
+              >
+                select
+              </button>
+            </li>
+          )}
+        </ul>
+      </div>
     </div>
   );
 };
 
 CustomerList.propTypes = {
-  selectCustomerCallback: propTypes.func.isRequired,
-  url: propTypes.string.isRequired
+  selectCustomerCallback: PropTypes.func.isRequired,
+  url: PropTypes.string.isRequired,
+  customer: PropTypes.string,
+  movie: PropTypes.string
 };
 
 export default CustomerList;

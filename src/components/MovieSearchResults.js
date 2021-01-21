@@ -3,6 +3,7 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import Movie from './Movie.js'
 import Popup from './Popup.js'
+import Navbar from './Navbar.js';
 import './MovieSearchResults.css';
 
 const MovieSearchResults = props => {
@@ -11,6 +12,8 @@ const MovieSearchResults = props => {
   const searchResults = props.location.state.results;
   const searchTerm = props.location.state.searchTerm;
   const baseURL = props.location.state.baseURL;
+  const movie = props.location.state.movie;
+  const customer = props.location.state.customer;
 
   const generateMovieComponents = movies => {
     const currentMovieList = [];
@@ -53,20 +56,23 @@ const MovieSearchResults = props => {
   };
 
   return (
-    <div className='search-results'>
-      { alert ? alert : '' }
-      <h4>We found {searchResults.length} results for the movie '{searchTerm}':</h4>
-      { clickedMovie 
-        ? <Popup 
-            clickedMovieInfo={clickedMovie} 
-            exitCallbackFn={exitPopup} 
-            addMovieClickback={addToLibrary}
-            location='search'
-          /> 
-        : null 
-      }
-      <div className={`search-results-container ${ clickedMovie ? 'search-results-fade' : null }`}>
-        { generateMovieComponents(searchResults) }
+    <div>
+      <Navbar customer={customer} movie={movie} />
+      <div className='search-results'>
+        { alert ? alert : '' }
+        <h4>We found {searchResults.length} results for the movie '{searchTerm}':</h4>
+        { clickedMovie 
+          ? <Popup 
+              clickedMovieInfo={clickedMovie} 
+              exitCallbackFn={exitPopup} 
+              addMovieClickback={addToLibrary}
+              location='search'
+            /> 
+          : null 
+        }
+        <div className={`search-results-container ${ clickedMovie ? 'search-results-fade' : null }`}>
+          { generateMovieComponents(searchResults) }
+        </div>
       </div>
     </div>
   );
@@ -77,10 +83,12 @@ MovieSearchResults.propTypes = {
   location: PropTypes.shape({
     state: PropTypes.shape({
       results: PropTypes.array.isRequired,
-      searchTerm: PropTypes.string.isRequired
+      searchTerm: PropTypes.string.isRequired,
+      customer: PropTypes.string.isRequired,
+      movie: PropTypes.string.isRequired,
+      baseURL: PropTypes.string.isRequired
     })
   }),
-  baseURL: PropTypes.string.isRequired
 };
 
 export default MovieSearchResults;

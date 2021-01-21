@@ -22,52 +22,6 @@ a:hover {
   color: #e28c59;
 }
 
-.top-nav {
-  display: flex;
-  margin: auto 3% auto 3%;
-  height: 15vh;
-  align-items: center;
-}
-
-.main-fns {
-  margin: auto;
-  width: 50%;
-}
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: inline;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-}
-
-li {
-  margin: auto 5% auto 5%;
-  display: inline;
-  font-size: smaller;
-}
-
-i {
-  opacity: .5;
-  margin-bottom: 3px;
-  margin-left: 5px;
-}
-
-.arrow {
-  border: solid #277f86;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3px;
-}
-
-.down {
-  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-}
-
 .btn-container {
   display: flex;
   width: 100%;
@@ -106,6 +60,9 @@ button {
   background-color: #bdeecf;
   height: 40px;
   font-weight: 800;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
 }
 
 button:hover, .main-btn:hover {

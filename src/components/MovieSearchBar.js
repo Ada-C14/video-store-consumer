@@ -51,7 +51,9 @@ const MovieSearchBar = props => {
           pathname: '/results',
           state: { results: formFields.searchResults, 
                   searchTerm: formFields.searchQuery, 
-                  baseURL: props.url
+                  baseURL: props.url,
+                  customer: props.customer,
+                  movie: props.movie,
                 }
         }}/>
       }
@@ -60,7 +62,9 @@ const MovieSearchBar = props => {
 };
 
 MovieSearchBar.propTypes = {
-  url: PropTypes.string.isRequired
+  url: PropTypes.string.isRequired,
+  customer: PropTypes.string,
+  movie: PropTypes.string
 };
 
 export default MovieSearchBar;

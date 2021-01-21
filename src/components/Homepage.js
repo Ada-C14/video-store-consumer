@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import MovieSearchBar from './MovieSearchBar.js';
+import Navbar from './Navbar.js';
 import './Homepage.css';
 
 const Homepage = (props) => {
@@ -11,67 +12,75 @@ const Homepage = (props) => {
   const movie = props.movie;
 
   return (
-    <div className='homepage-container'>
-      <div className={ movie || customer ? 'homepage-rental' : 'homepage'}>
-        { movie || customer 
-          ? <div>
-            { movie && customer 
-              ? <div className='checkout'>
-                <h1>rental ready!</h1>
-                <button>checkout</button>
-              </div>
-              : <h1>rental in-progress</h1>
-            }
-            <div className='rentalInfoContainer'>
-              { movie 
-                ? <div className='movie-rental rental-info'>
-                  <div className='top-info'>
-                    <div className='top-info-txt'>
-                      <div className='rental-text'>Selected movie:</div>
-                      <h4 className='rental-text-main'>{movie.title}</h4>
-                    </div>  
-                    <button onClick={() => props.setMovieCallback(null)}>Undo</button>
-                  </div>
-                  <div className='img-container'><img src={movie.imageURL} alt={movie.title} /></div>
+    <div>
+      <Navbar home={true}/>
+      {/* <Navbar home={movie && customer ? false : true}/> */}
+      <div className='homepage-container'>
+        <div className={ movie || customer ? 'homepage-rental' : 'homepage'}>
+          { movie || customer 
+            ? <div>
+              { movie && customer 
+                ? <div className='checkout'>
+                  <h1>rental ready!</h1>
+                  <button>checkout</button>
                 </div>
-                : <div className='missingRentalInfo-container movie-rental rental-info'>
-                    <div className='rental-text-main'>Please select a movie to complete this transaction.</div>
-                    <div className='missingRentalInfo'>
-                      <div className='main-btn'><Link to='/library'>movies</Link></div>
-                    </div>
-                  </div>
+                : <h1>rental in-progress</h1>
               }
-              { customer 
-                ? <div className='customer-rental rental-info'>
+              <div className='rentalInfoContainer'>
+                { movie 
+                  ? <div className='movie-rental rental-info'>
                     <div className='top-info'>
                       <div className='top-info-txt'>
-                        <div className='rental-text'>Selected customer:</div>
-                        <h4 className='rental-text-main'>{customer.name}</h4>
-                      </div>
-                      <button onClick={() => props.setCustomerCallback(null)}>Undo</button>
+                        <div className='rental-text'>Selected movie:</div>
+                        <h4 className='rental-text-main'>{movie.title}</h4>
+                      </div>  
+                      <button onClick={() => props.setMovieCallback(null)}>Undo</button>
                     </div>
-                  <img className='customer-img' src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZsuxUrEVyvCmLYoM5BeyNUOts2akw1RFDYw&usqp=CAU'} alt={'customer icon'} />
-                </div>
-                : <div className='missingRentalInfo-container customer-rental rental-info'>
-                    <div className='rental-text-main'>Please select a customer to complete this transaction.</div>
-                    <div className='missingRentalInfo'>
-                      <div className='main-btn'><Link to='/customers'>customers</Link></div>
-                    </div>
+                    <div className='img-container'><img src={movie.imageURL} alt={movie.title} /></div>
                   </div>
-              }
+                  : <div className='missingRentalInfo-container movie-rental rental-info'>
+                      <div className='rental-text-main'>Please select a movie to complete this transaction.</div>
+                      <div className='missingRentalInfo'>
+                        <div className='main-btn'><Link to='/library'>movies</Link></div>
+                      </div>
+                    </div>
+                }
+                { customer 
+                  ? <div className='customer-rental rental-info'>
+                      <div className='top-info'>
+                        <div className='top-info-txt'>
+                          <div className='rental-text'>Selected customer:</div>
+                          <h4 className='rental-text-main'>{customer.name}</h4>
+                        </div>
+                        <button onClick={() => props.setCustomerCallback(null)}>Undo</button>
+                      </div>
+                    <img className='customer-img' src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZsuxUrEVyvCmLYoM5BeyNUOts2akw1RFDYw&usqp=CAU'} alt={'customer icon'} />
+                  </div>
+                  : <div className='missingRentalInfo-container customer-rental rental-info'>
+                      <div className='rental-text-main'>Please select a customer to complete this transaction.</div>
+                      <div className='missingRentalInfo'>
+                        <div className='main-btn'><Link to='/customers'>customers</Link></div>
+                      </div>
+                    </div>
+                }
+              </div>
             </div>
-          </div>
-          : [<h1>start a rental</h1>,
-            <div className='btn-container'>
-              <div className='main-btn'><Link to='/library'>movies</Link></div>
-              <div className='main-btn'><Link to='/customers'>customers</Link></div>
-            </div>]
-        }
-        <br />
-        <h1>search for a movie</h1>
-        <MovieSearchBar url={props.url} />
+            : [<h1>start a rental</h1>,
+              <div className='btn-container'>
+                <div className='main-btn'><Link to='/library'>movies</Link></div>
+                <div className='main-btn'><Link to='/customers'>customers</Link></div>
+              </div>]
+          }
+          <br />
+          <h1>search for a movie</h1>
+          <MovieSearchBar 
+            url={props.url} 
+            customer={props.customer ? customer.name : ''} 
+            movie={props.movie ? movie.title : ''} 
+          />
+        </div>
+        <div className='img-carousel'></div>
       </div>
-      <div className='img-carousel'></div>
     </div>
   );
 };

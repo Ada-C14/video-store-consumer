@@ -50,20 +50,6 @@ export default function App() {
   return (
     <Router>
       <div>
-        <div className='top-nav'>
-          <h2><Link to="/">video store</Link></h2>
-          <nav className='main-fns'>
-            <ul>
-              <li>
-                <Link to="/library">movie library <i class="arrow down"></i></Link>
-              </li>
-              <li>
-                <Link to="/customers">customer list <i class="arrow down"></i></Link>
-              </li>
-            </ul>
-          </nav>
-        </div>
-
         {/* <section className='rental body'>
           <Rental {...{movie, customer, rentMovie}} />
           <div className='message wrap'>
@@ -75,10 +61,20 @@ export default function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/library">
-            <MovieLibrary selectMovieCallback={selectMovie} url={BASE_API_URL} />
+            <MovieLibrary 
+              selectMovieCallback={selectMovie} 
+              url={BASE_API_URL} 
+              customer={customer ? customer.name : ''} 
+              movie={movie ? movie.title : ''}
+            />
           </Route>
           <Route path="/customers">
-            <CustomerList selectCustomerCallback={selectCustomer} url={BASE_API_URL} />
+            <CustomerList 
+              selectCustomerCallback={selectCustomer} 
+              url={BASE_API_URL} 
+              customer={customer ? customer.name : ''} 
+              movie={movie ? movie.title : ''}
+            />
           </Route>
           <Route path='/results' render={props => <MovieSearchResults {...props} />}/>
           <Route path="/">

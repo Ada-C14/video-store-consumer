@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Movie from './Movie.js'
 import Popup from './Popup.js'
+import Navbar from './Navbar.js';
 import './MovieLibrary.css';
 import './MovieSearchResults.css';
 import PropTypes from 'prop-types';
@@ -36,31 +37,34 @@ const MovieLibrary = props => {
   };
 
   return (
-    <div className='movie-library-container'>
-      { alert ? <div className='movie-library-alert'>{alert}</div> : '' }
-      { clickedMovie 
-        ? <Popup 
-            clickedMovieInfo={clickedMovie}
-            exitCallbackFn={exitPopup}
-            addMovieRentalCallback={addMovieRental} 
-            location='library' 
-          /> 
-        : null 
-      }
-      <div className={`search-results-container ${ clickedMovie ? 'search-results-fade' : null }`}>
-        {movies.map((movie) => 
-          <Movie 
-            key={movie.external_id}  
-            id={movie.external_id}  
-            title={movie.title} 
-            overview={movie.overview}
-            releaseDate={movie.release_date}
-            imageURL={movie.image_url}
-            handleClickCallback={moreInfoOnClick}
-            location='library'
-            addMovieRentalCallback={addMovieRental}
-          />
-        )}
+    <div>
+      <Navbar customer={props.customer} movie={props.movie} />
+      <div className='movie-library-container'>
+        { alert ? <div className='movie-library-alert'>{alert}</div> : '' }
+        { clickedMovie 
+          ? <Popup 
+              clickedMovieInfo={clickedMovie}
+              exitCallbackFn={exitPopup}
+              addMovieRentalCallback={addMovieRental} 
+              location='library' 
+            /> 
+          : null 
+        }
+        <div className={`search-results-container ${ clickedMovie ? 'search-results-fade' : null }`}>
+          {movies.map((movie) => 
+            <Movie 
+              key={movie.external_id}  
+              id={movie.external_id}  
+              title={movie.title} 
+              overview={movie.overview}
+              releaseDate={movie.release_date}
+              imageURL={movie.image_url}
+              handleClickCallback={moreInfoOnClick}
+              location='library'
+              addMovieRentalCallback={addMovieRental}
+            />
+          )}
+        </div>
       </div>
     </div>
   )
@@ -68,7 +72,9 @@ const MovieLibrary = props => {
 
 MovieLibrary.propTypes = {
   url: PropTypes.string.isRequired,
-  selectMovieCallback: PropTypes.func.isRequired
+  selectMovieCallback: PropTypes.func.isRequired,
+  customer: PropTypes.string,
+  movie: PropTypes.string
 };
 
 export default MovieLibrary;
