@@ -37,7 +37,7 @@ class App extends Component {
           <Route path='/search'>
             component={ props =>
             <VideoSearch />
-  }</Route>
+            }</Route>
           <Route path='/library'>
             <VideoLibrary />
           </Route>
