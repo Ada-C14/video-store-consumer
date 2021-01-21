@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Customers from './Customers';
 
-class App extends Component {
-  render() {
+
+const App = () => {
+  // render() {
     return (
       <div className="App">
         <header className="App-header">
@@ -13,9 +15,10 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <Customers />
       </div>
     );
-  }
+  // }
 }
 
 export default App;
