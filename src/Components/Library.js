@@ -6,23 +6,6 @@ import axios from 'axios'
 import './Library.css';
 
 const Library = (props) => {
-    // // state variables
-    // const [videoList, setVideoList] = useState([]);
-
-    // // get all videos 
-    // useEffect(() => {
-    //     console.log(`${props.url}videos`);
-    //     axios.get(`${props.url}videos`)
-    //     .then((response) => {
-    //         setVideoList(response.data);
-    //         props.setError(null);
-    //     })
-    //     .catch((error) => {
-    //         props.setError(['Failed to retrieve videos in library.'])
-    //         console.log(error.message);
-    //     });
-    // }, [props]);
-
     // create all videos into components
     const allVideos = (vidList) => {
         let newVidList = []
