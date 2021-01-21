@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
 } from 'react-router-dom';
 import Customers from './Components/Customers'
 import Library from './Components/Library'
@@ -16,7 +16,6 @@ import { useAlert } from 'react-alert'
 export default function App() {
   // BASE URL FOR API
   const BASE_URL = 'http://localhost:3000/'
-
   // error state
   const [errorMessage, setErrorMessage] = useState('');
   // errors 
@@ -46,7 +45,7 @@ export default function App() {
           setErrorMessage(['Failed to retrieve videos in library.'])
           console.log(error.message);
       });
-  }, [BASE_URL, videoList]);
+  }, []);
 
   // state for selected video
   const [currentVideo, setVideo] = useState({id: NaN, title: '', imgUrl: 'favicon.ico'});

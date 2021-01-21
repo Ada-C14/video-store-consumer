@@ -1,4 +1,4 @@
-import React, { Component, useState }  from 'react';
+import React, { Component, useEffect, useState }  from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios'
 import { useAlert } from 'react-alert'
@@ -23,11 +23,29 @@ const Video = (props) => {
                         'Digit8', 
                         'Digit9']
 
-    const alert = useAlert()
-    const [inventory, setInventory] = useState(1)
+    // params to add video
+    const params = {'external_id': props.externalId,
+                    title: props.title,
+                    overview: props.overview,
+                    inventory: 0,
+                    'image_url': props.imageUrl,
+                    'release_date': props.releaseDate};
+    const alert = useAlert(); // flash success messages
+    const [inventory, setInventory] = useState(1); // track inventory
+    const [vidAdded, setVidAdded] = useState(false); // used to update list without losing error messages
     const selectVideo = () => {
         props.clickButton(props.id, props.title, props.imageUrl);
     }
+
+    // check to update list
+    useEffect(()=>{
+        if(vidAdded) {
+            params.id = props.externalId;
+            props.videoList.push(params);
+            setVidAdded(false);
+        }
+    },[vidAdded]);
+
     // increase/decrease inventory
 
     const changeInventory = (event) => {
@@ -51,24 +69,20 @@ const Video = (props) => {
     }
 
     const addVideo = () => {
-        const params = {'external_id': props.externalId,
-                        title: props.title,
-                        overview: props.overview,
-                        inventory: inventory,
-                        'image_url': props.imageUrl,
-                        'release_date': props.releaseDate}
+        params.inventory = inventory;
         axios.post(props.url, params)
         .then((response)=> {
+            console.log('here');
             console.log(response);
             alert.show(`${inventory} copy/copies of ${params.title} successfully added to library!`)
             props.setError(null);
-            props.videoList.push(params)
+            setVidAdded(true);
         })
         .catch((error)=>{
             console.log(error);
             props.setError([error.message.toLowerCase(), 'check that your inventory number more 0 and that video is not currently in library']);
+            return false; // prevent useEffect in App.js from updating videoList
         });
-        
     }
     return (
         <article className = 'video'>
