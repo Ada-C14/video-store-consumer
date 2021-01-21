@@ -24,7 +24,7 @@ const Video = (props) => {
                         'Digit9']
 
     // params to add video
-    const video = {// eslint-disable-next-line camelcase
+    const videoParams = {// eslint-disable-next-line camelcase
                     external_id: props.externalId,
                     title: props.title,
                     overview: props.overview,
@@ -43,8 +43,8 @@ const Video = (props) => {
     // an extra state variable was created to ONLY update vidList if a video was added
     useEffect(()=>{
         if(props.vidAdded) {
-            video.id = props.externalId;
-            props.videoList.push(video);
+            videoParams.id = props.externalId;
+            props.videoList.push(videoParams);
             props.setVidAdded(false);
         }
     },[props.vidAdded]);
@@ -72,12 +72,12 @@ const Video = (props) => {
     }
 
     const addVideo = () => {
-        video.inventory = inventory;
-        axios.post(props.url, video, null)
+        videoParams.inventory = inventory;
+        axios.post(props.url, videoParams)
         .then((response)=> {
             console.log('here');
             console.log(response);
-            alert.show(`${inventory} copy/copies of ${video.title} successfully added to library!`)
+            alert.show(`${inventory} copy/copies of ${videoParams.title} successfully added to library!`)
             props.setError(null);
             props.setVidAdded(true);
         })
