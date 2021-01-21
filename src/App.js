@@ -10,12 +10,14 @@ import {
   Route,
   Link
 } from 'react-router-dom';
+import axios from 'axios';
 
 export default function App() {
-  const VIDEO_URL = 'http://localhost:3000/videos'
-  
+  const BASE_URL = 'http://localhost:3000'
+  const VIDEO_URL = `${BASE_URL}/videos`
   const [selectedVideo, setSelectedVideo] = useState(null)
   const [selectedCustomer, setSelectedCustomer] = useState(null)
+  const [errorMessage, setErrorMessage] = useState(null)
   
   // will receive information about which video was selected and set the state
   const onVideoSelected = (video) => {
@@ -26,12 +28,36 @@ export default function App() {
   const onCustomerSelected = (customer) => {
     setSelectedCustomer(customer)
   }
+
+
+  //  post "/rentals/:title/check-out", to: "rentals#check_out", as: "check_out"
+
   
+  const checkout = () => {
+      const CHECKOUT_URL = `${BASE_URL}/rentals/${selectedVideo.title}/check-out`
+      axios.post(CHECKOUT_URL)
+        .then((response) => {
+          const data = response.data;
+          console.log(data)
+        })
+        .catch((error) => {
+          setErrorMessage(error.message);
+        });
+  }
+
   return (
     <Router>
       <div>
-        { selectedVideo && selectedVideo.title}
-        { selectedCustomer && selectedCustomer.name}
+        {/* { selectedVideo && selectedVideo.title}
+        { selectedCustomer && selectedCustomer.name} */}
+        
+        { selectedVideo && selectedCustomer && (
+          <button onClick={checkout}>
+            Checkout {selectedVideo.title} for {selectedCustomer.name}
+          </button>
+        )
+        }
+
         <nav>
           <ul>
             <li>
