@@ -43,14 +43,15 @@ export default function App() {
     const today = new Date();
     const dueDate = today.addDays(7);
     const dd = dueDate.getDate();
-    const mm = dueDate.getMonth();
+    const mm = dueDate.getMonth() + 1;
     const yyyy = dueDate.getFullYear();
     const formattedDate = yyyy + '-' + mm + '-' + dd;
     return formattedDate;
   };
 
   const checkout = () => {
-    const CHECKOUT_URL = `${BASE_URL}/rentals/${selectedVideo.title}/check-outcustomer_id=${selectedCustomer.customer_id}&due_date=${Timestamp()}`
+    console.log(Timestamp());
+    const CHECKOUT_URL = `${BASE_URL}/rentals/${selectedVideo.title}/check-out?customer_id=${selectedCustomer.id}&due_date=${Timestamp()}`
     axios.post(CHECKOUT_URL)
       .then((response) => {
         const data = response.data;

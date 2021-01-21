@@ -7,8 +7,9 @@ const Videos = ( {videoURL, newVideo, onVideoSelected} ) => {
   const [videoList, setvideoList] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
+  // is newVideo in VideoList?
   useEffect(() => {
-    if (newVideo !== undefined) {
+    if (newVideo !== undefined && !videoList.includes(newVideo)) {
       setvideoList(newVideo);
     }
     axios.get(videoURL)
