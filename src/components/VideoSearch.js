@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import VideoSearchForm from './VideoSearchForm';
-import Video from './Video';
+import SearchResult from './SearchResult';
+// import Video from './Video';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import './VideoSearch.css';
@@ -25,7 +26,7 @@ const VideoSearch = (props) => {
     }
 
     const videosListComponent = videos.map((video) => {
-        return <Video
+        return <SearchResult
         key={video.id}
         id={video.external_id}
         title={video.title}
