@@ -72,9 +72,10 @@ const AddMovieForm = (props) => {
   const videoListDisplay = videoList.map((video, i) => {
     return(
     <tr key={i}>
-      <Video title={video.title} overview={video.overview} 
+      {/* <Video title={video.title} overview={video.overview} 
       release_date={video.released_date} image_url={video.image_url} 
-      onAddLibraryCallback={addToLibrary} external_id={video.external_id}/>
+      onAddLibraryCallback={addToLibrary} external_id={video.external_id}/> */}
+      <Video video={video} />
     </tr>
   )});
 
