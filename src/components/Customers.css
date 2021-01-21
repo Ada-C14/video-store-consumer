@@ -1,0 +1,19 @@
+.customers-table {
+  margin-left: 20%;
+  font-family: arial, sans-serif;
+  width: 60%;
+  background-color: #3c4752;
+  opacity: 0.7;
+  color: white;
+  text-align: center;
+
+}
+
+.customers-table-name {
+  text-indent: 10%;  
+  text-align: left;
+}
+
+h2 {
+  text-align: center;
+}
