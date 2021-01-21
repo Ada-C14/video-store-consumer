@@ -3,16 +3,15 @@ import { Dropdown, DropdownButton, Button } from 'react-bootstrap'
 import './NewVideoForm.css'
 
 
-
-const NewVideoForm = ({item, addVideoCallback}) => {
+const NewVideoForm = ({video, addVideoCallback}) => {
   const [startingInventory, setStartingInventory] = useState(0)
   const [addedToLibrary, setAddedToLibrary] = useState(false)
 
   const onAddToLibrary = (event) => {
-    const newItem = {...item}
-    newItem.inventory = event.target.value
+    const newVideo = {...video}
+    newVideo.inventory = event.target.value
 
-    addVideoCallback(newItem)
+    addVideoCallback(newVideo)
     setAddedToLibrary(true)
   }
 
@@ -20,13 +19,16 @@ const NewVideoForm = ({item, addVideoCallback}) => {
     return (
       <div className='add-video-form'>
         <h4><label>Stock Video</label></h4>
-        <DropdownButton  id='inventory' title={startingInventory}>
-          {[...Array(21).keys()].map(i => (
-            <Dropdown.Item onSelect={(eventKey) => {setStartingInventory(eventKey)}} value={i} eventKey={i} >{i}</Dropdown.Item>
-          ))}
-        </DropdownButton> 
+        <div className='add-video-dropdown'>
+          <DropdownButton title={startingInventory}>
+            {[...Array(21).keys()].map(i => (
+              <Dropdown.Item onSelect={(eventKey) => {setStartingInventory(eventKey)}} value={i} eventKey={i} >{i}</Dropdown.Item>
+            ))}
+          </DropdownButton> 
 
-        <Button onClick={onAddToLibrary} value={startingInventory} variant="outline-secondary">Add to Library</Button>
+          <Button onClick={onAddToLibrary} value={startingInventory} variant="outline-secondary">Add to Library</Button>
+        </div>
+
       </div> 
     )
   }

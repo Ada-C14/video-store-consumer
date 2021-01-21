@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import axios from 'axios'
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, NavLink, Link} from 'react-router-dom';
-import {Navbar, Nav, Button} from 'react-bootstrap'
+import { BrowserRouter as Router, Switch, Route, NavLink, Link } from 'react-router-dom';
+import {Navbar, Nav, Alert, Button} from 'react-bootstrap'
 import {LinkContainer} from 'react-router-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Search from './components/Search/Search'
@@ -15,19 +15,21 @@ import VideoLibrary from './components/VideoLibrary/VideoLibrary'
 const App = () => {
   const BASE_URL = 'http://localhost:3000/'
 
-  const [errorMessage, setErrorMessage] = useState({})
+  const [errorMessage, setErrorMessage] = useState(null)
   const [videoLibrary, setVideoLibrary] = useState([])
   const [selectedCustomer, setSelectedCustomer] = useState(null)
   const [selectedVideo, setSelectedVideo] = useState(null)
   const [rentalMessage, setRentalMessage] = useState(null)
 
-  
+console.log(errorMessage)
+
+
   const addVideo = (video) => {
     axios.post(BASE_URL+'videos', video)
       .then( response => {
         const newVideoList = [...videoLibrary, response.data]
         setVideoLibrary(newVideoList)
-        setErrorMessage('')
+        setErrorMessage(null)
       })
       .catch( error => {
         const errors = error.response.data.errors
@@ -71,7 +73,7 @@ const App = () => {
         <ul>
           {
             Object.entries(errors).map(([key, value]) => (
-              <li>Error: {value}</li>
+              <li>{value}</li>
             )) 
           }
         </ul>
@@ -106,8 +108,10 @@ const App = () => {
               </ul>
           </nav>
           
-          { errorMessage ? parseErrorMessages(errorMessage) : null}
+
           { rentalMessage ? rentalMessage : null}
+          { errorMessage ? <Alert variant='danger' onMouseMove={()=> {setErrorMessage(null)}}>{parseErrorMessages(errorMessage)}</Alert> : null}
+
           <Switch>
               <Route path='/search'>
                 <Search setErrorMessage={setErrorMessage} addVideoCallback={addVideo} baseUrl={BASE_URL}/>
@@ -116,7 +120,7 @@ const App = () => {
                 <CustomerList setCustomer={setCustomer} />
               </Route>
               <Route path='/library'>
-                <VideoLibrary baseUrl={BASE_URL} videoLibrary={videoLibrary} setVideoLibraryCallback={setVideoLibrary} setSelectedVideoCallback={setVideo} setErrorMessage={setErrorMessage}/>
+                <VideoLibrary baseUrl={BASE_URL} videoLibrary={videoLibrary} setVideoLibraryCallback={setVideoLibrary} setVideo={setVideo} setErrorMessage={setErrorMessage}/>
               </Route>
             </Switch>
         </div>
