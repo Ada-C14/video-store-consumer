@@ -17,12 +17,13 @@ const Homepage = (props) => {
       {/* <Navbar home={movie && customer ? false : true}/> */}
       <div className='homepage-container'>
         <div className={ movie || customer ? 'homepage-rental' : 'homepage'}>
+          <h1>{ props.rentedMessage ? props.rentedMessage : '' }</h1>
           { movie || customer 
             ? <div>
               { movie && customer 
                 ? <div className='checkout'>
                   <h1>rental ready!</h1>
-                  <button>checkout</button>
+                  <button onClick={() => props.rentMovieCallback()}>checkout</button>
                 </div>
                 : <h1>rental in-progress</h1>
               }
@@ -90,7 +91,9 @@ Homepage.propTypes = {
   movie: PropTypes.object.isRequired,
   customer: PropTypes.object.isRequired,
   setCustomerCallback: PropTypes.func.isRequired,
-  setMovieCallback: PropTypes.func.isRequired
+  setMovieCallback: PropTypes.func.isRequired,
+  rentMovieCallback: PropTypes.func.isRequired,
+  rentedMessage: PropTypes.string.isRequired
 };
 
 export default Homepage;

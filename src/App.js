@@ -36,11 +36,13 @@ export default function App() {
   }
 
   const rentMovie = () => {
-    const url = BASE_API_URL + '/rentals/' + movie.title + '/checkout?customer_id=' + customer.id + 'due_date=' + dueDate;
+    const url = BASE_API_URL + '/rentals/' + movie.title + '/check-out?customer_id=' + customer.id + '&due_date=' + dueDate();
 
     axios.post(url)
-      .then(() => {
+      .then((response) => {
         setMessage('Movie Rented!');
+        setMovie(null);
+        setCustomer(null);
       })
       .catch((error) => {
         setMessage(error.message);
@@ -84,6 +86,8 @@ export default function App() {
               url={BASE_API_URL} 
               setMovieCallback={setMovie}
               setCustomerCallback={setCustomer}
+              rentMovieCallback={rentMovie}
+              rentedMessage={message}
             />
           </Route>
         </Switch>
