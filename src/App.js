@@ -7,6 +7,7 @@ import {
   Link
 } from 'react-router-dom';
 import logo from './vhs.jpg';
+import divider from './stars.png'
 import './App.css';
 import './Bootstrap.css'
 import Customers from './components/Customers';
@@ -81,19 +82,22 @@ function App() {
           <img src={logo} className="App-logo" alt="logo" />
           {/* <h1 className="App-title">Welcome to React</h1> */}
         </header>
-        <section>
+        <nav>
           <h1><a href="/">RETRO VIDEO DISTRO</a></h1>
+          <span>
           <button type="button" class="btn btn-outline-danger"><Link to="/">Home</Link></button>
           <button type="button" class="btn btn-outline-danger"><Link to="/library">Video Library</Link></button>
           <button type="button" class="btn btn-outline-danger"><Link to="/customers">Customer Index</Link></button>
-          <button type="button" class="btn btn-outline-danger"><Link to="">Search</Link></button>
+          <button type="button" class="btn btn-outline-danger"><Link to="/search">Search</Link></button>
+          </span>
           <br></br><br></br>
+          <img src={divider} className="divider" alt="stars divider" />
           <br></br><br></br>
-        </section>
+        </nav>
         <section className="App-main">
           <Switch>
-          <Route path="/search">
-            <h1>Search Will Go Here</h1>
+          <Route exact path="/">
+            <h1>Homepage Deets Will Go Here</h1>
           </Route>
           <Route path="/library">
             <Videos />
@@ -104,8 +108,11 @@ function App() {
           <Route path="/checkout">
             <h1>Checkout Deets Will Go Here</h1>
           </Route>
-          <Route path="/">
-            <h1>Homepage Deets Will Go Here</h1>
+          <Route path="/search">
+            <h1>Search Video Order Catalog</h1>
+            <br></br>
+            <h4>Is there a video you wish we carried??  Search our order catalog to see if we can add it to our library!</h4>
+            <br></br>
             <SearchForm searchCallback={searchVideo} />
             {generateSearchResults(searchResultList)}
           </Route>
