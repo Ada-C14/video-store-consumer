@@ -4,14 +4,13 @@ import VideoList from './components/VideoList';
 import SearchForm from './components/SearchForm';
 
 // import { BrowserRouter } from 'react-router-dom';
-import {Route, Link } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import CustomerCollection from './components/CustomerCollection';
 import NavBar from './components/NavBar';
 import Cart from './components/Cart';
-import { Container, Row, Col, Alert} from 'react-bootstrap';
+import { Container, Row, Col, Alert } from 'react-bootstrap';
 import './App.css';
-import { useLocation } from 'react-router-dom'
-
+import { useLocation } from 'react-router-dom';
 
 const API_URL_BASE = 'http://localhost:3000/videos';
 
@@ -34,7 +33,7 @@ const App = () => {
         setErrorMessage(error.message);
       });
 
-      axios
+    axios
       .get('http://localhost:3000/customers')
       .then((response) => {
         const apiCustomerList = response.data;
@@ -47,7 +46,6 @@ const App = () => {
       });
   }, []);
 
-
   const selectCustomerToCart = (customer) => {
     setSelectedCustomer(customer);
   };
@@ -56,17 +54,19 @@ const App = () => {
   };
 
   const checkout = (customer, video) => {
-    const params={};
+    const params = {};
     params['customer_id'] = customer.id;
     params['due_date'] = '2/1/2022';
 
-    console.log(params)
+    console.log(params);
     axios
-    .post(`http://localhost:3000/rentals/${video.title}/check-out`, params)
-    .then((response) => {
-      setErrorMessage(`Checkout ${video.title} to ${customer.name}.`)
-    })
-    .catch((error) => {setErrorMessage(error.message)})
+      .post(`http://localhost:3000/rentals/${video.title}/check-out`, params)
+      .then((response) => {
+        setErrorMessage(`Checkout ${video.title} to ${customer.name}.`);
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      });
 
     setSelectedCustomer('');
     setSelectedVideo('');
@@ -86,7 +86,14 @@ const App = () => {
   };
 
   const selectVideo = (video) => {
-    setVideoList([...videoList, video]);
+    axios
+      .post(`${API_URL_BASE}`, video)
+      .then((response) => {
+        setErrorMessage(`Succesfully added ${video.title} to the library.`);
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      });
   };
 
   return (
@@ -97,10 +104,10 @@ const App = () => {
         </h1>
       </header>
       <div>
-        <Alert variant='info'>{errorMessage}</Alert>
+        <Alert variant="info">{errorMessage}</Alert>
       </div>
       <nav>
-        <NavBar location={useLocation()}/>
+        <NavBar location={useLocation()} />
       </nav>
 
       <Container>
@@ -109,25 +116,39 @@ const App = () => {
             <Route
               exact={true}
               path={'/'}
-              render={() => (
-                <h2>Welcome to Aloha Video Store!</h2>
-              )}
+              render={() => <h2>Welcome to Aloha Video Store!</h2>}
             />
 
             <Route
               path={'/library'}
-              render={(props) => <VideoList {...props} videoList={videoList} selectedVideo={selectedVideo} onClickSelect={selectVideoToCart} />}
+              render={(props) => (
+                <VideoList
+                  {...props}
+                  videoList={videoList}
+                  selectedVideo={selectedVideo}
+                  onClickSelect={selectVideoToCart}
+                />
+              )}
             />
             <Route
               path={'/customers'}
               render={(props) => (
-                <CustomerCollection {...props} customerList={customerList} selectedCustomer={selectedCustomer} onClickSelect={selectCustomerToCart} />
+                <CustomerCollection
+                  {...props}
+                  customerList={customerList}
+                  selectedCustomer={selectedCustomer}
+                  onClickSelect={selectCustomerToCart}
+                />
               )}
             />
           </Col>
           <Col md="auto"></Col>
           <Col xs lg="2">
-            <Cart customer={selectedCustomer} video={selectedVideo} onClickCheckout={checkout} />
+            <Cart
+              customer={selectedCustomer}
+              video={selectedVideo}
+              onClickCheckout={checkout}
+            />
           </Col>
         </Row>
       </Container>
