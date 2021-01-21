@@ -29,6 +29,9 @@ export default function App() {
   
       return errors;
   }
+
+  const [vidAdded, setVidAdded] = useState(false); // used to update list without losing error messages
+
   // state variables
   const [videoList, setVideoList] = useState([]);
   const alert = useAlert()
@@ -45,7 +48,7 @@ export default function App() {
           setErrorMessage(['Failed to retrieve videos in library.'])
           console.log(error.message);
       });
-  }, []);
+  }, [vidAdded]);
 
   // state for selected video
   const [currentVideo, setVideo] = useState({id: NaN, title: '', imgUrl: 'favicon.ico'});
@@ -136,7 +139,7 @@ export default function App() {
             <Library url = {`${BASE_URL}videos`} curVid = {getCurrentVideo} videoList = {videoList}/>
           </Route>
           <Route path="/search">
-            <Search curVid = {getCurrentVideo} setError = {setErrorMessage} videoList = {videoList}/>
+            <Search curVid = {getCurrentVideo} setError = {setErrorMessage} videoList = {videoList} vidAdded = {vidAdded} setVidAdded = {setVidAdded}/>
           </Route>
           <Route path="/">
             <Home />

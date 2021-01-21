@@ -21,6 +21,8 @@ const Library = (props) => {
                             url = {props.url}
                             setError = {props.setError}
                             videoList = {props.videoList}
+                            vidAdded = {props.vidAdded}
+                            setVidAdded = {props.setVidAdded}
                             />;
             newVidList.push(vid);
         }

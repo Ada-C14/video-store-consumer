@@ -32,19 +32,18 @@ const Video = (props) => {
                     'release_date': props.releaseDate};
     const alert = useAlert(); // flash success messages
     const [inventory, setInventory] = useState(1); // track inventory
-    const [vidAdded, setVidAdded] = useState(false); // used to update list without losing error messages
     const selectVideo = () => {
         props.clickButton(props.id, props.title, props.imageUrl);
     }
 
     // check to update list
     useEffect(()=>{
-        if(vidAdded) {
+        if(props.vidAdded) {
             params.id = props.externalId;
             props.videoList.push(params);
-            setVidAdded(false);
+            props.setVidAdded(false);
         }
-    },[vidAdded]);
+    },[props.vidAdded]);
 
     // increase/decrease inventory
 
@@ -76,7 +75,7 @@ const Video = (props) => {
             console.log(response);
             alert.show(`${inventory} copy/copies of ${params.title} successfully added to library!`)
             props.setError(null);
-            setVidAdded(true);
+            props.setVidAdded(true);
         })
         .catch((error)=>{
             console.log(error);

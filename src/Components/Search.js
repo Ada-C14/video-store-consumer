@@ -52,6 +52,8 @@ const Search = (props) => {
             url = {MOVIES_RAILS}
             setError = {props.setError}
             videoList = {props.videoList}
+            vidAdded = {props.vidAdded}
+            setVidAdded = {props.setVidAdded}
             />
         results.push(vid);
         }
