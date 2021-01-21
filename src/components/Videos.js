@@ -29,21 +29,22 @@ const Videos = () => {
 
   const generateVideos = (videos) => {
     let videoComponentArray = [];
-
-  for (const video of videos) 
-
+  for (const video of videos)
   {
     videoComponentArray.push(
       <Video
           key={video.id}
           id={video.id}
           title={video.title}
+          overview={video.overview}
+          releaseDate={video.release_date}
+          imageUrl={video.image_url}
+          externalId={video.externalId}
       />
     )
   }
-
     return videoComponentArray;
-  }; 
+  };
 
     return (
       <div>

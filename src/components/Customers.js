@@ -10,7 +10,8 @@ const Customers = (props) => {
   const [customersList, setCustomersList] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
-  const CUSTOMER_URL = `${props.baseUrl}/customers`
+  const CUSTOMER_URL = 'http://localhost:3000/customers'
+  // const CUSTOMER_URL = `${props.baseUrl}/customers` //this doesn't work yet??
 
   useEffect(() => {
     axios.get(CUSTOMER_URL)
@@ -29,21 +30,26 @@ const Customers = (props) => {
 
   const generateCustomers = (customers) => {
     let customerComponentArray = [];
-
-  for (const customer of customers) 
-
-  {
-    customerComponentArray.push(
-      <Customer
-          key={customer.id}
-          id={customer.id}
-          name={customer.name}
-      />
-    )
-  }
-
+    for (const customer of customers)
+    {
+      customerComponentArray.push(
+        <Customer
+            key={customer.id}
+            id={customer.id}
+            name={customer.name}
+            registeredAt={customer.registered_at}
+            address={customer.address}
+            city={customer.city}
+            state={customer.state}
+            postalCode={customer.postal_code}
+            phone={customer.phone}
+            accountCredit={customer.account_credit}
+            videosCheckedOutCount={customer.videos_checked_out_count}
+        />
+      )
+    }
     return customerComponentArray;
-  }; 
+  };
 
     return (
       <div>
