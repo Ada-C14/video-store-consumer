@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Customer from './Customer';
 import './CustomerList.css';
@@ -6,23 +6,33 @@ import './CustomerList.css';
 const CustomerList = (props) => {
   const customerComponents = props.customers.map((customer) => {
   return (
-    <li key = {customer.id}>
       <Customer
+        key = {customer.id}
         customerId={customer.id}
         customerName={customer.name}
         videosCheckedOutCount={customer.videos_checked_out_count}
         selectCustomerCallback={props.selectCustomerCallback}
         currentCustomer={props.currentCustomer}
       />
-    </li>
   );
 });
 
   return (
-    <ul>
+    <div>
       <h1>CUSTOMERS</h1>
-      {customerComponents}
-    </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th> 
+            <th>Checkout Count</th>
+          </tr>
+        </thead>
+        <tbody>
+          {customerComponents}
+        </tbody>
+      </table>
+    </div>
   );
 };
 

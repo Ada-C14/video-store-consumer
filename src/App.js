@@ -95,9 +95,6 @@ const App = () => {
             <li>
               <Link to='/customers'>Customers</Link>
             </li>
-            <li>
-            {currentCustomer ? `Customer Selected: ${currentCustomer.name}` : ''}
-            </li>
           </ul>
         </nav>
         <main>
