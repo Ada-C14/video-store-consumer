@@ -32,23 +32,43 @@ function App() {
 
 };
 
-const generateSearchResults = (searchResults) => {
-  let searchResultComponentArray = [];
-
-  for (const result of searchResults) 
-
-  {
-    searchResultComponentArray.push(
-      <SearchResult
-          key={result.id}
-          id={result.id}
-          title={result.title}
-      />
-    )
+  const addVideo = (id) => {
+    axios.post(`${BASE_URL}/videos/${id}`)
+      .then((response) => {
+        // What should we do when we know the post request worked?
+        const updatedData = [...studentList, response.data];
+        setStudentList(updatedData);
+        setErrorMessage('');
+      })
+      .catch((error) => {
+        // What should we do when we know the post request failed?
+        setErrorMessage(error.message);
+      });
   }
 
-  return searchResultComponentArray;
-}; 
+  const generateSearchResults = (searchResults) => {
+    let searchResultComponentArray = [];
+
+    for (const result of searchResults) 
+
+    {
+      searchResultComponentArray.push(
+        <SearchResult
+            key={result.id}
+            id={result.id}
+            title={result.title}
+            overview={result.overview}
+            releaseDate={result.release_date}
+            externalId={result.external_id}
+            imageUrl={result.image_url}
+            onClickCallback={onButtonClick}
+        />
+      )
+    }
+
+    return searchResultComponentArray;
+  }; 
+
   return (
     <div className="App">
       <header className="App-header">
