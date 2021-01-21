@@ -2,6 +2,7 @@ import React, { Component, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Select from 'react-select';
+import LibraryEntry from './LibraryEntry';
 
 const VideoLibrary = (props) => { 
   const fullUrl = 'http://localhost:3000/videos';
@@ -22,9 +23,11 @@ const VideoLibrary = (props) => {
     })
   }, [])
 
-  const options = videos.map( (video) => {
-    return ({value: video.id, label: video.name});
-  })
+  // const options = videos.map( (video) => {
+  //   return (<LibraryEntry id={video.id} name={video.name}/>);
+  // })
+
+  videos.sort((a,b) => (a.title > b.title) ? 1 : -1)
 
 
 
@@ -32,7 +35,12 @@ const VideoLibrary = (props) => {
 
   return (
     <div className='videoLibrary'>
-      
+      <ul>
+      {videos.map( (video) => {
+    return (<li key={video.id}>{<LibraryEntry id={video.id} title={video.title}/>}</li>);
+    })
+    }
+      </ul>
     </div>
   )
       // if ( ! videos) {
