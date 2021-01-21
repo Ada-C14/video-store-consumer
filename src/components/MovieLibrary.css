@@ -1,0 +1,9 @@
+.movie-library-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.movie-library-alert {
+  margin-bottom: 3%;
+}

@@ -3,6 +3,7 @@ import CustomerList from './components/CustomerList.js';
 import MovieLibrary from './components/MovieLibrary.js';
 import MovieSearchBar from './components/MovieSearchBar.js';
 import MovieSearchResults from './components/MovieSearchResults.js';
+import Homepage from './components/Homepage.js';
 import Rental from './components/Rental.js';
 import axios from 'axios';
 import {
@@ -75,59 +76,10 @@ export default function App() {
           </Route>
           <Route path='/results' render={props => <MovieSearchResults {...props} />}/>
           <Route path="/">
-            { Home(movie, customer) }
+            <Homepage movie={movie} customer={customer} url={BASE_API_URL} />
           </Route>
         </Switch>
       </div>
     </Router>
   );
 }
-
-const Home = (movie, customer) => {
-  return (
-    <div className='homepage-container'>
-      <div className={ movie || customer ? 'homepage-rental' : 'homepage'}>
-        { movie || customer 
-          ? <div>
-            <h1>rental in-progress</h1>
-            <div className='rentalInfoContainer'>
-              { movie 
-                ? <div className='movie-rental'>
-                  <img src={movie.imageURL} alt={movie.title} />   
-                  <h4 className='rental-text'>Selected movie: {movie.title}</h4>
-                </div>
-                : <div className='missingRentalInfo-container'>
-                    <div className='missingRentalInfo'>
-                      <div className='main-btn'><Link to='/library'>movies</Link></div>
-                    </div>
-                    Please select a movie to complete this transaction.
-                  </div>
-              }
-              { customer 
-                ? <div className='customer-rental'>
-                  <img src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZsuxUrEVyvCmLYoM5BeyNUOts2akw1RFDYw&usqp=CAU'} alt={'customer icon'} />   
-                  <h4 className='rental-text'>Selected customer: {customer.name}</h4>
-                </div>
-                : <div className='missingRentalInfo-container'>
-                    <div className='missingRentalInfo'>
-                      <div className='main-btn'><Link to='/customers'>customers</Link></div>
-                    </div>
-                    Please select a customer to complete this transaction.
-                  </div>
-              }
-            </div>
-          </div>
-          : [<h1>start a rental</h1>,
-            <div className='btn-container'>
-              <div className='main-btn'><Link to='/library'>movies</Link></div>
-              <div className='main-btn'><Link to='/customers'>customers</Link></div>
-            </div>,
-            <br />]
-        }
-        <h1>search for a movie</h1>
-        <MovieSearchBar url={BASE_API_URL} />
-      </div>
-      <div className='img-carousel'></div>
-    </div>
-  );
-};

@@ -4,8 +4,8 @@ import propTypes from 'prop-types';
 import axios from 'axios';
 
 const CustomerList = props => {
-  const [customers, setCustomers] = useState([])
-  const [errorMessage, setErrorMessage] = useState(null)
+  const [customers, setCustomers] = useState([]);
+  const [alert, setAlert] = useState(null);
 
   const url = props.url + '/customers';
 
@@ -15,21 +15,26 @@ const CustomerList = props => {
         setCustomers(response.data);
       })
       .catch((error) => {
-        setErrorMessage(error.message);
+        setAlert(error.message);
       });
   }, []);
 
+  const addCustomerRental = rentalCustomer => {
+    props.selectCustomerCallback(rentalCustomer);
+    setAlert(`Selected ${rentalCustomer.name} for rental transaction.`);
+  };
+
   return (
     <div className='list'>
+      { alert ? alert : '' }
       <ul className='customer-list'>
         { customers.map((customer) => 
           <li key={customer.id} className='customer-id'>
             { customer.name }
-            <button className='select-button' onClick={() => { props.selectCustomerCallback(customer) }}>select</button>
+            <button className='select-button' onClick={() => { addCustomerRental(customer) }}>select</button>
           </li>
         )}
       </ul>
-      { errorMessage ? <div><h2 className="error-display">{errorMessage}</h2></div> : '' }
     </div>
   );
 };
