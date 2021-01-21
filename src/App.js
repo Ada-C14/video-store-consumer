@@ -1,3 +1,6 @@
+import VideoSearch from './components/VideoSearch';
+import VideoLibrary from './components/VideoLibrary';
+import CustomerList from './components/CustomerList';
 import React, { Component } from 'react';
 import './App.css';
 import CustomerList from './components/CustomerList';
@@ -34,16 +37,17 @@ class App extends Component {
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to='/'>Home</Link>
             </li>
             <li>
-              <Link to="/search">Video Search</Link>
+              <Link to='/search'>Video Search</Link>
             </li>
             <li>
-              <Link to="/library">Video Library</Link>
+              <Link to='/library'>Video Library</Link>
             </li>
             <li>
-              <Link to="/customers">Customer</Link>
+
+              <Link to='/customers'>Customers</Link>
             </li>
             <li>{this.chosenCustomer}</li>
           </ul>
@@ -64,6 +68,7 @@ class App extends Component {
             url={this.API_URL}/>
           }/>
           <Route path="/">
+
             <Home />
           </Route>
         </Switch>
