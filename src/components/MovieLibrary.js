@@ -9,7 +9,7 @@ import axios from 'axios';
 const MovieLibrary = props => {
   const [movies, setMovies] = useState([]);
   const [clickedMovie, setClickedMovie] = useState(null);
-  const [errorMessage, setErrorMessage] = useState(null);
+  const [alert, setAlert] = useState(null);
   const url = props.url + '/videos';
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const MovieLibrary = props => {
         setMovies(response.data);
       })
       .catch((error) => {
-        setErrorMessage(error.message);
+        setAlert(error.message);
       });
   }, []);
 
@@ -31,8 +31,14 @@ const MovieLibrary = props => {
     setClickedMovie(null);
   };
 
+  const addMovieRental = rentalMovie => {
+    props.selectMovieCallback(rentalMovie);
+    setAlert(`Selected ${rentalMovie.title} for rental transaction.`);
+  };
+
   return (
-    <div>
+    <div className='movie-library-container'>
+      { alert ? <div className='movie-library-alert'>{alert}</div> : '' }
       { clickedMovie ? <Popup clickedMovieInfo={clickedMovie} exitCallbackFn={exitPopup} /> : null }
       <div className={`search-results-container ${ clickedMovie ? 'search-results-fade' : null }`}>
         {movies.map((movie) => 
@@ -45,9 +51,9 @@ const MovieLibrary = props => {
             imageURL={movie.image_url}
             handleClickCallback={moreInfoOnClick}
             location='library'
+            addMovieRentalCallback={addMovieRental}
           />
         )}
-        { errorMessage ? <div><h2 className="error-display">{errorMessage}</h2></div> : '' }
       </div>
     </div>
   )
@@ -55,6 +61,7 @@ const MovieLibrary = props => {
 
 MovieLibrary.propTypes = {
   url: PropTypes.string.isRequired,
+  selectMovieCallback: PropTypes.func.isRequired
 };
 
 export default MovieLibrary;

@@ -3,11 +3,9 @@ import CustomerList from './components/CustomerList.js';
 import MovieLibrary from './components/MovieLibrary.js';
 import MovieSearchBar from './components/MovieSearchBar.js';
 import MovieSearchResults from './components/MovieSearchResults.js';
+import Homepage from './components/Homepage.js';
 import Rental from './components/Rental.js';
 import axios from 'axios';
-
-// import React, { Component } from 'react';
-
 import {
   BrowserRouter as Router,
   Switch,
@@ -38,23 +36,17 @@ export default function App() {
   }
 
   const rentMovie = () => {
-    axios.post(`http://localhost:3000/rentals/${movie.title}/checkout`, {
-      customerId: customer.id,
-      dueDate: dueDate()
-    })
+    const url = BASE_API_URL + '/rentals/' + movie.title + '/checkout?customer_id=' + customer.id + 'due_date=' + dueDate;
+
+    axios.post(url)
       .then(() => {
-        // console.log(response)
-        setMessage(
-          'Movie Rented!'
-        );
+        setMessage('Movie Rented!');
+        console.log('worked!')
       })
       .catch((error) => {
         setMessage(error.message);
       });
-}
-
-
-
+  }
 
   return (
     <Router>
@@ -84,35 +76,17 @@ export default function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/library">
-            <MovieLibrary url={BASE_API_URL} />
+            <MovieLibrary selectMovieCallback={selectMovie} url={BASE_API_URL} />
           </Route>
           <Route path="/customers">
             <CustomerList selectCustomerCallback={selectCustomer} url={BASE_API_URL} />
           </Route>
           <Route path='/results' render={props => <MovieSearchResults {...props} />}/>
           <Route path="/">
-            { Home() }
+            <Homepage movie={movie} customer={customer} url={BASE_API_URL} />
           </Route>
         </Switch>
       </div>
     </Router>
   );
 }
-
-const Home = () => {
-  return (
-    <div className='homepage-container'>
-      <div className='homepage'>
-        <h1>start a rental</h1>
-        <div className='btn-container'>
-          <div className='main-btn'><Link to='/library'>movies</Link></div>
-          <div className='main-btn'><Link to='/customers'>customers</Link></div>
-        </div>
-        <br />
-        <h1>search for a movie</h1>
-        <MovieSearchBar url={BASE_API_URL} />
-      </div>
-      <div className='img-carousel'></div>
-    </div>
-  );
-};
