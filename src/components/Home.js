@@ -16,11 +16,13 @@ const Home = () => {
   }, []);
 
   return (
+  
     <div className="home">
       {
         videos.map((video) => <img src={ video.image_url } alt={ `${video.title}` } />)
       }
     </div>
+
   )
 };
 
