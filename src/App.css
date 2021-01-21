@@ -45,3 +45,18 @@
 nav ul {
   list-style-type: none;
 }
+
+.checkout__select {
+  background-color: #4CAF50; 
+  border: none;
+  color: white;
+  padding: 0.5em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.checkout__select:hover {
+  background-color: #3f3f3f; 
+}

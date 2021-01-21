@@ -11,6 +11,7 @@ import Search from './Components/Search'
 import Home from './Components/Home'
 import './App.css'
 import axios from 'axios';
+import { useAlert } from 'react-alert'
 
 export default function App() {
   // BASE URL FOR API
@@ -31,6 +32,7 @@ export default function App() {
   }
   // state variables
   const [videoList, setVideoList] = useState([]);
+  const alert = useAlert()
 
   // get all videos 
   useEffect(() => {
@@ -77,6 +79,7 @@ export default function App() {
     })
     .then((response) => {
       console.log(response);
+      alert.show(`${currentVideo.title} successfully checked out to ${currentCustomer.name}!`)
     })
     .catch((error) => {
       console.log(error);
@@ -117,7 +120,7 @@ export default function App() {
             <img src = {currentVideo.imgUrl} alt = {`Poster for ${currentVideo.title}`}/>         
           </article>
         </section>
-        {currentCustomer.name && currentVideo.title ? <button onClick={onCheckOut}>Check-out</button> : null }
+        {currentCustomer.name && currentVideo.title ? <button onClick={onCheckOut} className='checkout__select'>Check-out</button> : null }
         <article className = 'validation-errors-display'>
                 <h3>{errorMessage ? 'Errors detected!' : ''}</h3>
                 <ul className = 'validation-errors-display__list'>
