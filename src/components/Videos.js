@@ -2,23 +2,15 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Video from './Video';
 
-// import logo from './logo.svg';
-// import './App.css';
-
 const Videos = (props) => {
   
   const [videoList, setVideosList] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
-
-  // const VIDEO_URL = 'http://localhost:3000/videos'
   
   useEffect(() => {
     axios.get(`${props.baseUrl}/videos`)
       .then((response) => {
-        // console.log(response.data);
         const railsVideoList = response.data;
-        // console.log(apiCustomerResponse[0].name)
-        // Set the state
         setVideosList(railsVideoList);
       })
       .catch((error) => {
@@ -34,12 +26,8 @@ const Videos = (props) => {
     videoComponentArray.push(
       <Video
           key={video.id}
-          id={video.id}
-          title={video.title}
-          overview={video.overview}
-          releaseDate={video.release_date}
-          imageUrl={video.image_url}
-          externalId={video.externalId}
+          video={video}
+          selectedVideoCallback={props.selectedVideoCallback}
       />
     )
   }

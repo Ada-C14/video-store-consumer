@@ -2,9 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Customer from './Customer';
 
-// import logo from './logo.svg';
-// import './App.css';
-
 const Customers = (props) => {
   
   const [customersList, setCustomersList] = useState([]);
@@ -13,10 +10,7 @@ const Customers = (props) => {
   useEffect(() => {
     axios.get(`${props.baseUrl}/customers`)
       .then((response) => {
-        // console.log(response.data);
         const railsCustomerList = response.data;
-        // console.log(apiCustomerResponse[0].name)
-        // Set the state
         setCustomersList(railsCustomerList);
       })
       .catch((error) => {
@@ -31,19 +25,10 @@ const Customers = (props) => {
     {
       customerComponentArray.push(
         <Customer
-            key={customer.id}
-            // id={customer.id}
-            // name={customer.name}
-            // registeredAt={customer.registered_at}
-            // address={customer.address}
-            // city={customer.city}
-            // state={customer.state}
-            // postalCode={customer.postal_code}
-            // phone={customer.phone}
-            // accountCredit={customer.account_credit}
-            // videosCheckedOutCount={customer.videos_checked_out_count}
-            selectedCustomerCallback={props.selectedCustomerCallback}
-            customer={customer}
+          key={customer.id}
+          customer={customer}
+          selectedCustomerCallback={props.selectedCustomerCallback}
+          
         />
       )
     }

@@ -1,11 +1,11 @@
 const Video = (props) => {
+  const video = props.video
     return (
-
         <tr class="table-active">
-            <th scope="row"><img src={props.imageUrl} className="w-75" alt="poster" /></th>
-            <th scope="row">{props.overview}</th>
-            <td>{props.releaseDate}</td>
-            <td><button type="button" class="btn btn-outline-primary">Select!</button></td>
+            <th scope="row"><img src={video.image_url} className="w-75" alt="poster" /></th>
+            <th scope="row">{video.title}</th>
+            <td>{video.release_date}</td>
+            <td><button onClick={() => (props.selectedVideoCallback(video))} className="btn btn-outline-primary">Select!</button></td>
         </tr>
     )
   }
