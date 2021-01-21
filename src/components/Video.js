@@ -60,22 +60,12 @@ const Video = (props) => {
             <td className="tableItem">{props.id}</td>
             <td className="tableItem">{props.title}</td>
             <td className="tableItem">{ buildButton() }</td>
-            {/* <td className="tableItem">
-                <button
-                    className={props.buttonClass}
-                    onClick={ props.buttonText === 'ADD' ? onAddFilm : onSelectFilm }
-                >
-                    {props.buttonText}
-                </button>
-            </td>
-            <td className="tableItem">{props.isSelected? <button className="selected" onClick={onButtonClick}>SELECTED</button> : <button className="select" onClick={onButtonClick}>SELECT</button> }</td> */}
             <td className="tableItem">{props.overview}</td>
         </tr>
     )
 }
 
 Video.propTypes = {
-    // key: PropTypes.number,
     id: PropTypes.number,
     title: PropTypes.string,
     imageUrl: PropTypes.string,
