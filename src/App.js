@@ -10,6 +10,7 @@ import VideoLibrary from './components/VideoLibrary';
 import Customers from './components/Customers';
 
 import './App.css';
+import RentalForm from './components/RentalForm';
 
 const App = () => {
   const API_BASE_URL = 'http://localhost:3000';
@@ -32,8 +33,8 @@ const App = () => {
       <div>
         <header className="App-header">
           <h1 className="storename">Video Store</h1>
-          <nav className="nav"> 
-            <ul>
+          <nav> 
+            <ul className="nav">
               <li>
                 <Link to="/">Home</Link>
               </li>
@@ -46,10 +47,15 @@ const App = () => {
               <li>
                 <Link to="/customers">Customers</Link>
               </li>
+              <li>
+                <Link to="/checkout">Checkout</Link>
+              </li>
             </ul>
           </nav>
-          {selectedCustomer ? <h6>Current Selected Customer: {selectedCustomer.name}</h6> : ''}
-          {selectedVideo ? <h6>Current Selected Video: {selectedVideo.title}</h6> : ''}
+          <ul className="selected">
+            {selectedCustomer ? <li>Current Selected Customer: {selectedCustomer.name}</li> : ''}
+            {selectedVideo ? <li>Current Selected Video: {selectedVideo.title}</li> : ''}
+          </ul>
         </header>
         <Switch>
           <Route path='/search'>
@@ -60,6 +66,9 @@ const App = () => {
           </Route>
           <Route path="/customers">
             <Customers url={API_BASE_URL} onClickCallback={selectCustomer} />
+          </Route>
+          <Route path="/checkout">
+            <RentalForm selectedCustomer={selectedCustomer} selectedVideo={selectedVideo}/>
           </Route>
           <Route path="/">
             Welcome
