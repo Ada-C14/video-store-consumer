@@ -1,15 +1,13 @@
 import React, { Component, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import CustomerList from './Components/CustomerList';
 import axios from 'axios'
+
+import CustomerList from './components/CustomerList';
 import VideoLibrary from './components/VideoLibrary';
 import SelectedVideo from './components/SelectedVideo';
-<<<<<<< HEAD
 import Search from './components/Search'
-=======
 import SelectedCustomer from './components/SelectedCustomer';
->>>>>>> 69902cb4b88754bf884c09e06352bed7742f9a0a
 
 import {
   BrowserRouter as Router,
@@ -30,8 +28,6 @@ const App = () => {
       setSelectedVideo(selectedData.value)
   })
 
-<<<<<<< HEAD
-=======
   const handleCustomerChange = ((selectedData) => {
       setSelectedCustomer(selectedData.value)
   })
@@ -57,7 +53,6 @@ const App = () => {
       });
   };
   
->>>>>>> 69902cb4b88754bf884c09e06352bed7742f9a0a
     return (
 
       <Router>
