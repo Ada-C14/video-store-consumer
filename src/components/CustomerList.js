@@ -24,20 +24,6 @@ const CustomerList = (props) => {
       });
   }, []);
 
-  // function CustomerList() {  
-  //   console.log(customers)
-  //   const listItems = customers.map((customer) =>
-  //       <li key={customer.id}>
-
-  //           {customer.name}
-  //           {customer.address}
-  //       </li>
-  //       );
-  //       return (
-  //       <ul>{listItems}</ul>
-  //       );
-  //   }
-
     return (
       <div>
           <h3>All Customers</h3>
