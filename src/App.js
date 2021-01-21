@@ -7,7 +7,7 @@ import {
   Route,
 } from 'react-router-dom';
 import { Switch } from 'react-router';
-import VideoList from './components/VideoList';
+import Videos from './components/Videos';
 import CustomerList from './components/CustomerList';
 import Search from './components/Search';
 
@@ -34,7 +34,7 @@ class App extends Component {
         </nav>
         <Switch>
           <Route path="/videos">
-            <VideoList />
+            <Videos />
           </Route>
           <Route path="/customers">
             <CustomerList />

@@ -7,7 +7,6 @@ const axios = require('axios');
 
 const VideoList = (props) => {
   const [videos, setVideos] = useState([]);
-  const [selectedVideo, setSelectedVideo] = useState();
 
   useEffect(() => {
     axios.get(BASE_URL)
@@ -18,27 +17,19 @@ const VideoList = (props) => {
 
   }, []);
 
-  const setSelectedVideoCallBack = (video) => {
-    setSelectedVideo(video);
-  };
-
-  const generateVideos = videos.map((video) => {
-    return <VideoButton key={ video.id } video={ video } onClickCallBack={ setSelectedVideoCallBack } />
+  const generateVideoButtons = videos.map((video) => {
+    return <VideoButton key={ video.id } video={ video } onClickCallBack={ props.setSelectedVideoCallBack } />
   })
 
   return (
   <div className="VideoList">
     <h3>Video List:</h3>
-    { generateVideos }
-    <div>
-      <h4>Selected Video:</h4>
-      { selectedVideo ? selectedVideo.title : null }
-    </div>
+    { generateVideoButtons }
   </div>);
 };
 
 VideoList.propTypes = {
-  // setSelectedVideoCallBack: PropTypes.func.isRequired,
+  setSelectedVideoCallBack: PropTypes.func.isRequired,
 };
 
 export default VideoList;
