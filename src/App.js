@@ -9,6 +9,8 @@ import Customers from './Components/Customers'
 import Library from './Components/Library'
 import Search from './Components/Search'
 import Home from './Components/Home'
+// for API requests
+import axios from 'axios'
 
 export default function App() {
   // BASE URL FOR API
@@ -27,6 +29,22 @@ export default function App() {
   
       return errors;
   }
+  // state variables
+  const [videoList, setVideoList] = useState([]);
+
+  // get all videos 
+  useEffect(() => {
+    console.log(`${BASE_URL}videos`);
+      axios.get(`${BASE_URL}videos`)
+      .then((response) => {
+          setVideoList(response.data);
+          setErrorMessage(null);
+      })
+      .catch((error) => {
+          setErrorMessage(['Failed to retrieve videos in library.'])
+          console.log(error.message);
+      });
+  }, [BASE_URL]);
 
   // state for selected video
   const [currentVideo, setVideo] = useState({id: NaN, title: '', imgUrl: 'favicon.ico'});
@@ -43,6 +61,7 @@ export default function App() {
     })
   }
 
+  
   return (
     <Router>
       <div>
@@ -86,10 +105,10 @@ export default function App() {
             <Customers url = {BASE_URL} curCustomer = {getCurrentCustomer} />
           </Route>
           <Route path="/library">
-            <Library url = {BASE_URL} curVid = {getCurrentVideo} setError = {setErrorMessage}/>
+            <Library url = {BASE_URL} curVid = {getCurrentVideo} videoList = {videoList}/>
           </Route>
           <Route path="/search">
-            <Search setError = {setErrorMessage}/>
+            <Search setError = {setErrorMessage} videoList = {videoList}/>
           </Route>
           <Route path="/">
             <Home />
