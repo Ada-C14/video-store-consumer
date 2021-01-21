@@ -1,17 +1,18 @@
 import React,{useState, useEffect} from 'react';
 import axios from 'axios';
 import Customer from './Customer'
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
-const Customers = (props) => {
+const Customers = (props, onSelectCustomer) => {
     
+    const allCustomersURL = 'http://localhost:3000/customers'
 
     const [customers,setCustomersList] = useState([]);
     const [errorMessage,setErrorMessage] = useState(null);
 
     // this will get us a list of customers from API and update the state
     useEffect(() => {
-        axios.get('http://localhost:3000/customers')
+        axios.get(allCustomersURL)
         .then((response) => {
             setCustomersList(
                 response.data
