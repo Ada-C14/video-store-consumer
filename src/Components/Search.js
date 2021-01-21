@@ -49,6 +49,8 @@ const Search = (props) => {
             externalId = {video.external_id}
             clickButton = {props.curVid}
             mode = { inLibrary(video.external_id, props.videoList) ? 'library' : 'add'}
+            url = {MOVIES_RAILS}
+            setError = {props.setError}
             />
         results.push(vid);
         }
@@ -67,13 +69,6 @@ const Search = (props) => {
         setTitle(event.target.value)
     }
 
-    // to register enter key with submit button
-    const enterKey = (event) => {
-        if (event.key === 'Enter') {
-            console.log('here')
-            onSearchSubmit(event);
-        }
-    }
     const onSearchSubmit = (event) => {
         event.preventDefault();
 
@@ -83,6 +78,7 @@ const Search = (props) => {
             .then((res) => {
                 setSearchResult(res.data); 
                 setQuery(title);
+                props.setError(null);
             })
             .catch((err) => {
                 props.setError([err.message])

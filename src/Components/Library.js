@@ -1,7 +1,6 @@
 import React, { Component, useState, useEffect }  from 'react';
 import PropTypes from 'prop-types';
 import Video from './Video.js'
-import axios from 'axios'
 
 import './Library.css';
 
@@ -19,6 +18,8 @@ const Library = (props) => {
                             externalId = {video.external_id}
                             clickButton = {props.curVid}
                             mode = 'library'
+                            url = {props.url}
+                            setError = {props.setError}
                             />;
             newVidList.push(vid);
         }

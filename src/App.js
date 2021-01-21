@@ -134,7 +134,7 @@ export default function App() {
             <Customers url = {BASE_URL} curCustomer = {getCurrentCustomer} />
           </Route>
           <Route path="/library">
-            <Library url = {BASE_URL} curVid = {getCurrentVideo} videoList = {videoList}/>
+            <Library url = {`${BASE_URL}videos`} curVid = {getCurrentVideo} videoList = {videoList}/>
           </Route>
           <Route path="/search">
             <Search curVid = {getCurrentVideo} setError = {setErrorMessage} videoList = {videoList}/>
