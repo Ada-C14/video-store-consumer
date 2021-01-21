@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
 import axios from 'axios';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom';
+import logo from './vhs.jpg';
+import './App.css';
+import './Bootstrap.css'
 import Customers from './components/Customers';
 import Videos from './components/Videos';
 import SearchForm from './components/SearchForm';
@@ -68,18 +75,42 @@ function App() {
   }; 
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1 className="App-title">Welcome to React</h1>
-      </header>
-      <p className="App-intro">
-      <Customers baseUrl={BASE_URL}/>
-      <Videos />
-      <SearchForm searchCallback={searchVideo} />
-      {generateSearchResults(searchResultList)}
-      </p>
-    </div>
+    <Router>
+      <div className="App">
+        <header className="App-header tiledBackground">
+          <img src={logo} className="App-logo" alt="logo" />
+          {/* <h1 className="App-title">Welcome to React</h1> */}
+        </header>
+        <section>
+          <h1><a href="/">RETRO VIDEO DISTRO</a></h1>
+          <button type="button" class="btn btn-outline-danger"><Link to="/">Home</Link></button>
+          <button type="button" class="btn btn-outline-danger"><Link to="/library">Video Library</Link></button>
+          <button type="button" class="btn btn-outline-danger"><Link to="/customers">Customer Index</Link></button>
+          <button type="button" class="btn btn-outline-danger"><Link to="">Search</Link></button>
+          <br></br><br></br>
+          <br></br><br></br>
+        </section>
+        <section className="App-main">
+          <Switch>
+          <Route path="/search">
+            <h1>Search Will Go Here</h1>
+          </Route>
+          <Route path="/library">
+            <Videos />
+          </Route>
+          <Route path="/customers">
+            <Customers />
+          </Route>
+          <Route path="/checkout">
+            <h1>Checkout Deets Will Go Here</h1>
+          </Route>
+          <Route path="/">
+            <h1>Homepage Deets Will Go Here</h1>
+          </Route>
+        </Switch>
+        </section>
+      </div>
+    </Router>
   );
 
 }
