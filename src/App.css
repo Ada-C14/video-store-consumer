@@ -41,6 +41,7 @@
 .navbar {
   background-color: #333;
   overflow: hidden;
+  padding: 15px;
 }
 
 .navbar a {

@@ -94,12 +94,14 @@ const Search = (props) => {
 
 
     return (
-        <div>
+        <div className='search__form'>
             <h1>search for a video</h1>
-            <form onSubmit={onSearchSubmit}>
-                <label> search: </label>
+            <form onSubmit={onSearchSubmit} className='search__form'>
+                {/* <label> search: </label> */}
                     <input type='text' placeholder='enter title' value={title} onChange={onSearchChange}/>
-                <button>search title</button>
+                    <p></p>
+                    <br></br>
+                <button className='search__button'>search title</button>
             </form>
             <h2>{query ? `results for "${query}"` : 'no videos to display -- start searching!'}</h2>
             <section className = 'search_results'>
