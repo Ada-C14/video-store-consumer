@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -12,10 +12,13 @@ import Search from './components/Search';
 import CustomerList from './components/CustomerList';
 import Customer from './components/Customer';
 
-class App extends Component {
-  render() {
-    return (
-      <Router>
+
+const App = () => {
+  const [selectedCustomer, setSelectedCustomer] = useState(null);
+  const [selectedVideo, setSelectedVideo] = useState(null);
+
+  return (
+    <Router>
       <div>
         <nav>
           <ul>
@@ -33,15 +36,23 @@ class App extends Component {
             </li>
           </ul>
         </nav>
+ 
+
+        <span className="App-cart" >
+         
+            
+             {selectedCustomer !== null ? `${selectedCustomer.name}` : `Select a customer` }
+            
+          </span>
 
         {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
+        renders the first one that matches the current URL. */}
         <Switch>
-        <Route path="/customers/:id" component={Customer}>
-          <Customer />
+          <Route path="/customers/:id" component={Customer}>
+            <Customer />
           </Route>
           <Route path="/customers" >
-            <CustomerList />
+            <CustomerList onClickCustomer={setSelectedCustomer} />
           </Route>
           <Route path="/search">
             <Search />
@@ -55,8 +66,61 @@ class App extends Component {
         </Switch>
       </div>
     </Router>
-    );
-  }
+  );
 }
+
+
+// }
+
+// class App extends Component {
+
+// render() 
+// // {
+//   return (
+//     <Router>
+//     <div>
+//       <nav>
+//         <ul>
+//           <li>
+//             <Link to="/">Home</Link>
+//           </li>
+//           <li>
+//             <Link to="/search">Search</Link>
+//           </li>
+//           <li>
+//             <Link to="/library">Library</Link>
+//           </li>
+//           <li>
+//             <Link to="/customers">Customers</Link>
+//           </li>
+//         </ul>
+//       </nav>
+
+//       <span className = "App-cart" >test</span>
+
+//       {/* A <Switch> looks through its children <Route>s and
+//           renders the first one that matches the current URL. */}
+//       <Switch>
+//       <Route path="/customers/:id" component={Customer}>
+//         <Customer />
+//         </Route>
+//         <Route path="/customers" >
+//           <CustomerList />
+//         </Route>
+//         <Route path="/search">
+//           <Search />
+//         </Route>
+//         <Route path="/library">
+//           <Library />
+//         </Route>
+//         <Route path="/">
+//           <Home />
+//         </Route>
+//       </Switch>
+//     </div>
+//   </Router>
+//   );
+// }
+// }
 
 export default App;

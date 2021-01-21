@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 // import axios from 'axios';
 import API from '../ApiSupport'
 import Customer from './Customer';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-const Customers = () => {
+const CustomerList = (props) => {
    // initially empty but changes during component's life cycle when API is called
     const [customerList, setCustomerList] = useState([]);
     const [errorMessage, setErrorMessage] = useState(null);
@@ -18,10 +20,18 @@ const Customers = () => {
             setErrorMessage('Could not retrieve customers');
           });
       }, []);
+
+      const onButtonClick = () => {
+  
+        props.onClickCustomer({
+          id: props.id
+        });
+      }
     
       const customerComponents = customerList.map((customer) => {
         return (
           errorMessage == null ?
+          <Link onClickCustomer={props.selectCustomer}>
             <Customer 
                 key={customer.id}
                 id={customer.id}
@@ -33,7 +43,7 @@ const Customers = () => {
                 accountCredit={customer.account_credit}
                 name={customer.name}
                 videosCheckedOutCount={customer.videos_checked_out_count}
-                />
+                /> </Link>
             : errorMessage
           )
       })
@@ -45,4 +55,10 @@ const Customers = () => {
         )
 }
 
-export default Customers; 
+
+CustomerList.propTypes = {
+  onClickCustomer: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+}
+
+export default CustomerList; 
