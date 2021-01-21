@@ -16,10 +16,6 @@ const Video = ({ currentPathname, video, setVideo, addVideoCallback }) => {
     image_url: imageUrl,
   } = video
 
-  // const toggleActive = () => {
-  //   setSelected(!selected)
-  // }
-
   const videoButton = () => {    
     if (currentPathname === '/library') {
       return (
