@@ -11,7 +11,7 @@ import Library from './components/Library';
 import Search from './components/Search';
 import Customers from './components/Customers';
 
-// const API_URL_BASE = 'http://localhost:3000/';
+const BASE_URL = 'http://localhost:3000/';
 
 class App extends Component {
   render() {
@@ -39,13 +39,13 @@ class App extends Component {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/customers">
-            <Customers />
+            <Customers url={BASE_URL} />
           </Route>
           <Route path="/search">
             <Search />
           </Route>
           <Route path="/library">
-            <Library />
+            <Library url={BASE_URL} />
           </Route>
           <Route path="/">
             <Home />

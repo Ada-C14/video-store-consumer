@@ -1,26 +1,41 @@
 import React, { useEffect, useState} from 'react'; 
-// import axios from 'axios';
+import axios from 'axios';
+import Video from './Video'; 
 
 
-const Library = () => {
-//   const [videoList, setVideoList] = useState([]);
-//   const [errorMessage, setErrorMessage] = useState(null);
+const Library = (props) => {
+  const [videoList, setVideoList] = useState([]);
+  const [errorMessage, setErrorMessage] = useState(null);
 
-//   const VIDEO_URL = 'http://localhost:3000/videos'
+  useEffect(() => {
+    axios.get(`${props.url}videos`)
+      .then((response) => {
+        const apiVideoList = response.data; 
+        setVideoList(apiVideoList);
+      })
+      .catch((error) => {
+        setErrorMessage('Could not retrieve videos from library');
+      });
+  }, []);
 
-//   useEffect(() => {
-//     axios.get(VIDEO_URL) 
-//       .then((response) => {
-//         const apiVideoList = response.data; 
-//         setVideoList(apiVideoList);
-//       })
-//       .catch((error) => {
-//         setErrorMessage('Could not retrieve videos from library');
-//       });
-//   }, []);
+  const videoComponents = videoList.map((video) => {
+    return (
+        <Video 
+            id={video.id}
+            title={video.title}
+            overview={video.overview}
+            releaseDate={video.release_date} 
+            imageUrl={video.image_url}
+            externalId={video.external_id}
+            />
+        )
+  })
 
-
-    return <h1>This is the library page.</h1>
+    return (
+      <div>
+        {videoComponents}
+      </div>
+    )
 }
 
 export default Library; 
