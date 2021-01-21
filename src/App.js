@@ -3,6 +3,8 @@ import CustomerList from './components/CustomerList.js';
 import MovieLibrary from './components/MovieLibrary.js';
 import MovieSearchBar from './components/MovieSearchBar.js';
 import MovieSearchResults from './components/MovieSearchResults.js';
+import Rental from './components/Rental.js';
+import axios from 'axios';
 
 // import React, { Component } from 'react';
 
@@ -38,9 +40,14 @@ const BASE_API_URL = 'http://localhost:3000';
 export default function App() {
 
   const [customers, setCustomers] = useState(null)
+  const [movie, setMovies] = useState(null)
 
   const selectCustomer = (singleCustomer) => {
     setCustomers(singleCustomer)
+  }
+
+  const selectMovie = (singleMovie) => {
+    setMovies(singleMovie)
   }
 
   return (
