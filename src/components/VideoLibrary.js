@@ -29,6 +29,7 @@ const VideoLibrary = (props) => {
       imageURL={video.image_url}
       overview={video.overview}
       videoCallback={props.selectVideoCallback}
+      video={video}
         />
     )
   })

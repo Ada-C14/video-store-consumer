@@ -14,7 +14,7 @@ const Video = (props) => {
       <h3>{props.title}</h3>
       <p>Release Date: {props.release_date}</p>
       <p>Overview: {props.overview}</p>
-      <button onClick={() => {props.videoCallback(props.title)}}> Select Video</button>
+      <button onClick={() => {props.videoCallback(props.video)}}> Select Video</button>
     </div>
   );
 };

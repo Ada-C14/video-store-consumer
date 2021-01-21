@@ -1,6 +1,8 @@
 import VideoSearch from './components/VideoSearch';
 import VideoLibrary from './components/VideoLibrary';
 import CustomerList from './components/CustomerList';
+import Rentals from './components/Rentals';
+
 import React, { Component } from 'react';
 import './App.css';
 
@@ -17,6 +19,7 @@ class App extends Component {
     super();
     this.state = {
       chosenCustomer: {},
+      chosenVideo: {},
     }
   }
 
@@ -51,8 +54,11 @@ class App extends Component {
 
               <Link to='/customers'>Customers</Link>
             </li>
-            <li>{this.state.chosenCustomer.name}</li>
-            <li>{this.state.chosenVideo}</li>
+            <li> Customer: {this.state.chosenCustomer.name} Video:{this.state.chosenVideo.title}</li>
+            {/* <li><Rentals 
+                  selectedVideo={this.state.chosenVideo}
+                  selectedCustomer={this.state.chosenCustomer}/>
+            </li> */}
           </ul>
         </nav>
 
