@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
 class Title extends Component {
-  render() {
+  render () {
     return (
-      <div>
-        { this.props.title }
+      <div onClick={ () => { this.props.selectVideo(this.props.video) } }>
+        { this.props.video.title }
       </div>
     )
   }

@@ -75,15 +75,15 @@ const App = () => {
 
       {
         (selectedCustomer || selectedVideo) &&
-        <div class="container pt-4">
-          <div class="row">
-            <div class="col">
+        <div className="container pt-4">
+          <div className="row">
+            <div className="col">
               {
                 selectedCustomer &&
                 <DisplayCustomerDetail customer={ selectedCustomer } />
               }
             </div>
-            <div class="col">
+            <div className="col">
               {
                 selectedVideo &&
                 <DisplayVideoDetail video={ selectedVideo } />
