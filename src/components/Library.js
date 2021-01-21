@@ -4,15 +4,13 @@ import LibraryVideo from './LibraryVideo.js';
 import './Library.css';
 
 const Library = (props) => {
-  const API_BASE_URL = 'http://localhost:3000'
-  const [libraryVideos, setLibraryVideos] = useState([])
+  const API_BASE_URL = 'http://localhost:3000';
 
-  console.log(props)
+  const [libraryVideos, setLibraryVideos] = useState([])
 
   useEffect(() => {
     axios.get(API_BASE_URL + '/videos')
       .then( (response) => {
-        console.log(response.data);
         setLibraryVideos(response.data);
       })
       .catch( (error) => {
