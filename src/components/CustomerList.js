@@ -2,13 +2,11 @@ import React, { useState, useEffect } from 'react';
 import './CustomerList.css';
 import PropTypes from 'prop-types'
 import Customer from './Customer';
-import DisplayCustomerDetail from './DisplayCustomerDetail';
 const BASE_URL = 'http://localhost:3000/customers';
 const axios = require('axios');
 
 const CustomerList = (props) => {
   const [customers, setCustomers] = useState([]);
-  const [selectedCustomer, setSelectedCustomer] = useState();
 
   useEffect(() => {
     axios.get(BASE_URL)
@@ -19,23 +17,14 @@ const CustomerList = (props) => {
 
   }, []);
 
-  const setSelectedCustomerCallBack = (customer) => {
-    setSelectedCustomer(this.customer);
-  };
-
   const generateCustomers = customers.map((customer) => {
-    return <Customer key={ customer.id } customer={ customer } onClickCallBack= { setSelectedCustomerCallBack } />
+    return <Customer key={ customer.id } customer={ customer } onClickCallBack={ props.setSelectedCustomerCallBack } />
   })
 
   return (
   <div className="CustomerList">
     <h3>Customer List:</h3>
     { generateCustomers }
-
-    {
-      selectedCustomer &&
-      <DisplayCustomerDetail customer={ selectedCustomer }/>
-    }
   </div>);
 };
 

@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 import { Switch } from 'react-router';
 import Videos from './components/Videos';
-import CustomerList from './components/CustomerList';
+import Customers from './components/Customers';
 import Search from './components/Search';
 
 class App extends Component {
@@ -37,7 +37,7 @@ class App extends Component {
             <Videos />
           </Route>
           <Route path="/customers">
-            <CustomerList />
+            <Customers />
           </Route>
           <Route path="/search">
             <Search />
