@@ -15,6 +15,18 @@ const ApiVideo = (props) => {
     });
   }
 
+  const onInventoryChange = (event) => {
+    event.preventDefault();
+    const newInventory = 
+    props.addVideoCallback({
+      externalId: props.externalId, 
+      title: props.title,
+      overview: props.overview,
+      releaseDate: props.releaseDate,
+      imageUrl: props.imageUrl,    
+    });
+  }
+
   return (
     <table className="table">
       <tr>
@@ -35,6 +47,15 @@ const ApiVideo = (props) => {
               alt={props.title} />
         </th>
         <th>
+        <form>
+          <label>Inventory:</label>
+            <input
+              id="inventory"
+              name="inventory"
+              // onChange={onInventoryChange}
+              // value={formFields.inventory}
+            />
+        </form>
           <button
             onClick={onFormSubmit}>
             Add to Library
