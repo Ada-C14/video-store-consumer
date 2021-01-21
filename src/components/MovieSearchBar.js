@@ -54,6 +54,7 @@ const MovieSearchBar = props => {
                   baseURL: props.url,
                   customer: props.customer,
                   movie: props.movie,
+                  checkoutCallback: props.checkoutCallback
                 }
         }}/>
       }
@@ -64,7 +65,8 @@ const MovieSearchBar = props => {
 MovieSearchBar.propTypes = {
   url: PropTypes.string.isRequired,
   customer: PropTypes.string,
-  movie: PropTypes.string
+  movie: PropTypes.string,
+  checkoutCallback: PropTypes.func
 };
 
 export default MovieSearchBar;

@@ -31,7 +31,7 @@ const CustomerList = props => {
 
   return (
     <div>
-      <Navbar customer={props.customer} movie={props.movie} />
+      <Navbar customer={props.customer} movie={props.movie} checkoutCallback={props.checkoutCallback} />
       <div className='list'>
         { alert ? alert : '' }
         <ul className='customer-list'>
@@ -56,7 +56,8 @@ CustomerList.propTypes = {
   selectCustomerCallback: PropTypes.func.isRequired,
   url: PropTypes.string.isRequired,
   customer: PropTypes.string,
-  movie: PropTypes.string
+  movie: PropTypes.string,
+  checkoutCallback: PropTypes.func
 };
 
 export default CustomerList;

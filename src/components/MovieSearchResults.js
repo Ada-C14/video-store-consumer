@@ -14,6 +14,7 @@ const MovieSearchResults = props => {
   const baseURL = props.location.state.baseURL;
   const movie = props.location.state.movie;
   const customer = props.location.state.customer;
+  const checkoutCallback = props.location.state.checkoutCallback;
 
   const generateMovieComponents = movies => {
     const currentMovieList = [];
@@ -57,7 +58,7 @@ const MovieSearchResults = props => {
 
   return (
     <div>
-      <Navbar customer={customer} movie={movie} />
+      <Navbar customer={customer} movie={movie} checkoutCallback={checkoutCallback} />
       <div className='search-results'>
         { alert ? alert : '' }
         <h4>We found {searchResults.length} results for the movie '{searchTerm}':</h4>

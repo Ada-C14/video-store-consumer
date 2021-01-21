@@ -37,7 +37,7 @@ const Navbar = (props) => {
               </div>
             </div>
             { props.movie && props.customer
-              ? <button>checkout</button>
+              ? <button onClick={() => props.checkoutCallback()}>checkout</button>
               : null
             }
           </div>
@@ -50,7 +50,8 @@ const Navbar = (props) => {
 Navbar.propTypes = {
   home: PropTypes.bool,
   movie: PropTypes.string,
-  customer: PropTypes.string
+  customer: PropTypes.string,
+  checkoutCallback: PropTypes.func
 };
 
 export default Navbar;

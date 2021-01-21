@@ -38,7 +38,7 @@ const MovieLibrary = props => {
 
   return (
     <div>
-      <Navbar customer={props.customer} movie={props.movie} />
+      <Navbar customer={props.customer} movie={props.movie} checkoutCallback={props.checkoutCallback} />
       <div className='movie-library-container'>
         { alert ? <div className='movie-library-alert'>{alert}</div> : '' }
         { clickedMovie 
@@ -74,7 +74,8 @@ MovieLibrary.propTypes = {
   url: PropTypes.string.isRequired,
   selectMovieCallback: PropTypes.func.isRequired,
   customer: PropTypes.string,
-  movie: PropTypes.string
+  movie: PropTypes.string,
+  checkoutCallback: PropTypes.func
 };
 
 export default MovieLibrary;

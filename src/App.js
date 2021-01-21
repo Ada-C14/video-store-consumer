@@ -35,12 +35,18 @@ export default function App() {
     return result;
   }
 
+  const messageReset = () => {
+    setMessage(null);
+  }
+
   const rentMovie = () => {
     const url = BASE_API_URL + '/rentals/' + movie.title + '/check-out?customer_id=' + customer.id + '&due_date=' + dueDate();
 
     axios.post(url)
       .then((response) => {
-        setMessage('Movie Rented!');
+        // setMessage('Movie Rented!');
+        // setTimeout(() => setMessage(''), 5000);
+        setTimeout(function(){ alert('Movie rented!') }, 3000);
         setMovie(null);
         setCustomer(null);
       })
@@ -68,6 +74,7 @@ export default function App() {
               url={BASE_API_URL} 
               customer={customer ? customer.name : ''} 
               movie={movie ? movie.title : ''}
+              checkoutCallback={rentMovie}
             />
           </Route>
           <Route path="/customers">
@@ -76,6 +83,7 @@ export default function App() {
               url={BASE_API_URL} 
               customer={customer ? customer.name : ''} 
               movie={movie ? movie.title : ''}
+              checkoutCallback={rentMovie}
             />
           </Route>
           <Route path='/results' render={props => <MovieSearchResults {...props} />}/>
@@ -88,6 +96,8 @@ export default function App() {
               setCustomerCallback={setCustomer}
               rentMovieCallback={rentMovie}
               rentedMessage={message}
+              checkoutCallback={rentMovie}
+              rentedMsgCallback={messageReset}
             />
           </Route>
         </Switch>
