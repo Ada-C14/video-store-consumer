@@ -31,7 +31,7 @@ const App = () => {
   }
 
   const checkOut = (rental) => {
-    axios.post(`${BASE_URL}rentals`, rental)
+    axios.post(`${BASE_URL}rentals/${rental.video.title}/check-out?customer_id=${rental.customer}&due_date=${rental.dueDate}`, rental)
     .then((response) => {
       setErrorMessage('');
     })
