@@ -7,9 +7,6 @@ import Videos from './components/Videos';
 import SearchForm from './components/SearchForm';
 import SearchResult from './components/SearchResult';
 
-
-
-
 function App() {
 
   const BASE_URL = 'http://localhost:3000'
@@ -36,13 +33,14 @@ function App() {
     axios.post(`${BASE_URL}/videos/${id}`)
       .then((response) => {
         // What should we do when we know the post request worked?
-        const updatedData = [...studentList, response.data];
-        setStudentList(updatedData);
-        setErrorMessage('');
+        console.log(response)
+        // const updatedData = [...studentList, response.data];
+        // setStudentList(updatedData);
+        // setErrorMessage('');
       })
       .catch((error) => {
         // What should we do when we know the post request failed?
-        setErrorMessage(error.message);
+        // setErrorMessage(error.message);
       });
   }
 
@@ -61,7 +59,7 @@ function App() {
             releaseDate={result.release_date}
             externalId={result.external_id}
             imageUrl={result.image_url}
-            onClickCallback={onButtonClick}
+            // onClickCallback={onButtonClick}
         />
       )
     }
