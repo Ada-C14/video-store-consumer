@@ -1,10 +1,15 @@
 import React, { Component, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import CustomerList from './components/CustomerList';
+import CustomerList from './Components/CustomerList';
+import axios from 'axios'
 import VideoLibrary from './components/VideoLibrary';
 import SelectedVideo from './components/SelectedVideo';
+<<<<<<< HEAD
 import Search from './components/Search'
+=======
+import SelectedCustomer from './components/SelectedCustomer';
+>>>>>>> 69902cb4b88754bf884c09e06352bed7742f9a0a
 
 import {
   BrowserRouter as Router,
@@ -16,16 +21,49 @@ import {
 const App = () => {
   
   const [selectedVideo, setSelectedVideo] = useState(null)
+  const [selectedCustomer, setSelectedCustomer] = useState(null)
+  const [errorMessage, setErrorMessage] = useState('')
 
-  const handleChange = ((selectedData) => {
+
+  const handleVideoChange = ((selectedData) => {
+
       setSelectedVideo(selectedData.value)
   })
 
+<<<<<<< HEAD
+=======
+  const handleCustomerChange = ((selectedData) => {
+      setSelectedCustomer(selectedData.value)
+  })
+
+  const resetState = () => {
+    setSelectedVideo(null);
+    setSelectedCustomer(null);
+  };
+
+  const addRental = () => {
+    axios
+      .post(`http://localhost:3000/rentals/${selectedVideo.title}/check-out`, {
+        customerId: selectedCustomer.id,
+        dueDate: new Date(
+          Date.now() + 1000 /*sec*/ * 60 /*min*/ * 60 /*hour*/ * 24 /*day*/ * 7
+        ),
+      })
+      .then(() => {
+        resetState();
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      });
+  };
+  
+>>>>>>> 69902cb4b88754bf884c09e06352bed7742f9a0a
     return (
 
       <Router>
 
       <SelectedVideo video={selectedVideo}/>
+      <SelectedCustomer customer={selectedCustomer}/>
 
         {/* <VideoLibrary/> */}
         {/* <SelectedVideo video={selectedVideo}/> */}
@@ -39,10 +77,10 @@ const App = () => {
               <Link to="/search">Search</Link>
             </li>
             <li>
-              <Link to="/customers" exact={true}>Customers</Link>
+              <Link to="/customers" exact={'true'}>Customers</Link>
             </li>
             <li>
-              <Link to="/library" exact={true}>Library</Link>
+              <Link to="/library" exact={true}>Video Library</Link>
             </li>
           </ul>
         </nav>
@@ -56,11 +94,12 @@ const App = () => {
           <Route path="/search">
             <Search />
           </Route>
-          <Route path="/customers">
-            <CustomerList />
+          <Route exact path="/customers">
+  
+            <CustomerList onSelectCustomer={handleCustomerChange} selectedCustomer={selectedCustomer}/>
           </Route>
-          <Route path="/library">
-            <VideoLibrary onSelectVideo={handleChange} selectedVideo={selectedVideo}/>
+          <Route exact  path="/library">
+            <VideoLibrary selectedCustomer={selectedCustomer}  onSelectVideo={handleVideoChange} selectedVideo={selectedVideo}/>
           </Route>
         </Switch>
       </div>
