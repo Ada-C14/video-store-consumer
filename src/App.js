@@ -109,7 +109,7 @@ console.log(errorMessage)
           </nav>
           
 
-          { rentalMessage ? rentalMessage : null}
+          { rentalMessage ? <Alert variant='success'> {rentalMessage} </Alert> : null}
           { errorMessage ? <Alert variant='danger' onMouseMove={()=> {setErrorMessage(null)}}>{parseErrorMessages(errorMessage)}</Alert> : null}
 
           <Switch>
