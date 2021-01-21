@@ -1,4 +1,11 @@
 .library__content {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem,1fr));
+  grid-auto-rows: 30rem;
+  grid-gap: 0.625rem;
+  justify-content: center;
+}
+
+.library__header {
+  text-align: center;
 }
