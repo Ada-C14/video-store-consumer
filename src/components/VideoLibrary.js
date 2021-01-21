@@ -1,7 +1,9 @@
 import {React, useState, useEffect} from 'react'
 import Select from 'react-select'
 import PropTypes from 'prop-types'
-import axios from 'axios'
+import axios from 'axios';
+
+
 
 const VideoLibrary = (props) => {
     
@@ -15,6 +17,7 @@ const VideoLibrary = (props) => {
         axios.get(allVideosURL)
         .then((response) => {
             const RailsApiVideoList = response.data
+           console.log('videos ====>', RailsApiVideoList)
             setVideos(RailsApiVideoList);
         })
         .catch((error) => {
@@ -22,6 +25,8 @@ const VideoLibrary = (props) => {
             console.log(errorMessage);
         });
     }, []);
+
+
     
 
     return (
@@ -40,6 +45,17 @@ const VideoLibrary = (props) => {
                     };
                     })}
                 />  
+                {props.selectedVideo && props.selectedCustomer ? 
+                    <button
+                    className="customer-button"
+                   // onClick={addRental}
+                   
+                  >
+                    {''}
+                    Checkout
+                  </button>
+                  : ''
+}
         </div>
     )
 }
