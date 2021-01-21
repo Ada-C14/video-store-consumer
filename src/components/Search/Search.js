@@ -16,17 +16,16 @@ const Search = ({setErrorMessage, addVideoCallback, baseUrl}) => {
         const newSearchResults = response.data
         setSearchResults(newSearchResults)
 
-        console.log('search results', newSearchResults.length === 0)
-
         if ( newSearchResults.length === 0) {
           setErrorMessage({ error: ['No matches were found.']})
-        } else {
-          setErrorMessage(null)
         }
+
+        setTimeout(() => setErrorMessage(null), 6000);
       })
       .catch( error => {
         const errors = error.response.data.errors
         setErrorMessage(errors)
+        setTimeout(() => setErrorMessage(null), 6000);
       })
   }
 

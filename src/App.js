@@ -21,19 +21,17 @@ const App = () => {
   const [selectedVideo, setSelectedVideo] = useState(null)
   const [rentalMessage, setRentalMessage] = useState(null)
 
-console.log(errorMessage)
-
-
   const addVideo = (video) => {
     axios.post(BASE_URL+'videos', video)
       .then( response => {
         const newVideoList = [...videoLibrary, response.data]
         setVideoLibrary(newVideoList)
-        setErrorMessage(null)
+        setTimeout(() => setErrorMessage(null), 6000);
       })
       .catch( error => {
         const errors = error.response.data.errors
         setErrorMessage(errors)
+        setTimeout(() => setErrorMessage(null), 6000);
       })
     };
 
@@ -110,7 +108,7 @@ console.log(errorMessage)
           
 
           { rentalMessage ? <Alert variant='success'> {rentalMessage} </Alert> : null}
-          { errorMessage ? <Alert variant='danger' onMouseMove={()=> {setErrorMessage(null)}}>{parseErrorMessages(errorMessage)}</Alert> : null}
+          { errorMessage ? <Alert variant='danger'>{parseErrorMessages(errorMessage)}</Alert> : null}
 
           <Switch>
               <Route path='/search'>
