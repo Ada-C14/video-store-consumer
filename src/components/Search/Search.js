@@ -13,8 +13,16 @@ const Search = ({setErrorMessage, addVideoCallback, baseUrl}) => {
   const onSearch = (searchTerm) => {  
     axios.get(baseUrl + SEARCH_API_PATH + searchTerm)
       .then( response => {
-        setSearchResults(response.data)
-        setErrorMessage('')
+        const newSearchResults = response.data
+        setSearchResults(newSearchResults)
+
+        console.log('search results', newSearchResults.length === 0)
+
+        if ( newSearchResults.length === 0) {
+          setErrorMessage({ error: ['No matches were found.']})
+        } else {
+          setErrorMessage(null)
+        }
       })
       .catch( error => {
         const errors = error.response.data.errors
