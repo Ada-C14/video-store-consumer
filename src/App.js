@@ -12,11 +12,11 @@ import SearchForm from './components/SearchForm';
 function App() {
 
 // WHY USEEFFECT AUDREY?????????????????????????????????????????????
-  const BASE_URL = 'http://localhost:3000/videos?query='
-
+  const BASE_URL = 'http://localhost:3000'
+// 
   const searchVideo = (searchQuery) => { 
       // useEffect(() => {
-        axios.get(BASE_URL+searchQuery)
+        axios.get(`${BASE_URL}/videos?query=${searchQuery}`)
         .then((response) => {
           console.log(response.data);
           //  response.data;
@@ -30,8 +30,6 @@ function App() {
         });
   // }, []);
 };
-
-
   return (
     <div className="App">
       <header className="App-header">
@@ -39,7 +37,7 @@ function App() {
         <h1 className="App-title">Welcome to React</h1>
       </header>
       <p className="App-intro">
-      <Customers />
+      <Customers baseUrl={BASE_URL}/>
       <Videos />
       <SearchForm searchCallback={searchVideo} />
       </p>
