@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Customers from './components/Customers'
@@ -13,6 +13,24 @@ import {
 
 export default function App() {
   const VIDEO_URL = 'http://localhost:3000/videos'
+  
+  const [selectedVideo, setSelectedVideo] = useState(null)
+  const [selectedCustomer, setSelectedCustomer] = useState(null)
+  
+  // will receive information about which video was selected and set the state
+  const onVideoSelected = (video) => {
+    setSelectedVideo(video)
+  }
+  
+    // will receive information about which customer was selected and set the state
+  const onCustomerSelected = (customer) => {
+    setSelectedCustomer(customer)
+  }
+  
+  
+  
+  
+  
   return (
     <Router>
       <div>
@@ -89,3 +107,4 @@ export default function App() {
 // }
 
 // export default App;
+
