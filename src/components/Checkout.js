@@ -1,13 +1,38 @@
-import React from 'react';
+import axios from 'axios';
+import React, {useState} from 'react';
 import './Checkout.css'
+import humps from 'humps';
+
+const BASE_API_URL = 'http://localhost:3000';
 
 const Checkout = (props) => {
   const {video, customer} = props
+  const [alert, setAlert] = useState('');
+
+  const handleClick = () => {
+    const date = new Date(Date.now() + 7)
+
+    axios.post(
+      `${BASE_API_URL}/rentals/${video.title}/check-out`, 
+      humps.decamelizeKeys({
+        customerId: customer.id,
+        dueDate: date
+      }))
+    .then( (response) => {
+      setAlert(`${video.title} successfully checked out to ${customer.name}`)
+      props.videoCallback(null);
+      props.customerCallback(null);
+    })
+    .catch( (error) => {
+      setAlert(error.message);
+    })
+  }
   return (
     <div className="checkout">
+      {alert && <p>{alert}</p>}
       {video && <h3 className="checkout__text">Video Selected: <em>{video.title}</em></h3>}
       {customer && <h3 className="checkout__text">Customer Selected: <em>{customer.name}</em></h3>}
-      {(video && customer) && <button className="checkout__btn">CHECKOUT</button>}
+      {(video && customer) && <button className="checkout__btn" onClick={handleClick}>CHECKOUT</button>}  
     </div>
   )
 }
