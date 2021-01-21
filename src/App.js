@@ -5,9 +5,6 @@ import MovieSearchBar from './components/MovieSearchBar.js';
 import MovieSearchResults from './components/MovieSearchResults.js';
 import Rental from './components/Rental.js';
 import axios from 'axios';
-
-// import React, { Component } from 'react';
-
 import {
   BrowserRouter as Router,
   Switch,
@@ -78,7 +75,7 @@ export default function App() {
           </Route>
           <Route path='/results' render={props => <MovieSearchResults {...props} />}/>
           <Route path="/">
-            { Home() }
+            { Home(movie, customer) }
           </Route>
         </Switch>
       </div>
@@ -86,15 +83,34 @@ export default function App() {
   );
 }
 
-const Home = () => {
+const Home = (movie, customer) => {
   return (
     <div className='homepage-container'>
-      <div className='homepage'>
-        <h1>start a rental</h1>
-        <div className='btn-container'>
-          <div className='main-btn'><Link to='/library'>movies</Link></div>
-          <div className='main-btn'><Link to='/customers'>customers</Link></div>
-        </div>
+      <div className={ movie || customer ? 'homepage-rental' : 'homepage'}>
+        { movie || customer 
+          ? <div>
+            <h1>rental in-progress</h1>
+            <div className='rentalInfoContainer'>
+              { movie 
+                ? <div className='movie-rental'>
+                  <img src={movie.imageURL} alt={movie.title} />   
+                </div>
+                : <div className='missingRentalInfo'></div>
+              }
+              { customer 
+                ? <div className='customer-rental'>
+                  <img src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZsuxUrEVyvCmLYoM5BeyNUOts2akw1RFDYw&usqp=CAU'} alt={'customer icon'} />   
+                </div>
+                : <div className='missingRentalInfo'></div>
+              }
+            </div>
+          </div>
+          : [<h1>start a rental</h1>,
+            <div className='btn-container'>
+              <div className='main-btn'><Link to='/library'>movies</Link></div>
+              <div className='main-btn'><Link to='/customers'>customers</Link></div>
+            </div>]
+        }
         <br />
         <h1>search for a movie</h1>
         <MovieSearchBar url={BASE_API_URL} />
