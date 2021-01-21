@@ -5,7 +5,7 @@ import Video from './Video';
 
 const VideoLibrary = (props) => {
     const [videos, setVideos] = useState([]);
-    const [selectedVideo, setSelectedVideo] = useState(null);
+    
     const [errorMessage, setErrorMessage] = useState(null);
 
     useEffect(() => {
@@ -28,24 +28,13 @@ const VideoLibrary = (props) => {
             image_url={video.imageUrl}
             external_id={video.externalId} 
             key={video.id} 
+            onClickCallback={props.onClickCallback}
         />);
     });
-
-    const selectVideo = (id) => {
-        if (selectedVideo != null) {
-            let video = videos.find(video => video.id === id);
-            setSelectedVideo(video);
-        } else {
-            setSelectedVideo(null)
-            let video = videos.find(video => video.id === id);
-            setSelectedVideo(video);
-        }
-    }
 
     return (
         <div>
             <h3>Our Video Library</h3>
-            <h6>Current Selected Video: {selectedVideo}</h6>
             <p>{errorMessage}</p>
             {videoComponents}
         </div>
@@ -53,7 +42,8 @@ const VideoLibrary = (props) => {
 }
 
 VideoLibrary.propTypes = {
-    url: PropTypes.string.isRequired
+    url: PropTypes.string.isRequired,
+    onClickCallback: PropTypes.func.isRequired
 }
 
 export default VideoLibrary;

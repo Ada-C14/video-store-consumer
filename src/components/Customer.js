@@ -6,10 +6,8 @@ import PropTypes from 'prop-types';
 const Customer = (props) => {
     return (
         <div className="customer">
-            {/* <ClickToSelect containerElement="div">
-                <h5>{props.name}</h5>
-            </ClickToSelect>
-             */}
+          <h5>{props.name}</h5>
+          <button id={props.id} onClick={() => props.onClickCallback(props)}>Select</button>
         </div>
     )
 }
@@ -20,6 +18,7 @@ Customer.propTypes = {
     // releaseDate: PropTypes.string.isRequired,
     // imageUrl: PropTypes.string.isRequired,
     // externalId: PropTypes.number.isRequired
+    onClickCallback: PropTypes.func.isRequired
 }
 
 export default Customer;

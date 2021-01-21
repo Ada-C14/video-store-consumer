@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,13 +10,22 @@ import VideoLibrary from './components/VideoLibrary';
 import Customers from './components/Customers';
 
 import './App.css';
-<<<<<<< HEAD
-=======
-import Customers from './components/Customers';
->>>>>>> aac2a85f2c06a122aa78c48c412d25b1107ece48
 
 const App = () => {
   const API_BASE_URL = 'http://localhost:3000';
+
+  const [selectedCustomer, setSelectedCustomer] = useState(null);
+  const [selectedVideo, setSelectedVideo] = useState(null);
+
+  const selectCustomer = (customer) => {
+    // let cust = customerList.find(cust => cust.id === id);
+    setSelectedCustomer(customer);
+  }
+
+  const selectVideo = (video) => {
+    // let cust = customerList.find(cust => cust.id === id);
+    setSelectedVideo(video);
+  }
 
   return (
     <Router>
@@ -37,16 +46,17 @@ const App = () => {
             </li>
           </ul>
         </nav>
-
+        {selectedCustomer ? <h6>Current Selected Customer: {selectedCustomer.name}</h6> : ''}
+        {selectedVideo ? <h6>Current Selected Video: {selectedVideo.name}</h6> : ''}
         <Switch>
           <Route path='/search'>
             <VideoSearch url={API_BASE_URL}/>
           </Route>
           <Route path='/library'>
-            <VideoLibrary url={API_BASE_URL}/>
+            <VideoLibrary url={API_BASE_URL} onClickCallback={selectVideo} />
           </Route>
           <Route path="/customers">
-            <Customers url={API_BASE_URL}/>
+            <Customers url={API_BASE_URL} onClickCallback={selectCustomer} />
           </Route>
           <Route path="/">
             Welcome

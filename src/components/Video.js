@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 const Video = (props) => {
     return (
         <div className="video">
-            <p>{props.overview}</p>
+            <h6>{props.title}</h6>
             <p>{props.releaseDate}</p>
+            <h6>{props.overview}</h6>
         </div>
     )
 }
@@ -15,7 +16,8 @@ Video.propTypes = {
     overview: PropTypes.string.isRequired,
     releaseDate: PropTypes.string.isRequired,
     imageUrl: PropTypes.string.isRequired,
-    externalId: PropTypes.number.isRequired
+    externalId: PropTypes.number.isRequired,
+    onClickCallback: PropTypes.func.isRequired
 }
 
 export default Video;
