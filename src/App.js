@@ -47,14 +47,14 @@ const App = () => {
           </li>
         </ul>
       </nav>
-
+{/* 
       <div className="CheckoutReturn">
             <Checkout video = {selectedVideo.title} customer = {selectedCustomer} setDisplayMessage={this.setDisplayMessage.bind(this)} />
             <Return video = {selectedVideo.title} customer = {selectedCustomer} setDisplayMessage={this.setDisplayMessage.bind(this)}/>
             <button className="MainButton" onClick = {this.onClearSelection.bind(this)}>Clear Video/Customer</button>
             <p className = "ShowSelected">  <Videos />  Video: {selectedVideo.title}</p>
             <p className = "ShowSelected"> <Customers/> Customer: {selectedCustomer.name}</p>
-      </div>
+      </div> */}
 
       <Switch>
         <Route path="/videos">
