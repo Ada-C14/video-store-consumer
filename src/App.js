@@ -1,8 +1,9 @@
+/* eslint-disable camelcase */
 import React, { useState } from 'react';
 import axios from 'axios'
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, NavLink, Link } from 'react-router-dom';
-import {Navbar, Nav, Alert} from 'react-bootstrap'
+import {Navbar, Nav, Alert, Button} from 'react-bootstrap'
 import {LinkContainer} from 'react-router-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Search from './components/Search/Search'
@@ -18,6 +19,7 @@ const App = () => {
   const [videoLibrary, setVideoLibrary] = useState([])
   const [selectedCustomer, setSelectedCustomer] = useState(null)
   const [selectedVideo, setSelectedVideo] = useState(null)
+  const [rentalMessage, setRentalMessage] = useState(null)
 
 console.log(errorMessage)
 
@@ -39,7 +41,7 @@ console.log(errorMessage)
       if (selectedCustomer && id === selectedCustomer.id) {
         setSelectedCustomer(null)
       } else {
-        setSelectedCustomer({name: name})
+        setSelectedCustomer({id: id, name: name})
       }
     };
 
@@ -49,6 +51,21 @@ console.log(errorMessage)
       } else {
         setSelectedVideo(title)
       }
+    }
+
+
+    const rentVideo = () => {
+      axios.post(`${BASE_URL}rentals/${selectedVideo}/check-out`, {customer_id: selectedCustomer.id})
+        .then(() => {
+          setRentalMessage(`Rental successfully created`);
+          setTimeout(() => setRentalMessage(''), 6000);
+          setSelectedCustomer(null);
+          setSelectedVideo(null);
+        })
+        .catch((error) => {
+          setRentalMessage(error.message);
+          setTimeout(() => setRentalMessage(''), 6000)
+        })
     }
     
     const parseErrorMessages = (errors) => {
@@ -87,9 +104,12 @@ console.log(errorMessage)
                 </li>
                 {selectedCustomer ? <li className='selected'>Customer: {selectedCustomer.name}</li> : ''}
                 {selectedVideo ? <li className='selected'>Video: {selectedVideo}</li> : ''}
+                {selectedCustomer && selectedVideo ? <li><Button variant="secondary" size="sm" onClick={() => {rentVideo()}}>Create Rental</Button></li> : ''}
               </ul>
           </nav>
           
+
+          { rentalMessage ? <Alert variant='success'> {rentalMessage} </Alert> : null}
           { errorMessage ? <Alert variant='danger' onMouseMove={()=> {setErrorMessage(null)}}>{parseErrorMessages(errorMessage)}</Alert> : null}
 
           <Switch>
