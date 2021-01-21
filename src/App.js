@@ -125,6 +125,7 @@ function App() {
                   <th scope="col">Poster</th>
                   <th scope="col">Title</th>
                   <th scope="col">Release Date</th>
+                  <th scope="col">Add To Library?</th>
                 </tr>
                 </thead>
                 <tbody>

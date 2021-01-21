@@ -56,6 +56,7 @@ const Videos = () => {
                 <th scope="col">Poster</th>
                 <th scope="col">Title</th>
                 <th scope="col">Release Date</th>
+                <th scope="col">Select For Rental?</th>
               </tr>
             </thead>
             <tbody>

@@ -4,6 +4,7 @@ const Video = (props) => {
             <th scope="row"><img src={props.imageUrl} className="w-75" alt="poster" /></th>
             <th scope="row">{props.overview}</th>
             <td>{props.releaseDate}</td>
+            <td><button type="button" class="btn btn-outline-primary">Select!</button></td>
         </tr>
     )
   }

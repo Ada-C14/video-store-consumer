@@ -62,6 +62,7 @@ const Customers = (props) => {
                 <th scope="col">Phone</th>
                 <th scope="col">Account Credit</th>
                 <th scope="col">Current Rentals</th>
+                <th scope="col">Select For Rental?</th>
               </tr>
             </thead>
             <tbody>

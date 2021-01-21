@@ -5,6 +5,7 @@ const Customer = (props) => {
         <td>{props.phone}</td>
         <td>{props.accountCredit}</td>
         <td>{props.videosCheckedOutCount}</td>
+        <td><button type="button" class="btn btn-outline-primary">Select!</button></td>
     </tr>
 )
 }
