@@ -114,7 +114,7 @@ function App() {
             <h4>Is there a video you wish we carried??  Search our order catalog to see if we can add it to our library!</h4>
             <br></br>
             <SearchForm searchCallback={searchVideo} />
-            {generateSearchResults(searchResultList)}
+            { searchResultList.length === 0 ? <h4>Search for a title keyword above!</h4> : <div><br></br><h4>Search Results</h4><br></br> {generateSearchResults(searchResultList)}</div> }
           </Route>
         </Switch>
         </section>
