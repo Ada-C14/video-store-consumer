@@ -4,8 +4,6 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import Customers from './components/Customers';
 import Library from './components/Library';
 import Search from './components/Search';
-import Home from './components';
-
 
 function AppRouter() {
 
@@ -37,9 +35,9 @@ function AppRouter() {
           <Route path="/customers">
             <Customers onSelectCustomerCallback={setSelectCustomer} />
           </Route>
-          <Route path="/">
+          {/* <Route path="/">
             <Home />
-          </Route>
+          </Route> */}
         </Switch>
       </div>
     </Router>
