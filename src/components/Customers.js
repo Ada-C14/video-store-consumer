@@ -20,7 +20,7 @@ const Customers = (props) => {
             );
         })
         .catch((error) => {
-            setErrorMessage(error.message);
+            setErrorMessage(error.message); // improve error messages 
         });
     }, []);
 
@@ -28,9 +28,8 @@ const Customers = (props) => {
     const CustomerComponents = customers.map((customer) => {
         return (< Customer 
             key={customer.id}
-            name={customer.name}
-            id={customer.id}
-            onClickCallback={props.onClickCallback}
+            customer={customer}
+            onClickCallback={props.selectCustomerCallback}
             />)
         })
 
@@ -46,6 +45,6 @@ const Customers = (props) => {
     };
     
 Customers.propTypes = {
-    onClickCallback: PropTypes.func.isRequired
+    selectCustomerCallback: PropTypes.func.isRequired
 }
 export default Customers;

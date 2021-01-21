@@ -5,16 +5,18 @@ import './Customer.css'
 
 const Customer = (props) => {
 
+    // const {customer, callback} = props; 
+
     return (
 
         <div className="customer">
-        <button onClick={() => {props.setCustomer(props.id, props.name)}}>select</button>
-        <h3 className="customer__content">{props.name}</h3>
+        <button onClick={() => {props.onClickCallback(props.customer)}}>select</button>
+        <h3 className="customer__content">{props.customer.name}</h3>
       </div>
     )
 };
 
-Customer.prototypes = {
+Customer.propTypes = {
     name: PropTypes.string.isRequired
 };
 export default Customer;
