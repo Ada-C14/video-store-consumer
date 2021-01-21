@@ -24,6 +24,10 @@ class App extends Component {
     this.setState({chosenCustomer})
   }
 
+  selectVideo = (chosenVideo) => {
+    this.setState({chosenVideo})
+  }
+
   API_URL = 'http://localhost:3000'
   
 
@@ -48,6 +52,7 @@ class App extends Component {
               <Link to='/customers'>Customers</Link>
             </li>
             <li>{this.state.chosenCustomer.name}</li>
+            <li>{this.state.chosenVideo}</li>
           </ul>
         </nav>
 
@@ -56,9 +61,10 @@ class App extends Component {
             component={ props =>
             <VideoSearch { ...props }/>
             }/>
-          <Route path="/library">
-            <VideoLibrary />
-          </Route>
+          <Route path="/library"
+            component={ props => 
+            <VideoLibrary { ...props } selectVideoCallback={this.selectVideo} />
+            }/>
           <Route path="/customers" 
             component={ props => 
             <CustomerList { ...props }
