@@ -1,7 +1,7 @@
 .selected {
-    color: red;
+    background-color: red;
 }
 
 .select {
-    color: green;
+  background-color: #4CAF50; /* Green */
 }

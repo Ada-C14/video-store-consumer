@@ -15,7 +15,7 @@ const Video = (props) => {
         <tr>
             <td className="tableItem">{props.id}</td>
             <td className="tableItem">{props.title}</td>
-            <td className="tableItem">{selectedVideo? <button className="selected" onClick={onButtonClick}>SELECTED</button> : <button className="select" onClick={onButtonClick}>SELECT</button> }</td>
+            <td className="tableItem">{props.isSelected? <button className="selected" onClick={onButtonClick}>SELECTED</button> : <button className="select" onClick={onButtonClick}>SELECT</button> }</td>
             <td className="tableItem">{props.overview}</td>
         </tr>
     )
@@ -27,7 +27,7 @@ Video.propTypes = {
     title: PropTypes.string,
     imageUrl: PropTypes.string,
     overview: PropTypes.string,
-    selectedVideo: PropTypes.object,
+    isSelected: PropTypes.bool,
     selectVideoCallback: PropTypes.func
 };
 
