@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import VideoLibrary from './components/VideoLibrary'
 import CustomerList from './components/CustomerList';
+import SearchResultList from './components/SearchResultList';
 
 import {
   BrowserRouter as Router,
@@ -38,9 +39,9 @@ class App extends Component {
           </nav>
 
           <Switch>
-            {/* <Route path="/search">
-              <Search />
-            </Route> */}
+            <Route path="/search">
+              <SearchResultList />
+            </Route>
             <Route path="/customers">
               <CustomerList />
             </Route>
