@@ -12,9 +12,20 @@ import {
 } from 'react-router-dom';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      chosenCustomer: {},
+    }
+  }
+
+  selectCustomer = (chosenCustomer) => {
+    this.setState({chosenCustomer})
+  }
 
   API_URL = 'http://localhost:3000'
   
+
   render() {
     
     return (
@@ -32,8 +43,9 @@ class App extends Component {
               <Link to="/library">Video Library</Link>
             </li>
             <li>
-              <Link to="/customers">Customers</Link>
+              <Link to="/customers">Customer</Link>
             </li>
+            <li>{this.chosenCustomer}</li>
           </ul>
         </nav>
 
@@ -68,9 +80,10 @@ function Library() {
   return <h2>About</h2>;
 }
 
-function Customers() {
-  return <h2>Users</h2>;
-}
+// function Customers() {
+//   return <h2>Users</h2>;
+// }
+
 
       // <div className="App">
       //   <header className="App-header">
