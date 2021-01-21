@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 // import PropTypes from 'prop-types';
 import Video from './Video';
 import AddVideo from './AddVideo';
+import SearchDetail from './SearchDetail';
 const axios = require('axios');
 
 const BASE_URL = 'http://localhost:3000/movies?query=';
@@ -34,10 +35,10 @@ const Search = (props) => {
       });
   }, [submission.title]);
 
-  const [searchDetails, setSearchDetails] = useState([]);
+  const [searchDetail, setSearchDetail] = useState([]);
   
   const onClickDetails = (video) => {
-    setSearchDetails(video);
+    setSearchDetail(video);
   } 
 
   const generateSearches = searchResult.map((search) => {
@@ -62,8 +63,8 @@ const Search = (props) => {
     <h4>Results</h4>
       {generateSearches}
     <h5>Video Details:</h5>
-    {/* <SearchDetails video = {searchDetails}/> */}
-    <AddVideo video = {searchDetails}/>
+    <SearchDetail video = {searchDetail}/>
+    <AddVideo video = {searchDetail}/>
 
 </div>
 
