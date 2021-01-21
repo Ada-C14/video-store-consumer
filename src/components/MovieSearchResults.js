@@ -39,7 +39,6 @@ const MovieSearchResults = props => {
   };
 
   const exitPopup = () => {
-    console.log('hi')
     setClickedMovie(null);
   };
 
@@ -57,7 +56,15 @@ const MovieSearchResults = props => {
     <div className='search-results'>
       { alert ? alert : '' }
       <h4>We found {searchResults.length} results for the movie '{searchTerm}':</h4>
-      { clickedMovie ? <Popup clickedMovieInfo={clickedMovie} exitCallbackFn={exitPopup} /> : null }
+      { clickedMovie 
+        ? <Popup 
+            clickedMovieInfo={clickedMovie} 
+            exitCallbackFn={exitPopup} 
+            addMovieClickback={addToLibrary}
+            location='search'
+          /> 
+        : null 
+      }
       <div className={`search-results-container ${ clickedMovie ? 'search-results-fade' : null }`}>
         { generateMovieComponents(searchResults) }
       </div>

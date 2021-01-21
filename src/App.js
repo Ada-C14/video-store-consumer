@@ -41,7 +41,6 @@ export default function App() {
     axios.post(url)
       .then(() => {
         setMessage('Movie Rented!');
-        console.log('worked!')
       })
       .catch((error) => {
         setMessage(error.message);

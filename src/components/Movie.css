@@ -16,7 +16,7 @@ img {
 
 .movie-card {
   padding: 0.5rem 0;
-  margin: 0 auto 0.5rem auto;
+  margin: 0 0.5rem 0.5rem 0.5rem;
 
   height: 325px;
   max-width: 275px;

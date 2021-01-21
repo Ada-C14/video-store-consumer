@@ -32,7 +32,7 @@
 
 .img-container {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   width: 80%;
 }
@@ -50,7 +50,12 @@
 }
 
 .rental-text-main {
+  margin-top: 0;
   margin-bottom: 5%;
+}
+
+.customer-img {
+  max-width: 225px;
 }
 
 .missingRentalInfo-container {

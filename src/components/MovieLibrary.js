@@ -27,7 +27,6 @@ const MovieLibrary = props => {
   };
 
   const exitPopup = () => {
-    console.log('hi')
     setClickedMovie(null);
   };
 
@@ -39,7 +38,15 @@ const MovieLibrary = props => {
   return (
     <div className='movie-library-container'>
       { alert ? <div className='movie-library-alert'>{alert}</div> : '' }
-      { clickedMovie ? <Popup clickedMovieInfo={clickedMovie} exitCallbackFn={exitPopup} /> : null }
+      { clickedMovie 
+        ? <Popup 
+            clickedMovieInfo={clickedMovie}
+            exitCallbackFn={exitPopup}
+            addMovieRentalCallback={addMovieRental} 
+            location='library' 
+          /> 
+        : null 
+      }
       <div className={`search-results-container ${ clickedMovie ? 'search-results-fade' : null }`}>
         {movies.map((movie) => 
           <Movie 

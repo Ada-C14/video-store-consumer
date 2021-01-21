@@ -24,7 +24,7 @@ const Homepage = (props) => {
                   <div className='img-container'><img src={movie.imageURL} alt={movie.title} /></div>
                 </div>
                 : <div className='missingRentalInfo-container movie-rental rental-info'>
-                    <div className='rental-text'>Please select a movie to complete this transaction.</div>
+                    <div className='rental-text-main'>Please select a movie to complete this transaction.</div>
                     <div className='missingRentalInfo'>
                       <div className='main-btn'><Link to='/library'>movies</Link></div>
                     </div>
@@ -34,10 +34,10 @@ const Homepage = (props) => {
                 ? <div className='customer-rental rental-info'>
                   <div className='rental-text'>Selected customer:</div>
                   <h4 className='rental-text-main'>{customer.name}</h4>
-                  <img src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZsuxUrEVyvCmLYoM5BeyNUOts2akw1RFDYw&usqp=CAU'} alt={'customer icon'} />
+                  <img className='customer-img' src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZsuxUrEVyvCmLYoM5BeyNUOts2akw1RFDYw&usqp=CAU'} alt={'customer icon'} />
                 </div>
                 : <div className='missingRentalInfo-container customer-rental rental-info'>
-                    <div className='rental-text'>Please select a customer to complete this transaction.</div>
+                    <div className='rental-text-main'>Please select a customer to complete this transaction.</div>
                     <div className='missingRentalInfo'>
                       <div className='main-btn'><Link to='/customers'>customers</Link></div>
                     </div>

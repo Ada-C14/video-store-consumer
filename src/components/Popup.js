@@ -15,6 +15,20 @@ const Popup = props => {
         <h4>{movie.title}</h4>
         <p>Released: {movie.releaseDate}</p>
         <p>Summary: {movie.overview}</p>
+        { props.location === 'search' 
+          ? <button 
+              onClick={() => { 
+                props.addMovieClickback(props.clickedMovieInfo); props.exitCallbackFn(); 
+              }}>
+              Add to Library
+            </button>
+          : <button 
+              onClick={() => { 
+                props.addMovieRentalCallback(props.clickedMovieInfo); props.exitCallbackFn(); 
+              }}>
+              Select Rental
+            </button>
+        }
       </div>
     </div>
   );
@@ -28,7 +42,10 @@ Popup.propTypes = {
     releaseDate: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired
   }),
-  exitCallbackFn: PropTypes.func.isRequired
+  exitCallbackFn: PropTypes.func.isRequired,
+  location: PropTypes.string,
+  addMovieClickback: PropTypes.func,
+  addMovieRentalCallback: PropTypes.func
 };
 
 export default Popup;
