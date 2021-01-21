@@ -62,8 +62,8 @@ const SearchResultList = () => {
         <div>
             <SearchForm onSubmitCallback={searchSubmit} />
             {/* TODO - style errors and alerts to be more obvious */}
-            <div>{ error ? error : '' }</div>
-            <div>{ alert ? alert : '' }</div>
+            { error ? <div className="alert alert-warning">{error}</div> : '' }
+            { alert ? <div className="alert alert-success">{alert}</div> : '' }
             <h3>Search Results</h3>
             <table className="table">
                 <thead>
