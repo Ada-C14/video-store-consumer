@@ -123,6 +123,13 @@ i {
   display: flex;
 }
 
+.missingRentalInfo-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 200px;
+  align-items: center;
+}
+
 .missingRentalInfo {
   height: 250px;
   width: 200px;
@@ -133,10 +140,21 @@ i {
   margin-left: 10%;
 }
 
+.missingRentalInfo .main-btn {
+  margin: auto;
+  width: 80%;
+}
+
 .rentalInfoContainer {
   display: flex;
+  margin-bottom: 0;
 }
 
 .movie-rental {
   margin-right: 10%;
+}
+
+.rental-text {
+  margin: 0;
+  margin-top: 5%;
 }

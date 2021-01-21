@@ -94,14 +94,26 @@ const Home = (movie, customer) => {
               { movie 
                 ? <div className='movie-rental'>
                   <img src={movie.imageURL} alt={movie.title} />   
+                  <h4 className='rental-text'>Selected movie: {movie.title}</h4>
                 </div>
-                : <div className='missingRentalInfo'></div>
+                : <div className='missingRentalInfo-container'>
+                    <div className='missingRentalInfo'>
+                      <div className='main-btn'><Link to='/library'>movies</Link></div>
+                    </div>
+                    Please select a movie to complete this transaction.
+                  </div>
               }
               { customer 
                 ? <div className='customer-rental'>
                   <img src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZsuxUrEVyvCmLYoM5BeyNUOts2akw1RFDYw&usqp=CAU'} alt={'customer icon'} />   
+                  <h4 className='rental-text'>Selected customer: {customer.name}</h4>
                 </div>
-                : <div className='missingRentalInfo'></div>
+                : <div className='missingRentalInfo-container'>
+                    <div className='missingRentalInfo'>
+                      <div className='main-btn'><Link to='/customers'>customers</Link></div>
+                    </div>
+                    Please select a customer to complete this transaction.
+                  </div>
               }
             </div>
           </div>
@@ -109,9 +121,9 @@ const Home = (movie, customer) => {
             <div className='btn-container'>
               <div className='main-btn'><Link to='/library'>movies</Link></div>
               <div className='main-btn'><Link to='/customers'>customers</Link></div>
-            </div>]
+            </div>,
+            <br />]
         }
-        <br />
         <h1>search for a movie</h1>
         <MovieSearchBar url={BASE_API_URL} />
       </div>
