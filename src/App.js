@@ -48,10 +48,11 @@ const App = () => {
   const checkIn = (rental) => {
     axios.post(`${BASE_URL}rentals/${rental.video.title}/return?customer_id=${rental.customer}&returned=true`, rental)
     .then((response) => {
-      setErrorMessage('');
+      setErrorMessage('Return completed!');
     })
     .catch((error) => {
-      setErrorMessage(error.message);
+      // setErrorMessage(error.message);
+      setErrorMessage('Unable to find checkout!');
     });
 
     setSelectedVideo(null)
@@ -92,6 +93,7 @@ const App = () => {
         </div>
 
         <div>
+          <p>{errorMessage ? <div><h2 className="validation-errors-display">{errorMessage}</h2></div> : ''}</p>
           <p>{ selectedVideo ? `Selected Video - ${selectedVideo.title }` : 'No video selected'}</p>
           <p>{ selectedCustomer ? `Selected Customer - ${selectedCustomer }` : 'No customer selected'}</p>
         </div>
