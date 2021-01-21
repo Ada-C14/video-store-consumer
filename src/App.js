@@ -60,8 +60,8 @@ const App = () => {
       </nav>
 
       <div className="CheckoutReturn">
-           { selectedVideo && <Checkout video = {selectedVideo.title} customer = {selectedCustomer}  /> }
-           { selectedVideo && <Return video = {selectedVideo.title} customer = {selectedCustomer} /> }
+           { selectedVideo && <Checkout video={ selectedVideo.title } customer={ selectedCustomer } /> }
+           { selectedVideo && <Return video={ selectedVideo.title } customer={ selectedCustomer } /> }
            {/* { selectedVideo && <button className="MainButton" onClick = {this.onClearSelection.bind(this)}>Clear Video/Customer</button> } */}
            {/* { selectedVideo && <p className = "ShowSelected">  <Videos />  Video: {selectedVideo.title}</p> }
            { selectedCustomer && <p className = "ShowSelected"> <Customers/> Customer: {selectedCustomer.name}</p> } */}
