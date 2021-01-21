@@ -5,29 +5,43 @@ import {
   Route,
   Link
 } from 'react-router-dom';
+import axios from 'axios';
 import Search from './components/Search';
 import Library from './components/Library';
 import Customers from './components/Customers';
 import logo from './logo.svg';
 import './App.css';
+import CheckOut from './components/CheckOut';
 
 
 // base url depents on the link of rails server
 const BASE_URL = 'http://localhost:3000/'
 
 const App = () => {
-  const [selectCustomer, setSelectedCustomer] = useState('')
-
-  const chooseCustomer = (id) => {
-    setSelectedCustomer(id.id)
-  }
-
   const [selectVideo, setSelectedVideo] = useState(null)
+  const [selectCustomer, setSelectedCustomer] = useState(null)
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const chooseVideo = (props) => {
     setSelectedVideo(props.title)
   }
 
+  const chooseCustomer = (id) => {
+    setSelectedCustomer(id.id)
+  }
+
+  const checkOut = (rental) => {
+    axios.post(`${BASE_URL}rentals`, rental)
+    .then((response) => {
+      setErrorMessage('');
+    })
+    .catch((error) => {
+      setErrorMessage(error.message);
+    });
+
+    setSelectedVideo(null)
+    setSelectedCustomer(null)
+  }
 
    return (
     <Router>
@@ -51,19 +65,28 @@ const App = () => {
           </li>
         </ul>
 
+        <div>
+          <CheckOut video={selectVideo}
+                    customer={selectCustomer}
+                    checkOutCallback={checkOut} />
+        </div>
+
+        <div>
+          <p>Selected Video - {selectVideo}</p>
+          <p>Selected Customer - {selectCustomer}</p>
+        </div>
+
         <Switch>
           <Route path="/search" component={Search}>
             <Search url={BASE_URL}
                     focus='videos'/>
           </Route>
           <Route path="/library" component={Library}>
-          <p>Selected Video - {selectVideo}</p>
             <Library url={BASE_URL}
                        focus='videos'
                        selectVideoCallback={chooseVideo}/>
           </Route>
           <Route path="/customers" component={Customers}>
-            <p>Selected Customer - {selectCustomer}</p>
             <Customers url={BASE_URL}
                        focus='customers'
                        selectCustomerCallback={chooseCustomer}/>
