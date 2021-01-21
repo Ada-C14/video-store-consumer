@@ -28,7 +28,7 @@ const VideoLibrary = (props) => {
       title={video.title}
       imageURL={video.image_url}
       overview={video.overview}
-      // onVideoClickCallback={}
+      videoCallback={props.selectVideoCallback}
         />
     )
   })
@@ -43,7 +43,8 @@ const VideoLibrary = (props) => {
 };
 
 VideoLibrary.propTypes = {
-  url: propTypes.string.isRequired
+  url: propTypes.string.isRequired,
+  selectVideoCallback: propTypes.func
 };
 
 export default VideoLibrary;

@@ -57,3 +57,8 @@ const CustomerList = (props) => {
 
 
 export default CustomerList; 
+
+CustomerList.propTypes = {
+    selectCustomerCallback: PropTypes.func,
+    url: PropTypes.string,
+}
