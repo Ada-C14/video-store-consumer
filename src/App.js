@@ -14,7 +14,7 @@ import axios from 'axios';
 
 export default function App() {
   const BASE_URL = 'http://localhost:3000'
-  const VIDEO_URL = 'http://localhost:3000/videos' //`${BASE_URL}/videos`
+  const VIDEO_URL = `${BASE_URL}/videos`
   const [selectedVideo, setSelectedVideo] = useState(null)
   const [selectedCustomer, setSelectedCustomer] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null)
