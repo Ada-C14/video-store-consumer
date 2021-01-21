@@ -29,6 +29,12 @@ const Search = (props) => {
     setSelectedVideo(video)
   }
 
+  const addToLibraryCallback = (video) => {
+    axios.post(BASE_URL, video).catch((error) => {
+      alert(error.response.data.errors)
+    });
+  }
+
   return (
     <div className='form-control container' style={ { textAlign: 'center'} }>
       <input className='form-control form-control-sm' type='text' value={ searchTerm } onChange={ editSearchTerm } placeholder='Enter a video title...' />
@@ -44,7 +50,7 @@ const Search = (props) => {
           <div className="col">
             {
               selectedVideo &&
-              <DisplayVideoDetail video={ selectedVideo } />
+              <DisplayVideoDetail addToLibraryCallback={ addToLibraryCallback } video={ selectedVideo } />
             }
           </div>
         </div>

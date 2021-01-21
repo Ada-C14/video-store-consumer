@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './DisplayVideoDetail.css';
 
-const DisplayVideoDetail = ({ video }) => {
+const DisplayVideoDetail = ({ addToLibraryCallback, video }) => {
 
   if (!video.title) return null; 
 
@@ -16,6 +16,13 @@ const DisplayVideoDetail = ({ video }) => {
       <span className="video-details">Overview: </span>{video.overview}
     </p>
     <img src={ video.image_url } alt={ `${video.title} image` } />
+    <br></br>
+    {
+      addToLibraryCallback &&
+      <button className='btn btn-primary' onClick={ () => { addToLibraryCallback(video) } }>
+        Add To Library
+      </button>
+    }
   </div>
 };
 
