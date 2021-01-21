@@ -5,15 +5,9 @@ import './Video.css';
 
 const SearchResult = (props) => {
 
-  const onSelectVideo = (event) => {
-    event.preventDefault();
-
-  }
-
   return (
     <div 
       className={`container ${props.selectedVideo && props.id === props.selectedVideo.id ? 'selected' : ''}`} 
-      onClick={onSelectVideo}
     >
       <section className='video-image'>
         <img src={props.result.image_url} alt={`${props.result.title} movie cover`}/>
