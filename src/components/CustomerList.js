@@ -9,7 +9,7 @@ const CustomerList = (props) => {
   const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/customers')
+    axios.get('http://localhost:3000/customers?sort=name')
       .then((response) => {
         setCustomers(response.data)
       })

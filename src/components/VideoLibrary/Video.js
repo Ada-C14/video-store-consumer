@@ -4,8 +4,6 @@ import { Button } from 'react-bootstrap'
 import './Video.css'
 import NewVideoForm from '../Search/NewVideoForm'
 
-
-
 const Video = ({ currentPathname, video, setVideo, addVideoCallback }) => {
 
   const {
