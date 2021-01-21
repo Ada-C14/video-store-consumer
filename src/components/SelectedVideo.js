@@ -14,7 +14,8 @@ const SelectedVideo = (props) => {
         <div>
             <h3>{video.title}</h3>
             <p>{video.overview}</p>
-            {/* <img>{image}</img> */}
+            <p>Released: {video.release_date}</p>
+            <img src={video.image_url} />
         </div>
         ))
     }

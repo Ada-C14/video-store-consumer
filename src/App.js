@@ -4,6 +4,7 @@ import './App.css';
 import CustomerList from './components/CustomerList';
 import VideoLibrary from './components/VideoLibrary';
 import SelectedVideo from './components/SelectedVideo';
+import Search from './components/Search'
 
 import {
   BrowserRouter as Router,
@@ -19,7 +20,7 @@ const App = () => {
   const handleChange = ((selectedData) => {
       setSelectedVideo(selectedData.value)
   })
-  
+
     return (
 
       <Router>
@@ -53,7 +54,7 @@ const App = () => {
             {/* <Home /> */}
           </Route>
           <Route path="/search">
-            {/* <Search /> */}
+            <Search />
           </Route>
           <Route path="/customers">
             <CustomerList />
@@ -65,26 +66,8 @@ const App = () => {
       </div>
     </Router>
   );
-}
 
 
-// function Home() {
-//   return <h2>Home</h2>;
-// }
-
-// function Search() {
-//   return <h2>Search</h2>;
-// }
-
-// function Customers() {
-//   return <h2>Customers</h2>;
-// }
-
-// function Library() {
-//   return <h2>Video Library</h2>;
-
-// }
-
-
+          }
 
 export default App;
