@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -6,6 +6,7 @@ import {
   Link
 } from 'react-router-dom';
 import axios from 'axios';
+import moment from 'moment';
 
 import Library from './components/Library'
 import Customers from './components/Customers'
@@ -32,11 +33,17 @@ const App = () => {
     setSelectedVideo(video);
   };
 
-  const checkOutVideo = () => {
-    // TODO: update for date to be saved in state and updated to  7 days from today when this func is called
-    const date = 'Jan 31, 2021'
+  const getDueDate = () => {
+    const date = new Date()
+    date.setDate(date.getDate() + 7)
+    return (moment(date).format('MMM, D YYYY'))
+  }
 
-    axios.post(`${localAPI}/rentals/${selectedVideo}/check-out?customer_id=${selectedCustomerID}&due_date=${date}`)
+  const checkOutVideo = () => {
+    const date = getDueDate()
+    setDueDate(date)
+
+    axios.post(`${localAPI}/rentals/${selectedVideo}/check-out?customer_id=${selectedCustomerID}&due_date=${dueDate}`)
     .then((response) => {
       console.log(`Movie titled ${selectedVideo} checked out to Customer ID: ${selectedCustomerID}`)
       setErrorMessage(`Movie titled ${selectedVideo} checked out to Customer ID: ${selectedCustomerID}`)
@@ -46,6 +53,7 @@ const App = () => {
       console.log(`Unable to checkout movie titled ${selectedVideo} to Customer ID: ${selectedCustomerID}`)
     });
 
+    setDueDate(null)
   };
   
   const checkOutVideoBtn = () => {
