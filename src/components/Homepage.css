@@ -34,14 +34,7 @@
 .top-info {
   display: flex;
   justify-content: flex-start;
-}
-
-.top-info button {
-  border: 2px solid #277f86;
-  border-radius: 10px;
-  background-color: #bdeecf;
-  height: 40px;
-  font-weight: 800;
+  margin-right: 3%;
 }
 
 .img-container {
@@ -91,4 +84,17 @@
 .missingRentalInfo .main-btn {
   margin: auto;
   width: 80%;
+}
+
+.checkout {
+  display: flex;
+  margin-bottom: 3%;
+}
+
+.checkout button {
+  width: 50%;
+  font-size: larger;
+  background-color: #d0eba6;
+  border: 2px solid #699622;
+  color: #699622;
 }

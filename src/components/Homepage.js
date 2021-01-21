@@ -15,7 +15,13 @@ const Homepage = (props) => {
       <div className={ movie || customer ? 'homepage-rental' : 'homepage'}>
         { movie || customer 
           ? <div>
-            <h1>{ movie && customer ? 'rental ready!' : 'rental in-progress' }</h1>
+            { movie && customer 
+              ? <div className='checkout'>
+                <h1>rental ready!</h1>
+                <button>checkout</button>
+              </div>
+              : <h1>rental in-progress</h1>
+            }
             <div className='rentalInfoContainer'>
               { movie 
                 ? <div className='movie-rental rental-info'>
@@ -59,9 +65,9 @@ const Homepage = (props) => {
             <div className='btn-container'>
               <div className='main-btn'><Link to='/library'>movies</Link></div>
               <div className='main-btn'><Link to='/customers'>customers</Link></div>
-            </div>,
-            <br />]
+            </div>]
         }
+        <br />
         <h1>search for a movie</h1>
         <MovieSearchBar url={props.url} />
       </div>
