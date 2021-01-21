@@ -1,5 +1,6 @@
 import React from 'react';
 import NewVideoForm from './NewVideoForm';
+import PropTypes from 'prop-types';
 
 import './Video.css';
 
@@ -24,5 +25,10 @@ const SearchResult = (props) => {
     </div>
   )
 }
+SearchResult.propTypes = {
+  result: PropTypes.object,
+  addVideoCallback: PropTypes.func,
+  videos: PropTypes.array,
+};
 
 export default SearchResult;

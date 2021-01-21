@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 
 const NewVideoForm = (props) => {
 
@@ -13,4 +14,11 @@ const NewVideoForm = (props) => {
     </div>
  )
 }
+
+NewVideoForm.propTypes = {
+  video: PropTypes.object,
+  addVideoCallback: PropTypes.func,
+  videos: PropTypes.array,
+};
+
 export default NewVideoForm;

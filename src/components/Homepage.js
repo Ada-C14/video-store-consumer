@@ -7,8 +7,8 @@ const Homepage = (props) => {
   const calcDaysOverdue = (dueDate) => {
     return Math.floor((Date.now() - Date.parse(dueDate))/(1000*60*60*24))
   }
-  const overdueList = props.overdue.map((person) => {
-    return <p className='overdue-text'>{person.name} is {calcDaysOverdue(person.due_date)} days overdue >:| </p>
+  const overdueList = props.overdue.map((person, i) => {
+    return <p key= {i} className='overdue-text'><b>{person.name}</b> is {calcDaysOverdue(person.due_date)} days overdue >:| </p>
   })
 
   return (

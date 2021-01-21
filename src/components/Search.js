@@ -27,7 +27,7 @@ const Search = (props) => {
   return (
     <div>
       <form onSubmit={onFormSubmit} ><div>
-        <h1>Search video Database </h1>
+        <h1>Search Video Database </h1>
         <label htmlFor="searchTerm"></label></div>
         <input className='search-bar'
           name="searchTerm"
@@ -43,9 +43,8 @@ const Search = (props) => {
       
     </form>
     {props.searchResult.map( (result, id) => (
-      <SearchResult 
+      <SearchResult key={id}
         result={result} 
-        key={id} 
         addVideoCallback={props.addVideoCallback}
         videos={props.videos}/>
 ))}  </div>
@@ -53,7 +52,10 @@ const Search = (props) => {
 }
 
 Search.propTypes = {
-
+  searchVideoCallback: PropTypes.func,
+  searchResult: PropTypes.array,
+  addVideoCallback: PropTypes.func,
+  videos: PropTypes.array,
 };
 
 export default Search;
