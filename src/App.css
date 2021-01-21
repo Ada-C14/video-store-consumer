@@ -90,3 +90,11 @@
   background-image: url('rentals-movie.png');
   background-repeat: no-repeat;
 } */
+
+.footer {
+  background-color: #333;
+  overflow: hidden;
+  padding: 20px;
+  color: white;
+  text-align: center;
+}

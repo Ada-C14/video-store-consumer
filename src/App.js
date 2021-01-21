@@ -127,8 +127,6 @@ export default function App() {
                     {errorMessage ? allErrors(errorMessage) : ''}
                 </ul>
         </article> 
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/customers">
             <Customers url = {BASE_URL} curCustomer = {getCurrentCustomer} />
@@ -143,6 +141,13 @@ export default function App() {
             <Home />
           </Route>
         </Switch>
+        
+        <footer className='footer'>
+          Copyrighted © by Pauline and Tram 2021
+        </footer>
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        
       </div>
     </Router>
   );
