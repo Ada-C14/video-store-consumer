@@ -1,4 +1,4 @@
-import React, { useState, Component } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import SearchResult from './SearchResult';
 
@@ -42,7 +42,8 @@ const Search = (props) => {
       </div>
     </form>
     {props.searchResult.map( (result, id) => (
-      <SearchResult result={result} key={id} addVideoCallback={props.addVideo}/>
+      <SearchResult result={result} key={id} addVideoCallback={props.addVideoCallback}/>
+      
 ))}  </div>
   )
 }

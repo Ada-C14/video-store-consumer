@@ -63,8 +63,6 @@ const App = () => {
       axios.get(`${API_URL_BASE}videos?query=${video}`)
       .then((response) => {
         const results = response.data;
-        console.log(response)
-
         setSearchResult(results);
       })
       .catch((error) => {
@@ -73,9 +71,11 @@ const App = () => {
     }
 
     const addVideo = (video) => {
-      axios.post(`${API_URL_BASE}videos`, video)
+      axios.post(API_URL_BASE+'videos', video)
       .then( response => {
         const newVideoList = [...videoList, response.data]
+        console.log(newVideoList)
+
         setVideoList(newVideoList)
       })
       .catch( error => {
