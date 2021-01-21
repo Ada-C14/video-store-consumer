@@ -1,0 +1,24 @@
+.search-bar {
+  width: 65%;
+  height: 50px;
+  border-radius: 96px;
+}
+
+form {
+  width: 100%;
+  height: 100%;
+}
+
+input {
+  background-color: white !important;
+  width: 80%;
+  height: 100% !important;
+  border-radius: 10px;
+  font-size: larger;
+  font-style: italic;
+}
+
+.search-bar button {
+  height: 100%;
+  border-radius: 10px;
+}
