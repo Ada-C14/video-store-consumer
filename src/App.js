@@ -22,9 +22,11 @@ const App = () => {
     const [videoList, setVideoList] = useState([]);
     const [selectedVideo, setSelectedVideo] = useState(null)
     const [errorMessage, setErrorMessage] = useState(null);
+    const [searchResult, setSearchResult] = useState([]);
+
   
     useEffect(() => {
-      axios.get(`${API_URL_BASE}/customers`)
+      axios.get(`${API_URL_BASE}customers`)
         .then((response) => {
           const apiCustomerList = response.data;
           setCustomerList(apiCustomerList);
@@ -35,7 +37,7 @@ const App = () => {
     }, []);
 
     useEffect(() => {
-      axios.get(`${API_URL_BASE}/videos`)
+      axios.get(`${API_URL_BASE}videos`)
         .then((response) => {
           const apiVideoList = response.data;
           setVideoList(apiVideoList);
@@ -57,7 +59,7 @@ const App = () => {
     };
   
     const selectVideo = (id) => {
-      if (selectedVideo && id === selectedVideo.id) {
+        if (selectedVideo && id === selectedVideo.id) {
         setSelectedVideo(null)
       } else {
         const video = videoList.find((video) => {
@@ -67,7 +69,33 @@ const App = () => {
       }
     };
 
+   
+ const searchVideo = (video) => {
+      axios.get(`${API_URL_BASE}videos?query=${video}`)
+      .then((response) => {
+        const results = response.data;
+        setSearchResult(results);
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      });
+    };
 
+    const addVideo = (video) => {
+      axios.post(API_URL_BASE+'videos', video)
+      .then( response => {
+        const newVideoList = [...videoList, response.data]
+        console.log(newVideoList)
+
+        setVideoList(newVideoList)
+      })
+      .catch( error => {
+        const errors = error.response.data.errors
+        setErrorMessage(errors)
+      }) 
+    };
+
+      
     const checkoutVideo = (params) => {
       axios.post(`${API_URL_BASE}/rentals/${selectedVideo.title}/check-out`, params)
       .then((response) => {
@@ -116,6 +144,7 @@ const App = () => {
         </nav>
         <main>
           {errorMessage ? <div><h2 className="error-msg">{errorMessage}</h2></div> : ''}
+
           <section className={`selected-container ${currentCustomer || selectedVideo ? '' : 'hide'}`}>
             <CheckoutReturn 
                 currentCustomer={currentCustomer} 
@@ -127,7 +156,11 @@ const App = () => {
           <section className={`${currentCustomer || selectedVideo ? 'lower' : ''}`}>
             <Switch>
               <Route path='/search'>
-                <Search />
+                <Search 
+                searchVideoCallback={searchVideo} 
+                searchResult={searchResult} 
+                addVideoCallback={addVideo}
+                videos={videoList}/>
               </Route>
               <Route path='/library'>
                 <Library 
@@ -137,13 +170,17 @@ const App = () => {
                 />
               </Route>
               <Route path='/customers'>
-                <CustomerList customers={customerList} selectCustomerCallback={selectedCustomer} currentCustomer={currentCustomer}/>
+               <CustomerList 
+                customers={customerList} 
+                selectCustomerCallback={selectedCustomer} 
+                currentCustomer={currentCustomer}/>
               </Route>
               <Route path='/'>
                 <Homepage />
               </Route>
             </Switch>
           </section>
+
         </main>
       </div>
     </Router>

@@ -40,8 +40,8 @@ const CustomerList = (props) => {
 CustomerList.propTypes = {
   customers: PropTypes.arrayOf(PropTypes.shape(
     {
-      customerId: PropTypes.number.isRequired,
-      customerName: PropTypes.string.isRequired,
+      customerId: PropTypes.number,
+      customerName: PropTypes.string,
       videosCheckedOutCount: PropTypes.number,
     },
   )),

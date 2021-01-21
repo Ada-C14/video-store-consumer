@@ -11,6 +11,7 @@ const Video = (props) => {
   }
 
   return (
+
     <div
       className={`container ${props.selectedVideo && props.id === props.selectedVideo.id ? 'selected-video' : ''}`} 
       onClick={selectThisVideo}
