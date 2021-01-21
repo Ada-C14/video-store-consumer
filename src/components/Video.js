@@ -7,6 +7,7 @@ const Video = (props) => {
             <h6>{props.title}</h6>
             <p>{props.releaseDate}</p>
             <h6>{props.overview}</h6>
+            <button id={props.id} onClick={() => props.onClickCallback(props)}>Select</button>
         </div>
     )
 }
