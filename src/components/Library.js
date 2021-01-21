@@ -8,7 +8,7 @@ const Library = (props) => {
   const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/')
+    axios.get(props.url)
       .then((response) => {
         const apiVideoLibrary = response.data;
         setVideoLibrary(apiVideoLibrary);
@@ -19,7 +19,7 @@ const Library = (props) => {
   }, []);
 
   const selectVideo = (title) => {
-    axios.get(`http://localhost:3000/videos/${ title }`)
+    axios.get(`${props.url}${props.focus}${ title }`)
       .then((response) => {
         const newSelectedVideo = response.data
         props.selectVideoCallback(newSelectedVideo)
@@ -61,7 +61,7 @@ const Library = (props) => {
     <div>
       <h1>Video Library</h1>
       {errorMessage ? <div><h2 className="validation-errors-display">{errorMessage}</h2></div> : ''}
-      {props.selectVideoCallback? < SelectedVideo selectedVideo={props.selectVideoCallback}/> : 'No video selected'}
+      {props.selectedVideo? < SelectedVideo selectedVideo={props.selectedVideo}/> : ''}
 
         <table>
           <tbody>
