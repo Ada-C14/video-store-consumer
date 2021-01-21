@@ -19,16 +19,16 @@ import './App.css';
 const BASE_API_URL = 'http://localhost:3000';
 
 export default function App() {
-  const [customers, setCustomers] = useState(null)
-  const [movie, setMovies] = useState(null)
+  const [customer, setCustomer] = useState(null);
+  const [movie, setMovie] = useState(null);
 
-  const selectCustomer = (singleCustomer) => {
-    setCustomers(singleCustomer)
-  }
+  const selectCustomer = (customer) => {
+    setCustomer(customer);
+  };
 
-  const selectMovie = (singleMovie) => {
-    setMovies(singleMovie)
-  }
+  const selectMovie = (movie) => {
+    setMovie(movie);
+  };
 
   return (
     <Router>
@@ -54,7 +54,7 @@ export default function App() {
             <MovieLibrary url={BASE_API_URL} />
           </Route>
           <Route path="/customers">
-            <CustomerList selectCustomerCallback={selectCustomer}/>
+            <CustomerList selectCustomerCallback={selectCustomer} url={BASE_API_URL} />
           </Route>
           <Route path='/results' render={props => <MovieSearchResults {...props} />}/>
           <Route path="/">
@@ -72,16 +72,14 @@ const Home = () => {
       <div className='homepage'>
         <h1>start a rental</h1>
         <div className='btn-container'>
-          <div className='main-btn'>movies</div>
-          <div className='main-btn'>customers</div>
+          <div className='main-btn'><Link to='/library'>movies</Link></div>
+          <div className='main-btn'><Link to='/customers'>customers</Link></div>
         </div>
         <br />
         <h1>search for a movie</h1>
         <MovieSearchBar url={BASE_API_URL} />
       </div>
-      <div className='img-carousel'>
-        
-      </div>
+      <div className='img-carousel'></div>
     </div>
   );
 };
