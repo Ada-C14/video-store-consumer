@@ -7,20 +7,25 @@ import MovieSearchBar from './MovieSearchBar.js';
 import './Homepage.css';
 
 const Homepage = (props) => {
-  const movie = props.movie;
   const customer = props.customer;
+  const movie = props.movie;
 
   return (
     <div className='homepage-container'>
       <div className={ movie || customer ? 'homepage-rental' : 'homepage'}>
         { movie || customer 
           ? <div>
-            <h1>rental in-progress</h1>
+            <h1>{ movie && customer ? 'rental ready!' : 'rental in-progress' }</h1>
             <div className='rentalInfoContainer'>
               { movie 
                 ? <div className='movie-rental rental-info'>
-                  <div className='rental-text'>Selected movie:</div>
-                  <h4 className='rental-text-main'>{movie.title}</h4>
+                  <div className='top-info'>
+                    <div className='top-info-txt'>
+                      <div className='rental-text'>Selected movie:</div>
+                      <h4 className='rental-text-main'>{movie.title}</h4>
+                    </div>  
+                    <button onClick={() => props.setMovieCallback(null)}>Undo</button>
+                  </div>
                   <div className='img-container'><img src={movie.imageURL} alt={movie.title} /></div>
                 </div>
                 : <div className='missingRentalInfo-container movie-rental rental-info'>
@@ -32,8 +37,13 @@ const Homepage = (props) => {
               }
               { customer 
                 ? <div className='customer-rental rental-info'>
-                  <div className='rental-text'>Selected customer:</div>
-                  <h4 className='rental-text-main'>{customer.name}</h4>
+                    <div className='top-info'>
+                      <div className='top-info-txt'>
+                        <div className='rental-text'>Selected customer:</div>
+                        <h4 className='rental-text-main'>{customer.name}</h4>
+                      </div>
+                      <button onClick={() => props.setCustomerCallback(null)}>Undo</button>
+                    </div>
                   <img className='customer-img' src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZsuxUrEVyvCmLYoM5BeyNUOts2akw1RFDYw&usqp=CAU'} alt={'customer icon'} />
                 </div>
                 : <div className='missingRentalInfo-container customer-rental rental-info'>
@@ -64,6 +74,8 @@ Homepage.propTypes = {
   url: PropTypes.string.isRequired,
   movie: PropTypes.object.isRequired,
   customer: PropTypes.object.isRequired,
+  setCustomerCallback: PropTypes.func.isRequired,
+  setMovieCallback: PropTypes.func.isRequired
 };
 
 export default Homepage;

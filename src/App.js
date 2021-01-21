@@ -82,7 +82,13 @@ export default function App() {
           </Route>
           <Route path='/results' render={props => <MovieSearchResults {...props} />}/>
           <Route path="/">
-            <Homepage movie={movie} customer={customer} url={BASE_API_URL} />
+            <Homepage 
+              movie={movie} 
+              customer={customer} 
+              url={BASE_API_URL} 
+              setMovieCallback={setMovie}
+              setCustomerCallback={setCustomer}
+            />
           </Route>
         </Switch>
       </div>
