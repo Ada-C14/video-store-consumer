@@ -27,6 +27,7 @@ const SearchResultList = () => {
 
     const addFilm = (newFilm) => {
         // TODO pass base URL down in props
+        console.log('addFilmCalled')
         axios.post(`http://localhost:3000/videos`, newFilm)
             .then((response) => {
                 // TODO - display a message to let user know
