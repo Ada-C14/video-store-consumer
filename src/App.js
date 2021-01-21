@@ -4,10 +4,16 @@ import './App.css';
 import { NavLink, Switch, Route } from 'react-router-dom';
 import VideoLibrary from './components/VideoLibrary';
 
-const [selectedVideo, setSelectedVideo] = useState('');
+const [selectedVideoID, setSelectedVideoID] = useState('');
+const [selectedVideoTitle, setSelectedVideoTitle] = useState('');
 
-const libraryCallback = (selectedVideoID) => {
-
+// 1. pass down function all the way to entry
+// 2. make button to be able to select them
+// 3. pass data back 
+const onClickLibraryCallback = (video) => {
+  setSelectedVideoID(video.id);
+  setSelectedVideoTitle(video.title);
+  console.log('onClickLibraryCallback was called')
 }
 
 const App = () => (
@@ -54,7 +60,7 @@ const Search = () => (
 const Library = () => (
   <div className = 'library'>
     <h1>Peruse our video library</h1>
-    <VideoLibrary/>
+    <VideoLibrary libraryCallback={onClickLibraryCallback}/>
   </div>
 );
 

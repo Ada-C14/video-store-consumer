@@ -37,7 +37,7 @@ const VideoLibrary = (props) => {
     <div className='videoLibrary'>
       <ul>
         {videos.map( (video) => {
-          return (<li key={video.id}>{<LibraryEntry id={video.id} title={video.title}/>}</li>);
+          return (<li key={video.id}>{<LibraryEntry id={video.id} title={video.title} libraryCallback={props.libraryCallback}/>}</li>);
           })
         }
       </ul>
@@ -63,5 +63,8 @@ const VideoLibrary = (props) => {
 
 }
 
+VideoLibrary.propTypes = {
+ libraryCallback: PropTypes.func.isRequired
+}
 
 export default VideoLibrary;

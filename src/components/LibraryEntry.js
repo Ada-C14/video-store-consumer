@@ -4,11 +4,17 @@ import PropTypes from 'prop-types';
 // This returns an entry in the video library: title and id
 
 const LibraryEntry = (props) => {
-  return (
-    <div className='library_entry'>
-      {props.id}: {props.title}
-    </div>
+  return (<button
+    onClick={() => {props.libraryCallback(
+      {id: props.id, 
+      title: props.title}
+      )
+    }
+  }
+  > 
+    {props.title}
 
+    </button>
 
   )
 }
@@ -17,7 +23,8 @@ const LibraryEntry = (props) => {
 // hold onto it (setState) then pass it
 LibraryEntry.propTypes = {
   title: PropTypes.string,
-  id: PropTypes.number
+  id: PropTypes.number,
+  libraryCallback: PropTypes.func.isRequired
 }
 
 
