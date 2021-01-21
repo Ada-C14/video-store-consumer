@@ -47,7 +47,7 @@ class App extends Component {
 
               <Link to='/customers'>Customers</Link>
             </li>
-            <li>{this.chosenCustomer}</li>
+            <li>{this.state.chosenCustomer.name}</li>
           </ul>
         </nav>
 

@@ -5,11 +5,11 @@ import CustomerList from './CustomerList';
 
 
 const Customer = (props) => {
-    const { customer } = props;
+    const { customer,callback } = props;
 
     return (
         <tr className="customer-table__table-row">
-            <td><button className="item_button" onClick={customer.callback}> Select {customer.name} </button> </td>
+            <td><button className="item_button" onClick={() => {callback(customer)}}> Select {customer.name} </button> </td>
             <td>{customer.name}</td>
             <td>{customer.videos_checked_out_count}</td>
             <td>${customer.account_credit}</td>
