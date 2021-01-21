@@ -31,7 +31,8 @@ const App = () => {
   return (
     <Router>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a className="navbar-brand" href="#">Kim & Sophia's Video Store</a>
+      <img src="https://fontmeme.com/permalink/210121/d12905ae2e494bd311c87be209dcc73f.png" alt="kim-sophia-netflix-font" border="0"></img>     
+       <h3>
         <ul className="navbar-nav mr-auto">
           <li className="nav-item">
             <Link className="nav-link" to="/">Home</Link>
@@ -46,6 +47,7 @@ const App = () => {
             <Link className="nav-link" to="/videos">Videos</Link>
           </li>
         </ul>
+        </h3>
       </nav>
 {/* 
       <div className="CheckoutReturn">
