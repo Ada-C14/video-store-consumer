@@ -31,10 +31,26 @@ export default function App() {
 
 
   //  post "/rentals/:title/check-out", to: "rentals#check_out", as: "check_out"
-
+  // http://localhost:3000/rentals/North%20by%20Northwest/check-out?customer_id=2&due_date=2021-02-15
   
+  // date formatting link: https://forums.asp.net/t/2005199.aspx?Calculate+next+due+date+using+javascript+or+jquery+
+  Date.prototype.addDays = function(interval) {
+    this.setDate(this.getDate() + interval);
+    return this;
+  };
+
+  const Timestamp = () => {
+    const today = new Date();
+    const dueDate = today.addDays(7);
+    const dd = dueDate.getDate();
+    const mm = dueDate.getMonth();
+    const yyyy = dueDate.getFullYear();
+    const formattedDate = yyyy + '-'+ mm + '-'+ dd;
+    return formattedDate;
+  };
+
   const checkout = () => {
-      const CHECKOUT_URL = `${BASE_URL}/rentals/${selectedVideo.title}/check-out`
+      const CHECKOUT_URL = `${BASE_URL}/rentals/${selectedVideo.title}/check-outcustomer_id=${selectedCustomer.customer_id}&due_date=${Timestamp()}`
       axios.post(CHECKOUT_URL)
         .then((response) => {
           const data = response.data;
