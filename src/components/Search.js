@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import SearchForm from './SearchForm'
 
-const Search = () => {
-
+const Search = ( {videoURL} ) => {
+  
+  
 
   return (
-    <div></div>
+    <div>
+      <SearchForm videoURL={videoURL}/>
+    </div>
   )
 };
 
