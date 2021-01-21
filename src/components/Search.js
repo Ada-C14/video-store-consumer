@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import PropTypes from 'prop-types';
-import Video from '.components/Video';
-import AddVideo from './components/AddVideo';
+// import PropTypes from 'prop-types';
+import Video from './Video';
+import AddVideo from './AddVideo';
 const axios = require('axios');
 
 const BASE_URL = 'http://localhost:3000/movies?query=';
@@ -34,10 +34,6 @@ const Search = (props) => {
       });
   }, [submission.title]);
 
-  const generateSearches = searchResult.map((search)=> {
-    return <Video key={search.id} video={search} setSelectedVideoCallBack= {props.setSelectedVideoCallBack}/>
-  })
-
   const [searchDetails, setSearchDetails] = useState([]);
   
   const onClickDetails = (video) => {
@@ -50,7 +46,7 @@ const Search = (props) => {
 
   return  <div>
     <form onSubmit={onSubmit}>
-      <input type="submit"  
+      <input 
         onChange={onInputChange}  
         name="title"
         placeholder="Search video title"
@@ -66,7 +62,7 @@ const Search = (props) => {
     <h4>Results</h4>
       {generateSearches}
     <h5>Video Details:</h5>
-    <SearchDetails video = {searchDetails}/>
+    {/* <SearchDetails video = {searchDetails}/> */}
     <AddVideo video = {searchDetails}/>
 
 </div>

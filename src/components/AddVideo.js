@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
+import humps from 'humps';
 import PropTypes from 'prop-types';
 const axios = require('axios')
+
 
 const BASE_URL = 'http://localhost:3000/add';
 
@@ -14,13 +16,13 @@ const AddVideo = (props) => {
     }
 
     useEffect(() => {
-        axios.post(BASE_URL, {
-            external_id: AddedVideo.external_id,
+        axios.post(BASE_URL, humps.decamelizeKeys({
+            externalId: AddedVideo.external_id,
             title: AddedVideo.title,
-            image_url: AddedVideo.image_url,
+            imageUrl: AddedVideo.image_url,
             overview: AddedVideo.overview,
-            release_date: AddedVideo.release_date,
-        })
+            releaseDate: AddedVideo.release_date,
+        }))
 
         .then((response) => {
             console.log(AddedVideo.title + 'added! Cool!');
