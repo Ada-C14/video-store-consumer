@@ -13,6 +13,9 @@ import logo from './logo.svg';
 import './App.css';
 import CheckOut from './components/CheckOut';
 import CheckIn from './components/CheckIn';
+import { Navbar, Nav, NavLink,Form, FormControl, Button, Image } from 'react-bootstrap'
+import {LinkContainer} from 'react-router-bootstrap'
+
 
 
 // base url depents on the link of rails server
@@ -63,33 +66,65 @@ const App = () => {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
+
           <h1 className="App-title">Welcome to Ting-Yi and Anya's Movie Store!</h1>
         </header>
-        <ul>
+
+        <Navbar bg="light" variant="light"> <LinkContainer to="/">
+          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+          </LinkContainer>
+          <Nav className="mr-auto">
+            <LinkContainer to='/library'>
+              <Nav.Link>Video Select</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to='/customers'>
+              <Nav.Link>Customer Select</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to='/search'>
+              <Nav.Link>External Library</Nav.Link>
+            </LinkContainer>
+          </Nav>
+          {/* <Form inline>
+            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+            <Button variant="outline-info">Search</Button>
+          </Form> */}
+          <div>
+            <CheckOut video={selectedVideo}
+                        customer={selectedCustomer}
+                        checkOutCallback={checkOut} />
+          </div>
+          <div>
+            <CheckIn video={selectedVideo}
+                      customer={selectedCustomer}
+                      checkInCallback={checkIn} />
+          </div>
+        </Navbar>
+
+        {/* <ul>
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li>
-            <Link to="/search">Video Search</Link>
-          </li>
+          // <li>
+          //   <Link to="/search">Video Search</Link>
+          // </li>
           <li>
             <Link to="/library">Video Library</Link>
           </li>
           <li>
             <Link to="/customers">Customer List</Link>
           </li>
-        </ul>
+        </ul> */}
 
-        <div>
+        {/* <div>
           <CheckOut video={selectedVideo}
                     customer={selectedCustomer}
                     checkOutCallback={checkOut} />
-        </div>
-        <div>
+        </div> */}
+        {/* <div>
           <CheckIn video={selectedVideo}
                     customer={selectedCustomer}
                     checkInCallback={checkIn} />
-        </div>
+        </div> */}
 
         <div>
           <p>{ selectedVideo ? `Selected Video - ${selectedVideo.title }` : 'No video selected'}</p>

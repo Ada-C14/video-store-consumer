@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
 
 const CheckIn = (props) => {
   // event handlers
@@ -15,11 +16,11 @@ const CheckIn = (props) => {
 
   return (
     <div>
-      <button
+      <Button variant="outline-info"
           onClick={onSubmit}
           disabled={!props.customer || !props.video} >
             Check In
-      </button>
+      </Button>
     </div>
   );
 }
