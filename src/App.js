@@ -2,9 +2,8 @@
 import React, { useState } from 'react';
 import axios from 'axios'
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, NavLink, Link } from 'react-router-dom';
-import {Navbar, Nav, Alert, Button} from 'react-bootstrap'
-import {LinkContainer} from 'react-router-bootstrap'
+import { BrowserRouter as Router, Switch, Route, NavLink} from 'react-router-dom';
+import {Alert, Button} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Search from './components/Search/Search'
 import CustomerList from './components/CustomerList'

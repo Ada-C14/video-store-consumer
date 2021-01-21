@@ -30,6 +30,7 @@ const CustomerList = (props) => {
   )};
 
 CustomerList.propTypes = {
-  
+  setCustomer: PropTypes.func.isRequired
 }
+
 export default CustomerList;

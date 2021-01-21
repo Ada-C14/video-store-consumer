@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import axios from 'axios'
+import PropTypes from 'prop-types';
 import Video from './Video'
 import './VideoLibrary.css'
 
@@ -32,6 +33,14 @@ const VideoLibrary = ({ baseUrl, videoLibrary, setVideoLibraryCallback, setVideo
       </div>
     </div>
   )
+}
+
+VideoLibrary.propTypes = {
+  baseUrl: PropTypes.string.isRequired,
+  videoLibrary: PropTypes.array.isRequired,
+  setVideoLibraryCallback: PropTypes.func.isRequired,
+  setVideo: PropTypes.func.isRequired,
+  setErrorMessage: PropTypes.func.isRequired
 }
 
 export default VideoLibrary

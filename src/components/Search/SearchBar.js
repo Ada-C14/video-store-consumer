@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { InputGroup, FormControl, Button } from 'react-bootstrap'
 import './SearchBar.css'
 
@@ -27,6 +28,10 @@ const SearchBar = ({ onSearchCallback }) => {
       </InputGroup>
     </div>
   )
+}
+
+SearchBar.propTypes = {
+  onSearchCallback: PropTypes.func.isRequired
 }
 
 export default SearchBar

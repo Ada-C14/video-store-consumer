@@ -2,15 +2,13 @@ import React from 'react'
 import Moment from 'react-moment';
 import { Button } from 'react-bootstrap'
 import './Video.css'
-import { propTypes } from 'react-bootstrap/esm/Image';
+import PropTypes from 'prop-types';
 import NewVideoForm from '../Search/NewVideoForm'
 
 const Video = ({ currentPathname, video, setVideo, addVideoCallback }) => {
 
   const {
-    id,
     title,
-    overview,
     release_date: releaseDate,
     image_url: imageUrl,
   } = video
@@ -41,10 +39,15 @@ const Video = ({ currentPathname, video, setVideo, addVideoCallback }) => {
       <div>
         {videoButton()}
       </div>
-      
-
     </div>
   )
+}
+
+Video.propTypes = {
+  currentPathname: PropTypes.string.isRequired,
+  video: PropTypes.object.isRequired,
+  setVideo: PropTypes.func,
+  addVideoCallback: PropTypes.func
 }
 
 export default Video

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios'
+import PropTypes from 'prop-types';
 import SearchBar from './SearchBar'
-import './Search.css'
 import Video from '../VideoLibrary/Video'
+import './Search.css'
+
 
 
 const Search = ({setErrorMessage, addVideoCallback, baseUrl}) => {
@@ -30,7 +32,8 @@ const Search = ({setErrorMessage, addVideoCallback, baseUrl}) => {
   }
 
   const videoComponents = searchResults.map((video) => {
-    return(<Video key={video.id} video={video} addVideoCallback={addVideoCallback} currentPathname={window.location.pathname}/>)
+    return(
+    <Video key={video.external_id} video={video} addVideoCallback={addVideoCallback} currentPathname={window.location.pathname}/>)
   })
 
   return(
@@ -42,6 +45,12 @@ const Search = ({setErrorMessage, addVideoCallback, baseUrl}) => {
       </div>
     </div>
   )
+}
+
+Search.propTypes = {
+  setErrorMessage: PropTypes.func.isRequired,
+  addVideoCallback: PropTypes.func.isRequired,
+  baseUrl: PropTypes.string.isRequired
 }
 
 export default Search

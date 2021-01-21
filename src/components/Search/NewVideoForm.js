@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types';
 import { Dropdown, DropdownButton, Button } from 'react-bootstrap'
 import './NewVideoForm.css'
 
@@ -40,6 +41,11 @@ const NewVideoForm = ({video, addVideoCallback}) => {
     </div>
       
  )
+}
+
+NewVideoForm.propTypes = {
+  video: PropTypes.object.isRequired,
+  addVideoCallback: PropTypes.func.isRequired
 }
 
 export default NewVideoForm
