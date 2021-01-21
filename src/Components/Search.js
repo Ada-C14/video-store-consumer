@@ -51,6 +51,7 @@ const Search = (props) => {
             mode = { inLibrary(video.external_id, props.videoList) ? 'library' : 'add'}
             url = {MOVIES_RAILS}
             setError = {props.setError}
+            videoList = {props.videoList}
             />
         results.push(vid);
         }
@@ -81,7 +82,7 @@ const Search = (props) => {
                 props.setError(null);
             })
             .catch((err) => {
-                props.setError([err.message])
+                props.setError([err.message, 'no matches found or unable to access database -- try again?'])
 
             })
         
@@ -98,7 +99,7 @@ const Search = (props) => {
                     <input type='text' placeholder='enter title' value={title} onChange={onSearchChange}/>
                 <button>search title</button>
             </form>
-            <h2>{query ? `results for "${query}"` : 'no videos to display. start searching!'}</h2>
+            <h2>{query ? `results for "${query}"` : 'no videos to display -- start searching!'}</h2>
             <section className = 'search_results'>
                 {resultList(searchResult)}
             </section>

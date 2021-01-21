@@ -62,9 +62,11 @@ const Video = (props) => {
             console.log(response);
             alert.show(`${inventory} copy/copies of ${params.title} successfully added to library!`)
             props.setError(null);
+            props.videoList.push(params)
         })
         .catch((error)=>{
-            props.setError([error.message])
+            console.log(error);
+            props.setError([error.message.toLowerCase(), 'check that your inventory number more 0 and that video is not currently in library']);
         });
         
     }

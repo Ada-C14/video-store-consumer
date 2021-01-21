@@ -46,7 +46,7 @@ export default function App() {
           setErrorMessage(['Failed to retrieve videos in library.'])
           console.log(error.message);
       });
-  }, [BASE_URL]);
+  }, [BASE_URL, videoList]);
 
   // state for selected video
   const [currentVideo, setVideo] = useState({id: NaN, title: '', imgUrl: 'favicon.ico'});
@@ -122,7 +122,7 @@ export default function App() {
         </section>
         {currentCustomer.name && currentVideo.title ? <button onClick={onCheckOut} className='checkout__select'>Check-out</button> : null }
         <article className = 'validation-errors-display'>
-                <h3>{errorMessage ? 'Errors detected!' : ''}</h3>
+                <h3>{errorMessage ? 'errors detected!' : ''}</h3>
                 <ul className = 'validation-errors-display__list'>
                     {errorMessage ? allErrors(errorMessage) : ''}
                 </ul>

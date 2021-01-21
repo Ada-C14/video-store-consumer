@@ -20,6 +20,7 @@ const Library = (props) => {
                             mode = 'library'
                             url = {props.url}
                             setError = {props.setError}
+                            videoList = {props.videoList}
                             />;
             newVidList.push(vid);
         }
