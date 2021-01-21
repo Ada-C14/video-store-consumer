@@ -8,16 +8,21 @@ const Search = (props) => {
   const query = new URLSearchParams(search).get('s');
   const [searchQuery, setSearchQuery] = useState(query || '');
   
+  const resetSearch = () => {
+    setSearchQuery('')
+  }
+
   return (
     <div className="App">
       <header>
         <h1>Search Video library</h1>
       </header>
       <SearchBar searchQuery={searchQuery}
-                 setSearchQuery={setSearchQuery}/>
+                 setSearchQuery={setSearchQuery}
+                 resetCallback={resetSearch}/>
       <VideoList keyWord={searchQuery}
                  url={props.url}
-                 focus={props.focus}/>
+                 focus={props.focus} />
     </div>
   );
 }

@@ -9,27 +9,34 @@ const VideoList = (props) => {
   const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
-    axios.get(`${props.url}${props.focus}?query=${props.keyWord}`)
-      .then((response) => {
-        const apiVideoList = response.data;
-        if (apiVideoList.length !== 0) {
-          setVideoList([...apiVideoList]);
-        } else {
-          setVideoList(apiVideoList)
-        }
-      })
-      .catch((error) => {
-        setErrorMessage(error.message);
-      });
+    if (props.keyWord !== '') {
+      const source = axios.get(`${props.url}${props.focus}?query=${props.keyWord}`)
+        .then((response) => {
+          const apiVideoList = response.data;
+          if (apiVideoList.length !== 0) {
+            setVideoList([...apiVideoList]);
+            setErrorMessage(null)
+          } else {
+            setErrorMessage(`Unable to find "${props.keyWord}"`)
+            setVideoList([])
+          }
+        })
+        .catch((error) => {
+          setErrorMessage(error.message);
+        });
+    } else {
+      setVideoList([])
+      setErrorMessage(null)
+    }
   }, [props.keyWord]);
 
   const addVideo = (video) => {
     axios.post(`${props.url}${props.focus}`, video)
     .then((response) => {
-      setErrorMessage('');
+      setErrorMessage(`"${video.title}" is added`);
     })
     .catch((error) => {
-      setErrorMessage(error.message);
+      setErrorMessage(`You already have "${video.title}"`);
     });
   }
 

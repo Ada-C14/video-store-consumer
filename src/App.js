@@ -5,31 +5,45 @@ import {
   Route,
   Link
 } from 'react-router-dom';
+import axios from 'axios';
 import Search from './components/Search';
 import Library from './components/Library';
 import Customers from './components/Customers';
 import logo from './logo.svg';
 import './App.css';
+import CheckOut from './components/CheckOut';
 
 
 // base url depents on the link of rails server
 const BASE_URL = 'http://localhost:3000/'
 
 const App = () => {
-  const [selectCustomer, setSelectedCustomer] = useState('')
-
-  const chooseCustomer = (id) => {
-    setSelectedCustomer(id.id)
-  }
-
   const [selectedVideo, setSelectedVideo] = useState(null)
+  const [selectedCustomer, setSelectedCustomer] = useState(null)
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const chooseVideo = (videoData) => {
     setSelectedVideo(videoData)
   }
 
+  const chooseCustomer = (id) => {
+    setSelectedCustomer(id.id)
+  }
 
-   return (
+  const checkOut = (rental) => {
+    axios.post(`${BASE_URL}rentals/${rental.video.title}/check-out?customer_id=${rental.customer}&due_date=${rental.dueDate}`, rental)
+    .then((response) => {
+      setErrorMessage('');
+    })
+    .catch((error) => {
+      setErrorMessage(error.message);
+    });
+
+    setSelectedVideo(null)
+    setSelectedCustomer(null)
+  }
+
+  return (
     <Router>
       <div className="App">
         <header className="App-header">
@@ -51,20 +65,29 @@ const App = () => {
           </li>
         </ul>
 
+        <div>
+          <CheckOut video={selectedVideo}
+                    customer={selectedCustomer}
+                    checkOutCallback={checkOut} />
+        </div>
+
+        <div>
+          <p>{ selectedVideo ? `Selected Video - ${selectedVideo.title }` : 'No video selected'}</p>
+          <p>{ selectedCustomer ? `Selected Customer - ${selectedCustomer }` : 'No customer selected'}</p>
+        </div>
+
         <Switch>
           <Route path="/search" component={Search}>
             <Search url={BASE_URL}
                     focus='videos'/>
           </Route>
           <Route path="/library" component={Library}>
-          <p>{ selectedVideo ? `Selected Video - ${selectedVideo.title}` : 'No video selected'}</p>
             <Library url={BASE_URL}
                        focus='videos/'
                        selectVideoCallback={chooseVideo}
                        selectedVideo={selectedVideo}/>
           </Route>
           <Route path="/customers" component={Customers}>
-            <p>Selected Customer - {selectCustomer}</p>
             <Customers url={BASE_URL}
                        focus='customers'
                        selectCustomerCallback={chooseCustomer}/>
@@ -80,7 +103,7 @@ const App = () => {
 
 export default App;
 
+
 function Home() {
   return <h2>Home</h2>;
 }
-
