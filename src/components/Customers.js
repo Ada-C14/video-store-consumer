@@ -3,15 +3,12 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import SingleCustomer from './SingleCustomer';
 
-// base url depents on the link of rails server
-const BASE_URL = 'http://localhost:3000/customers'
-
-const Customers = () => {
+const Customers = (props) => {
   const [customerList, setCustomerList] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
-    axios.get(`${BASE_URL}`)
+    axios.get(`${props.url}${props.focus}`)
       .then((response) => {
         const newCustomerList = response.data;
         if (newCustomerList.length !== 0) {
@@ -54,5 +51,10 @@ const Customers = () => {
     </div>
   )
 }
+
+Customers.propTypes = {
+  url:PropTypes.string.isRequired,
+  focus: PropTypes.string.isRequired,
+};
 
 export default Customers;

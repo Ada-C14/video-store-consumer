@@ -4,15 +4,12 @@ import axios from 'axios';
 import ApiVideo from './ApiVideo';
 
 
-// base url depents on the link of rails server
-const BASE_URL = 'http://localhost:3000/videos'
-
 const VideoList = (props) => {
   const [videoList, setVideoList] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
-    axios.get(`${BASE_URL}?query=${props.keyWord}`)
+    axios.get(`${props.url}${props.focus}?query=${props.keyWord}`)
       .then((response) => {
         const apiVideoList = response.data;
         if (apiVideoList.length !== 0) {
@@ -22,19 +19,16 @@ const VideoList = (props) => {
         }
       })
       .catch((error) => {
-        // Still need to handle errors
         setErrorMessage(error.message);
       });
   }, [props.keyWord]);
 
   const addVideo = (video) => {
-    axios.post(`${BASE_URL}`, video)
+    axios.post(`${props.url}${props.focus}`, video)
     .then((response) => {
-      // What should we do when we know the post request worked?
       setErrorMessage('');
     })
     .catch((error) => {
-      // What should we do when we know the post request failed?
       setErrorMessage(error.message);
     });
   }
@@ -73,6 +67,8 @@ VideoList.propTypes = {
       externalId: PropTypes.number.isRequired,
     },
   )),
+  url:PropTypes.string.isRequired,
+  focus: PropTypes.string.isRequired,
   keyWord: PropTypes.string.isRequired,
 };
 
