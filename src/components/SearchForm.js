@@ -23,7 +23,6 @@ const SearchForm = ({ onSubmitCallback }) => {
                 <input type="text" value={titleField} onChange={ onInputChange } />
                 <input type="submit" value="Search" />
             </form>
-            Search term is: {titleField}
         </div>
     );
 };
