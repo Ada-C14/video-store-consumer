@@ -23,13 +23,13 @@ const VideoCollection = (props) => {
 
     const videoComponents = videoList.map((video, i) => {
         return (
-          <div key={i}>
-            <Video
-              video={video} onSelectVideo={props.onSelectVideo}
-            />
-          </div>
+            <div key={i}>
+                <Video
+                    video={video} onSelectVideo={props.onSelectVideo} showButton={props.showButton}
+                />
+            </div>
         );
-      });
+    });
 
     return (
         <div className = "VideoCollection">

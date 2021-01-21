@@ -1,10 +1,18 @@
+body { 
+  padding-top: 65px; 
+}
+
+body, h1, h2, h3, h4, h5, h6 {
+  font-family: 'Raleway', sans-serif;
+}
+
 .App {
   text-align: center;
 }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 120px;
+  height: 500px;
 }
 
 .App-header {
@@ -23,13 +31,15 @@
   font-size: large;
 }
 
-nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+span {
+  color:aliceblue;
 }
 
 ul {
+  list-style-type: none;
+}
+
+li {
   list-style-type: none;
 }
 

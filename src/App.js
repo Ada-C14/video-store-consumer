@@ -6,6 +6,9 @@ import './App.css';
 import AddMovieForm from './components/AddMovieForm';
 import VideoCollection from './components/VideoCollection';
 import CustomerCollection from './components/CustomerCollection';
+import { Navbar, Nav, Form, Button, FormControl } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const API_URL_BASE = 'http://localhost:3000/';
 
@@ -19,10 +22,12 @@ const App = () => {
 
 
   const selectVideo = (title) => {
+    setErrorMessage('');
     setSelectedVideo(title);
   };
 
   const selectCustomer = (id, name) => {
+    setErrorMessage('');
     setSelectedCustomer({
       id: id,
       name: name,
@@ -37,12 +42,16 @@ const App = () => {
       setErrorMessage('Need to select a customer and video')
       return null
     }
-    console.log(selectedCustomer)
 
     axios.post(API_URL_BASE + 'rentals/' + selectedVideo + '/check-out?customer_id=' + selectedCustomer.id + '&due_date=' + today.toString())
     .then((response) => {
       console.log(response);
-      setErrorMessage('Checked out video successfully!')
+      setErrorMessage(`Checked out ${selectedVideo} successfully to ${selectedCustomer.name}!`);
+      setSelectedVideo(null);
+      setSelectedCustomer({
+        id: null,
+        name: 'none',
+      });
     })
     .catch((error) => {
       console.log(error);
@@ -50,48 +59,50 @@ const App = () => {
     });
   };
 
+  // setErrorMessage('')
+
     return (
 
       <Router>
       <div className="App">
-        <header className="App-header">
+        {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to Hollywood Video</h1>
-        </header>
-        { errorMessage ? <div><h2 className="error-msg">{errorMessage}</h2></div> : '' }
-        <p>Currently Selected Video: {selectedVideo}</p>
-        <p>Currently Selected Customer: {selectedCustomer.name}</p>
-        <button onClick={checkOut}>Check Out</button>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/videos">Videos</Link>
-            </li>
-            <li>
-              <Link to="/customers">Customers</Link>
-            </li>
-            <li>
-              <Link to="/add">Add a Video</Link>
-            </li>
-          </ul>
-        </nav>
+        </header> */}
+        <Navbar fixed='top' bg="dark" variant="dark">
+          <Nav className="mr-auto">
+            <Link to='/'>Home</Link>
+            <Link to='/videos'>Videos</Link>
+            <Link to='/customers'>Customers</Link>
+            <Link to='/add'>Add Movie</Link>
+          </Nav>
+          <span>Currently Selected Video: {selectedVideo}</span>
+          <span>Currently Selected Customer: {selectedCustomer.name}</span>
+          <Button variant="outline-info" onClick={checkOut}>Check Out</Button>
+          {/* <Form inline>
+            <FormControl type="text" placeholder="Search Movies" className="mr-sm-2" />
+            <Button variant="outline-info">Search</Button>
+          </Form> */}
+        </Navbar>
+      
 
-        <AddMovieForm />
+        { errorMessage ? <div><h2 className="error-msg">{errorMessage}</h2></div> : '' }
+
+
+        {/* <AddMovieForm /> */}
+        
         <Switch>
           <Route path="/videos">
-            <VideoCollection onSelectVideo={selectVideo}/>
+            <VideoCollection onSelectVideo={selectVideo} showButton='select'/>
           </Route>
           <Route path="/customers">
             <CustomerCollection onSelectCustomer={selectCustomer}/>
           </Route>
+          <Route path="/add">
+            <AddMovieForm showButton='add'/> 
+          </Route>
           <Route path="/">
             <Home />
-          </Route>
-          <Route path="/add">
-            {/* <AddMovieForm /> */}
           </Route>
         </Switch>
       </div>
@@ -100,11 +111,9 @@ const App = () => {
 }
 
 function Home() {
-  return <h2>Home</h2>;
+  return (
+    <img src={logo} className="App-logo" alt="logo" />
+  );
 }
-
-// function Customer() {
-//   return <h2>Customers</h2>;
-// }
 
 export default App;
