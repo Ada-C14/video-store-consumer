@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Customers from './components/Customers'
+import Videos from './components/Videos'
 import {
   BrowserRouter as Router,
   Switch,
@@ -36,13 +38,14 @@ export default function App() {
             <Customers />
           </Route>
           <Route path="/library">
-            <Library />
+            {/* note that library and videos names don't match*/}
+            <Videos />
           </Route>
           <Route path="/search">
-            <Search />
+            {/* <Search /> */}
           </Route>
           <Route path="/">
-            <Home />
+            {/* <Home /> */}
           </Route>
         </Switch>
       </div>
@@ -50,21 +53,22 @@ export default function App() {
   );
 }
 
-function Home() {
-  return <h2>Home</h2>;
-}
+// function Home() {
+//   return <h2>Home</h2>;
+// }
 
-function Customers() {
-  return <h2>Customers</h2>;
-}
+// // re-named to customer singular (problem with import Customers otherwise
+// function Customer() {
+//   return <h2>Customers</h2>;
+// }
 
-function Search() {
-  return <h2>Search</h2>;
-}
+// function Search() {
+//   return <h2>Search</h2>;
+// }
 
-function Library() {
-  return <h2>Library</h2>;
-}
+// function Library() {
+//   return <h2>Library</h2>;
+// }
 
 // class App extends Component {
 //   render() {
