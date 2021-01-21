@@ -26,6 +26,7 @@ const VideoList = (props) => {
         });
     } else {
       setVideoList([])
+      setErrorMessage(null)
     }
   }, [props.keyWord]);
 
