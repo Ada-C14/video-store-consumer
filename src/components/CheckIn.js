@@ -9,6 +9,7 @@ const CheckIn = (props) => {
     props.checkInCallback({
       customer: props.customer,
       video: props.video,
+      returned: true
     });
   }
 
@@ -24,8 +25,8 @@ const CheckIn = (props) => {
 }
 
 CheckIn.propTypes = {
-  customer:PropTypes.number.isRequired,
-  video: PropTypes.string.isRequired,
+  customer:PropTypes.number,
+  video: PropTypes.object,
   checkInCallback: PropTypes.func.isRequired,
 };
 
