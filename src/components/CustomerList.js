@@ -50,7 +50,6 @@ const CustomerList = (props) => {
                     { customers }
                 </tbody>
             </Table>
-            {/* <main> {customers} </main> */}
         </div>
     )
 }

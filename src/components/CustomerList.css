@@ -10,7 +10,7 @@
 
 /* table  */
 
-.customer-table__header-row> th {
+.customer-table__header-row th {
     font-family: 'Gothic A1', sans-serif;
     font-weight: 100;
     color: #0e1413;
@@ -20,8 +20,10 @@
     font-family: 'Gothic A1', sans-serif;
     font-weight: lighter;
     background-color: #9fb2c2;
+    width: 100%;
+    text-align: center;
 }
 
 .customer-table__table-row:hover {
-    background-color: #34424d;
+    background-color: #a8ec0a;
 }
