@@ -2,9 +2,11 @@ import React, { useEffect, useState} from 'react';
 import axios from 'axios';
 import Video from './Video'; 
 import API from '../ApiSupport'
+import { Link } from 'react-router-dom';
 
 
-const Library = () => {
+
+const Library = (props) => {
   const [videoList, setVideoList] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -21,6 +23,8 @@ const Library = () => {
 
   const videoComponents = videoList.map((video) => {
     return (
+      errorMessage == null ?
+      <Link onClick={() => props.onClickVideo(video)}>
         <Video 
             id={video.id}
             title={video.title}
@@ -28,7 +32,8 @@ const Library = () => {
             releaseDate={video.release_date} 
             imageUrl={video.image_url}
             externalId={video.external_id}
-            />
+            /> </Link>
+            : errorMessage
         )
   })
 

@@ -16,6 +16,13 @@ import Customer from './components/Customer';
 const App = () => {
   const [selectedCustomer, setSelectedCustomer] = useState(null);
   const [selectedVideo, setSelectedVideo] = useState(null);
+  const onClickCustomer = (customer) => {
+    setSelectedCustomer(customer);
+  }
+
+  const onClickVideo = (video) => {
+    setSelectedVideo(video);
+  }
 
   return (
     <Router>
@@ -42,7 +49,7 @@ const App = () => {
          
             
              {selectedCustomer !== null ? `${selectedCustomer.name}` : `Select a customer` }
-            
+             {selectedVideo !== null ? `${selectedVideo.title}` : `Select a video` }
           </span>
 
         {/* A <Switch> looks through its children <Route>s and
@@ -52,13 +59,13 @@ const App = () => {
             <Customer />
           </Route>
           <Route path="/customers" >
-            <CustomerList onClickCustomer={setSelectedCustomer} />
+            <CustomerList onClickCustomer={onClickCustomer} />
           </Route>
           <Route path="/search">
             <Search />
           </Route>
           <Route path="/library">
-            <Library />
+            <Library onClickVideo={onClickVideo}/>
           </Route>
           <Route path="/">
             <Home />

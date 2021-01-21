@@ -31,7 +31,7 @@ const CustomerList = (props) => {
       const customerComponents = customerList.map((customer) => {
         return (
           errorMessage == null ?
-          <Link onClickCustomer={props.selectCustomer}>
+          <Link onClick={() => props.onClickCustomer(customer)}>
             <Customer 
                 key={customer.id}
                 id={customer.id}
