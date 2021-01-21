@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-const Videos = ( {videoURL} ) => {
+const Videos = ( {videoURL, newVideo} ) => {
   const [videoList, setvideoList] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
+    if (newVideo !== undefined) {
+      setvideoList(newVideo);
+    }
     axios.get(videoURL)
       .then((response) => {
         const videos = response.data;

@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 const SearchForm = ({ getVideo }) => {
-  const [video, setVideo] = useState('');
   const initState = {
     title: ''
   }
+  const [video, setVideo] = useState(initState);
 
   const onInputChange = (event) => {
     const externalVideo = event.target.value
