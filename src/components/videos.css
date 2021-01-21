@@ -1,0 +1,60 @@
+.video {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px; 
+}
+
+/* Thanks: https://codepen.io/maheshambure21/pen/GgVbVW */
+video.effect-chico img {
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	-webkit-transform: scale(1.12);
+	transform: scale(1.12);
+}
+
+video.effect-chico:hover img {
+	opacity: 0.5;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
+
+video.effect-chico figcaption {
+	padding: 3em;
+}
+
+video.effect-chico figcaption::before {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	bottom: 30px;
+	left: 30px;
+	border: 1px solid #fff;
+	content: '';
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}
+
+video.effect-chico figcaption::before,
+video.effect-chico p {
+	opacity: 0;
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+}
+
+video.effect-chico h2 {
+	padding: 20% 0 20px 0;
+}
+
+video.effect-chico p {
+	margin: 0 auto;
+	max-width: 200px;
+	-webkit-transform: scale(1.5);
+	transform: scale(1.5);
+}
+
+video.effect-chico:hover figcaption::before,
+video.effect-chico:hover p {
+	opacity: 1;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
