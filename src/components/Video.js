@@ -5,14 +5,13 @@ import PropTypes from 'prop-types';
 
 const Video = (props) => {
     return (
-        <div>
+        <div className="video">
             <ul>
-        <h3>{props.title}</h3>
-        
-        {props.overview}
-        <p>Release date: {props.release_date}</p>
-        {/* <a href={props.image_url}></a> */}
-        </ul>
+                <h3>{props.title}</h3>
+                <img src={props.image_url} alt="video cover"/>
+                <p>{props.overview}</p>
+                <p>Release date: {props.release_date}</p>
+            </ul>
         </div>
         );
     };
@@ -28,11 +27,11 @@ Video.propTypes = {
 export default Video;
 
 
-/**
- * SearchedMovie.propTypes = {
-    movie: PropTypes.object
-    selected
-    short
+// /**
+//  * SearchedMovie.propTypes = {
+//     movie: PropTypes.object
+//     selected
+//     short
 
-}
- */
+// }
+//  */

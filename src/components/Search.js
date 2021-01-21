@@ -45,7 +45,6 @@ const Search = (props) => {
     })
     return (
         <div>
-        <h3>Search page</h3>
         <SearchForm onSubmitCallback={searchVideo} />
         {errorMessage ? <div>{errorMessage}</div> : '' }
         {videosComponentsList}
