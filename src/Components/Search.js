@@ -1,8 +1,8 @@
 import React, { Component, useState, useEffect }  from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import Video from './Video.js'
 
-const MOVIES_SEARCH = 'https://api.themoviedb.org/3/search/movie'
 const MOVIES_RAILS = 'http://localhost:3000/videos'
 
 const Search = (props) => {
@@ -17,21 +17,26 @@ const Search = (props) => {
 
     // confirm that the video was added by going into our library page 
 
-    console.log(process.env.REACT_APP_API_KEY)
-    const API_KEY =`${process.env.REACT_APP_API_KEY}`
 
+    const [title, setTitle] = useState('');
+    const [searchResult, setSearchResult] = useState([]);
 
-    const [title, setTitle] = useState('')
-    const [searchResult, setSearchResult] = useState({
-        title: '',
-        overview: '',
-        releaseDate: '',
-        posterURL: '',
-        
-    })
+    const resultList = (arrayResults) => {
+        let results = []
+        for (const video of results) {
+            let vid = <Video id = {video.id} 
+            title = {video.title} 
+            overview = {video.overview} 
+            releaseDate = {video.release_date}
+            imageUrl = {video.image_url}
+            externalId = {video.external_id}
+            mode = 'addVideo'
+            />
+        results.push(vid);
+        }
 
-    const [errorMsg, setErrorMsg] = useState('')
-
+        return results;
+    }
     const onSearchChange = (event) => {
         setTitle(event.target.value)
     }
@@ -51,10 +56,12 @@ const Search = (props) => {
                 //     releaseDate: results.release_date,
                 //     posterURL: results.poster_path
                 // })
+                setSearchResult(res.data);
+                console.log(searchResult)
 
             })
             .catch((err) => {
-                setErrorMsg(err)
+                props.setError(err)
 
             })
         
@@ -73,11 +80,8 @@ const Search = (props) => {
                 <button>Search title</button>
             </form>
             <section>
-                <h2>{searchResult.title}</h2>
-                <p>{searchResult.overview}</p>
-                <p>{searchResult.releaseDate}</p>
+                {resultList(searchResult)}
             </section>
-            <button>Add to Libary</button>
         </div>
         
     )

@@ -87,7 +87,7 @@ export default function App() {
             <Library url = {BASE_URL} curVid = {getCurrentVideo} setError = {setErrorMessage}/>
           </Route>
           <Route path="/search">
-            <Search />
+            <Search setError = {setErrorMessage}/>
           </Route>
           <Route path="/">
             <Home />

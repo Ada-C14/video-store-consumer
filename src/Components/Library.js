@@ -23,11 +23,6 @@ const Library = (props) => {
         });
     }, [props]);
 
-
-    const selectVideo = () => {
-        props.curVid(props.id, props.title, props.imageUrl);
-    }
-
     // create all videos into components
     const allVideos = (vidList) => {
         let newVidList = []
@@ -38,12 +33,10 @@ const Library = (props) => {
                             releaseDate = {video.release_date}
                             imageUrl = {video.image_url}
                             externalId = {video.external_id}
+                            clickButton = {props.curVid}
+                            mode = 'library'
                             />
-            newVidList.push( <article className = 'video'>
-                {vid}
-                <button className = 'video__select' onClick = {selectVideo}> select video </button>
-                </article>
-                );
+            newVidList.push(vid);
         }
 
         return newVidList;
