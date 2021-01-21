@@ -26,20 +26,21 @@ const Search = (props) => {
 
   return (
     <div>
-      <form onSubmit={onFormSubmit}><div>
-        <label htmlFor="searchTerm">Search</label>
-        <input
+      <form onSubmit={onFormSubmit} ><div>
+        <h1>Search video Database </h1>
+        <label htmlFor="searchTerm"></label></div>
+        <input className='search-bar'
           name="searchTerm"
           id="searchTerm"
           onChange={onInputChange}
           value={formFields.searchTerm}
           placeholder="Enter Video Title"
         />
-      <input
+      <input 
         type="submit"
         name="Submit"
       />
-      </div>
+      
     </form>
     {props.searchResult.map( (result, id) => (
       <SearchResult 
