@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState,useEffect } from 'react';
-import Video from './Video'
 import './Library.css';
+import SelectableVideo from './SelectableVideo';
 
 const Library = (props) => {
 
@@ -23,13 +23,7 @@ const Library = (props) => {
     }, []);
 
     const movieComponents = videos.map((moviesInfo) => {
-        return (< Video
-            id={moviesInfo.id}
-            title={moviesInfo.title}
-            image_url={moviesInfo.image_url}
-            key={moviesInfo.id}
-            onSelectedMovie={props.onSelectedMovie}
-            />)
+        return (<SelectableVideo video={moviesInfo} key={moviesInfo.id} onSelectVideo={props.onSelectVideo}/>)
     })
 
     return (

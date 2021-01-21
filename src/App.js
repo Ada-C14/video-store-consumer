@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 // import './App/css';
 import Nav from './components/Nav';
 import Selected from './components/Selected';
@@ -11,23 +11,33 @@ import Customers from './components/Customers';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 
-class App extends Component {
-  render() {
-    return (
-      <Router>
-        <div className="App">
-          <Nav />
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/search" component={Search} />
-            <Route path="/library" component={Library} />
-            <Route path="/customers" component={Customers} />
-            
-          </Switch>
-        </div>
-      </Router>
-    );
+const App  = () => {
+  // State for selected customer
+  
+  // State for selected video
+  const [selectedVideo, setSelectedVideo] = useState();
+
+  // Function to set selected video, and pass the function as a callback to library
+  const selectVideo = (video) => {
   }
+
+  return (
+    <Router>
+      <div className="App">
+        <Nav />
+        <Selected />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/search" component={Search} />
+          <Route path="/library" component={Library} />
+          {/* <Route exact path="/library" render={() => <Library onSelectVideo=/>}/> */}
+          <Route path="/customers" component={Customers} />
+          {/* <Route exact path="/customers" render={() => <Customers />}/> */}
+        </Switch>
+      </div>
+    </Router>
+  );
+
 }
 
 export default App;
