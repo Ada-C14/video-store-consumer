@@ -29,26 +29,41 @@ const Videos = () => {
 
   const generateVideos = (videos) => {
     let videoComponentArray = [];
-
-  for (const video of videos) 
-
+  for (const video of videos)
   {
     videoComponentArray.push(
       <Video
           key={video.id}
           id={video.id}
           title={video.title}
+          overview={video.overview}
+          releaseDate={video.release_date}
+          imageUrl={video.image_url}
+          externalId={video.externalId}
       />
     )
   }
-
     return videoComponentArray;
-  }; 
+  };
 
     return (
       <div>
-        Video List
-        {generateVideos(videoList)}
+        <h1><em>Video List</em></h1>
+        <section className="container w-75">
+          <table className="table table-hover">
+            <thead>
+              <tr className="table-primary">
+                <th scope="col">Poster</th>
+                <th scope="col">Title</th>
+                <th scope="col">Release Date</th>
+                <th scope="col">Select For Rental?</th>
+              </tr>
+            </thead>
+            <tbody>
+                {generateVideos(videoList)}
+            </tbody>
+          </table>
+        </section>
       </div>
     );
   }

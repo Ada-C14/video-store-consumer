@@ -10,7 +10,8 @@ const Customers = (props) => {
   const [customersList, setCustomersList] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
-  const CUSTOMER_URL = `${props.baseUrl}/customers`
+  const CUSTOMER_URL = 'http://localhost:3000/customers'
+  // const CUSTOMER_URL = `${props.baseUrl}/customers` //this doesn't work yet??
 
   useEffect(() => {
     axios.get(CUSTOMER_URL)
@@ -29,26 +30,46 @@ const Customers = (props) => {
 
   const generateCustomers = (customers) => {
     let customerComponentArray = [];
-
-  for (const customer of customers) 
-
-  {
-    customerComponentArray.push(
-      <Customer
-          key={customer.id}
-          id={customer.id}
-          name={customer.name}
-      />
-    )
-  }
-
+    for (const customer of customers)
+    {
+      customerComponentArray.push(
+        <Customer
+            key={customer.id}
+            id={customer.id}
+            name={customer.name}
+            registeredAt={customer.registered_at}
+            address={customer.address}
+            city={customer.city}
+            state={customer.state}
+            postalCode={customer.postal_code}
+            phone={customer.phone}
+            accountCredit={customer.account_credit}
+            videosCheckedOutCount={customer.videos_checked_out_count}
+        />
+      )
+    }
     return customerComponentArray;
-  }; 
+  };
 
     return (
       <div>
-        Customer List
-        {generateCustomers(customersList)}
+        <h1><em>Customer List</em></h1>
+        <section className="container w-75">
+          <table className="table table-hover">
+            <thead>
+              <tr className="table-primary">
+                <th scope="col">Name</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Account Credit</th>
+                <th scope="col">Current Rentals</th>
+                <th scope="col">Select For Rental?</th>
+              </tr>
+            </thead>
+            <tbody>
+              {generateCustomers(customersList)}
+            </tbody>
+          </table>
+        </section>
       </div>
     );
   }
