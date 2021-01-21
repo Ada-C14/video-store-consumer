@@ -9,9 +9,11 @@ import {
 import Home from './components/Home';
 import Library from './components/Library';
 import Search from './components/Search';
-import Customers from './components/Customers';
+import CustomerList from './components/CustomerList';
+import Customer from './components/Customer';
 
-const BASE_URL = 'http://localhost:3000/';
+
+// const BASE_URL = 'http://localhost:3000/';
 
 class App extends Component {
   render() {
@@ -38,14 +40,17 @@ class App extends Component {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/customers">
-            <Customers url={BASE_URL} />
+        <Route path="/customers/:id" component={Customer}>
+          <Customer />
+          </Route>
+          <Route path="/customers" >
+            <CustomerList />
           </Route>
           <Route path="/search">
             <Search />
           </Route>
           <Route path="/library">
-            <Library url={BASE_URL} />
+            <Library />
           </Route>
           <Route path="/">
             <Home />

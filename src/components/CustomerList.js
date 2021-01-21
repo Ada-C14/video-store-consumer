@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react'; 
-import axios from 'axios'; 
+// import axios from 'axios';
+import API from '../ApiSupport'
 import Customer from './Customer';
 
-const Customers = (props) => {
+const Customers = () => {
+   // initially empty but changes during component's life cycle when API is called
     const [customerList, setCustomerList] = useState([]);
     const [errorMessage, setErrorMessage] = useState(null);
 
     useEffect(() => {
-        axios.get(`${props.url}customers`)
+        API.get(`customers`)
           .then((response) => {
             const apiCustomerList = response.data; 
             setCustomerList(apiCustomerList);
@@ -19,6 +21,7 @@ const Customers = (props) => {
     
       const customerComponents = customerList.map((customer) => {
         return (
+          errorMessage == null ?
             <Customer 
                 key={customer.id}
                 id={customer.id}
@@ -31,7 +34,8 @@ const Customers = (props) => {
                 name={customer.name}
                 videosCheckedOutCount={customer.videos_checked_out_count}
                 />
-            )
+            : errorMessage
+          )
       })
     
         return (
