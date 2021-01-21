@@ -41,6 +41,12 @@ const Search = (props) => {
         setTitle(event.target.value)
     }
 
+    // to register enter key with submit button
+    const enterKey = (event) => {
+        if (event.key === 'Enter') {
+            onSearchSubmit(event);
+        }
+    }
     const onSearchSubmit = (event) => {
         event.preventDefault();
 
@@ -73,7 +79,7 @@ const Search = (props) => {
     return (
         <div>
             <h1>Search</h1>
-            <form onSubmit={onSearchSubmit}>
+            <form onSubmit={onSearchSubmit} onKeyPress = {enterKey}>
                 <label> Search:
                     <input type='text' placeholder='title' value={title} onChange={onSearchChange}/>
                 </label>
