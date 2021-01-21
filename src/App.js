@@ -4,7 +4,6 @@ import MovieLibrary from './components/MovieLibrary.js';
 import MovieSearchBar from './components/MovieSearchBar.js';
 import MovieSearchResults from './components/MovieSearchResults.js';
 import Homepage from './components/Homepage.js';
-import Rental from './components/Rental.js';
 import axios from 'axios';
 import {
   BrowserRouter as Router,
@@ -55,15 +54,6 @@ export default function App() {
   return (
     <Router>
       <div>
-        {/* <section className='rental body'>
-          <Rental {...{movie, customer, rentMovie}} />
-          <div className='message wrap'>
-            <p>{message}</p>
-          </div>
-        </section> */}
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/library">
             <MovieLibrary 
