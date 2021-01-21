@@ -106,16 +106,20 @@ export default function App() {
           </nav>
         </header>
         <section className='checkout__bar'> 
+          <article className='checkout__bar-rentals'>
+            <h1>Rentals</h1>
+            {currentCustomer.name && currentVideo.title ? <button onClick={onCheckOut} className='checkout__select'>Check-out</button> : null }
+          </article>
           <article>
             <h1>current customer</h1>
-            <h2>{currentCustomer.name ? currentCustomer.name : 'none selected'}</h2> 
+            <h4>{currentCustomer.name ? currentCustomer.name : 'none selected'}</h4> 
           </article>
           <article>
             <h1>current video</h1>
-            <h2>{currentVideo.title ? currentVideo.title : 'none selected'}</h2> 
+            <h4>{currentVideo.title ? currentVideo.title : 'none selected'}</h4> 
             <img src = {currentVideo.imgUrl} alt = {`Poster for ${currentVideo.title}`}/>         
           </article>
-          {currentCustomer.name && currentVideo.title ? <button onClick={onCheckOut} className='checkout__select'>Check-out</button> : null }
+          
         </section>
         <article className = 'validation-errors-display'>
                 <h3>{errorMessage ? 'errors detected!' : ''}</h3>

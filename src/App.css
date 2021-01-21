@@ -2,10 +2,10 @@
   text-align: center;
 }
 
-.App-logo {
+/* .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
-}
+} */
 
 .App-header {
   background-color: #222;
@@ -78,3 +78,15 @@
   background-color: #3f3f3f; 
 }
 
+.checkout__bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  background-color: #ededed;
+}
+
+/* .checkout__bar-rentals {
+  background-image: url('rentals-movie.png');
+  background-repeat: no-repeat;
+} */
