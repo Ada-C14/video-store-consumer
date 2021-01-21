@@ -30,16 +30,16 @@ const App = () => {
   };
 
   const checkOut = () => {
+    const today = new Date();
+    today.setDate(today.getDate() + 7);
+
     if (selectedCustomer === null || selectedVideo === null) {
       setErrorMessage('Need to select a customer and video')
       return null
     }
+    console.log(selectedCustomer)
 
-    axios.post(API_URL_BASE + 'rentals/' + selectedVideo + '/check-out',
-    JSON.stringify({
-      customer: selectedCustomer.id,
-      due_date: new Date() + 7
-    }))
+    axios.post(API_URL_BASE + 'rentals/' + selectedVideo + '/check-out?customer_id=' + selectedCustomer.id + '&due_date=' + today.toString())
     .then((response) => {
       console.log(response);
       setErrorMessage('Checked out video successfully!')
@@ -62,20 +62,22 @@ const App = () => {
         <p>Currently Selected Video: {selectedVideo}</p>
         <p>Currently Selected Customer: {selectedCustomer.name}</p>
         <button onClick={checkOut}>Check Out</button>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/videos">Videos</Link>
-          </li>
-          <li>
-            <Link to="/customers">Customers</Link>
-          </li>
-          <li>
-            <Link to="/add">Add a Video</Link>
-          </li>
-        </ul>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/videos">Videos</Link>
+            </li>
+            <li>
+              <Link to="/customers">Customers</Link>
+            </li>
+            <li>
+              <Link to="/add">Add a Video</Link>
+            </li>
+          </ul>
+        </nav>
 
         <AddMovieForm />
         <Switch>

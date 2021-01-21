@@ -8,13 +8,11 @@ const Customer = (props) => {
     <ul className="customer-row">
         <div class="customer-text">
             <li><h1>{props.customer.name}</h1></li>
-            <li>{props.customer.address}</li>
-            <li>{props.customer.city}</li>
-            <li>{props.customer.state}</li>
-            <li>{props.customer.postal_code}</li>
-            <li>{props.customer.phone}</li>
-            <li>{props.customer.account_credit}</li>
-            <li>{props.customer.videos_checked_out_count}</li>
+            <li><strong>Address: </strong>{props.customer.address}</li>
+            <li>{props.customer.city}, {props.customer.state} {props.customer.postal_code}</li>
+            <li><strong>Phone: </strong>{props.customer.phone}</li>
+            <li><strong>Account Credit: </strong>${props.customer.account_credit}</li>
+            <li><strong>Videos Checked Out: </strong>{props.customer.videos_checked_out_count}</li>
             <li><button onClick={() => props.onSelectCustomer(props.customer.id, props.customer.name)}>Select Customer</button></li>
         </div>
     </ul>

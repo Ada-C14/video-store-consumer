@@ -22,8 +22,8 @@ const Video = (props) => {
       <ul className="video-row">
         <div class="movie-text">
           <li><h1>{props.video.title}</h1></li>
-          <li>{props.video.overview}</li>
-          <li>{props.video.release_date}</li>
+          <li><strong>Overview: </strong>{props.video.overview}</li>
+          <li><strong>Release Date: </strong>{props.video.release_date}</li>
           {/* <li>
             <form onSubmit={onAddVideo}>
             <div>
@@ -33,10 +33,10 @@ const Video = (props) => {
             </form>
       </li> */}
           <li><button onClick={onAddVideo}>Add to Library</button></li>
-          <li><button onClick={() => props.onSelectVideo(props.video.title)}>Select this Video</button></li>
+          <li><button onClick={()=>props.onSelectVideo(props.video.title)}>Select this Video</button></li>
           { status ? <div><h2 className="video-status">{status}</h2></div> : '' }
         </div>
-        <li class="movie-image"><img src={props.video.image_url} alt={`the movie ${props.video.title}`} /></li>
+        <li class="movie-image"><img src={props.video.image_url} alt={`the movie ${props.title}`} /></li>
       </ul>
   )
 }
