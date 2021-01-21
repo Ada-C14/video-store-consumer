@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import VideoList from './components/VideoList';
+import SearchForm from './components/SearchForm';
+
 // import { BrowserRouter } from 'react-router-dom';
 import { NavLink, Switch, Route, Link } from 'react-router-dom';
 import CustomerCollection from './components/CustomerCollection';
@@ -19,20 +21,38 @@ const App = () => {
   const [videoList, setVideoList] = useState([]);
   const [customerList, setCustomerList] = useState(customers);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [videoResults, setVideoResults] = useState([]);
 
   useEffect(() => {
     axios
       .get(API_URL_BASE)
       .then((response) => {
         const apiVideoList = response.data;
-        console.log(apiVideoList);
+        // console.log(apiVideoList);
         setVideoList(apiVideoList);
       })
       .catch((error) => {
         setErrorMessage(error.message);
-        console.log(error.message);
+        // console.log(error.message);
       });
   }, []);
+
+  const searchVideo = (video) => {
+    // console.log(video);
+    axios
+      .get(`${API_URL_BASE}/${video}`)
+      .then((response) => {
+        // What should we do when we know the post request worked?
+        const videoDetails = response.data;
+        console.log(videoDetails);
+        setVideoResults(videoDetails);
+        setErrorMessage('');
+      })
+      .catch((error) => {
+        // What should we do when we know the post request failed?
+        setErrorMessage(error.message);
+      });
+  };
 
   return (
     <main>
@@ -73,6 +93,17 @@ const App = () => {
         render={(props) => (
           <CustomerCollection {...props} customerList={customerList} />
         )}
+      />
+      <Route
+        path={'/search'}
+        render={(props) => (
+          <SearchForm
+            {...props}
+            videoList={videoList}
+            searchVideoCallback={searchVideo}
+            videoResults={videoResults}
+          />
+        )} //added this
       />
       <footer>Copyright</footer>
     </main>
