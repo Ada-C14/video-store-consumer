@@ -7,20 +7,20 @@ import SearchForm from './components/SearchForm';
 import { NavLink, Switch, Route, Link } from 'react-router-dom';
 import CustomerCollection from './components/CustomerCollection';
 import NavBar from './components/NavBar';
-import { Container, Row, Col } from 'react-bootstrap';
+import Cart from './components/Cart';
+import { Container, Row, Col, Alert} from 'react-bootstrap';
+import './App.css';
+import { useLocation } from 'react-router-dom'
+
 
 const API_URL_BASE = 'http://localhost:3000/videos';
 
-const customers = [
-  { name: 'Lisa', email: 'lisa@ada.org', phone: '321-123-1234' },
-  { name: 'Jessica', email: 'jessica@lovelace.com', phone: '432-432-4321' },
-  { name: 'Zoe', email: 'zoe@summerday.com', phone: '987-654-4321' },
-];
-
 const App = () => {
   const [videoList, setVideoList] = useState([]);
-  const [customerList, setCustomerList] = useState(customers);
+  const [customerList, setCustomerList] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [selectedCustomer, setSelectedCustomer] = useState('');
+  const [selectedVideo, setSelectedVideo] = useState('');
   const [videoResults, setVideoResults] = useState([]);
 
   useEffect(() => {
@@ -33,7 +33,38 @@ const App = () => {
       .catch((error) => {
         setErrorMessage(error.message);
       });
+
+      axios
+      .get('http://localhost:3000/customers')
+      .then((response) => {
+        const apiCustomerList = response.data;
+        console.log(apiCustomerList);
+        setCustomerList(apiCustomerList);
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+        console.log(error.message);
+      });
   }, []);
+
+
+  const selectCustomer = (customer) => {
+    setSelectedCustomer(customer);
+  };
+  const selectVideo = (video) => {
+    setSelectedVideo(video);
+  };
+
+  const checkout = (customer, video) => {
+    axios
+    .post(`http://localhost:3000/rentals/${video.title}/check-out`, customer.id)
+    .then((response) => {
+      setErrorMessage(`Checkout ${video.title} to ${customer.name}.`)
+    })
+    .catch((error) => {setErrorMessage(error.message)})
+
+    setSelectedCustomer('');
+    setSelectedVideo('');
 
   const searchVideo = (query) => {
     axios
@@ -50,6 +81,7 @@ const App = () => {
 
   const selectVideo = (video) => {
     setVideoList([...videoList, video]);
+
   };
 
   return (
@@ -60,38 +92,41 @@ const App = () => {
         </h1>
       </header>
       <div>
-        <p>{errorMessage}</p>
+        <Alert variant='info'>{errorMessage}</Alert>
       </div>
       <nav>
-        <NavBar />
+        <NavBar location={useLocation()}/>
       </nav>
-      <Route
-        exact={true}
-        path={'/'}
-        render={() => (
-          <div>
-            <h2>Latest</h2>
-            <Container>
-              <Row>
-                <Col>Video 1 with pic</Col>
-                <Col>video 2 with pic</Col>
-                <Col>video 3 with pic</Col>
-              </Row>
-            </Container>
-          </div>
-        )}
-      />
 
-      <Route
-        path={'/library'}
-        render={(props) => <VideoList {...props} videoList={videoList} />}
-      />
-      <Route
-        path={'/customers'}
-        render={(props) => (
-          <CustomerCollection {...props} customerList={customerList} />
-        )}
-      />
+      <Container>
+        <Row>
+          <Col>
+            <Route
+              exact={true}
+              path={'/'}
+              render={() => (
+                <h2>Welcome to Aloha Video Store!</h2>
+              )}
+            />
+
+            <Route
+              path={'/library'}
+              render={(props) => <VideoList {...props} videoList={videoList} selectedVideo={selectedVideo} onClickSelect={selectVideo} />}
+            />
+            <Route
+              path={'/customers'}
+              render={(props) => (
+                <CustomerCollection {...props} customerList={customerList} selectedCustomer={selectedCustomer} onClickSelect={selectCustomer} />
+              )}
+            />
+          </Col>
+          <Col md="auto"></Col>
+          <Col xs lg="2">
+            <Cart customer={selectedCustomer} video={selectedVideo} onClickCheckout={checkout} />
+          </Col>
+        </Row>
+      </Container>
+
       <Route
         path={'/search'}
         render={(props) => (
@@ -104,6 +139,7 @@ const App = () => {
           />
         )}
       />
+
       <footer>Copyright</footer>
     </main>
   );
