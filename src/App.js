@@ -8,6 +8,7 @@ import {
 
 import Library from './components/Library'
 import Customers from './components/Customers'
+import Search from './components/Search'
 import './App.css';
 
 const App = () => {
@@ -32,6 +33,9 @@ const App = () => {
           <li>
             <Link to="/customers">Customers</Link>
           </li>
+          <li>
+            <Link to="/search">Search</Link>
+          </li>
         </ul>
         <span>
           Selected Video: 
@@ -50,6 +54,9 @@ const App = () => {
         </Route>
         <Route path="/">
           <Home />
+        </Route>
+        <Route path='/search'>
+          <Search />
         </Route>
       </Switch>
     </div>
