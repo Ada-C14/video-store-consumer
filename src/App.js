@@ -27,13 +27,11 @@ export default function App() {
     setSelectedCustomer(customer)
   }
   
-  
-  
-  
-  
   return (
     <Router>
       <div>
+        { selectedVideo && selectedVideo.title}
+        { selectedCustomer && selectedCustomer.name}
         <nav>
           <ul>
             <li>
@@ -55,11 +53,11 @@ export default function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/customers">
-            <Customers />
+            <Customers onCustomerSelected={onCustomerSelected}/>
           </Route>
           <Route path="/library">
             {/* note that library and videos names don't match*/}
-            <Videos videoURL={VIDEO_URL} />
+            <Videos videoURL={VIDEO_URL} onVideoSelected={onVideoSelected}/>
           </Route>
           <Route path="/search">
             <Search videoURL={VIDEO_URL} />
