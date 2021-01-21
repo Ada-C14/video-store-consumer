@@ -34,7 +34,7 @@ export default function App() {
 
   // state variables
   const [videoList, setVideoList] = useState([]);
-  const alert = useAlert()
+  const alert = useAlert();
 
   // get all videos 
   useEffect(() => {
