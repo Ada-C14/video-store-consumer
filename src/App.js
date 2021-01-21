@@ -31,7 +31,8 @@ const App = () => {
     <Router>
       <div>
         <header className="App-header">
-          <nav>
+          <h1 className="storename">Video Store</h1>
+          <nav className="nav"> 
             <ul>
               <li>
                 <Link to="/">Home</Link>
