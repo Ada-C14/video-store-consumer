@@ -6,10 +6,10 @@ import PropTypes from 'prop-types';
 const Customer = (props) => {
     return (
         <div className="customer">
-            {/* <ClickToSelect containerElement="div"> */}
+            {/* <ClickToSelect containerElement="div">
                 <h5>{props.name}</h5>
-            {/* </ClickToSelect> */}
-            
+            </ClickToSelect>
+             */}
         </div>
     )
 }

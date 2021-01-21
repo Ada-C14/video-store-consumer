@@ -10,6 +10,10 @@ import VideoLibrary from './components/VideoLibrary';
 import Customers from './components/Customers';
 
 import './App.css';
+<<<<<<< HEAD
+=======
+import Customers from './components/Customers';
+>>>>>>> aac2a85f2c06a122aa78c48c412d25b1107ece48
 
 const App = () => {
   const API_BASE_URL = 'http://localhost:3000';
