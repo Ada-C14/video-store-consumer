@@ -86,6 +86,7 @@ export default function App() {
     .catch((error) => {
       console.log(error);
       setErrorMessage([error.message.toLowerCase(), 'rental failed - please check inventory and that customer and video are valid']);
+      alert.show(`${errorMessage}`)
     });
 
     setVideo({id: NaN, title: '', imgUrl: 'favicon.ico'})
@@ -96,22 +97,28 @@ export default function App() {
   return (
     <Router>
       <div>
-        <nav className='navbar'>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/search">Search</Link>
-            </li>
-            <li>
-              <Link to="/library">Video Library</Link>
-            </li>
-            <li>
-              <Link to="/customers">Customer List</Link>
-            </li>
-          </ul>
-        </nav>
+        <header>
+          <nav className='navbar'>
+            {/* <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/search">Search</Link>
+              </li>
+              <li>
+                <Link to="/library">Video Library</Link>
+              </li>
+              <li>
+                <Link to="/customers">Customer List</Link>
+              </li>
+            </ul> */}
+            <a class="active" href="/">Blockbusted Video Store</a>
+            <a href="/search">Search</a>
+            <a href="/library">Video Library</a>
+            <a href="/customers">Customer List</a>
+          </nav>
+        </header>
         <section> 
           <article>
             <h1>current customer</h1>
