@@ -3,10 +3,7 @@ import Moment from 'react-moment';
 import { Button } from 'react-bootstrap'
 import './Video.css'
 import { propTypes } from 'react-bootstrap/esm/Image';
-import { useLocation } from 'react-router-dom';
 import NewVideoForm from '../Search/NewVideoForm'
-
-
 
 const Video = ({ currentPathname, video, setVideo, addVideoCallback }) => {
 
@@ -17,10 +14,6 @@ const Video = ({ currentPathname, video, setVideo, addVideoCallback }) => {
     release_date: releaseDate,
     image_url: imageUrl,
   } = video
-
-  // const toggleActive = () => {
-  //   setSelected(!selected)
-  // }
 
   const videoButton = () => {    
     if (currentPathname === '/library') {
@@ -43,10 +36,6 @@ const Video = ({ currentPathname, video, setVideo, addVideoCallback }) => {
       <div className='video__content'>
         <h3>{title}</h3>
         <p><Moment format='LL'>{releaseDate}</Moment></p>
-
-        {/* <div className={ selected ? 'show-details popup' : null }>
-          <p className='popup__content'>{overview}</p>
-        </div> */}
       </div>
 
       <div>
