@@ -1,26 +1,22 @@
 import React, {useState, useEffect} from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import Video from './Video';
 import AddVideo from './AddVideo';
 import SearchDetail from './SearchDetail';
 const axios = require('axios');
 
-const BASE_URL = 'http://localhost:3000/movies?query=';
+const BASE_URL = 'http://localhost:3000/videos?query=';
 
 
 const Search = (props) => {
 
-  const [searchTerm, setSearchTerm] = useState({});
-  const [submission,setSubmission] = useState({});
+  const [searchTerm, setSearchTerm] = useState('');
+  const [submission,setSubmission] = useState('');
   const [searchResult, setResult] = useState([]);
 
   const onInputChange = (event) => {
-    console.log(event.target.value);
-    const newFormFields = {
-      ...submission
-    };
-    newFormFields[event.target.name] = event.target.value;
-    setSearchTerm(newFormFields);
+    let title = [event.target.name] = event.target.value;
+    setSearchTerm(title);
   };
 
   const onSubmit =(event) => {
@@ -29,11 +25,11 @@ const Search = (props) => {
   };
 
   useEffect(() => {
-    axios.get(BASE_URL + submission.title)
+    axios.get(BASE_URL + submission)
       .then((response) => {
         setResult(response.data);
       });
-  }, [submission.title]);
+  }, [submission]);
 
   const [searchDetail, setSearchDetail] = useState([]);
   
@@ -52,21 +48,20 @@ const Search = (props) => {
         name="title"
         placeholder="Search video title"
         type="text"
-        value={submission.title}
+        value={searchTerm}
       />
 
       <div >
-          <input type="submit" value="Submit Video Search" />
+          <input type="submit" value="Search" />
       </div>
 
     </form>
-    <h4>Results</h4>
-      {generateSearches}
+    {searchResult && ( <h4>Results</h4> )}
+    {generateSearches}
     <h5>Video Details:</h5>
     <SearchDetail video = {searchDetail}/>
-    <AddVideo video = {searchDetail}/>
-
-</div>
+    <AddVideo video = {searchDetail} setDisplayMessage={props.setDisplayMessage}/>
+  </div>
 
 }
 
