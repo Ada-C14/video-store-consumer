@@ -13,6 +13,10 @@ import Search from './components/Search';
 import Library from './components/Library';
 import Customers from './components/Customers';
 
+
+// base url depents on the link of rails server
+const BASE_URL = 'http://localhost:3000/'
+
 const App = () => {
   return (
     <Router>
@@ -38,13 +42,15 @@ const App = () => {
 
         <Switch>
           <Route path="/search" component={Search}>
-            <Search />
+            <Search url={BASE_URL}
+                    focus='videos'/>
           </Route>
           <Route path="/library" component={Library}>
             <Library />
           </Route>
           <Route path="/customers" component={Customers}>
-            <Customers />
+            <Customers url={BASE_URL}
+                       focus='customers'/>
           </Route>
           <Route path="/">
             <Home />
