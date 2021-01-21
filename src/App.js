@@ -15,19 +15,20 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a className="navbar-brand" href="#">Navbar</a>
+          <ul className="navbar-nav mr-auto">
+            <li className="nav-item">
+              <Link className="nav-link" to="/">Home</Link>
             </li>
-            <li>
-              <Link to="/search">Search</Link>
+            <li className="nav-item">
+              <Link className="nav-link" to="/search">Search</Link>
             </li>
-            <li>
-              <Link to="/customers">Customers</Link>
+            <li className="nav-item">
+              <Link className="nav-link" to="/customers">Customers</Link>
             </li>
-            <li>
-              <Link to="/videos">Videos</Link>
+            <li className="nav-item">
+              <Link className="nav-link" to="/videos">Videos</Link>
             </li>
           </ul>
         </nav>
