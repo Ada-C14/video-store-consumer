@@ -3,9 +3,7 @@ import VideoLibrary from './components/VideoLibrary';
 import CustomerList from './components/CustomerList';
 import React, { Component } from 'react';
 import './App.css';
-import CustomerList from './components/CustomerList';
-import VideoSearch from './components/VideoSearch';
-import VideoLibrary from './components/VideoLibrary';
+
 
 import {
   BrowserRouter as Router,
@@ -59,7 +57,7 @@ class App extends Component {
             <VideoSearch { ...props }/>
             }/>
           <Route path="/library">
-            <Library />
+            <VideoLibrary />
           </Route>
           <Route path="/customers" 
             component={ props => 
