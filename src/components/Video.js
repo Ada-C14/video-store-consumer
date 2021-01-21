@@ -9,7 +9,7 @@ const Video = (props) => {
             'overview': props.overview,
             'release_date': props.releaseDate,
             'inventory': Math.floor(Math.random() * 9) + 1,
-            'image_url': `https://image.tmdb.org/t/p/w185/${props.imageUrl}`,
+            'image_url': `${props.imageUrl}`,
             'external_id': props.externalId,
         }
         console.log(newFilm);
