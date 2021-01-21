@@ -1,9 +1,10 @@
-import React, { Component }  from 'react';
+import React, { Component, useState }  from 'react';
 import PropTypes from 'prop-types';
 
 import './Video.css';
 
 const Video = (props) => {
+    const [inventory, setInventory] = useState(0)
     const selectVideo = () => {
         props.clickButton(props.id, props.title, props.imageUrl);
     }
