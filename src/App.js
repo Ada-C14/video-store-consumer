@@ -59,7 +59,7 @@ const App = () => {
           <Route path="/library" component={Library}>
           <p>Selected Video - {selectVideo}</p>
             <Library url={BASE_URL}
-                       focus='videos'
+                       focus='videos/'
                        selectVideoCallback={chooseVideo}/>
           </Route>
           <Route path="/customers" component={Customers}>
