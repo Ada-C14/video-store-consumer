@@ -2,42 +2,23 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-const SearchForm = ({ videoURL, sendSubmission }) => {
-  const [video, setVideo] = useState([]);
+const SearchForm = ({ getVideo }) => {
+  const [video, setVideo] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
   const initState = {
     title: ''
   }
 
   const onInputChange = (event) => {
-    const externalVideo = {
-      ...video,
-    };
-
-    externalVideo[event.target.name] = event.target.value
+    const externalVideo = event.target.value
     setVideo(externalVideo);
   }
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-    sendSubmission(video);
-
+    getVideo(video);
     setVideo(initState);
   }
-  const getVideos = () => {
-    axios.get(videoURL)
-      .then((response) => {
-        console.log(response);
-        const result = response.data;
-        console.log(result);
-        setVideo(result);
-      })
-      .catch((error) => {
-        setErrorMessage(error.message);
-        console.log(errorMessage);
-      });
-  }
-
 
   return (
     <div>
@@ -50,7 +31,7 @@ const SearchForm = ({ videoURL, sendSubmission }) => {
           Title:</label>
         <textarea
           name='text'
-          placeholder='The Land before Time'
+          placeholder='ex: The Land before Time'
           value={video.title}
           type='text'
           onChange={onInputChange}
