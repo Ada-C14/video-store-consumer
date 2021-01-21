@@ -4,7 +4,7 @@ import VideoList from './components/VideoList';
 import SearchForm from './components/SearchForm';
 
 // import { BrowserRouter } from 'react-router-dom';
-import { NavLink, Switch, Route, Link } from 'react-router-dom';
+import {Route, Link } from 'react-router-dom';
 import CustomerCollection from './components/CustomerCollection';
 import NavBar from './components/NavBar';
 import Cart from './components/Cart';
@@ -56,8 +56,13 @@ const App = () => {
   };
 
   const checkout = (customer, video) => {
+    const params={};
+    params['customer_id'] = customer.id;
+    params['due_date'] = '2/1/2022';
+
+    console.log(params)
     axios
-    .post(`http://localhost:3000/rentals/${video.title}/check-out`, customer.id)
+    .post(`http://localhost:3000/rentals/${video.title}/check-out`, params)
     .then((response) => {
       setErrorMessage(`Checkout ${video.title} to ${customer.name}.`)
     })
