@@ -13,7 +13,8 @@ import Customers from './components/CustomerList';
 import DisplayCustomerDetail from './components/DisplayCustomerDetail';
 import Search from './components/Search';
 import Home from './components/Home';
-
+import Checkout from './components/Checkout';
+import Return from './components/Return';
 
 const App = () => {
   const [selectedCustomer, setSelectedCustomer] = useState();
@@ -46,6 +47,15 @@ const App = () => {
           </li>
         </ul>
       </nav>
+
+      <div className="CheckoutReturn">
+            <Checkout video = {selectedVideo.title} customer = {selectedCustomer} setDisplayMessage={this.setDisplayMessage.bind(this)} />
+            <Return video = {selectedVideo.title} customer = {selectedCustomer} setDisplayMessage={this.setDisplayMessage.bind(this)}/>
+            <button className="MainButton" onClick = {this.onClearSelection.bind(this)}>Clear Video/Customer</button>
+            <p className = "ShowSelected">  <Videos />  Video: {selectedVideo.title}</p>
+            <p className = "ShowSelected"> <Customers/> Customer: {selectedCustomer.name}</p>
+      </div>
+
       <Switch>
         <Route path="/videos">
           <Videos setSelectedVideoCallBack={ setSelectedVideoCallBack } />
@@ -60,6 +70,9 @@ const App = () => {
           <Home />
         </Route>
       </Switch>
+
+
+
       {
         (selectedCustomer || selectedVideo) &&
         <div class="container pt-4">
