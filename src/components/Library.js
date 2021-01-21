@@ -19,8 +19,14 @@ const Library = (props) => {
   });
 
   return (
-    <div className='main-container'>
-      {library}
+    <div >
+      <section>
+        <h1>VIDEO LIBRARY</h1>
+      </section>
+      <section className='list-container'>
+        {library}
+      </section>
+      
     </div>
   )
 }

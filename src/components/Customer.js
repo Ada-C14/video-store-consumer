@@ -5,16 +5,16 @@ import './Customer.css';
 
 const Customer = (props) => {
   return (
-    <div>
-      {props.customerId} 
-      {props.customerName}  
-      <button
-        onClick={() => props.selectCustomerCallback(props.customerId)}>
-        {props.currentCustomer && props.customerId === props.currentCustomer.id ? 'Selected' : 'Select'}
-      </button>
-      
 
-    </div>
+    <tr 
+      onClick={() => props.selectCustomerCallback(props.customerId)} 
+      className={`${props.currentCustomer && props.customerId === props.currentCustomer.id ? 'selected' : 'select'}`}
+    >
+      <td><span>ID</span>{props.customerId} </td>
+      <td><span>Name</span>{props.customerName} </td> 
+      <td><span>Checkout Count</span>{props.videosCheckedOutCount}</td>
+    </tr>
+
   )
 }
 
