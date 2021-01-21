@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import VideoList from './components/VideoList';
 import SearchForm from './components/SearchForm';
-
-// import { BrowserRouter } from 'react-router-dom';
 import { Route, Link } from 'react-router-dom';
 import CustomerCollection from './components/CustomerCollection';
 import NavBar from './components/NavBar';
