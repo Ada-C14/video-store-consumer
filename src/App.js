@@ -46,35 +46,52 @@ const App = () => {
     }, []);
 
     const selectedCustomer = (id) => {
-      const customer = customerList.find((customer) => {
-        return customer.id === id;
-      });
-      setCurrentCustomer(customer);
+      if (currentCustomer && id === currentCustomer.id) {
+        setCurrentCustomer(null)
+      } else {
+        const customer = customerList.find((customer) => {
+          return customer.id === id;
+        });
+        setCurrentCustomer(customer);
+      }
     };
   
     const selectVideo = (id) => {
-      const video = videoList.find((video) => {
-        return video.id === id;
-      });
-      setSelectedVideo(video)
+      if (selectedVideo && id === selectedVideo.id) {
+        setSelectedVideo(null)
+      } else {
+        const video = videoList.find((video) => {
+          return video.id === id;
+        });
+        setSelectedVideo(video)
+      }
     };
+
 
     const checkoutVideo = (params) => {
       axios.post(`${API_URL_BASE}/rentals/${selectedVideo.title}/check-out`, params)
       .then((response) => {
+        alert(`Successfully checked out ${selectedVideo.title}`)
       })
       .catch((error) => {
+        alert(`Sorry, we were unable to check out ${selectedVideo.title}`)
         setErrorMessage(error.message);
       });
+      setSelectedVideo(null)
+      setCurrentCustomer(null)
     }
 
     const returnVideo = (params) => {
       axios.post(`${API_URL_BASE}/rentals/${selectedVideo.title}/return`, params)
       .then((response) => {
+        alert(`Successfully returned ${selectedVideo.title}`)
       })
       .catch((error) => {
+        alert(`Sorry, we were unable to return ${selectedVideo.title}`)
         setErrorMessage(error.message);
       });
+      setSelectedVideo(null)
+      setCurrentCustomer(null)
     }
     
   
