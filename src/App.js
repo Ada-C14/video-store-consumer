@@ -94,7 +94,6 @@ export default function App() {
               rentMovieCallback={rentMovie}
               rentedMessage={message}
               checkoutCallback={rentMovie}
-              rentedMsgCallback={messageReset}
             />
           </Route>
         </Switch>
