@@ -23,15 +23,23 @@ const Customers = (props) => {
   }, []);
 
   const onChangeValue = (event) => {
-    console.log(event)
-    props.setCustomerCallback(event.target.value)
 
+    const customerID = Number(event.target.value)
+
+    const custObj = customerList.find((cust) => {
+      return (
+        cust.id === customerID
+      )
+    })
+
+    props.setCustomerIDCallback(customerID)
+    props.setCustomerNameCallback(custObj.name)
   }
 
   const customerComponents = customerList.map((cust) => {
     return (
       <div>
-        <input type='radio' id={cust.id} name='customer' value={cust.name} onChange={ onChangeValue } />
+        <input type='radio' id={cust.id} name='customer' value={cust.id} onChange={ onChangeValue } />
         <label htmlFor={cust.name}><Customer key={cust.id} id={cust.id} name={cust.name} tel={cust.phone} videosCheckedCount={cust.videos_checked_out_count} /></label>
       </div>
     );
