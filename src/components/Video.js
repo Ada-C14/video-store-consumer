@@ -12,7 +12,6 @@ const Video = (props) => {
             'image_url': `${props.imageUrl}`,
             'external_id': props.externalId,
         }
-        console.log('onAddFild is running!');
         props.addFilmCallback(newFilm);
     };
     
