@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-
 const Video = (props) => {
     return (
         <div className="video">
-            <ClickToSelect containerElement="div">
+            {/* <ClickToSelect containerElement="div"> */}
                 <h5>{props.title}</h5>
-            </ClickToSelect>
+            {/* </ClickToSelect> */}
             <p>{props.overview}</p>
             <p>{props.releaseDate}</p>
         </div>

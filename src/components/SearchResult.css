@@ -1,0 +1,7 @@
+.search-result {
+  display: flex;
+}
+
+.search-result, .video-description {
+  margin: 2rem;
+}

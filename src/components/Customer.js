@@ -1,13 +1,14 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-import ClickToSelect from 'react-click-to-select';
+// import ClickToSelect from 'react-click-to-select';
 
 
 const Customer = (props) => {
     return (
         <div className="customer">
-            <ClickToSelect containerElement="div">
+            {/* <ClickToSelect containerElement="div"> */}
                 <h5>{props.name}</h5>
-            </ClickToSelect>
+            {/* </ClickToSelect> */}
             
         </div>
     )

@@ -7,10 +7,9 @@ import {
 } from 'react-router-dom';
 import VideoSearch from './components/VideoSearch';
 import VideoLibrary from './components/VideoLibrary';
-
+import Customers from './components/Customers';
 
 import './App.css';
-import Customers from './Customers';
 
 const App = () => {
   const API_BASE_URL = 'http://localhost:3000';

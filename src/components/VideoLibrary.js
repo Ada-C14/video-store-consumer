@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Video from './Video';
-import AsyncSelect from 'react-select/async';
+// import AsyncSelect from 'react-select/async';
 
 
 
@@ -64,9 +64,9 @@ const VideoLibrary = (props) => {
         <div>
             <h3>Our Video Library</h3>
             <h6>Current Selected Video: {selectedVideo}</h6>
-            <AsyncSelect
+            {/* <AsyncSelect
                 loadOptions={loadOptions}
-            />
+            /> */}
             <p>{errorMessage}</p>
             {getVideos()}
         </div>
