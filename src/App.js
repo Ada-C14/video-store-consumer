@@ -68,6 +68,7 @@ const Customers = () => (
 
 return(  <div className='app'>
 <h1>React Router Demo</h1>
+<h3> {selectedVideoTitle !== '' ? `Selected Video: ${selectedVideoTitle}` : null} </h3>
 <Navigation />
 <Main />
 </div>
