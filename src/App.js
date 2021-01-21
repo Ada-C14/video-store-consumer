@@ -16,13 +16,14 @@ import CheckoutReturn from './components/CheckoutReturn';
 const API_URL_BASE = 'http://localhost:3000/'
 
 const App = () => {
-  
+    
+    const [errorMessage, setErrorMessage] = useState(null);
     const [customerList, setCustomerList] = useState([]);
     const [currentCustomer, setCurrentCustomer] = useState(null);
     const [videoList, setVideoList] = useState([]);
     const [selectedVideo, setSelectedVideo] = useState(null)
-    const [errorMessage, setErrorMessage] = useState(null);
     const [searchResult, setSearchResult] = useState([]);
+    const [overdue, setOverdue] = useState([])
 
   
     useEffect(() => {
@@ -45,6 +46,17 @@ const App = () => {
         .catch((error) => {
           setErrorMessage(error.message);
         });
+    }, []);
+
+    useEffect(() => {
+      axios.get(`${API_URL_BASE}rentals/overdue`)
+      .then((response) => {
+        const overdueList = response.data
+        setOverdue(overdueList)
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      });
     }, []);
 
     const selectedCustomer = (id) => {
@@ -122,7 +134,6 @@ const App = () => {
       setCurrentCustomer(null)
     }
     
-  
     return (
       <Router>
       <div>
@@ -176,7 +187,7 @@ const App = () => {
                 currentCustomer={currentCustomer}/>
               </Route>
               <Route path='/'>
-                <Homepage />
+                <Homepage overdue={overdue}/>
               </Route>
             </Switch>
           </section>
