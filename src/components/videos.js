@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import './Videos.css'
 
 const Videos = ( {videoURL, newVideo} ) => {
   const [videoList, setvideoList] = useState([]);
@@ -28,7 +29,10 @@ const Videos = ( {videoURL, newVideo} ) => {
     return (
       <div>
           {/* <p>{video.id} {video.title}</p>  */}
-          <img src={video.image_url} alt={video.title}/>
+          <img 
+          className='video'
+          src={video.image_url} 
+          alt={video.title}/>
         {/* TODO, decide what else to include?
         Choices are:
         overview
@@ -38,10 +42,10 @@ const Videos = ( {videoURL, newVideo} ) => {
       </div>
     )
   })
-
+ 
 
   return (
-    <div>
+    <div className='video'>
       {showVideos}
     </div>
   )
