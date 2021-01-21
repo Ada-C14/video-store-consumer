@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import './Video.css'
 
 const Video = (props) => {
     return (
         <div className="video">
-            <h6>{props.title}</h6>
+            <img src={props.imageUrl} alt={props.title} />
+            <h5>{props.title}</h5>
             <p>{props.releaseDate}</p>
             <h6>{props.overview}</h6>
-            <button id={props.id} onClick={() => props.onClickCallback(props)}>Select</button>
+            <button className="button" id={props.id} onClick={() => props.onClickCallback(props)}>Select</button>
         </div>
     )
 }

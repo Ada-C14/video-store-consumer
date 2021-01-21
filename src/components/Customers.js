@@ -29,15 +29,9 @@ const Customers = (props) => {
       // release_date={cust.releaseDate}
       // image_url={cust.imageUrl}
       // external_id={cust.externalId} 
-      // key={cust.id} 
+      key={cust.id} 
     />);
   });
-
-
-// const selectCustomer = (id) => {
-//     let cust = customerList.find(cust => cust.id === id);
-//     setSelectedCustomer(cust);
-// }
 
 return (
   <div>

@@ -30,24 +30,26 @@ const App = () => {
   return (
     <Router>
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/search">Video Search</Link>
-            </li>
-            <li>
-              <Link to="/library">Video Library</Link>
-            </li>
-            <li>
-              <Link to="/customers">Customers</Link>
-            </li>
-          </ul>
-        </nav>
-        {selectedCustomer ? <h6>Current Selected Customer: {selectedCustomer.name}</h6> : ''}
-        {selectedVideo ? <h6>Current Selected Video: {selectedVideo.name}</h6> : ''}
+        <header className="App-header">
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/search">Video Search</Link>
+              </li>
+              <li>
+                <Link to="/library">Video Library</Link>
+              </li>
+              <li>
+                <Link to="/customers">Customers</Link>
+              </li>
+            </ul>
+          </nav>
+          {selectedCustomer ? <h6>Current Selected Customer: {selectedCustomer.name}</h6> : ''}
+          {selectedVideo ? <h6>Current Selected Video: {selectedVideo.title}</h6> : ''}
+        </header>
         <Switch>
           <Route path='/search'>
             <VideoSearch url={API_BASE_URL}/>

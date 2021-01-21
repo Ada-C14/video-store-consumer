@@ -1,0 +1,13 @@
+.video {
+    display: flex;
+    margin: 2rem;
+}
+  
+.video-description {
+    margin: 2rem;
+}
+
+.button {
+    align-self: start;
+    font-family: 'Permanent Marker', Helvetica, sans-serif;
+}

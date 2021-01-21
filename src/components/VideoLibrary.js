@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import Video from './Video';
 
+
 const VideoLibrary = (props) => {
     const [videos, setVideos] = useState([]);
-    
-    const [errorMessage, setErrorMessage] = useState(null);
+    const [errorMessage, setErrorMessage] = useState('');
 
     useEffect(() => {
         axios.get(`${props.url}/videos`)
@@ -26,7 +26,7 @@ const VideoLibrary = (props) => {
             overview={video.overview}
             release_date={video.releaseDate}
             image_url={video.imageUrl}
-            external_id={video.externalId} 
+            // external_id={video.externalId} 
             key={video.id} 
             onClickCallback={props.onClickCallback}
         />);
