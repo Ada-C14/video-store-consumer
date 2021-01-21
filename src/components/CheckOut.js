@@ -5,21 +5,19 @@ const CheckOut = (props) => {
   // event handlers
   const onSubmit = (event) => {
     event.preventDefault();
-
+    
     props.checkOutCallback({
       customer: props.customer,
       video: props.video,
-      dueDate: new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString().split('.')[0]   
+      dueDate: new Date(new Date(new Date().setDate(new Date().getDate()+7)).toString().split('GMT')[0]+' UTC').toISOString().split('.')[0]   
     });
   }
 
   return (
-    <div className="App">
-      <header>
-        <h1>CheckOut Video library</h1>
-      </header>
+    <div>
       <button
-          onClick={onSubmit}>
+          onClick={onSubmit}
+          disabled={!props.customer || !props.video} >
             Check Out
       </button>
     </div>
