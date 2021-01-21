@@ -1,5 +1,4 @@
 import React from 'react';
-import './Customers.css';
 import CustomerList from './CustomerList';
 
 const Customers = ({ setSelectedCustomerCallBack }) => {

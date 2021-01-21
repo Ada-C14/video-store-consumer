@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './Search.css';
 import DisplayVideoDetail from './DisplayVideoDetail';
 import Title from './Title';
 const BASE_URL = 'http://localhost:3000/videos';

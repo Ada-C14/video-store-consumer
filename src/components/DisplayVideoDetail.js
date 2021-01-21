@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './DisplayVideoDetail.css';
 
 const DisplayVideoDetail = ({ addToLibraryCallback, video }) => {
 

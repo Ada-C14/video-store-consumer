@@ -1,5 +1,4 @@
 import React from 'react';
-import './Videos.css';
 import VideoList from './VideoList';
 
 const Videos = ({ setSelectedVideoCallBack }) => {

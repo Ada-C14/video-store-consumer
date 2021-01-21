@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './VideoList.css';
 import PropTypes from 'prop-types'
 import VideoButton from './VideoButton';
 const BASE_URL = 'http://localhost:3000/videos';

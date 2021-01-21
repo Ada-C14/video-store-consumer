@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './CustomerList.css';
 import PropTypes from 'prop-types'
 import CustomerButton from './CustomerButton';
 const BASE_URL = 'http://localhost:3000/customers';

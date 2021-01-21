@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './VideoButton.css';
 
 const VideoButton = (props) => {
 

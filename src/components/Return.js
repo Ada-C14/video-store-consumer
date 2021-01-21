@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
-import './Return.css';
 
 const BASE_URL = 'http://localhost:3000/rentals';
 
