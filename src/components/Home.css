@@ -1,0 +1,13 @@
+.poster {
+    opacity: 0.85;
+}
+
+.banner {
+    border: 4px solid;
+    border-color: pink;
+    margin-bottom: 5vh;
+}
+
+.spacer {
+    margin-bottom: 5vh;
+}

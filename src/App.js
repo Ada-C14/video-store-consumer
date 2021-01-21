@@ -14,6 +14,7 @@ import Customers from './components/Customers';
 import Videos from './components/Videos';
 import SearchForm from './components/SearchForm';
 import SearchResult from './components/SearchResult';
+import Home from './components/Home';
 
 function App() {
 
@@ -97,7 +98,7 @@ function App() {
         <section className="App-main">
           <Switch>
           <Route exact path="/">
-            <h1>Homepage Deets Will Go Here</h1>
+            <Home />
           </Route>
           <Route path="/library">
             <Videos />
@@ -109,9 +110,9 @@ function App() {
             <h1>Checkout Deets Will Go Here</h1>
           </Route>
           <Route path="/search">
-            <h1>Search Video Order Catalog</h1>
+            <h1>Search Order Catalog</h1>
             <br></br>
-            <h4>Is there a video you wish we carried??  Search our order catalog to see if we can add it to our library!</h4>
+            <h4>Is there a video we should carry??  Search our order catalog to see if we can add it to our library!</h4>
             <br></br>
             <SearchForm searchCallback={searchVideo} />
             { searchResultList.length === 0 ? 
