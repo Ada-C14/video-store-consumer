@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './CustomerList.css';
 import PropTypes from 'prop-types'
-import Customer from './Customer';
+import CustomerButton from './CustomerButton';
 const BASE_URL = 'http://localhost:3000/customers';
 const axios = require('axios');
 
@@ -17,14 +17,14 @@ const CustomerList = (props) => {
 
   }, []);
 
-  const generateCustomers = customers.map((customer) => {
-    return <Customer key={ customer.id } customer={ customer } onClickCallBack={ props.setSelectedCustomerCallBack } />
+  const generateCustomerButtons = customers.map((customer) => {
+    return <CustomerButton key={ customer.id } customer={ customer } onClickCallBack={ props.setSelectedCustomerCallBack } />
   })
 
   return (
   <div className="CustomerList">
     <h3>Customer List:</h3>
-    { generateCustomers }
+    { generateCustomerButtons }
   </div>);
 };
 
