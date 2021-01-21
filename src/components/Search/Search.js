@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios'
 import SearchBar from './SearchBar'
-import SearchResultItem from './SearchResultItem';
+// import SearchResultItem from './SearchResultItem';
 import './Search.css'
+import Video from '../VideoLibrary/Video'
 
 
 const Search = ({setErrorMessage, addVideoCallback, baseUrl}) => {
@@ -22,14 +23,16 @@ const Search = ({setErrorMessage, addVideoCallback, baseUrl}) => {
       })
   }
 
+  const videoComponents = searchResults.map((video) => {
+    return(<Video key={video.id} video={video} addVideoCallback={addVideoCallback} currentPathname={window.location.pathname}/>)
+  })
+
   return(
     <div className='search'>
       <SearchBar onSearchCallback={onSearch} />
 
-      <div className='search-results'>
-        {searchResults.map( (item, id) => (
-          <SearchResultItem item={item} key={id} addVideoCallback={addVideoCallback}/>
-        ))}
+      <div className="video-list search-results">
+        {videoComponents}
       </div>
     </div>
   )

@@ -3,8 +3,13 @@ import Moment from 'react-moment';
 import { Button } from 'react-bootstrap'
 import './Video.css'
 import { propTypes } from 'react-bootstrap/esm/Image';
+import { useLocation } from 'react-router-dom';
+import NewVideoForm from '../Search/NewVideoForm'
 
-const Video = ({ video, setVideo }) => {
+
+
+const Video = ({ currentPathname, video, setVideo, addVideoCallback }) => {
+
   const {
     id,
     title,
@@ -16,6 +21,19 @@ const Video = ({ video, setVideo }) => {
   // const toggleActive = () => {
   //   setSelected(!selected)
   // }
+
+  const videoButton = () => {    
+    if (currentPathname === '/library') {
+      return (
+        <Button className='button' variant='link' size="sm" onClick={() => {setVideo(title)}}>Select</Button>
+      )
+    } else if (currentPathname === '/search') { 
+      return ( 
+        <NewVideoForm className='add-video-button' video={video} addVideoCallback={addVideoCallback}/>
+      )
+    }
+  }
+  
 
   return (
     <div className="video">
@@ -30,7 +48,12 @@ const Video = ({ video, setVideo }) => {
           <p className='popup__content'>{overview}</p>
         </div> */}
       </div>
-      <Button className='button' variant='link' size="sm" onClick={() => {setVideo(title)}}>Select</Button>
+
+      <div>
+        {videoButton()}
+      </div>
+      
+
     </div>
   )
 }

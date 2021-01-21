@@ -3,16 +3,15 @@ import { Dropdown, DropdownButton, Button } from 'react-bootstrap'
 import './NewVideoForm.css'
 
 
-
-const NewVideoForm = ({item, addVideoCallback}) => {
+const NewVideoForm = ({video, addVideoCallback}) => {
   const [startingInventory, setStartingInventory] = useState(0)
   const [addedToLibrary, setAddedToLibrary] = useState(false)
 
   const onAddToLibrary = (event) => {
-    const newItem = {...item}
-    newItem.inventory = event.target.value
+    const newVideo = {...video}
+    newVideo.inventory = event.target.value
 
-    addVideoCallback(newItem)
+    addVideoCallback(newVideo)
     setAddedToLibrary(true)
   }
 

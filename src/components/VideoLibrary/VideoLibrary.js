@@ -18,7 +18,7 @@ const VideoLibrary = ({ baseUrl, videoLibrary, setVideoLibraryCallback, setVideo
 
 
   const videoComponents = videoLibrary.map((video) => {
-    return(<Video key={video.id} video={video} setVideo={setVideo}/>)
+    return(<Video key={video.id} video={video} setVideo={setVideo} currentPathname={window.location.pathname}/>)
   })
 
   return(
