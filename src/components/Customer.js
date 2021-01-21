@@ -1,24 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Button} from 'react-bootstrap';
 
 const Customer = (props) => {
   const onSelectButtonClick = () => {
-    if (props.name !== props.selectedCustomer?.name) {
+    if (props.customer.name !== props.selectedCustomer?.name) {
       props.onClickSelect(props.customer)
     } else {
-      props.onClickSelect(null)
+      props.onClickSelect('')
     };
   };
 
   return (
-    <div>
-      <span>{props.name}</span>
-      <span>{props.email}</span>
-      <span>{props.phone}</span>
-      <button onClick={onSelectButtonClick} >
-        {props.name === props.selectedCustomer?.name ? 'unselect' : 'select'}
-      </button>
-    </div>
+    <tr>
+      <td>{props.customer.id}</td>
+      <td>{props.customer.name}</td>
+      <td>{props.customer.phone}</td>
+      <td><Button variant="info" onClick={onSelectButtonClick} >
+        {props.customer.name === props.selectedCustomer?.name ? 'unselect' : 'select'}
+      </Button></td>
+    </tr>
   );
 };
 
