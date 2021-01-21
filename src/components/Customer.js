@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'react-bootstrap';
 
 // import './Customer.css'
 
@@ -13,7 +14,7 @@ const Customer = (props) => {
             <li><strong>Phone: </strong>{props.customer.phone}</li>
             <li><strong>Account Credit: </strong>${props.customer.account_credit}</li>
             <li><strong>Videos Checked Out: </strong>{props.customer.videos_checked_out_count}</li>
-            <li><button onClick={() => props.onSelectCustomer(props.customer.id, props.customer.name)}>Select Customer</button></li>
+            <li><Button variant="outline-info" onClick={() => props.onSelectCustomer(props.customer.id, props.customer.name)}>Select Customer</Button></li>
         </div>
     </ul>
     );

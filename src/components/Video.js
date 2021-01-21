@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'react-bootstrap';
 
 import './Video.css'
 
@@ -32,8 +33,8 @@ const Video = (props) => {
             </div>
             </form>
       </li> */}
-          <li><button onClick={onAddVideo}>Add to Library</button></li>
-          <li><button onClick={()=>props.onSelectVideo(props.video.title)}>Select this Video</button></li>
+          <li><Button variant="outline-info" onClick={()=>props.onSelectVideo(props.video.title)}>Select this Video</Button></li>
+          <li><Button variant="outline-info" onClick={onAddVideo}>Add to Library</Button></li>
           { status ? <div><h2 className="video-status">{status}</h2></div> : '' }
         </div>
         <li class="movie-image"><img src={props.video.image_url} alt={`the movie ${props.title}`} /></li>

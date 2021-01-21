@@ -6,6 +6,9 @@ import './App.css';
 import AddMovieForm from './components/AddMovieForm';
 import VideoCollection from './components/VideoCollection';
 import CustomerCollection from './components/CustomerCollection';
+import { Navbar, Nav, Form, Button, FormControl } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const API_URL_BASE = 'http://localhost:3000/';
 
@@ -54,30 +57,29 @@ const App = () => {
 
       <Router>
       <div className="App">
-        <header className="App-header">
+        {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to Hollywood Video</h1>
-        </header>
+        </header> */}
+        <Navbar className='navbar' bg="dark" variant="dark">
+          <Nav className="mr-auto">
+            <Nav.Link href='/'>Home</Nav.Link>
+            <Nav.Link href='/videos'>Videos</Nav.Link>
+            <Nav.Link href='/customers'>Customers</Nav.Link>
+          </Nav>
+          <Form inline>
+            <FormControl type="text" placeholder="Search Movies" className="mr-sm-2" />
+            <Button variant="outline-info">Search</Button>
+          </Form>
+        </Navbar>
+      
+
+
         { errorMessage ? <div><h2 className="error-msg">{errorMessage}</h2></div> : '' }
         <p>Currently Selected Video: {selectedVideo}</p>
         <p>Currently Selected Customer: {selectedCustomer.name}</p>
-        <button onClick={checkOut}>Check Out</button>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/videos">Videos</Link>
-            </li>
-            <li>
-              <Link to="/customers">Customers</Link>
-            </li>
-            <li>
-              <Link to="/add">Add a Video</Link>
-            </li>
-          </ul>
-        </nav>
+        <Button variant="outline-info" onClick={checkOut}>Check Out</Button>
+        
 
         <AddMovieForm />
         <Switch>
@@ -100,7 +102,9 @@ const App = () => {
 }
 
 function Home() {
-  return <h2>Home</h2>;
+  return (
+    <img src={logo} className="App-logo" alt="logo" />
+  );
 }
 
 // function Customer() {

@@ -1,10 +1,12 @@
+@import 'bootstrap';
+
 .App {
   text-align: center;
 }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 120px;
+  height: 300px;
 }
 
 .App-header {
@@ -23,10 +25,11 @@
   font-size: large;
 }
 
-nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+.navbar {
+  overflow: hidden;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
 }
 
 ul {
