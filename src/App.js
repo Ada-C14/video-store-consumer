@@ -3,40 +3,17 @@ import CustomerList from './components/CustomerList.js';
 import MovieLibrary from './components/MovieLibrary.js';
 import MovieSearchBar from './components/MovieSearchBar.js';
 import MovieSearchResults from './components/MovieSearchResults.js';
-
-// import React, { Component } from 'react';
-
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from 'react-router-dom';
-
 import './App.css';
 
 const BASE_API_URL = 'http://localhost:3000';
 
-// class App extends Component {
-//   render() {
-//     return (
-//       <div className="App">
-//         <header className="App-header">
-//           <img src={logo} className="App-logo" alt="logo" />
-//           <h1 className="App-title">Welcome to React</h1>
-//         </header>
-//         <p className="App-intro">
-//           To get started, edit <code>src/App.js</code> and save to reload.
-//         </p>
-//       </div>
-//     );
-//   }
-// }
-
-// export default App;
-
 export default function App() {
-
   const [customers, setCustomers] = useState(null)
 
   const selectCustomer = (singleCustomer) => {
@@ -46,22 +23,19 @@ export default function App() {
   return (
     <Router>
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/library">Movie Library</Link>
-            </li>
-            <li>
-              <Link to="/customers">Customer List</Link>
-            </li>
-            <li>
-              <Link to="/search">Search Movies</Link>
-            </li>
-          </ul>
-        </nav>
+        <div className='top-nav'>
+          <h2><Link to="/">video store</Link></h2>
+          <nav className='main-fns'>
+            <ul>
+              <li>
+                <Link to="/library">movie library <i class="arrow down"></i></Link>
+              </li>
+              <li>
+                <Link to="/customers">customer list <i class="arrow down"></i></Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
@@ -74,8 +48,7 @@ export default function App() {
           </Route>
           <Route path='/results' render={props => <MovieSearchResults {...props} />}/>
           <Route path="/">
-            <Home />
-            <MovieSearchBar url={BASE_API_URL} />
+            { Home() }
           </Route>
         </Switch>
       </div>
@@ -83,11 +56,23 @@ export default function App() {
   );
 }
 
-function Home() {
-  return <h2>Home</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
-}
+const Home = () => {
+  return (
+    <div className='homepage-container'>
+      <div className='homepage'>
+        <h1>start a rental</h1>
+        <div className='btn-container'>
+          <div className='main-btn'>movies</div>
+          <div className='main-btn'>customers</div>
+        </div>
+        <br />
+        <h1>search for a movie</h1>
+        <MovieSearchBar url={BASE_API_URL} />
+      </div>
+      <div className='img-carousel'>
+        
+      </div>
+    </div>
+  );
+};
 
