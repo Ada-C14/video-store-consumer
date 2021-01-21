@@ -20,40 +20,19 @@ function App() {
 
 //   const searchVideo = (searchQuery) => { 
 
-//         axios.get(`${BASE_URL}/videos?query=${searchQuery}`)
-//         .then((response) => {
-//           console.log(response.data);
-//           //  response.data;
-//           // console.log(apiCustomerResponse[0].name)
-//           // Set the state
-//           setSearchResultList(response.data);
-//         })
-//         .catch((error) => {
-//           // setErrorMessage(error.message);
-//           // console.log(error.message);
-//         });
-
-// };
-
-  // const addVideo = (id) => {
-  //   axios.post(`${BASE_URL}/videos/${id}`)
-  //     .then((response) => {
-  //       // What should we do when we know the post request worked?
-  //       console.log(response)
-  //       // const updatedData = [...studentList, response.data];
-  //       // setStudentList(updatedData);
-  //       // setErrorMessage('');
-  //     })
-  //     .catch((error) => {
-  //       // What should we do when we know the post request failed?
-  //       // setErrorMessage(error.message);
-  //     });
-  // }
-
-  // const generateSearchResults = (searchResults) => {
-  //   let searchResultComponentArray = [];
-
-  //   for (const result of searchResults) 
+    axios.get(`${BASE_URL}/videos?query=${searchQuery}`)
+    .then((response) => {
+      console.log(response.data);
+      //  response.data;
+      // console.log(apiCustomerResponse[0].name)
+      // Set the state
+      setSearchResultList(response.data);
+    })
+    .catch((error) => {
+      // setErrorMessage(error.message);
+      // console.log(error.message);
+    });
+  };
 
   //   {
   //     searchResultComponentArray.push(
@@ -98,10 +77,10 @@ function App() {
             <Home />
           </Route>
           <Route path="/library">
-            <Videos />
+            <Videos baseUrl={BASE_URL}/>
           </Route>
           <Route path="/customers">
-            <Customers />
+            <Customers baseUrl={BASE_URL}/>
           </Route>
           <Route path="/checkout">
             <h1>Checkout Deets Will Go Here</h1>
@@ -114,7 +93,6 @@ function App() {
       </div>
     </Router>
   );
-
 }
 
 export default App;

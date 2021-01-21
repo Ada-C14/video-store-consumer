@@ -1,5 +1,6 @@
 const SearchResult = (props) => {
     return (
+
         <tr class="table-active">
             <th scope="row"><img src={props.imageUrl} className="w-75" alt="poster" /></th>
             <th scope="row">{props.overview}</th>
