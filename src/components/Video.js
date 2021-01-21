@@ -19,6 +19,14 @@ const Video = (props) => {
     setStatus('Added video');
   };
 
+  const button = () => {
+    if (props.showButton === 'add') {
+      return (<Button variant="outline-info" onClick={onAddVideo}>Add to Library</Button>);
+    } else {
+      return(<Button variant="outline-info" onClick={()=>props.onSelectVideo(props.video.title)}>Select this Video</Button>);
+    }
+  }
+
   return (
       <ul className="video-row">
         <div class="movie-text">
@@ -33,9 +41,8 @@ const Video = (props) => {
             </div>
             </form>
       </li> */}
-          <li><Button variant="outline-info" onClick={()=>props.onSelectVideo(props.video.title)}>Select this Video</Button></li>
-          <li><Button variant="outline-info" onClick={onAddVideo}>Add to Library</Button></li>
-          { status ? <div><h2 className="video-status">{status}</h2></div> : '' }
+          <li>{button()}</li>
+         { status ? <div><h2 className="video-status">{status}</h2></div> : '' }
         </div>
         <li class="movie-image"><img src={props.video.image_url} alt={`the movie ${props.title}`} /></li>
       </ul>

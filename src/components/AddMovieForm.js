@@ -2,6 +2,7 @@ import React, { Component, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Video from './Video';
+import { Button } from 'react-bootstrap';
 import './AddMovieForm.css';
 
 const AddMovieForm = (props) => {
@@ -83,7 +84,9 @@ const AddMovieForm = (props) => {
         {/* <Video title={video.title} overview={video.overview} 
         release_date={video.released_date} image_url={video.image_url} 
         onAddLibraryCallback={addToLibrary} external_id={video.external_id}/> */}
-        <Video video={video} onAddLibraryCallback={addToLibrary} external_id={video.external_id}/>
+        <Video video={video} onAddLibraryCallback={addToLibrary} 
+        external_id={video.external_id}
+        showButton={props.showButton}/>
       </li>
     )});
   }

@@ -22,10 +22,12 @@ const App = () => {
 
 
   const selectVideo = (title) => {
+    setErrorMessage('');
     setSelectedVideo(title);
   };
 
   const selectCustomer = (id, name) => {
+    setErrorMessage('');
     setSelectedCustomer({
       id: id,
       name: name,
@@ -40,18 +42,24 @@ const App = () => {
       setErrorMessage('Need to select a customer and video')
       return null
     }
-    console.log(selectedCustomer)
 
     axios.post(API_URL_BASE + 'rentals/' + selectedVideo + '/check-out?customer_id=' + selectedCustomer.id + '&due_date=' + today.toString())
     .then((response) => {
       console.log(response);
-      setErrorMessage('Checked out video successfully!')
+      setErrorMessage(`Checked out ${selectedVideo} successfully to ${selectedCustomer.name}!`);
+      setSelectedVideo(null);
+      setSelectedCustomer({
+        id: null,
+        name: 'none',
+      });
     })
     .catch((error) => {
       console.log(error);
       setErrorMessage(error.message);
     });
   };
+
+  // setErrorMessage('')
 
     return (
 
@@ -61,39 +69,40 @@ const App = () => {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to Hollywood Video</h1>
         </header> */}
-        <Navbar className='navbar' bg="dark" variant="dark">
+        <Navbar fixed='top' bg="dark" variant="dark">
           <Nav className="mr-auto">
-            <Nav.Link href='/'>Home</Nav.Link>
-            <Nav.Link href='/videos'>Videos</Nav.Link>
-            <Nav.Link href='/customers'>Customers</Nav.Link>
+            <Link to='/'>Home</Link>
+            <Link to='/videos'>Videos</Link>
+            <Link to='/customers'>Customers</Link>
+            <Link to='/add'>Add Movie</Link>
           </Nav>
-          <Form inline>
+          <span>Currently Selected Video: {selectedVideo}</span>
+          <span>Currently Selected Customer: {selectedCustomer.name}</span>
+          <Button variant="outline-info" onClick={checkOut}>Check Out</Button>
+          {/* <Form inline>
             <FormControl type="text" placeholder="Search Movies" className="mr-sm-2" />
             <Button variant="outline-info">Search</Button>
-          </Form>
+          </Form> */}
         </Navbar>
       
 
-
         { errorMessage ? <div><h2 className="error-msg">{errorMessage}</h2></div> : '' }
-        <p>Currently Selected Video: {selectedVideo}</p>
-        <p>Currently Selected Customer: {selectedCustomer.name}</p>
-        <Button variant="outline-info" onClick={checkOut}>Check Out</Button>
-        
 
-        <AddMovieForm />
+
+        {/* <AddMovieForm /> */}
+        
         <Switch>
           <Route path="/videos">
-            <VideoCollection onSelectVideo={selectVideo}/>
+            <VideoCollection onSelectVideo={selectVideo} showButton='select'/>
           </Route>
           <Route path="/customers">
             <CustomerCollection onSelectCustomer={selectCustomer}/>
           </Route>
+          <Route path="/add">
+            <AddMovieForm showButton='add'/> 
+          </Route>
           <Route path="/">
             <Home />
-          </Route>
-          <Route path="/add">
-            {/* <AddMovieForm /> */}
           </Route>
         </Switch>
       </div>

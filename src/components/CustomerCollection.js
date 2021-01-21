@@ -2,6 +2,7 @@ import React, { useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import Customer from './Customer';
 import axios from 'axios';
+import Table from 'react-bootstrap/Table'
 
 const API_URL_BASE = 'http://localhost:3000/customers';
 
@@ -36,6 +37,23 @@ const CustomerCollection = (props) => {
             {errorMessage ? <div><h2 className="error-msg">{errorMessage}</h2></div> : ''}
             {customerComponents}
         </div>
+        // <Table striped bordered hover>
+        //     <thead>
+        //         <tr>
+        //             <th>Name</th>
+        //             <th>Address</th>
+        //             <th>Phone</th>
+        //             <th>Account Credit</th>
+        //             <th>Videos Checked Out</th>
+        //         </tr>
+        //     </thead>
+        //     <tbody>
+        //         <tr>
+        //             <td></td>
+        //         </tr>
+        //         {/* {customerComponents} */}
+        //     </tbody>
+        // </Table>
         );
 };
 
