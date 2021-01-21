@@ -20,7 +20,7 @@ const CustomerList = (props) => {
   }, []);
 
   const setSelectedCustomerCallBack = (customer) => {
-    setSelectedCustomer(customer);
+    setSelectedCustomer(this.customer);
   };
 
   const generateCustomers = customers.map((customer) => {
