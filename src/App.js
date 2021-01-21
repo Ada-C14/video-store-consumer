@@ -22,6 +22,13 @@ const App = () => {
     setSelectedCustomer(id.id)
   }
 
+  const [selectVideo, setSelectedVideo] = useState(null)
+
+  const chooseVideo = (props) => {
+    setSelectedVideo(props.title)
+  }
+
+
    return (
     <Router>
       <div className="App">
@@ -50,7 +57,10 @@ const App = () => {
                     focus='videos'/>
           </Route>
           <Route path="/library" component={Library}>
-            <Library />
+          <p>Selected Video - {selectVideo}</p>
+            <Library url={BASE_URL}
+                       focus='videos'
+                       selectVideoCallback={chooseVideo}/>
           </Route>
           <Route path="/customers" component={Customers}>
             <p>Selected Customer - {selectCustomer}</p>

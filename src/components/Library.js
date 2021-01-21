@@ -5,7 +5,6 @@ import SelectedVideo from './SelectedVideo'
 
 const Library = (props) => {
   const [videoLibrary, setVideoLibrary] = useState([]);
-  const [selectedVideo, setSelectedVideo] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
@@ -23,7 +22,7 @@ const Library = (props) => {
     axios.get(`http://localhost:3000/videos/${ title }`)
       .then((response) => {
         const newSelectedVideo = response.data
-        setSelectedVideo(newSelectedVideo)
+        props.selectVideoCallback(newSelectedVideo)
         setErrorMessage(`"${ title }" is selected`);
       })
       .catch((error) => {
@@ -62,7 +61,7 @@ const Library = (props) => {
     <div>
       <h1>Video Library</h1>
       {errorMessage ? <div><h2 className="validation-errors-display">{errorMessage}</h2></div> : ''}
-      {selectedVideo? < SelectedVideo selectedVideo={selectedVideo}/> : 'No video selected'}
+      {props.selectVideoCallback? < SelectedVideo selectedVideo={props.selectVideoCallback}/> : 'No video selected'}
 
         <table>
           <tbody>
