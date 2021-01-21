@@ -1,9 +1,10 @@
 import React,{useState, useEffect} from 'react';
 import axios from 'axios';
 import Customer from './Customer'
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import './Customers.css'
 
-const Customers = (props, onSelectCustomer) => {
+const Customers = (props) => {
     
     const allCustomersURL = 'http://localhost:3000/customers'
 
@@ -19,43 +20,31 @@ const Customers = (props, onSelectCustomer) => {
             );
         })
         .catch((error) => {
-            setErrorMessage(error.message);
+            setErrorMessage(error.message); // improve error messages 
         });
     }, []);
 
         // taking customer obj and turning into customer component 
-    const CustomerComponents = customers.map((customerInfo) => {
+    const CustomerComponents = customers.map((customer) => {
         return (< Customer 
-            id={customerInfo.id}
-            name={customerInfo.name}
-            address={customerInfo.address}
-            city={customerInfo.city}
-            state={customerInfo.state}
-            zipcode={customerInfo.zipcode}
-            registeredAt={customerInfo.registeredAt}
-            phone={customerInfo.phone}
-            accountCredit={customerInfo.accountCredit}
-            moviesCheckedOut={customerInfo.moviesCheckedOut}
-            key={customerInfo.id}
-            onSelectCustomer={props.onSelectCustomer}
+            key={customer.id}
+            customer={customer}
+            onClickCallback={props.selectCustomerCallback}
             />)
         })
-
 
     return (
         <div className= 'Customers'>
             <ul className= "customers-list" >
             <h3> All Customers</h3>
             {CustomerComponents}
+            { errorMessage ? <div><h2>{errorMessage}</h2></div> : ''}
             </ul>
         </div>
         );
     };
     
-// Customers.prototype = {
-//     id: PropTypes.number,
-//     name: PropTypes.string,
-//     account_credit: PropTypes.number,
-//     movie_count: PropTypes.number,
-// }
+Customers.propTypes = {
+    selectCustomerCallback: PropTypes.func.isRequired
+}
 export default Customers;
