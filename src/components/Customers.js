@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from 'react';
 import axios from 'axios';
 import Customer from './Customer'
+import PropTypes from 'prop-types';
 
 const Customers = (props) => {
     
@@ -26,10 +27,16 @@ const Customers = (props) => {
         return (< Customer 
             id={customerInfo.id}
             name={customerInfo.name}
-            account_credit={customerInfo.account_credit}
-            movie_count={customerInfo.movie_count}
+            address={customerInfo.address}
+            city={customerInfo.city}
+            state={customerInfo.state}
+            zipcode={customerInfo.zipcode}
+            registeredAt={customerInfo.registeredAt}
+            phone={customerInfo.phone}
+            accountCredit={customerInfo.accountCredit}
+            moviesCheckedOut={customerInfo.moviesCheckedOut}
             key={customerInfo.id}
-            onClickCallback={props.onClickCallback}
+            onSelectCustomer={props.onSelectCustomer}
             />)
         })
 
@@ -44,5 +51,10 @@ const Customers = (props) => {
         );
     };
     
-
+// Customers.prototype = {
+//     id: PropTypes.number,
+//     name: PropTypes.string,
+//     account_credit: PropTypes.number,
+//     movie_count: PropTypes.number,
+// }
 export default Customers;
