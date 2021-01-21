@@ -9,7 +9,7 @@ const Customer = (props) => {
 
   return (
     <button className="customer-button" onClick={ onCustomerClick }>
-      { props.customer.name}
+      { props.customer.name }
     </button>
   );
 }
