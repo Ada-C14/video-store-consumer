@@ -5,15 +5,15 @@ import Video from './Video';
 // import logo from './logo.svg';
 // import './App.css';
 
-const Videos = () => {
+const Videos = (props) => {
   
   const [videoList, setVideosList] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
-  const VIDEO_URL = 'http://localhost:3000/videos'
-
+  // const VIDEO_URL = 'http://localhost:3000/videos'
+  
   useEffect(() => {
-    axios.get(VIDEO_URL)
+    axios.get(`${props.baseUrl}/videos`)
       .then((response) => {
         // console.log(response.data);
         const railsVideoList = response.data;
@@ -25,7 +25,7 @@ const Videos = () => {
         setErrorMessage(error.message);
         console.log(error.message);
       });
-  }, []);
+  }, [`${props.baseUrl}/videos`]);
 
   const generateVideos = (videos) => {
     let videoComponentArray = [];
@@ -46,13 +46,13 @@ const Videos = () => {
     return videoComponentArray;
   };
 
-    return (
-      <div>
-        Video List
-        {generateVideos(videoList)}
-      </div>
-    );
-  }
+  return (
+    <div>
+      Video List
+      {generateVideos(videoList)}
+    </div>
+  );
+}
 
 Videos.propTypes = {
   // DONT FORGET TO FILL ME OUT!

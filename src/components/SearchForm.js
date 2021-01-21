@@ -11,15 +11,14 @@ const SearchForm = (props) => {
     // const newFormFields = {
     //   ...searchField,
     // }
+    console.log(searchField)
     // newFormFields[event.target.name] = event.target.value;
     setSearchField(newFormField);
   }
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-
     props.searchCallback(searchField);
-
     setSearchField('');
   };
 

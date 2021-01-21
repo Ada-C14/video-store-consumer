@@ -2,6 +2,7 @@ const Customer = (props) => {
   return (
     <div>
       <h1>{props.name}</h1>
+      <h2>{props.state}</h2>
     </div>
   )
 }

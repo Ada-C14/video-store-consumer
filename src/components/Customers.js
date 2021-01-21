@@ -10,11 +10,11 @@ const Customers = (props) => {
   const [customersList, setCustomersList] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
-  const CUSTOMER_URL = 'http://localhost:3000/customers'
+  // const CUSTOMER_URL = 'http://localhost:3000/customers'
   // const CUSTOMER_URL = `${props.baseUrl}/customers` //this doesn't work yet??
 
   useEffect(() => {
-    axios.get(CUSTOMER_URL)
+    axios.get(`${props.baseUrl}/customers`)
       .then((response) => {
         // console.log(response.data);
         const railsCustomerList = response.data;
@@ -26,7 +26,7 @@ const Customers = (props) => {
         setErrorMessage(error.message);
         console.log(error.message);
       });
-  }, [CUSTOMER_URL]);
+  }, [`${props.baseUrl}/customers`]);
 
   const generateCustomers = (customers) => {
     let customerComponentArray = [];

@@ -21,20 +21,19 @@ function App() {
 
   const searchVideo = (searchQuery) => { 
 
-        axios.get(`${BASE_URL}/videos?query=${searchQuery}`)
-        .then((response) => {
-          console.log(response.data);
-          //  response.data;
-          // console.log(apiCustomerResponse[0].name)
-          // Set the state
-          setSearchResultList(response.data);
-        })
-        .catch((error) => {
-          // setErrorMessage(error.message);
-          // console.log(error.message);
-        });
-
-};
+    axios.get(`${BASE_URL}/videos?query=${searchQuery}`)
+    .then((response) => {
+      console.log(response.data);
+      //  response.data;
+      // console.log(apiCustomerResponse[0].name)
+      // Set the state
+      setSearchResultList(response.data);
+    })
+    .catch((error) => {
+      // setErrorMessage(error.message);
+      // console.log(error.message);
+    });
+  };
 
   const addVideo = (id) => {
     axios.post(`${BASE_URL}/videos/${id}`)
@@ -70,7 +69,6 @@ function App() {
         />
       )
     }
-
     return searchResultComponentArray;
   }; 
 
@@ -96,10 +94,10 @@ function App() {
             <h1>Search Will Go Here</h1>
           </Route>
           <Route path="/library">
-            <Videos />
+            <Videos baseUrl={BASE_URL}/>
           </Route>
           <Route path="/customers">
-            <Customers />
+            <Customers baseUrl={BASE_URL}/>
           </Route>
           <Route path="/checkout">
             <h1>Checkout Deets Will Go Here</h1>
@@ -114,7 +112,6 @@ function App() {
       </div>
     </Router>
   );
-
 }
 
 export default App;

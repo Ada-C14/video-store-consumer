@@ -2,6 +2,7 @@ const SearchResult = (props) => {
     return (
       <div>
         <h1>{props.title}</h1>
+        <h3>{props.overview}</h3>
       </div>
     )
   }
