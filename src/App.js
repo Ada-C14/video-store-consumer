@@ -19,6 +19,8 @@ export default function App() {
   // errors 
   const allErrors = (errorData) => {
       const errors = [];
+      
+      console.log(errorData)
       for(const error of errorData) {
       errors.push(<li>{error}</li>);
       }

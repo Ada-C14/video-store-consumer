@@ -62,12 +62,12 @@ const Search = (props) => {
                 //     releaseDate: results.release_date,
                 //     posterURL: results.poster_path
                 // })
-                setSearchResult(res.data);
+                setSearchResult(res.data); // takes one cycle to save the result?? 
                 console.log(searchResult)
 
             })
             .catch((err) => {
-                props.setError(err)
+                props.setError([err.message])
 
             })
         
