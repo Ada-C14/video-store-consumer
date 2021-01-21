@@ -23,7 +23,10 @@ const SearchResult = (props) => {
         <h3>{props.result.release_date}</h3>
         <p>{props.result.overview}</p>
       </section>
-      <NewVideoForm video={props.result} addVideoCallback={props.addVideoCallback}/>
+      <NewVideoForm 
+        video={props.result} 
+        addVideoCallback={props.addVideoCallback}
+        videos={props.videos}/>
     </div>
   )
 }

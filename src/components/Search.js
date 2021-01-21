@@ -42,8 +42,11 @@ const Search = (props) => {
       </div>
     </form>
     {props.searchResult.map( (result, id) => (
-      <SearchResult result={result} key={id} addVideoCallback={props.addVideoCallback}/>
-      
+      <SearchResult 
+        result={result} 
+        key={id} 
+        addVideoCallback={props.addVideoCallback}
+        videos={props.videos}/>
 ))}  </div>
   )
 }

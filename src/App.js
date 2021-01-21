@@ -114,7 +114,11 @@ const App = () => {
               renders the first one that matches the current URL. */}
           <Switch>
             <Route path='/search'>
-              <Search searchVideoCallback={searchVideo} searchResult={searchResult} addVideoCallback={addVideo}/>
+              <Search 
+                searchVideoCallback={searchVideo} 
+                searchResult={searchResult} 
+                addVideoCallback={addVideo}
+                videos={videoList}/>
             </Route>
             <Route path='/library'>
               <Library 
@@ -124,7 +128,10 @@ const App = () => {
               />
             </Route>
             <Route path='/customers'>
-              <CustomerList customers={customerList} selectCustomerCallback={selectedCustomer} currentCustomer={currentCustomer}/>
+              <CustomerList 
+                customers={customerList} 
+                selectCustomerCallback={selectedCustomer} 
+                currentCustomer={currentCustomer}/>
             </Route>
             <Route path='/'>
               <Homepage />
