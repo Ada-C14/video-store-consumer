@@ -31,12 +31,6 @@ const VideoLibrary = (props) => {
             console.log(errorMessage);
         });
     }, []);
-<<<<<<< HEAD
-=======
-
-
-    
->>>>>>> 69902cb4b88754bf884c09e06352bed7742f9a0a
 
     return (
         <div>
