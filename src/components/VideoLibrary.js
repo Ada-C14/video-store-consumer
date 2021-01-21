@@ -36,10 +36,10 @@ const VideoLibrary = (props) => {
   return (
     <div className='videoLibrary'>
       <ul>
-      {videos.map( (video) => {
-    return (<li key={video.id}>{<LibraryEntry id={video.id} title={video.title}/>}</li>);
-    })
-    }
+        {videos.map( (video) => {
+          return (<li key={video.id}>{<LibraryEntry id={video.id} title={video.title}/>}</li>);
+          })
+        }
       </ul>
     </div>
   )

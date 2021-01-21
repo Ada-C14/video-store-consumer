@@ -1,20 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { NavLink, Switch, Route } from 'react-router-dom';
 import VideoLibrary from './components/VideoLibrary';
 
-// class App extends Component {
-//   render() {
-//     return (
-//       <div className='app'>
-//   <h1>React Router Demo</h1>
-//   <Navigation />
-//   <Main />
-// </div>
-//     );
-//   }
-// }
+const [selectedVideo, setSelectedVideo] = useState('');
+
+const libraryCallback = (selectedVideoID) => {
+
+}
 
 const App = () => (
   <div className='app'>
