@@ -35,6 +35,9 @@ const Search = (props) => {
     
         return false;
     }
+
+    // display results
+    // user cannot add video if in library, but can select it
     const resultList = (arrayResults) => {
         let results = []
         for (const video of arrayResults) {
