@@ -13,7 +13,9 @@ const Search = (props) => {
   const renderVideoDetails = () => {
     return props.videoResults.map((result) => (
       <>
-        <div>title: {result.title}</div>
+        <div> title: {result.title} </div>
+        <div> overview: {result.overview} </div>
+        <div> release date: {result.release_date} </div>
         <button onClick={() => props.videoSelectionCallback(result)}>
           Add to Library
         </button>
