@@ -1,14 +1,15 @@
 import React, { useEffect, useState} from 'react'; 
 import axios from 'axios';
 import Video from './Video'; 
+import API from '../ApiSupport'
 
 
-const Library = (props) => {
+const Library = () => {
   const [videoList, setVideoList] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
-    axios.get(`${props.url}videos`)
+    API.get(`videos`)
       .then((response) => {
         const apiVideoList = response.data; 
         setVideoList(apiVideoList);

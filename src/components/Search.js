@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import API from '../ApiSupport'
+import SearchItem from './SearchItem';
 
 
 const Search = () => {
@@ -20,20 +21,24 @@ const Search = () => {
 
   return (
     errorMessage == null ?
+    
       <div>
         <h1>This is the search page.</h1>
+        
         <input
           type="text"
           onChange={search} />
+          
         {
           searchList.map(item => {
             return (
-              <div id={item.external_id}>
-                {item.title}
-                {item.overview}
-                {item.release_date}
-                {item.image_url}
-              </div>
+              <SearchItem
+                id={item.external_id}
+                title={item.title}
+                overview={item.overview}
+                release_date={item.release_date}
+                image_url={item.image_url}
+                />
             )
           })
         }

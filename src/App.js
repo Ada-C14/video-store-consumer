@@ -12,9 +12,6 @@ import Search from './components/Search';
 import CustomerList from './components/CustomerList';
 import Customer from './components/Customer';
 
-
-// const BASE_URL = 'http://localhost:3000/';
-
 class App extends Component {
   render() {
     return (
