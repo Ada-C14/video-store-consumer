@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-// import PropTypes from 'prop-types';
-
 const Search = (props) => {
   const [title, setTitle] = useState('');
 
@@ -13,14 +11,12 @@ const Search = (props) => {
   };
 
   const renderVideoDetails = () => {
-    let vidDetails = '';
-    console.log(vidDetails);
+    let details = '';
 
     for (let key in props.videoResults) {
-      vidDetails += `${key}: ${props.videoResults[key]}`;
+      details += `${key}: ${props.videoResults[key]}`;
     }
-    console.log(vidDetails);
-    return vidDetails;
+    return details;
   };
 
   return (

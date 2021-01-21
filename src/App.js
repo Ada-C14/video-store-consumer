@@ -38,18 +38,14 @@ const App = () => {
   }, []);
 
   const searchVideo = (video) => {
-    // console.log(video);
     axios
       .get(`${API_URL_BASE}/${video}`)
       .then((response) => {
-        // What should we do when we know the post request worked?
         const videoDetails = response.data;
-        console.log(videoDetails);
         setVideoResults(videoDetails);
         setErrorMessage('');
       })
       .catch((error) => {
-        // What should we do when we know the post request failed?
         setErrorMessage(error.message);
       });
   };
@@ -103,7 +99,7 @@ const App = () => {
             searchVideoCallback={searchVideo}
             videoResults={videoResults}
           />
-        )} //added this
+        )}
       />
       <footer>Copyright</footer>
     </main>
