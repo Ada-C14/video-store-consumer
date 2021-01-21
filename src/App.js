@@ -30,6 +30,15 @@ export default function App() {
     setMovies(singleMovie)
   }
 
+  const dueDate = () => {
+    const result = new Date();
+    result.setDate(result.getDate() + 14);
+    return result;
+  }
+
+
+
+
   return (
     <Router>
       <div>
@@ -85,4 +94,3 @@ const Home = () => {
     </div>
   );
 };
-
