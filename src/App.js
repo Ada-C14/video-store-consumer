@@ -7,29 +7,11 @@ import {
 } from 'react-router-dom';
 import VideoSearch from './components/VideoSearch';
 import VideoLibrary from './components/VideoLibrary';
-import Customers from './components/Customers';
+
 
 import './App.css';
 import Customers from './Customers';
 
-<<<<<<< HEAD
-
-const App = () => {
-  // render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Customers />
-      </div>
-    );
-  // }
-=======
 const App = () => {
   const API_BASE_URL = 'http://localhost:3000';
 
@@ -70,7 +52,7 @@ const App = () => {
       </div>
     </Router>
   );
->>>>>>> 6efb61b4fe2bfd79e750fef42c728b9dd1a0f8d6
+
 }
 
 export default App;
