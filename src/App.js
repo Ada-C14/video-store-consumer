@@ -21,6 +21,7 @@ const BASE_API_URL = 'http://localhost:3000';
 export default function App() {
   const [customer, setCustomer] = useState(null);
   const [movie, setMovie] = useState(null);
+  const [message, setMessage] = useState(null);
 
   const selectCustomer = (customer) => {
     setCustomer(customer);
@@ -35,6 +36,22 @@ export default function App() {
     result.setDate(result.getDate() + 14);
     return result;
   }
+
+  const rentMovie = () => {
+    axios.post(`http://localhost:3000/rentals/${movie.title}/checkout`, {
+      customerId: customer.id,
+      dueDate: dueDate()
+    })
+      .then(() => {
+        // console.log(response)
+        setMessage(
+          'Movie Rented!'
+        );
+      })
+      .catch((error) => {
+        setMessage(error.message);
+      });
+}
 
 
 
