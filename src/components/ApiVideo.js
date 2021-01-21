@@ -30,7 +30,10 @@ const ApiVideo = (props) => {
         <th>{props.title}</th>
         <th>{props.overview}</th>
         <th>{props.releaseDate}</th>
-        <th>{props.imageUrl}</th>
+        <th><img 
+              src={props.imageUrl}
+              alt={props.title} />
+        </th>
         <th>
           <button
             onClick={onFormSubmit}>
