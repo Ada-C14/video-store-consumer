@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import './Videos.css'
 
-const Videos = ( {videoURL, newVideo} ) => {
+const Videos = ( {videoURL, newVideo, onVideoSelected} ) => {
   const [videoList, setvideoList] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -26,6 +26,10 @@ const Videos = ( {videoURL, newVideo} ) => {
   
 
   const showVideos = videoList.map((video) => {
+    const helperFunction = () => {
+      onVideoSelected(video)
+    }
+
     return (
       <div>
           {/* <p>{video.id} {video.title}</p>  */}
@@ -33,6 +37,8 @@ const Videos = ( {videoURL, newVideo} ) => {
           className='video'
           src={video.image_url} 
           alt={video.title}/>
+          <button onClick={helperFunction}>Select for checkout</button>
+
         {/* TODO, decide what else to include?
         Choices are:
         overview
