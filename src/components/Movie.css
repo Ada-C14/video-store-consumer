@@ -1,5 +1,6 @@
 h5 {
   margin: auto;
+  background-color: white;
 }
 
 p {
@@ -27,6 +28,10 @@ img {
   overflow: hidden;
 
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  background-color: white;
+
+  border-radius: 5px;
 }
 
 .movie-card:hover img {
@@ -40,6 +45,8 @@ img {
   z-index: 1;
   padding: 5px;
   border-radius: 5px;
+  border: 2px solid #e28c59;
+  color: #e28c59;
 }
 
 button {
