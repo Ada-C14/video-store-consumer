@@ -77,3 +77,7 @@
 .checkout__select:hover {
   background-color: #3f3f3f; 
 }
+
+.checkout__bar {
+  background-color: bisque;
+}

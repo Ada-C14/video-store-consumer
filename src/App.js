@@ -99,27 +99,23 @@ export default function App() {
       <div>
         <header>
           <nav className='navbar'>
-            {/* <ul>
-              <li>
+            
                 <Link to="/">Home</Link>
-              </li>
-              <li>
+             
+              
                 <Link to="/search">Search</Link>
-              </li>
-              <li>
+              
                 <Link to="/library">Video Library</Link>
-              </li>
-              <li>
+              
                 <Link to="/customers">Customer List</Link>
-              </li>
-            </ul> */}
-            <a class="active" href="/">Blockbusted Video Store</a>
+              
+            {/* <a class="active" href="/">Blockbusted Video Store</a>
             <a href="/search">Search</a>
             <a href="/library">Video Library</a>
-            <a href="/customers">Customer List</a>
+            <a href="/customers">Customer List</a> */}
           </nav>
         </header>
-        <section> 
+        <section className='checkout__bar'> 
           <article>
             <h1>current customer</h1>
             <h2>{currentCustomer.name ? currentCustomer.name : 'none selected'}</h2> 
@@ -129,8 +125,8 @@ export default function App() {
             <h2>{currentVideo.title ? currentVideo.title : 'none selected'}</h2> 
             <img src = {currentVideo.imgUrl} alt = {`Poster for ${currentVideo.title}`}/>         
           </article>
+          {currentCustomer.name && currentVideo.title ? <button onClick={onCheckOut} className='checkout__select'>Check-out</button> : null }
         </section>
-        {currentCustomer.name && currentVideo.title ? <button onClick={onCheckOut} className='checkout__select'>Check-out</button> : null }
         <article className = 'validation-errors-display'>
                 <h3>{errorMessage ? 'errors detected!' : ''}</h3>
                 <ul className = 'validation-errors-display__list'>
