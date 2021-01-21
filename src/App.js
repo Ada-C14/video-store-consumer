@@ -14,17 +14,17 @@ import axios from 'axios';
 
 export default function App() {
   const BASE_URL = 'http://localhost:3000'
-  const VIDEO_URL = `${BASE_URL}/videos`
+  const VIDEO_URL = 'http://localhost:3000/videos' //`${BASE_URL}/videos`
   const [selectedVideo, setSelectedVideo] = useState(null)
   const [selectedCustomer, setSelectedCustomer] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null)
-  
+
   // will receive information about which video was selected and set the state
   const onVideoSelected = (video) => {
     setSelectedVideo(video)
   }
-  
-    // will receive information about which customer was selected and set the state
+
+  // will receive information about which customer was selected and set the state
   const onCustomerSelected = (customer) => {
     setSelectedCustomer(customer)
   }
@@ -32,9 +32,9 @@ export default function App() {
 
   //  post "/rentals/:title/check-out", to: "rentals#check_out", as: "check_out"
   // http://localhost:3000/rentals/North%20by%20Northwest/check-out?customer_id=2&due_date=2021-02-15
-  
+
   // date formatting link: https://forums.asp.net/t/2005199.aspx?Calculate+next+due+date+using+javascript+or+jquery+
-  Date.prototype.addDays = function(interval) {
+  Date.prototype.addDays = function (interval) {
     this.setDate(this.getDate() + interval);
     return this;
   };
@@ -45,20 +45,20 @@ export default function App() {
     const dd = dueDate.getDate();
     const mm = dueDate.getMonth();
     const yyyy = dueDate.getFullYear();
-    const formattedDate = yyyy + '-'+ mm + '-'+ dd;
+    const formattedDate = yyyy + '-' + mm + '-' + dd;
     return formattedDate;
   };
 
   const checkout = () => {
-      const CHECKOUT_URL = `${BASE_URL}/rentals/${selectedVideo.title}/check-outcustomer_id=${selectedCustomer.customer_id}&due_date=${Timestamp()}`
-      axios.post(CHECKOUT_URL)
-        .then((response) => {
-          const data = response.data;
-          console.log(data)
-        })
-        .catch((error) => {
-          setErrorMessage(error.message);
-        });
+    const CHECKOUT_URL = `${BASE_URL}/rentals/${selectedVideo.title}/check-outcustomer_id=${selectedCustomer.customer_id}&due_date=${Timestamp()}`
+    axios.post(CHECKOUT_URL)
+      .then((response) => {
+        const data = response.data;
+        console.log(data)
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      });
   }
 
   return (
@@ -66,8 +66,8 @@ export default function App() {
       <div>
         {/* { selectedVideo && selectedVideo.title}
         { selectedCustomer && selectedCustomer.name} */}
-        
-        { selectedVideo && selectedCustomer && (
+
+        {selectedVideo && selectedCustomer && (
           <button onClick={checkout}>
             Checkout {selectedVideo.title} for {selectedCustomer.name}
           </button>
@@ -95,11 +95,11 @@ export default function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/customers">
-            <Customers onCustomerSelected={onCustomerSelected}/>
+            <Customers onCustomerSelected={onCustomerSelected} />
           </Route>
           <Route path="/library">
             {/* note that library and videos names don't match*/}
-            <Videos videoURL={VIDEO_URL} onVideoSelected={onVideoSelected}/>
+            <Videos videoURL={VIDEO_URL} onVideoSelected={onVideoSelected} />
           </Route>
           <Route path="/search">
             <Search videoURL={VIDEO_URL} />

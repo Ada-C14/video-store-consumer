@@ -51,9 +51,10 @@ const Search = ({ videoURL }) => {
         <img
           src={video.image_url}
           alt={video.title}
-          onClick={() => imageClick(video)} />
+           />
           <figcaption
-          className='image-caption'>
+          className='image-caption'
+          onClick={() => imageClick(video)}>
             <h1>Add</h1>
           </figcaption>
       </div>
