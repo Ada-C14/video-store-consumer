@@ -1,37 +1,18 @@
 import React, { useState } from 'react';
-import axios from 'axios'
-import './VideoSearch.css'
-import VideoSearchResult from './VideoSearchBar';
+import './VideoSearch.css';
+
 
 const VideoSearch = (props) => {
-    const BASE_URL = 'http://localhost:3000/'
-    const VIDEOSEARCH_API_PATH = 'videos?query='
+    // const BASE_URL = 'http://localhost:3000/'
+    // const VIDEOSEARCH_API_PATH = 'videos?query='
 
+    // import { Switch } from 'react-router';
 
-    const [searchResults, setSearchResults] = useState([])
-    const [errorMessage, setErrorMessage] = useState(null);
-
-    const onVideoSearch = (searchWord) => {
-        axios.get(BASE_URL + VIDEOSEARCH_API_PATH)
-        .then( response => {
-            setSearchResults(response.data)
-            setErrorMessage('')
-        })
-        .catch( error => {
-            setErrorMessage(error.message);
-        })
-    }
-}
-
-// const searchComponents = searchResults.map((item, id) => {})
-
-// return(
-//     <div>
-//         <div>
-
-//         </div>
-
-//     </div>
-// )
+    return 
+        <div>
+            
+        </div>
+    
+};
 
 export default VideoSearch;

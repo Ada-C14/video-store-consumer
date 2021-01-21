@@ -5,7 +5,7 @@ import './Video.css';
 const Video = (props) => {
 
   const onVideoClick = () => {
-    props.onClickCallBack(props.video);
+    props.onVideoClickCallBack(props.id);
   }
 
   return (
@@ -14,7 +14,7 @@ const Video = (props) => {
       <h3>{props.title}</h3>
       <p>Released Date: {props.releaseDate}</p>
       <p>Overview: {props.overview}</p>
-      <button className="video-button" onClick={ onVideoClick }>Select Video</button>
+      <button onClick={ onVideoClick }>Select Video</button>
     </div>
   );
 };
