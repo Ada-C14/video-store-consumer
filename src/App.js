@@ -12,6 +12,8 @@ import DisplayVideoDetail from './components/DisplayVideoDetail';
 import Customers from './components/CustomerList';
 import DisplayCustomerDetail from './components/DisplayCustomerDetail';
 import Search from './components/Search';
+import Home from './components/Home';
+
 
 const App = () => {
   const [selectedCustomer, setSelectedCustomer] = useState();
@@ -53,6 +55,9 @@ const App = () => {
         </Route>
         <Route path="/search">
           <Search />
+        </Route>
+        <Route path="/">
+          <Home />
         </Route>
       </Switch>
       {
