@@ -35,10 +35,6 @@ export default function App() {
     return result;
   }
 
-  const messageReset = () => {
-    setMessage(null);
-  }
-
   const rentMovie = () => {
     const url = BASE_API_URL + '/rentals/' + movie.title + '/check-out?customer_id=' + customer.id + '&due_date=' + dueDate();
 
@@ -51,7 +47,8 @@ export default function App() {
         setCustomer(null);
       })
       .catch((error) => {
-        setMessage(error.message);
+        // setMessage(error.message);
+        setTimeout(function(){ alert(error.message) }, 3000);
       });
   }
 
