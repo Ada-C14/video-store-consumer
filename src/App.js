@@ -99,20 +99,10 @@ export default function App() {
       <div>
         <header>
           <nav className='navbar'>
-            
                 <Link to="/">Home</Link>
-             
-              
                 <Link to="/search">Search</Link>
-              
                 <Link to="/library">Video Library</Link>
-              
                 <Link to="/customers">Customer List</Link>
-              
-            {/* <a class="active" href="/">Blockbusted Video Store</a>
-            <a href="/search">Search</a>
-            <a href="/library">Video Library</a>
-            <a href="/customers">Customer List</a> */}
           </nav>
         </header>
         <section className='checkout__bar'> 
