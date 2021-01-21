@@ -24,6 +24,17 @@ const Search = (props) => {
     const [query, setQuery] = useState('')
     const [searchResult, setSearchResult] = useState([]);
 
+    // check vidList prop for matching external_id
+
+    const inLibrary = (extId, vidList) => {
+        for (const video of vidList) {
+            if (video.external_id === extId) {
+                return true;
+            }
+        }
+    
+        return false;
+    }
     const resultList = (arrayResults) => {
         let results = []
         for (const video of arrayResults) {
@@ -33,7 +44,8 @@ const Search = (props) => {
             releaseDate = {video.release_date}
             imageUrl = {video.image_url}
             externalId = {video.external_id}
-            mode = 'addVideo'
+            clickButton = {props.curVid}
+            mode = { inLibrary(video.external_id, props.videoList) ? 'library' : 'add'}
             />
         results.push(vid);
         }

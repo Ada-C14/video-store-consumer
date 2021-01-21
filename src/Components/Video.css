@@ -30,11 +30,11 @@
     background-color: #4CAF50;
 }
 
-.video__add {
+.video__add{
     background-color: #ff6348;
 }
 
-.video__select:hover {
+.video__select:hover, .video__add:hover{
     background-color: #3f3f3f; 
 }
 

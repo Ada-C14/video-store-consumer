@@ -6,6 +6,7 @@ import axios from 'axios'
 import './Library.css';
 
 const Library = (props) => {
+
     // create all videos into components
     const allVideos = (vidList) => {
         let newVidList = []
@@ -18,7 +19,7 @@ const Library = (props) => {
                             externalId = {video.external_id}
                             clickButton = {props.curVid}
                             mode = 'library'
-                            />
+                            />;
             newVidList.push(vid);
         }
 

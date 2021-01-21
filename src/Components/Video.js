@@ -11,9 +11,9 @@ const Video = (props) => {
         <article className = 'video'>
             <h3>{props.title}</h3>
             <h4> released <span>{props.releaseDate}</span></h4>
-            <img className = "video__img" src = {props.imageUrl} alt = {`Poster for ${props.title}`}/>
+            <img className = 'video__img' src = {props.imageUrl} alt = {`Poster for ${props.title}`}/>
             <p className = 'video__overview'>{props.overview}</p>
-            <button className = "video__select" onClick = {props.mode === 'library' ? selectVideo : () => {}}> {props.mode === 'library' ? 'select video' : 'add to library'}</button>
+            <button className = {props.mode === 'library' ? 'video__select' : 'video__add'} onClick = {props.mode === 'library' ? selectVideo : () => {}}> {props.mode === 'library' ? 'select video' : 'add to library'}</button>
         </article>
     )
 }
