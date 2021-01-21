@@ -7,19 +7,44 @@ import './VideoSearch.css';
 
 
 const VideoSearch = (props) => {
-    // const BASE_URL = 'http://localhost:3000/'
-    // // const VIDEOSEARCH_API_PATH = 'videos?query='
-    // const [videos, setVideos] = useState([]);
-    // const [errorMessage, setErrorMessage] = useState(null);
+    const BASE_URL = 'http://localhost:3000/'
+    // const VIDEOSEARCH_API_PATH = 'videos?query='
+    const [videos, setVideos] = useState([]);
+    const [errorMessage, setErrorMessage] = useState(null);
 
-    // const videoSearch = 
+    const videoSearch = (title) => {
+        axios.get(`${BASE_URL}videos/?query=${title}`)
+        .then((response) => {
+            setVideos(response.data);
+            setErrorMessage('')
+        })
+        .catch((error) => {
+            setErrorMessage(error.message);
+        });
+        
+    }
+
+    const videosListComponent = videos.map((video) => {
+        return <Video
+        key={video.id}
+        id={video.external_id}
+        title={video.title}
+        overview={video.overview}
+        release_date={video.release_date}
+        imageURL={video.image_url}
+        />
+    })
     
 
-    return 
+    return (
         <div>
-            
+        <VideoSearchForm onSubmitCallback={videoSearch} />
+        {errorMessage ? <div>{errorMessage}</div> : '' }
+        {videosListComponent}
         </div>
-    
+    );
 };
-
+VideoSearch.propTypes = {
+    title: PropTypes.string,
+};
 export default VideoSearch;
