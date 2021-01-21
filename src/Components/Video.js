@@ -24,12 +24,15 @@ const Video = (props) => {
                         'Digit9']
 
     // params to add video
-    const params = {'external_id': props.externalId,
+    const video = {// eslint-disable-next-line camelcase
+                    external_id: props.externalId,
                     title: props.title,
                     overview: props.overview,
                     inventory: 0,
-                    'image_url': props.imageUrl,
-                    'release_date': props.releaseDate};
+                    // eslint-disable-next-line camelcase
+                    image_url: props.imageUrl,
+                    // eslint-disable-next-line camelcase
+                    release_date: props.releaseDate};
     const alert = useAlert(); // flash success messages
     const [inventory, setInventory] = useState(1); // track inventory
     const selectVideo = () => {
@@ -37,10 +40,11 @@ const Video = (props) => {
     }
 
     // check to update list
+    // an extra state variable was created to ONLY update vidList if a video was added
     useEffect(()=>{
         if(props.vidAdded) {
-            params.id = props.externalId;
-            props.videoList.push(params);
+            video.id = props.externalId;
+            props.videoList.push(video);
             props.setVidAdded(false);
         }
     },[props.vidAdded]);
@@ -68,18 +72,18 @@ const Video = (props) => {
     }
 
     const addVideo = () => {
-        params.inventory = inventory;
-        axios.post(props.url, params)
+        video.inventory = inventory;
+        axios.post(props.url, video, null)
         .then((response)=> {
             console.log('here');
             console.log(response);
-            alert.show(`${inventory} copy/copies of ${params.title} successfully added to library!`)
+            alert.show(`${inventory} copy/copies of ${video.title} successfully added to library!`)
             props.setError(null);
             props.setVidAdded(true);
         })
         .catch((error)=>{
             console.log(error);
-            props.setError([error.message.toLowerCase(), 'check that your inventory number more 0 and that video is not currently in library']);
+            props.setError([error.message.toLowerCase(), 'check that your inventory number is more than 0 and that video is not currently in library']);
             return false; // prevent useEffect in App.js from updating videoList
         });
     }
