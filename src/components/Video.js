@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 const Video = (props) => {
   return (
-    <div>
+    <span>
       {props.title} - {props.overview} - {props.release_date}
       {/* <img alt= "Movie Poster"> {props.image_url}</img> */}
-    </div>
+    </span>
     
   );
 }
