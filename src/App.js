@@ -4,6 +4,9 @@ import './App.css';
 import { NavLink, Switch, Route } from 'react-router-dom';
 import VideoLibrary from './components/VideoLibrary';
 
+
+
+const App = () => {
 const [selectedVideoID, setSelectedVideoID] = useState('');
 const [selectedVideoTitle, setSelectedVideoTitle] = useState('');
 
@@ -16,13 +19,6 @@ const onClickLibraryCallback = (video) => {
   console.log('onClickLibraryCallback was called')
 }
 
-const App = () => (
-  <div className='app'>
-    <h1>React Router Demo</h1>
-    <Navigation />
-    <Main />
-</div>
-);
 
 const Navigation = () => (
   <nav>
@@ -69,5 +65,13 @@ const Customers = () => (
     <h1>List of customers</h1>
   </div>
 );
+
+return(  <div className='app'>
+<h1>React Router Demo</h1>
+<Navigation />
+<Main />
+</div>
+)
+}
 
 export default App;
