@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import Video from './Video.js'
 
+import './Search.css';
+
 const MOVIES_RAILS = 'http://localhost:3000/videos'
 
 const Search = (props) => {
@@ -19,11 +21,12 @@ const Search = (props) => {
 
 
     const [title, setTitle] = useState('');
+    const [query, setQuery] = useState('')
     const [searchResult, setSearchResult] = useState([]);
 
     const resultList = (arrayResults) => {
         let results = []
-        for (const video of results) {
+        for (const video of arrayResults) {
             let vid = <Video id = {video.id} 
             title = {video.title} 
             overview = {video.overview} 
@@ -34,9 +37,17 @@ const Search = (props) => {
             />
         results.push(vid);
         }
-
+        console.log(results);
         return results;
     }
+
+    useEffect (()=>{
+        if (searchResult.length > 0) {
+            resultList(searchResult);
+        }
+    }, [searchResult])
+
+
     const onSearchChange = (event) => {
         setTitle(event.target.value)
     }
@@ -44,6 +55,7 @@ const Search = (props) => {
     // to register enter key with submit button
     const enterKey = (event) => {
         if (event.key === 'Enter') {
+            console.log('here')
             onSearchSubmit(event);
         }
     }
@@ -54,17 +66,8 @@ const Search = (props) => {
         // eslint-disable-next-line camelcase
         axios.get(`${MOVIES_RAILS}/?query=${title}`)
             .then((res) => {
-                console.log(res.data) // array of movies
-                // const results = res.data.results[0]
-                // setSearchResult({
-                //     title: results.title,
-                //     overview: results.overview,
-                //     releaseDate: results.release_date,
-                //     posterURL: results.poster_path
-                // })
-                setSearchResult(res.data); // takes one cycle to save the result?? 
-                console.log(searchResult)
-
+                setSearchResult(res.data); 
+                setQuery(title);
             })
             .catch((err) => {
                 props.setError([err.message])
@@ -78,14 +81,14 @@ const Search = (props) => {
 
     return (
         <div>
-            <h1>Search</h1>
+            <h1>search for a video</h1>
             <form onSubmit={onSearchSubmit} onKeyPress = {enterKey}>
-                <label> Search:
-                    <input type='text' placeholder='title' value={title} onChange={onSearchChange}/>
-                </label>
-                <button>Search title</button>
+                <label> search: </label>
+                    <input type='text' placeholder='enter title' value={title} onChange={onSearchChange}/>
+                <button>search title</button>
             </form>
-            <section>
+            <h2>{query ? `results for "${query}"` : 'no videos to display. start searching!'}</h2>
+            <section className = 'search_results'>
                 {resultList(searchResult)}
             </section>
         </div>
