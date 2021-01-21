@@ -26,9 +26,6 @@ const Customers = (props) => {
 
     const customerID = Number(event.target.value)
 
-    // TODO: .find or .filter thru the list of customers to get the name so that it can print? 
-    // Why can't I pull the customer object?  So that I can pass all the details to state in app?  
-
     const custObj = customerList.find((cust) => {
       return (
         cust.id === customerID
@@ -37,7 +34,6 @@ const Customers = (props) => {
 
     console.log({custObj, customerID})
 
-    // [obj Obj]
     props.setCustomerIDCallback(customerID)
     props.setCustomerNameCallback(custObj.name)
   }

@@ -37,20 +37,16 @@ const App = () => {
     // TODO: update for date to be saved in state and updated to  7 days from today when this func is called
     const date = 'Jan 31, 2021'
 
-    if (selectedCustomerID !== null && selectedVideo !== null) {
-      axios.post(`${localAPI}/rentals/${selectedVideo}/check-out?customer_id=${selectedCustomerID}&due_date=${date}`)
-      .then((response) => {
-        console.log(response)
-        console.log(`Movie titled ${selectedVideo} checked out to Customer ID: ${selectedCustomerID}`)
-        setErrorMessage(`Movie titled ${selectedVideo} checked out to Customer ID: ${selectedCustomerID}`)
-      })
-      .catch((error) => {
-        setErrorMessage(`Unable to checkout movie titled ${selectedVideo} to Customer ID: ${selectedCustomerID}`);
-        console.log(`Unable to checkout movie titled ${selectedVideo} to Customer ID: ${selectedCustomerID}`)
-      });
-    } else {
-      setErrorMessage('Please select and video and customer to check out')
-    }
+    axios.post(`${localAPI}/rentals/${selectedVideo}/check-out?customer_id=${selectedCustomerID}&due_date=${date}`)
+    .then((response) => {
+      console.log(response)
+      console.log(`Movie titled ${selectedVideo} checked out to Customer ID: ${selectedCustomerID}`)
+      setErrorMessage(`Movie titled ${selectedVideo} checked out to Customer ID: ${selectedCustomerID}`)
+    })
+    .catch((error) => {
+      setErrorMessage(`Unable to checkout movie titled ${selectedVideo} to Customer ID: ${selectedCustomerID}`);
+      console.log(`Unable to checkout movie titled ${selectedVideo} to Customer ID: ${selectedCustomerID}`)
+    });
 
   };
   
@@ -80,7 +76,6 @@ const App = () => {
             Selected Customer:  { selectedCustomerName }
             Selected Cust ID: {selectedCustomerID}
             { selectedVideo !== null && selectedCustomerID !== null ? checkOutVideoBtn() : null }
-            {/* <button onClick={ checkOutVideo } >Check Out</button> */}
           </span>
           <div>
             { errorMessage }
