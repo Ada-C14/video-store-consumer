@@ -35,6 +35,7 @@ const Customers = (props) => {
         postalCode={customer.postal_code}
         phone={customer.phone}
         registeredAt={customer.registered_at}
+        selectCustomerCallback={props.selectCustomerCallback}
       />
     )
   })
@@ -55,6 +56,7 @@ const Customers = (props) => {
 Customers.propTypes = {
   url:PropTypes.string.isRequired,
   focus: PropTypes.string.isRequired,
+  selectCustomerCallback: PropTypes.func.isRequired,
 };
 
 export default Customers;

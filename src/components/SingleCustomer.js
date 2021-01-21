@@ -3,6 +3,13 @@ import PropTypes from 'prop-types';
 import './SingleCustomer.css';
 
 const SingleCustomer = (props) => {
+  const onSelect = (event) => {
+    event.preventDefault();
+    props.selectCustomerCallback({
+      id: props.id   
+    });
+  }
+
   return (
     <table className="table">
       <tr>
@@ -16,7 +23,7 @@ const SingleCustomer = (props) => {
         <th>Postal Code</th>
         <th>Phone#</th>
         <th>Registered At</th>
-        <th>Selected</th>
+        <th>Select</th>
       </tr>
       <tr>
         <th>{props.id}</th>  
@@ -29,7 +36,12 @@ const SingleCustomer = (props) => {
         <th>{props.postalCode}</th>
         <th>{props.phone}</th>
         <th>{props.registeredAt}</th>
-        <th></th>
+        <th>
+          <button
+            onClick={onSelect}>
+              Select
+          </button>
+        </th>
        </tr>
     </table>
   )
@@ -46,6 +58,7 @@ SingleCustomer.propTypes = {
   postalCode: PropTypes.number.isRequired,
   phone: PropTypes.number.isRequired,
   registeredAt: PropTypes.number.isRequired,
+  selectCustomerCallback: PropTypes.func.isRequired,
 };
 
 export default SingleCustomer;

@@ -1,24 +1,28 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  useRouteMatch,
-  useParams
+  Link
 } from 'react-router-dom';
 import Search from './components/Search';
 import Library from './components/Library';
 import Customers from './components/Customers';
+import logo from './logo.svg';
+import './App.css';
 
 
 // base url depents on the link of rails server
 const BASE_URL = 'http://localhost:3000/'
 
 const App = () => {
-  return (
+  const [selectCustomer, setSelectedCustomer] = useState('')
+
+  const chooseCustomer = (id) => {
+    setSelectedCustomer(id.id)
+  }
+
+   return (
     <Router>
       <div className="App">
         <header className="App-header">
@@ -49,8 +53,10 @@ const App = () => {
             <Library />
           </Route>
           <Route path="/customers" component={Customers}>
+            <p>Selected Customer - {selectCustomer}</p>
             <Customers url={BASE_URL}
-                       focus='customers'/>
+                       focus='customers'
+                       selectCustomerCallback={chooseCustomer}/>
           </Route>
           <Route path="/">
             <Home />
