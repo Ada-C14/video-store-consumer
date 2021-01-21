@@ -72,5 +72,12 @@ const Library = (props) => {
   )
 }
 
+Library.propTypes = {
+  url:PropTypes.string.isRequired,
+  focus: PropTypes.string.isRequired,
+  selectVideoCallback: PropTypes.func.isRequired,
+  selectedVideo: PropTypes.object,
+};
+
 export default Library
 

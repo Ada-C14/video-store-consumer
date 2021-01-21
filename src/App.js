@@ -12,6 +12,7 @@ import Customers from './components/Customers';
 import logo from './logo.svg';
 import './App.css';
 import CheckOut from './components/CheckOut';
+import CheckIn from './components/CheckIn';
 
 
 // base url depents on the link of rails server
@@ -31,7 +32,21 @@ const App = () => {
   }
 
   const checkOut = (rental) => {
+    console.log(rental.dueDate)
     axios.post(`${BASE_URL}rentals/${rental.video.title}/check-out?customer_id=${rental.customer}&due_date=${rental.dueDate}`, rental)
+    .then((response) => {
+      setErrorMessage('');
+    })
+    .catch((error) => {
+      setErrorMessage(error.message);
+    });
+
+    setSelectedVideo(null)
+    setSelectedCustomer(null)
+  }
+
+  const checkIn = (rental) => {
+    axios.post(`${BASE_URL}rentals/${rental.video.title}/return?customer_id=${rental.customer}&returned=true`, rental)
     .then((response) => {
       setErrorMessage('');
     })
@@ -69,6 +84,11 @@ const App = () => {
           <CheckOut video={selectedVideo}
                     customer={selectedCustomer}
                     checkOutCallback={checkOut} />
+        </div>
+        <div>
+          <CheckIn video={selectedVideo}
+                    customer={selectedCustomer}
+                    checkInCallback={checkIn} />
         </div>
 
         <div>
