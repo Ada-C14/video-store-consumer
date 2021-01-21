@@ -20,7 +20,7 @@ const Customers = (props) => {
       .catch((error) => {
         setErrorMessage(error.message);
       });
-  }, []);
+  }, [customerList]);
 
   const customerComponents = customerList.map((customer) => {
     return (
