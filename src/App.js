@@ -38,12 +38,12 @@ export default function App() {
   }
 
   const rentMovie = () => {
-    axios.post(BASE_API_URL + '/rentals/' + movie.title + '/checkout', {
-      customerId: customer.id,
-      dueDate: dueDate()
-    })
+    const url = BASE_API_URL + '/rentals/' + movie.title + '/checkout?customer_id=' + customer.id + 'due_date=' + dueDate;
+
+    axios.post(url)
       .then(() => {
         setMessage('Movie Rented!');
+        console.log('worked!')
       })
       .catch((error) => {
         setMessage(error.message);
