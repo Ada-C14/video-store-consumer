@@ -3,6 +3,18 @@ import PropTypes from 'prop-types';
 import './ApiVideo.css';
 
 const ApiVideo = (props) => {
+  // event handlers
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+    props.addVideoCallback({
+      externalId: props.externalId, 
+      title: props.title,
+      overview: props.overview,
+      releaseDate: props.releaseDate,
+      imageUrl: props.imageUrl,    
+    });
+  }
+
   return (
     <table className="table">
       <tr>
@@ -21,7 +33,7 @@ const ApiVideo = (props) => {
         <th>{props.imageUrl}</th>
         <th>
           <button
-            onClick={() => props.addVideoCallback(props.externalId)}>
+            onClick={onFormSubmit}>
             Add to Library
           </button>
         </th> 
