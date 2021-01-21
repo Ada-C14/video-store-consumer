@@ -12,6 +12,7 @@ const ApiVideo = (props) => {
       overview: props.overview,
       releaseDate: props.releaseDate,
       imageUrl: props.imageUrl,    
+      inventory: 10,
     });
   }
 
