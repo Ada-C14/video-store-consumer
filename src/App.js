@@ -37,17 +37,21 @@ const App = () => {
       });
   }, []);
 
-  const searchVideo = (video) => {
+  const searchVideo = (query) => {
     axios
-      .get(`${API_URL_BASE}/${video}`)
+      .get(`${API_URL_BASE}?query=${query}`)
       .then((response) => {
-        const videoDetails = response.data;
-        setVideoResults(videoDetails);
+        const searchResults = response.data;
+        setVideoResults(searchResults);
         setErrorMessage('');
       })
       .catch((error) => {
         setErrorMessage(error.message);
       });
+  };
+
+  const selectVideo = (video) => {
+    setVideoList([...videoList, video]);
   };
 
   return (
@@ -98,6 +102,7 @@ const App = () => {
             videoList={videoList}
             searchVideoCallback={searchVideo}
             videoResults={videoResults}
+            videoSelectionCallback={selectVideo}
           />
         )}
       />

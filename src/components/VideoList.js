@@ -13,7 +13,7 @@ const VideoList = (props) => {
           overview={video.overview}
           releaseDate={video.release_date}
           imageUrl={video.image_url}
-          //   inventory={props.inventory}
+          inventory={props.inventory}
           id={video.external_id}
           key={i}
         />

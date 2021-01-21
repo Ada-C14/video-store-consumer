@@ -11,12 +11,22 @@ const Search = (props) => {
   };
 
   const renderVideoDetails = () => {
-    let details = '';
+    // let details = '';
+    //[[key, value], [key,value]]
 
-    for (let key in props.videoResults) {
-      details += `${key}: ${props.videoResults[key]}`;
-    }
-    return details;
+    return props.videoResults.map((result) => (
+      <>
+        <div>title: {result.title}</div>
+        <button onClick={() => props.videoSelectionCallback(result)}>
+          Add to Library
+        </button>
+      </>
+    ));
+
+    // for (let key in props.videoResults) {
+    //   details += `${key}: ${props.videoResults[key]} `;
+    // }
+    // return details;
   };
 
   return (

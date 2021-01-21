@@ -9,6 +9,7 @@ const Video = (props) => {
         <li>Overview: {props.overview}</li>
         <li>Release Date: {props.releaseDate}</li>
         <li>{props.imageUrl}</li>
+        <li> inventory: {props.inventory}</li>
       </ul>
     </div>
   );
