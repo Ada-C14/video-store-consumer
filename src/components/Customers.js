@@ -32,8 +32,6 @@ const Customers = (props) => {
       )
     })
 
-    console.log({custObj, customerID})
-
     props.setCustomerIDCallback(customerID)
     props.setCustomerNameCallback(custObj.name)
   }

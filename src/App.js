@@ -36,14 +36,16 @@ const App = () => {
   const getDueDate = () => {
     const date = new Date()
     date.setDate(date.getDate() + 7)
-    return (moment(date).format('MMM, D YYYY'))
+    return (moment(date).format('MMM D, YYYY'))
   }
 
   const checkOutVideo = () => {
     const date = getDueDate()
-    setDueDate(date)
+    // setDueDate(toString(date));
+    console.log(date)
+    // console.log(dueDate)
 
-    axios.post(`${localAPI}/rentals/${selectedVideo}/check-out?customer_id=${selectedCustomerID}&due_date=${dueDate}`)
+    axios.post(`${localAPI}/rentals/${selectedVideo}/check-out?customer_id=${selectedCustomerID}&due_date=${date}`)
     .then((response) => {
       console.log(`Movie titled ${selectedVideo} checked out to Customer ID: ${selectedCustomerID}`)
       setErrorMessage(`Movie titled ${selectedVideo} checked out to Customer ID: ${selectedCustomerID}`)
@@ -53,7 +55,6 @@ const App = () => {
       console.log(`Unable to checkout movie titled ${selectedVideo} to Customer ID: ${selectedCustomerID}`)
     });
 
-    setDueDate(null)
   };
   
   const checkOutVideoBtn = () => {
