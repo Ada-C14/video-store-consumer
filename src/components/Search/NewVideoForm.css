@@ -1,8 +1,17 @@
 .add-video-form {
-  padding-top: 1rem;
-  overflow: visible
+  padding-bottom: 1rem;
+  overflow: visible;
 }
 
-.add-video-form select {
-  margin-right: 0.5rem
+.add-video-form label {
+  font-size: medium;
+}
+
+.add-video-dropdown {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.add-video-dropdown *{
+  font-size: small;
 }
