@@ -44,7 +44,7 @@ const MovieSearchBar = props => {
       { alert ? alert : '' }
       <form onSubmit={onFormSubmit}>
         <input name='searchQuery' onChange={onInputChange} value={formFields.searchQuery} placeholder='Call Me By Your Name' />
-        <button type='submit' value='Search'>Search</button>
+        <button type='submit' value='Search'>search</button>
       </form>
       { formFields.searchResults.length > 0 &&
         <Redirect to={{

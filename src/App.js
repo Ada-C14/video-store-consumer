@@ -58,11 +58,20 @@ export default function App() {
 
 const Home = () => {
   return (
-    <div className='homepage'>
-      <h1>start a rental</h1>
-      <br />
-      <h1>search for a movie</h1>
-      <MovieSearchBar url={BASE_API_URL} />
+    <div className='homepage-container'>
+      <div className='homepage'>
+        <h1>start a rental</h1>
+        <div className='btn-container'>
+          <div className='main-btn'>movies</div>
+          <div className='main-btn'>customers</div>
+        </div>
+        <br />
+        <h1>search for a movie</h1>
+        <MovieSearchBar url={BASE_API_URL} />
+      </div>
+      <div className='img-carousel'>
+        
+      </div>
     </div>
   );
 };

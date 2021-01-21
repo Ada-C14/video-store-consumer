@@ -6,22 +6,31 @@
   display: flex;
   width: 50vw;
   padding: 3%;
+  border: 2px solid #277f86;
+  border-radius: 5px;
 }
 
 .popup-movie-info {
   display: flex;
   flex-direction: column;
   margin-left: 5%;
+  background-color: white;
+}
+
+.popup-movie-info h4, .popup-movie-info p {
+  background-color: white;
 }
 
 .popup-movie-info__exit-button {
   display: flex;
+  background-color: white;
 }
 
 .popup-movie-info__exit-button button {
   width: 5%;
   border-radius: 5px;
   margin: auto 0 auto auto;
+  background-color: white;
 }
 
 .exit-button {
