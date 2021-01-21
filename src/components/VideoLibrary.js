@@ -8,7 +8,7 @@ const VideoLibrary = (props) => {
 
     const [videoList, setVideoList] = useState([]);
     const [errorMessage, setErrorMessage] = useState(null);
-  
+    const [selectedVideo, setSelectedVideo] = useState(null);
 
     const videosUrl = 'http://localhost:3000/videos'
 
@@ -18,12 +18,18 @@ const VideoLibrary = (props) => {
                 const newVideoList = response.data;
                 setVideoList(newVideoList);
             })
-            .catch((error) => {
-                setErrorMessage(error.message);
+            .catch((errorMessage) => {
+                setErrorMessage(errorMessage.message);
             })
     }, []);
 
+    const selectVideo = (selected) => {
+        setSelectedVideo(selected);
+        return;
+    }
+
     const rows = videoList.map((video) => {
+    
         return (
             <Video
                 key={video.id}
@@ -31,6 +37,8 @@ const VideoLibrary = (props) => {
                 title={video.title}
                 imageUrl={video.image_url}
                 overview={video.overview}
+                selectVideoCallback={selectVideo}
+                isSelected={selectedVideo? video.id === selectedVideo.id : null}
             />
         )
     })

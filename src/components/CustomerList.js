@@ -5,6 +5,7 @@ import axios from 'axios';
 const CustomerList = () => {
     const [customers, setCustomers] = useState([]);
     const [error, setError] = useState('');
+    const [selectedCustomer, setSelectedCustomer] = useState(null)
 
     useEffect(() => {
         axios.get(`http://localhost:3000/customers/`)
@@ -20,6 +21,11 @@ const CustomerList = () => {
             })
     }, []);
 
+    const selectCustomer = (selected) => {
+        setSelectedCustomer(selected);
+        return;
+    }
+
     const formatCustomer = customer => {
         return <Customer 
             key={customer.id}
@@ -33,6 +39,8 @@ const CustomerList = () => {
             phone={customer.phone}
             accountCredit={customer.account_credit}
             videosCheckedOutCount={customer.videos_checked_out_count}
+            selectCustomerCallback={selectCustomer}
+            isSelected={selectedCustomer? customer.id === selectedCustomer.id : null}
         />
     }
 

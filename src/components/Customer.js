@@ -2,6 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Customer = (props) => {
+
+    const onButtonClick = () => {
+        const selected = {
+            id: props.id
+        }
+        props.selectCustomerCallback(selected);
+    }
+
         return (
         <div className="customer">
             <h3 className="customer__name">{props.name}</h3>
@@ -12,6 +20,7 @@ const Customer = (props) => {
             <p className="customer__details">{props.phone}</p>
             <p className="customer__details">{props.address}</p>
             <p className="customer__details">{props.city}, {props.state} {props.postalCode}</p>
+            {props.isSelected? <button className="selected" onClick={onButtonClick}>SELECTED</button> : <button className="select" onClick={onButtonClick}>SELECT</button> }
         </div>
     )
 }
@@ -27,6 +36,8 @@ Customer.propTypes = {
     phone: PropTypes.string,
     accountCredit: PropTypes.number,
     videosCheckedOutCount: PropTypes.number,
+    isSelected: PropTypes.bool,
+    selectCustomerCallback: PropTypes.func
 }
 
 export default Customer;

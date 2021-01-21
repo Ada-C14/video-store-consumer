@@ -51,7 +51,6 @@ const SearchResultList = () => {
                 overview={video.overview}
                 releaseDate={video.release_date}
                 externalId={video.external_id}
-                buttonClass="add-film"
                 buttonText="ADD"
                 addFilmCallback={addFilm}
             />
