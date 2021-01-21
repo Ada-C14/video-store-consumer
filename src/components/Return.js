@@ -5,49 +5,37 @@ const axios = require('axios');
 
 const Return = (props) => {
   const [ReturnMessage, setReturnMessage] = useState();
-  const [CustomerAndVideo,setCustomerAndVideo] = useState({
-    video: '',
-    customer: ''
-  });
 
-  const onSubmitReturn = (event) => {
-    event.preventDefault();
 
-    setCustomerAndVideo({
-      video: props.video,
-      customer: props.customer.id
-    });
-  }
-
-  useEffect(() => {
-    if (CustomerAndVideo.video == '' ){
-      return ;
+  const onSubmitReturn = () => {
+    if (!props.video) {
+        return;
     }
 
-  axios.post(BASE_URL + CustomerAndVideo.movie + '/return', {
-      customerId:CustomerAndVideo.customer
-  })
-    .then((response) => {
-      setReturnMessage(props.customer.name + ' returned ' + CustomerAndVideo.video +' !' );
-      props.setDisplayMessage({message: props.customer.name + ' Successfully Returned Movie ' + CustomerAndVideo.video , severity: 'success'});
-      console.log('Successfully Returned Video' + CustomerAndVideo.video);
-      console.log(response.data);
-    })
-    .catch((error)=>{
-      props.setDisplayMessage({message: 'Failed to return video', severity: 'error'});
-      console.log(error.response.data.errors);
-      console.log('FAILED ON API CALL')
-  });
-  }, [CustomerAndVideo]);
 
-  return(
+axios.post(`${BASE_URL}/${props.video}/return`, {}, {
+    params: {
+        'customer_id': props.customer.id,
+        'due_date': formattedDueDate,
+    }
+    }).then((response) => {
+    setReturnMessage(props.customer.name + ' returned: ' + props.video );
+    console.log('Successfully Returned Video' + props.video);
+    }).catch((error) => {
+    alert('Failed to check out video');
+    console.log('FAILED ON API CALL');
+    });
+}
+
+
+return(
     <span>
-      <button className="Return-checkIn-checkOut MainButton"  onClick = {onSubmitReturn}>
+      <button className='Checkout-checkIn-checkOut MainButton' onClick={ onSubmitCheckout }>
       Return Video
       </button>
-      <p>{ReturnMessage}</p>
+      <p>{ CheckoutMessage }</p>
     </span>
   );
 }
 
-export default Return
+export default Return;
