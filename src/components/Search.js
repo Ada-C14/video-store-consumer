@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import SearchForm from './SearchForm'
+import Select from 'react-select'
 
 const Search = ({ videoURL }) => {
   const [videoResult, setVideoResult] = useState([]);
@@ -26,8 +27,9 @@ const Search = ({ videoURL }) => {
   const showVideoResult = videoResult.map((video) => {
     return (
       <div>
-        <p>This WOrks!</p>
-        {video.title}
+        {/* TODO:
+        Conditional Rendering, if title, show the image, if not say "sorry, not found" or something like that :) */}
+        <img src={video.image_url} alt={video.title}/>
       </div>
     );
   })

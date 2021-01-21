@@ -4,7 +4,6 @@ import axios from 'axios';
 
 const SearchForm = ({ getVideo }) => {
   const [video, setVideo] = useState('');
-  const [errorMessage, setErrorMessage] = useState(null);
   const initState = {
     title: ''
   }
