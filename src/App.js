@@ -48,10 +48,10 @@ const App = () => {
   }, []);
 
 
-  const selectCustomer = (customer) => {
+  const selectCustomerToCart = (customer) => {
     setSelectedCustomer(customer);
   };
-  const selectVideo = (video) => {
+  const selectVideoToCart = (video) => {
     setSelectedVideo(video);
   };
 
@@ -65,6 +65,7 @@ const App = () => {
 
     setSelectedCustomer('');
     setSelectedVideo('');
+  };
 
   const searchVideo = (query) => {
     axios
@@ -81,7 +82,6 @@ const App = () => {
 
   const selectVideo = (video) => {
     setVideoList([...videoList, video]);
-
   };
 
   return (
@@ -111,12 +111,12 @@ const App = () => {
 
             <Route
               path={'/library'}
-              render={(props) => <VideoList {...props} videoList={videoList} selectedVideo={selectedVideo} onClickSelect={selectVideo} />}
+              render={(props) => <VideoList {...props} videoList={videoList} selectedVideo={selectedVideo} onClickSelect={selectVideoToCart} />}
             />
             <Route
               path={'/customers'}
               render={(props) => (
-                <CustomerCollection {...props} customerList={customerList} selectedCustomer={selectedCustomer} onClickSelect={selectCustomer} />
+                <CustomerCollection {...props} customerList={customerList} selectedCustomer={selectedCustomer} onClickSelect={selectCustomerToCart} />
               )}
             />
           </Col>
