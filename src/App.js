@@ -28,12 +28,10 @@ const App = () => {
       .get(API_URL_BASE)
       .then((response) => {
         const apiVideoList = response.data;
-        // console.log(apiVideoList);
         setVideoList(apiVideoList);
       })
       .catch((error) => {
         setErrorMessage(error.message);
-        // console.log(error.message);
       });
   }, []);
 

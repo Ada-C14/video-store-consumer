@@ -11,9 +11,6 @@ const Search = (props) => {
   };
 
   const renderVideoDetails = () => {
-    // let details = '';
-    //[[key, value], [key,value]]
-
     return props.videoResults.map((result) => (
       <>
         <div>title: {result.title}</div>
@@ -22,11 +19,6 @@ const Search = (props) => {
         </button>
       </>
     ));
-
-    // for (let key in props.videoResults) {
-    //   details += `${key}: ${props.videoResults[key]} `;
-    // }
-    // return details;
   };
 
   return (
