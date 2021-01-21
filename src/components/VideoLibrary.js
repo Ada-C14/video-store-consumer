@@ -7,10 +7,16 @@ const VideoLibrary = (props) => {
     
     const allVideosURL = 'http://localhost:3000/videos'
 
+    // set up URL with search
+
     const [videos, setVideos] = useState([])
     const [errorMessage, setErrorMessage] = useState(null)
 
-    
+    function addVideoCallback (video) {
+        const newVideoList = [...videos, video]
+        setVideos(newVideoList)
+    }
+
     useEffect(() => {
         axios.get(allVideosURL)
         .then((response) => {
@@ -22,7 +28,6 @@ const VideoLibrary = (props) => {
             console.log(errorMessage);
         });
     }, []);
-    
 
     return (
         <div>
