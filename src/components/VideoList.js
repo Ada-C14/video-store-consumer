@@ -16,6 +16,9 @@ const VideoList = (props) => {
           //   inventory={props.inventory}
           id={video.external_id}
           key={i}
+          video={video}
+          onClickSelect={props.onClickSelect}
+          selectedVideo={props.selectedVideo}
         />
       </li>
     );

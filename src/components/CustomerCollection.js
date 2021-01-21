@@ -7,7 +7,7 @@ const CustomerCollection = (props) => {
   const customerList = props.customerList.map((customer, i) => {
     return (
       <li key={i}>
-        <Customer name={customer.name} email={customer.email} phone={customer.phone} />
+        <Customer customer={customer} name={customer.name} email={customer.email} phone={customer.phone} selectedCustomer={props.selectedCustomer} onClickSelect={props.onClickSelect}/>
       </li>
     );
   });
