@@ -18,9 +18,9 @@ const Home = () => {
       </section>
       <br></br>
       <h4><em>New Releases Coming Soon!</em></h4>
-      <img src={poster1} className="poster" alt="10 Things Movie Poster" />
+      <img src={poster1} className="poster" alt="Space Jam Movie Poster" />
       <img src={poster2} className="poster" alt="10 Things Movie Poster" />
-      <img src={poster3} className="poster" alt="10 Things Movie Poster" />
+      <img src={poster3} className="poster" alt="She's All That Movie Poster" />
       <section className="spacer" />
     </div>  
   )
