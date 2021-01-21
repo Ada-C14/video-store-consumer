@@ -30,7 +30,7 @@ const App = () => {
   return (
     <Router>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a className="navbar-brand" href="#">Navbar</a>
+        <a className="navbar-brand" href="#">Kim & Sophia's Video Store</a>
         <ul className="navbar-nav mr-auto">
           <li className="nav-item">
             <Link className="nav-link" to="/">Home</Link>
