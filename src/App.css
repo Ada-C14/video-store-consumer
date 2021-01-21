@@ -37,3 +37,11 @@
   list-style-type: none;
   padding: 0;
 }
+
+.navbar {
+  background-color: aquamarine;
+}
+
+nav ul {
+  list-style-type: none;
+}

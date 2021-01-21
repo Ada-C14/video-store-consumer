@@ -9,6 +9,8 @@ import Customers from './Components/Customers'
 import Library from './Components/Library'
 import Search from './Components/Search'
 import Home from './Components/Home'
+import './App.css'
+import axios from 'axios';
 
 export default function App() {
   // BASE URL FOR API
@@ -43,10 +45,36 @@ export default function App() {
     })
   }
 
+  const onCheckOut = (event) => {
+    event.preventDefault();
+
+    console.log('checking out')
+    // axios post request goes here
+
+    const dueDate = new Date(new Date().getTime()+(7*24*60*60*1000));
+
+    axios.post(`${BASE_URL}rentals/${currentVideo.title}/check-out`, {
+      // eslint-disable-next-line camelcase
+      customer_id: currentCustomer.id,
+      // eslint-disable-next-line camelcase
+      due_date: dueDate
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+    setVideo({id: NaN, title: '', imgUrl: 'favicon.ico'})
+    setCurrentCustomer({id: NaN, name: ''})
+
+  }
+
   return (
     <Router>
       <div>
-        <nav>
+        <nav className='navbar'>
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -61,18 +89,19 @@ export default function App() {
               <Link to="/customers">Customer List</Link>
             </li>
           </ul>
-          <section> 
-            <article>
-              <h1>current customer</h1>
-              <h2>{currentCustomer.name ? currentCustomer.name : 'none selected'}</h2> 
-            </article>
-            <article>
-              <h1>current video</h1>
-              <h2>{currentVideo.title ? currentVideo.title : 'none selected'}</h2> 
-              <img src = {currentVideo.imgUrl} alt = {`Poster for ${currentVideo.title}`}/>         
-            </article>
-          </section>
         </nav>
+        <section> 
+          <article>
+            <h1>current customer</h1>
+            <h2>{currentCustomer.name ? currentCustomer.name : 'none selected'}</h2> 
+          </article>
+          <article>
+            <h1>current video</h1>
+            <h2>{currentVideo.title ? currentVideo.title : 'none selected'}</h2> 
+            <img src = {currentVideo.imgUrl} alt = {`Poster for ${currentVideo.title}`}/>         
+          </article>
+        </section>
+        {currentCustomer.name && currentVideo.title ? <button onClick={onCheckOut}>Check-out</button> : null }
         <article className = 'validation-errors-display'>
                 <h3>{errorMessage ? 'Errors detected!' : ''}</h3>
                 <ul className = 'validation-errors-display__list'>
