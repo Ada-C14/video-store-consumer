@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import VideoList from './components/VideoList';
+import SearchForm from './components/SearchForm';
+
 // import { BrowserRouter } from 'react-router-dom';
 import { NavLink, Switch, Route, Link } from 'react-router-dom';
 import CustomerCollection from './components/CustomerCollection';
@@ -19,20 +21,36 @@ const App = () => {
   const [videoList, setVideoList] = useState([]);
   const [customerList, setCustomerList] = useState(customers);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [videoResults, setVideoResults] = useState([]);
 
   useEffect(() => {
     axios
       .get(API_URL_BASE)
       .then((response) => {
         const apiVideoList = response.data;
-        console.log(apiVideoList);
         setVideoList(apiVideoList);
       })
       .catch((error) => {
         setErrorMessage(error.message);
-        console.log(error.message);
       });
   }, []);
+
+  const searchVideo = (query) => {
+    axios
+      .get(`${API_URL_BASE}?query=${query}`)
+      .then((response) => {
+        const searchResults = response.data;
+        setVideoResults(searchResults);
+        setErrorMessage('');
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      });
+  };
+
+  const selectVideo = (video) => {
+    setVideoList([...videoList, video]);
+  };
 
   return (
     <main>
@@ -72,6 +90,18 @@ const App = () => {
         path={'/customers'}
         render={(props) => (
           <CustomerCollection {...props} customerList={customerList} />
+        )}
+      />
+      <Route
+        path={'/search'}
+        render={(props) => (
+          <SearchForm
+            {...props}
+            videoList={videoList}
+            searchVideoCallback={searchVideo}
+            videoResults={videoResults}
+            videoSelectionCallback={selectVideo}
+          />
         )}
       />
       <footer>Copyright</footer>
