@@ -5,6 +5,10 @@ import './Popup.css';
 const Popup = props => {
   const movie = props.clickedMovieInfo;
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className='popup'>
       <img src={movie.imageURL} alt={movie.title} />
@@ -18,13 +22,17 @@ const Popup = props => {
         { props.location === 'search' 
           ? <button 
               onClick={() => { 
-                props.addMovieClickback(props.clickedMovieInfo); props.exitCallbackFn(); 
+                props.addMovieClickback(props.clickedMovieInfo); 
+                props.exitCallbackFn(); 
+                scrollToTop();
               }}>
               Add to Library
             </button>
           : <button 
               onClick={() => { 
-                props.addMovieRentalCallback(props.clickedMovieInfo); props.exitCallbackFn(); 
+                props.addMovieRentalCallback(props.clickedMovieInfo); 
+                props.exitCallbackFn(); 
+                scrollToTop();
               }}>
               Select Rental
             </button>
@@ -45,7 +53,7 @@ Popup.propTypes = {
   exitCallbackFn: PropTypes.func.isRequired,
   location: PropTypes.string,
   addMovieClickback: PropTypes.func,
-  addMovieRentalCallback: PropTypes.func
+  addMovieRentalCallback: PropTypes.func,
 };
 
 export default Popup;

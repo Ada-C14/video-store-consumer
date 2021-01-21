@@ -63,7 +63,7 @@ const Homepage = (props) => {
 Homepage.propTypes = {
   url: PropTypes.string.isRequired,
   movie: PropTypes.object.isRequired,
-  customer: PropTypes.object.isRequired
+  customer: PropTypes.object.isRequired,
 };
 
 export default Homepage;

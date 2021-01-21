@@ -5,6 +5,10 @@ import './Movie.css';
 const Movie = props => {
   const [showMsg, setShowMsg] = useState(false);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className='movie-card' onMouseEnter={() => setShowMsg(true)} onMouseLeave={() => setShowMsg(false)} >
       { showMsg && (<div className='click-alert'>Click for more info</div>) }
@@ -15,8 +19,20 @@ const Movie = props => {
       />
       <h5>{props.title}</h5>
       { props.location === 'search' 
-        ? <button onClick={() => props.addMovieClickback(props)}>Add to Library</button>
-        : <button onClick={() => props.addMovieRentalCallback(props)}>Select Rental</button>
+        ? <button 
+            onClick={() => { 
+              props.addMovieClickback(props); 
+              scrollToTop(); 
+            }}>
+            Add to Library
+          </button>
+        : <button 
+            onClick={() => { 
+              props.addMovieRentalCallback(props);
+              scrollToTop(); 
+            }}>
+            Select Rental
+          </button>
       }
     </div>
   );
@@ -31,7 +47,7 @@ Movie.propTypes = {
   handleClickCallback: PropTypes.func.isRequired,
   location: PropTypes.string.isRequired,
   addMovieClickback: PropTypes.func,
-  addMovieRentalCallback: PropTypes.func
+  addMovieRentalCallback: PropTypes.func,
 };
 
 export default Movie;

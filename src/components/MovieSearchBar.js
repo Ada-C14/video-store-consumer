@@ -49,7 +49,10 @@ const MovieSearchBar = props => {
       { formFields.searchResults.length > 0 &&
         <Redirect to={{
           pathname: '/results',
-          state: { results: formFields.searchResults, searchTerm: formFields.searchQuery, baseURL: props.url }
+          state: { results: formFields.searchResults, 
+                  searchTerm: formFields.searchQuery, 
+                  baseURL: props.url
+                }
         }}/>
       }
     </div>
@@ -57,7 +60,7 @@ const MovieSearchBar = props => {
 };
 
 MovieSearchBar.propTypes = {
-  url: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired
 };
 
 export default MovieSearchBar;

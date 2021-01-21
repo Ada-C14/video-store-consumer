@@ -24,6 +24,10 @@ const CustomerList = props => {
     setAlert(`Selected ${rentalCustomer.name} for rental transaction.`);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className='list'>
       { alert ? alert : '' }
@@ -31,7 +35,12 @@ const CustomerList = props => {
         { customers.map((customer) => 
           <li key={customer.id} className='customer-id'>
             { customer.name }
-            <button className='select-button' onClick={() => { addCustomerRental(customer) }}>select</button>
+            <button 
+              className='select-button' 
+              onClick={() => { addCustomerRental(customer); scrollToTop(); }}
+            >
+              select
+            </button>
           </li>
         )}
       </ul>

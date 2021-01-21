@@ -1,5 +1,6 @@
 .popup {
   position: fixed;
+  top: 25%;
   /* margin: auto auto auto 20%; */
   z-index: 1;  
   background-color: white;
