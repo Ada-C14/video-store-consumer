@@ -18,12 +18,12 @@ import CheckOut from './components/CheckOut';
 const BASE_URL = 'http://localhost:3000/'
 
 const App = () => {
-  const [selectVideo, setSelectedVideo] = useState(null)
-  const [selectCustomer, setSelectedCustomer] = useState(null)
+  const [selectedVideo, setSelectedVideo] = useState(null)
+  const [selectedCustomer, setSelectedCustomer] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null);
 
-  const chooseVideo = (props) => {
-    setSelectedVideo(props.title)
+  const chooseVideo = (videoData) => {
+    setSelectedVideo(videoData)
   }
 
   const chooseCustomer = (id) => {
@@ -43,7 +43,7 @@ const App = () => {
     setSelectedCustomer(null)
   }
 
-   return (
+  return (
     <Router>
       <div className="App">
         <header className="App-header">
@@ -66,14 +66,14 @@ const App = () => {
         </ul>
 
         <div>
-          <CheckOut video={selectVideo}
-                    customer={selectCustomer}
+          <CheckOut video={selectedVideo}
+                    customer={selectedCustomer}
                     checkOutCallback={checkOut} />
         </div>
 
         <div>
-          <p>Selected Video - {selectVideo}</p>
-          <p>Selected Customer - {selectCustomer}</p>
+          <p>{ selectedVideo ? `Selected Video - ${selectedVideo.title }` : 'No video selected'}</p>
+          <p>{ selectedCustomer ? `Selected Customer - ${selectedCustomer }` : 'No customer selected'}</p>
         </div>
 
         <Switch>
@@ -83,8 +83,9 @@ const App = () => {
           </Route>
           <Route path="/library" component={Library}>
             <Library url={BASE_URL}
-                       focus='videos'
-                       selectVideoCallback={chooseVideo}/>
+                       focus='videos/'
+                       selectVideoCallback={chooseVideo}
+                       selectedVideo={selectedVideo}/>
           </Route>
           <Route path="/customers" component={Customers}>
             <Customers url={BASE_URL}
@@ -102,7 +103,7 @@ const App = () => {
 
 export default App;
 
+
 function Home() {
   return <h2>Home</h2>;
 }
-

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 // import './SelectedVideo.css';
 
-const SelectedVideo = (props) => {
+const SelectedVideo = (props) => {  
   return (
     <div>
       <tr>
@@ -13,7 +13,7 @@ const SelectedVideo = (props) => {
         <th>Available Inventory</th>
       </tr>
       <tr>
-        <td>{props.selectedVideo.title}</td>
+        <td>{props.title}</td>
         <td>{props.selectedVideo.overview}</td>
         <td>{props.selectedVideo.release_date}</td>
         <td>{props.selectedVideo.inventory}</td>
