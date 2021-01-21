@@ -41,7 +41,7 @@ const Search = (props) => {
     const resultList = (arrayResults) => {
         let results = []
         for (const video of arrayResults) {
-            let vid = <Video id = {video.id} 
+            let vid = <Video id = {video.external_id} 
             title = {video.title} 
             overview = {video.overview} 
             releaseDate = {video.release_date}
@@ -97,7 +97,7 @@ const Search = (props) => {
     return (
         <div>
             <h1>search for a video</h1>
-            <form onSubmit={onSearchSubmit} onKeyPress = {enterKey}>
+            <form onSubmit={onSearchSubmit}>
                 <label> search: </label>
                     <input type='text' placeholder='enter title' value={title} onChange={onSearchChange}/>
                 <button>search title</button>

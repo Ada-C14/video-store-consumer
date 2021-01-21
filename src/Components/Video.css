@@ -16,7 +16,7 @@
     padding: 0.5em;
 }
 
-.video__select, .video__add { 
+.video__select, .video__add, .video__inventory { 
     border: none;
     color: white;
     padding: 0.5em;
@@ -34,6 +34,11 @@
     background-color: #ff6348;
 }
 
+.video__inventory{
+    color: black;
+}
+
+
 .video__select:hover, .video__add:hover{
     background-color: #3f3f3f; 
 }
@@ -41,3 +46,5 @@
 span {
     color: grey
 }
+
+
