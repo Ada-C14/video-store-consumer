@@ -53,8 +53,23 @@ const Customers = (props) => {
 
     return (
       <div>
-        Customer List
-        {generateCustomers(customersList)}
+        <h1><em>Customer List</em></h1>
+        <section className="container w-75">
+          <table className="table table-hover">
+            <thead>
+              <tr className="table-primary">
+                <th scope="col">Name</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Account Credit</th>
+                <th scope="col">Current Rentals</th>
+                <th scope="col">Select For Rental?</th>
+              </tr>
+            </thead>
+            <tbody>
+              {generateCustomers(customersList)}
+            </tbody>
+          </table>
+        </section>
       </div>
     );
   }

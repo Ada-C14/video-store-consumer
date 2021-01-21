@@ -1,10 +1,14 @@
 const Customer = (props) => {
   return (
-    <div>
-      <h1>{props.name}</h1>
-      <h2>{props.state}</h2>
-    </div>
-  )
+
+    <tr class="table-active">
+        <th scope="row">{props.name}</th>
+        <td>{props.phone}</td>
+        <td>{props.accountCredit}</td>
+        <td>{props.videosCheckedOutCount}</td>
+        <td><button type="button" class="btn btn-outline-primary">Select!</button></td>
+    </tr>
+)
 }
 
 Customer.propTypes = {

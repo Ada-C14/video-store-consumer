@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,19 +6,19 @@ import {
   Link
 } from 'react-router-dom';
 import logo from './vhs.jpg';
+import divider from './stars.png'
 import './App.css';
 import './Bootstrap.css'
 import Customers from './components/Customers';
 import Videos from './components/Videos';
-import SearchForm from './components/SearchForm';
-import SearchResult from './components/SearchResult';
+import Home from './components/Home';
+import SearchBar from './components/SearchBar';
 
 function App() {
 
   const BASE_URL = 'http://localhost:3000'
-  const [searchResultList, setSearchResultList] = useState([]);
 
-  const searchVideo = (searchQuery) => { 
+//   const searchVideo = (searchQuery) => { 
 
     axios.get(`${BASE_URL}/videos?query=${searchQuery}`)
     .then((response) => {
@@ -35,42 +34,23 @@ function App() {
     });
   };
 
-  const addVideo = (id) => {
-    axios.post(`${BASE_URL}/videos/${id}`)
-      .then((response) => {
-        // What should we do when we know the post request worked?
-        console.log(response)
-        // const updatedData = [...studentList, response.data];
-        // setStudentList(updatedData);
-        // setErrorMessage('');
-      })
-      .catch((error) => {
-        // What should we do when we know the post request failed?
-        // setErrorMessage(error.message);
-      });
-  }
+  //   {
+  //     searchResultComponentArray.push(
+  //       <SearchResult
+  //           key={result.id}
+  //           id={result.id}
+  //           title={result.title}
+  //           overview={result.overview}
+  //           releaseDate={result.release_date}
+  //           externalId={result.external_id}
+  //           imageUrl={result.image_url}
+  //           // onClickCallback={onButtonClick}
+  //       />
+  //     )
+  //   }
 
-  const generateSearchResults = (searchResults) => {
-    let searchResultComponentArray = [];
-
-    for (const result of searchResults) 
-
-    {
-      searchResultComponentArray.push(
-        <SearchResult
-            key={result.id}
-            id={result.id}
-            title={result.title}
-            overview={result.overview}
-            releaseDate={result.release_date}
-            externalId={result.external_id}
-            imageUrl={result.image_url}
-            // onClickCallback={onButtonClick}
-        />
-      )
-    }
-    return searchResultComponentArray;
-  }; 
+  //   return searchResultComponentArray;
+  // }; 
 
   return (
     <Router>
@@ -79,19 +59,22 @@ function App() {
           <img src={logo} className="App-logo" alt="logo" />
           {/* <h1 className="App-title">Welcome to React</h1> */}
         </header>
-        <section>
+        <nav>
           <h1><a href="/">RETRO VIDEO DISTRO</a></h1>
+          <span>
           <button type="button" class="btn btn-outline-danger"><Link to="/">Home</Link></button>
           <button type="button" class="btn btn-outline-danger"><Link to="/library">Video Library</Link></button>
           <button type="button" class="btn btn-outline-danger"><Link to="/customers">Customer Index</Link></button>
-          <button type="button" class="btn btn-outline-danger"><Link to="">Search</Link></button>
+          <button type="button" class="btn btn-outline-danger"><Link to="/search">Search</Link></button>
+          </span>
           <br></br><br></br>
+          <img src={divider} className="divider" alt="stars divider" />
           <br></br><br></br>
-        </section>
+        </nav>
         <section className="App-main">
           <Switch>
-          <Route path="/search">
-            <h1>Search Will Go Here</h1>
+          <Route exact path="/">
+            <Home />
           </Route>
           <Route path="/library">
             <Videos baseUrl={BASE_URL}/>
@@ -102,10 +85,8 @@ function App() {
           <Route path="/checkout">
             <h1>Checkout Deets Will Go Here</h1>
           </Route>
-          <Route path="/">
-            <h1>Homepage Deets Will Go Here</h1>
-            <SearchForm searchCallback={searchVideo} />
-            {generateSearchResults(searchResultList)}
+          <Route path="/search">
+            <SearchBar baseUrl={BASE_URL} />
           </Route>
         </Switch>
         </section>

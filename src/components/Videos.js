@@ -46,13 +46,27 @@ const Videos = (props) => {
     return videoComponentArray;
   };
 
-  return (
-    <div>
-      Video List
-      {generateVideos(videoList)}
-    </div>
-  );
-}
+    return (
+      <div>
+        <h1><em>Video List</em></h1>
+        <section className="container w-75">
+          <table className="table table-hover">
+            <thead>
+              <tr className="table-primary">
+                <th scope="col">Poster</th>
+                <th scope="col">Title</th>
+                <th scope="col">Release Date</th>
+                <th scope="col">Select For Rental?</th>
+              </tr>
+            </thead>
+            <tbody>
+                {generateVideos(videoList)}
+            </tbody>
+          </table>
+        </section>
+      </div>
+    );
+  }
 
 Videos.propTypes = {
   // DONT FORGET TO FILL ME OUT!
