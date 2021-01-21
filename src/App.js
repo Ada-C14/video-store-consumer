@@ -106,6 +106,8 @@ function App() {
           </Route>
           <Route path="/">
             <h1>Homepage Deets Will Go Here</h1>
+            <SearchForm searchCallback={searchVideo} />
+            {generateSearchResults(searchResultList)}
           </Route>
         </Switch>
         </section>
