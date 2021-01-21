@@ -15,6 +15,7 @@ const Customer = (props) => {
             <li>{props.customer.phone}</li>
             <li>{props.customer.account_credit}</li>
             <li>{props.customer.videos_checked_out_count}</li>
+            <li><button onClick={() => props.onSelectCustomer(props.customer.id, props.customer.name)}>Select Customer</button></li>
         </div>
     </ul>
     );

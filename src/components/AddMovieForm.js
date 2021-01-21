@@ -69,15 +69,25 @@ const AddMovieForm = (props) => {
     }));
   };
 
-  const videoListDisplay = videoList.map((video, i) => {
-    return(
-    <tr key={i}>
-      {/* <Video title={video.title} overview={video.overview} 
-      release_date={video.released_date} image_url={video.image_url} 
-      onAddLibraryCallback={addToLibrary} external_id={video.external_id}/> */}
-      <Video video={video} />
-    </tr>
-  )});
+  const videoListDisplay = () => {
+    if (videoList === []) {
+      setErrorMessage('test')
+    }
+
+    console.log(videoList);
+
+  
+    return videoList.map((video, i) => {
+      return(
+      <li key={i}>
+        {/* <Video title={video.title} overview={video.overview} 
+        release_date={video.released_date} image_url={video.image_url} 
+        onAddLibraryCallback={addToLibrary} external_id={video.external_id}/> */}
+        <Video video={video} onAddLibraryCallback={addToLibrary} external_id={video.external_id}/>
+      </li>
+    )});
+  }
+    
 
   return (
     <div className="movie-search-page">
@@ -95,7 +105,7 @@ const AddMovieForm = (props) => {
       </form>
     </div>
     <div className="video-list">
-      {videoListDisplay}
+      {videoListDisplay()}
     </div>
     </div>
   )

@@ -25,7 +25,7 @@ const CustomerCollection = (props) => {
         return (
             <div key={i}>
             <Customer
-                customer={customer}
+                customer={customer} onSelectCustomer={props.onSelectCustomer}
             />
             </div>
         );

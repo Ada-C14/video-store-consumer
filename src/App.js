@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, {useState, useEffect } from 'react';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import logo from './logo.svg';
 import axios from 'axios';
@@ -9,9 +9,46 @@ import CustomerCollection from './components/CustomerCollection';
 
 const API_URL_BASE = 'http://localhost:3000/';
 
-class App extends Component {
-  
-  render() {
+const App = () => {
+  const [selectedVideo, setSelectedVideo] = useState(null);
+  const [selectedCustomer, setSelectedCustomer] = useState({
+    id: null,
+    name: 'none',
+  });
+  const [errorMessage, setErrorMessage] = useState(null);
+
+
+  const selectVideo = (title) => {
+    setSelectedVideo(title);
+  };
+
+  const selectCustomer = (id, name) => {
+    setSelectedCustomer({
+      id: id,
+      name: name,
+    })
+  };
+
+  const checkOut = () => {
+    if (selectedCustomer === null || selectedVideo === null) {
+      setErrorMessage('Need to select a customer and video')
+      return null
+    }
+
+    axios.post(API_URL_BASE + 'rentals/' + selectedVideo + '/check-out',
+    JSON.stringify({
+      customer: selectedCustomer.id,
+      due_date: new Date() + 7
+    }))
+    .then((response) => {
+      console.log(response);
+      setErrorMessage('Checked out video successfully!')
+    })
+    .catch((error) => {
+      console.log(error);
+      setErrorMessage(error.message);
+    });
+  };
 
     return (
 
@@ -21,7 +58,10 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to Hollywood Video</h1>
         </header>
-      <AddMovieForm />
+        { errorMessage ? <div><h2 className="error-msg">{errorMessage}</h2></div> : '' }
+        <p>Currently Selected Video: {selectedVideo}</p>
+        <p>Currently Selected Customer: {selectedCustomer.name}</p>
+        <button onClick={checkOut}>Check Out</button>
         <ul>
           <li>
             <Link to="/">Home</Link>
@@ -32,23 +72,29 @@ class App extends Component {
           <li>
             <Link to="/customers">Customers</Link>
           </li>
+          <li>
+            <Link to="/add">Add a Video</Link>
+          </li>
         </ul>
 
+        <AddMovieForm />
         <Switch>
           <Route path="/videos">
-            <VideoCollection />
+            <VideoCollection onSelectVideo={selectVideo}/>
           </Route>
           <Route path="/customers">
-            <CustomerCollection />
+            <CustomerCollection onSelectCustomer={selectCustomer}/>
           </Route>
           <Route path="/">
             <Home />
+          </Route>
+          <Route path="/add">
+            {/* <AddMovieForm /> */}
           </Route>
         </Switch>
       </div>
     </Router>
     );  
-  }
 }
 
 function Home() {

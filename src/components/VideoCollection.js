@@ -25,7 +25,7 @@ const VideoCollection = (props) => {
         return (
           <div key={i}>
             <Video
-              video={video}
+              video={video} onSelectVideo={props.onSelectVideo}
             />
           </div>
         );

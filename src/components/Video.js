@@ -33,6 +33,7 @@ const Video = (props) => {
             </form>
       </li> */}
           <li><button onClick={onAddVideo}>Add to Library</button></li>
+          <li><button onClick={() => props.onSelectVideo(props.video.title)}>Select this Video</button></li>
           { status ? <div><h2 className="video-status">{status}</h2></div> : '' }
         </div>
         <li class="movie-image"><img src={props.video.image_url} alt={`the movie ${props.video.title}`} /></li>
