@@ -1,0 +1,9 @@
+h1 {
+    text-align: center;
+}
+
+.library {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
