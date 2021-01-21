@@ -2,8 +2,11 @@ import VideoSearch from './components/VideoSearch';
 import VideoLibrary from './components/VideoLibrary';
 import CustomerList from './components/CustomerList';
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import CustomerList from './components/CustomerList';
+import VideoSearch from './components/VideoSearch';
+import VideoLibrary from './components/VideoLibrary';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,7 +15,22 @@ import {
 } from 'react-router-dom';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      chosenCustomer: {},
+    }
+  }
+
+  selectCustomer = (chosenCustomer) => {
+    this.setState({chosenCustomer})
+  }
+
+  API_URL = 'http://localhost:3000'
+  
+
   render() {
+    
     return (
       <Router>
       <div>
@@ -28,24 +46,29 @@ class App extends Component {
               <Link to='/library'>Video Library</Link>
             </li>
             <li>
+
               <Link to='/customers'>Customers</Link>
             </li>
+            <li>{this.chosenCustomer}</li>
           </ul>
         </nav>
 
         <Switch>
-          <Route path='/search'>
+          <Route path="/search"
             component={ props =>
-            <VideoSearch />
-            }</Route>
-          <Route path='/library'>
-            <VideoLibrary />
+            <VideoSearch { ...props }/>
+            }/>
+          <Route path="/library">
+            <Library />
           </Route>
-          <Route path='/customers'>
-            component={props =>
-            <CustomerList {...props} />}
-          </Route>
-          <Route path='/'>
+          <Route path="/customers" 
+            component={ props => 
+            <CustomerList { ...props }
+            selectCustomerCallback={this.selectCustomer}
+            url={this.API_URL}/>
+          }/>
+          <Route path="/">
+
             <Home />
           </Route>
         </Switch>
@@ -58,13 +81,14 @@ function Home() {
   return <h2>Home</h2>;
 }
 
-function About() {
+function Library() {
   return <h2>About</h2>;
 }
 
-function Users() {
-  return <h2>Users</h2>;
-}
+// function Customers() {
+//   return <h2>Users</h2>;
+// }
+
 
       // <div className="App">
       //   <header className="App-header">

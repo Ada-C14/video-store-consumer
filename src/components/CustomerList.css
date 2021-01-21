@@ -1,0 +1,29 @@
+.validation-errors-display {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.validation-errors-display__list {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* table  */
+
+.customer-table__header-row th {
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 100;
+    color: #0e1413;
+}
+
+.customer-table__table {
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: lighter;
+    background-color: #9fb2c2;
+    width: 100%;
+    text-align: center;
+}
+
+.customer-table__table-row:hover {
+    background-color: #a8ec0a;
+}
