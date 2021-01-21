@@ -13,7 +13,6 @@ import './App.css';
 
 const App = () => {
   const [selectedCustomerID, setSelectedCustomerID] = useState(null);
-  // TODO: fix/set CustomName so that it can be printed in top, ID for use in checkout only 
   const [selectedCustomerName, setSelectedCustomerName] = useState(null);
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -25,8 +24,8 @@ const App = () => {
     setSelectedCustomerName(name);
   };
 
-  const selectCustomerID = (cust) => {
-    setSelectedCustomerID(cust);
+  const selectCustomerID = (id) => {
+    setSelectedCustomerID(id);
   };
 
   const selectVideo = (video) => {
@@ -39,7 +38,6 @@ const App = () => {
 
     axios.post(`${localAPI}/rentals/${selectedVideo}/check-out?customer_id=${selectedCustomerID}&due_date=${date}`)
     .then((response) => {
-      console.log(response)
       console.log(`Movie titled ${selectedVideo} checked out to Customer ID: ${selectedCustomerID}`)
       setErrorMessage(`Movie titled ${selectedVideo} checked out to Customer ID: ${selectedCustomerID}`)
     })
@@ -74,7 +72,6 @@ const App = () => {
           <span>
             Selected Video: { selectedVideo } 
             Selected Customer:  { selectedCustomerName }
-            Selected Cust ID: {selectedCustomerID}
             { selectedVideo !== null && selectedCustomerID !== null ? checkOutVideoBtn() : null }
           </span>
           <div>
