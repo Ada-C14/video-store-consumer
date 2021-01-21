@@ -8,7 +8,7 @@ const VideoLibrary = (props) => {
 
     const [videoList, setVideoList] = useState([]);
     const [errorMessage, setErrorMessage] = useState(null);
-    const [selectedVideo, setSelectedVideo] = useState(null);
+  
 
     const videosUrl = 'http://localhost:3000/videos'
 
@@ -23,13 +23,6 @@ const VideoLibrary = (props) => {
             })
     }, []);
 
-    const itsNull = null
-
-    const selectVideo = (selectedVideo) => {
-      setSelectedVideo(selectedVideo);
-      return;
-    }
-
     const rows = videoList.map((video) => {
         return (
             <Video
@@ -38,8 +31,6 @@ const VideoLibrary = (props) => {
                 title={video.title}
                 imageUrl={video.image_url}
                 overview={video.overview}
-                selctVideoCallback={selectVideo}
-                selectedVideo={itsNull}
             />
         )
     })
