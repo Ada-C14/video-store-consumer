@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import VideoLibrary from './VideoLibrary'
 import CustomerList from './CustomerList';
 import SearchResultList from './SearchResultList';
@@ -11,6 +11,19 @@ import {
   } from 'react-router-dom';
 
 const Store = () => {
+
+    const [selectedCustomer, setSelectedCustomer] = useState(null)
+    const [selectedVideo, setSelectedVideo] = useState(null);
+
+    const selectVideo = (selected) => {
+        setSelectedVideo(selected);
+        return;
+    }
+
+    const selectCustomer = (selected) => {
+        setSelectedCustomer(selected);
+        return;
+    }
 
     return (
         <Router>
@@ -37,10 +50,16 @@ const Store = () => {
               <SearchResultList />
             </Route>
             <Route path="/customers">
-              <CustomerList />
+              <CustomerList 
+                selectCustomerCallback={selectCustomer}
+                selectedCustomer={selectedCustomer}
+              />
             </Route>
             <Route path="/library">
-              <VideoLibrary />
+              <VideoLibrary 
+                selectVideoCallback={selectVideo}
+                selectedVideo={selectedVideo}
+              />
             </Route>
             {/* <Route path="/">
               <Home />

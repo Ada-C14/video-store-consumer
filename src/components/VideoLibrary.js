@@ -8,7 +8,7 @@ const VideoLibrary = (props) => {
 
     const [videoList, setVideoList] = useState([]);
     const [errorMessage, setErrorMessage] = useState(null);
-    const [selectedVideo, setSelectedVideo] = useState(null);
+   
 
     const videosUrl = 'http://localhost:3000/videos'
 
@@ -23,11 +23,6 @@ const VideoLibrary = (props) => {
             })
     }, []);
 
-    const selectVideo = (selected) => {
-        setSelectedVideo(selected);
-        return;
-    }
-
     const rows = videoList.map((video) => {
     
         return (
@@ -37,8 +32,8 @@ const VideoLibrary = (props) => {
                 title={video.title}
                 imageUrl={video.image_url}
                 overview={video.overview}
-                selectVideoCallback={selectVideo}
-                isSelected={selectedVideo? video.id === selectedVideo.id : null}
+                selectVideoCallback={props.selectVideoCallback}
+                isSelected={props.selectedVideo? video.id === props.selectedVideo.id : null}
             />
         )
     })
@@ -64,7 +59,8 @@ const VideoLibrary = (props) => {
 }
 
 VideoLibrary.propTypes = {
-    url: PropTypes.string.isRequired
+    url: PropTypes.string.isRequired,
+    selectVideoCallback: PropTypes.func.isRequired
 };
 
 export default VideoLibrary;

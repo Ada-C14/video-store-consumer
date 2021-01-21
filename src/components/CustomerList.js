@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Customer from './Customer';
 import axios from 'axios';
 
-const CustomerList = () => {
+const CustomerList = (props) => {
     const [customers, setCustomers] = useState([]);
     const [error, setError] = useState('');
-    const [selectedCustomer, setSelectedCustomer] = useState(null)
+    
 
     useEffect(() => {
         axios.get(`http://localhost:3000/customers/`)
@@ -21,11 +22,6 @@ const CustomerList = () => {
             })
     }, []);
 
-    const selectCustomer = (selected) => {
-        setSelectedCustomer(selected);
-        return;
-    }
-
     const formatCustomer = customer => {
         return <Customer 
             key={customer.id}
@@ -39,8 +35,8 @@ const CustomerList = () => {
             phone={customer.phone}
             accountCredit={customer.account_credit}
             videosCheckedOutCount={customer.videos_checked_out_count}
-            selectCustomerCallback={selectCustomer}
-            isSelected={selectedCustomer? customer.id === selectedCustomer.id : null}
+            selectCustomerCallback={props.selectCustomerCallback}
+            isSelected={props.selectedCustomer? customer.id === props.selectedCustomer.id : null}
         />
     }
 
@@ -53,5 +49,10 @@ const CustomerList = () => {
 }
 
 // PROPS? - should App hold the URL for the api call and pass it down to CustomerList?
+CustomerList.propTypes = {
+    selectCustomerCallback: PropTypes.func,
+    selectedCustomer: PropTypes.object
+};
+
 
 export default CustomerList;
