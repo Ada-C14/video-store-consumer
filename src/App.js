@@ -48,17 +48,13 @@ class App extends Component {
   checkoutVideo = () => {
     if (this.state.chosenVideo && this.state.chosenCustomer) {
       const title = this.state.chosenVideo.title
-      // const dueDate = moment().add(7, 'days').format('YYYY-MM-DD');
-      const getDueDate = () => {
-        const date = new Date();
-        date.setDate(date.getDate() + 7);
-        return (moment(date).format('MMM, D, YYYY'))
-      }
+      const dueDate = moment().add(7, 'days').format('YYYY-MM-DD');
+    
 
       const params = {
-        customerID: this.state.chosenCustomer.id,
-        videoID: this.state.chosenVideo.id,
-        dueDate: getDueDate(),
+        'customer_id': this.state.chosenCustomer.id,
+        'video_id': this.state.chosenVideo.id,
+        'due_date': dueDate,
       }
     
       const checkoutURL = this.API_URL + `/rentals/${title}/check-out`;
