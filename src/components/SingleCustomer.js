@@ -11,20 +11,6 @@ const SingleCustomer = (props) => {
   }
 
   return (
-    <table className="table">
-      <tr>
-        <th>Id</th>  
-        <th>Name</th>
-        <th>Account Credit</th>
-        <th>Videos Checked out Count</th>
-        <th>Address</th>
-        <th>City</th>
-        <th>State</th>
-        <th>Postal Code</th>
-        <th>Phone#</th>
-        <th>Registered At</th>
-        <th>Select</th>
-      </tr>
       <tr>
         <th>{props.id}</th>  
         <th>{props.name}</th>
@@ -42,8 +28,7 @@ const SingleCustomer = (props) => {
               Select
           </button>
         </th>
-       </tr>
-    </table>
+      </tr>
   )
 }
   

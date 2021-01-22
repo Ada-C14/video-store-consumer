@@ -32,28 +32,19 @@ const Library = (props) => {
 
   const renderTableData = videoLibrary.map((video) => {
     return (
-      <div>
-        <tr>
-          <th>Video ID</th>  
-          <th>Title</th>
-          <th>Overview</th>
-          <th>Release Date</th>
-          <th>Select</th>
-        </tr>
-        <tr key={video.id}>
-          <td>{video.id}</td>
-          <td>{video.title}</td>
-          <td>{video.overview}</td>
-          <td>{video.release_date}</td>
-          <td>
-            <button
-              onClick={() => selectVideo(video.title)}
-            >
-              Select
-            </button>
-          </td>
-        </tr>
-      </div>
+      <tr key={video.id}>
+        <td>{video.id}</td>
+        <td>{video.title}</td>
+        <td>{video.overview}</td>
+        <td>{video.release_date}</td>
+        <td>
+          <button
+            onClick={() => selectVideo(video.title)}
+          >
+            Select
+          </button>
+        </td>
+      </tr>
     )
   });
 
@@ -65,6 +56,13 @@ const Library = (props) => {
 
         <table>
           <tbody>
+            <tr>
+              <th>Video ID</th>  
+              <th>Title</th>
+              <th>Overview</th>
+              <th>Release Date</th>
+              <th>Select</th>
+            </tr>
             {renderTableData}
           </tbody>
         </table>
