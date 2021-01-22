@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import VideoLibrary from './VideoLibrary'
 import CustomerList from './CustomerList';
 import SearchResultList from './SearchResultList';
+import Rental from './Rental';
 
 import {
     BrowserRouter as Router,
@@ -42,6 +43,9 @@ const Store = () => {
               <li>
                 <Link to="/library">Library</Link>
               </li>
+              <li>
+                <Link to="/library">Rental</Link>
+              </li>
             </ul>
           </nav>
 
@@ -59,6 +63,12 @@ const Store = () => {
               <VideoLibrary 
                 selectVideoCallback={selectVideo}
                 selectedVideo={selectedVideo}
+              />
+            </Route>
+            <Route path="/library">
+              <Rental 
+                customer={selectedCustomer}
+                video={selectedVideo}
               />
             </Route>
             {/* <Route path="/">
