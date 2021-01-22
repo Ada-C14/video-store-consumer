@@ -48,7 +48,7 @@ class App extends Component {
   checkoutVideo = () => {
     if (this.state.chosenVideo && this.state.chosenCustomer) {
       const title = this.state.chosenVideo.title
-      const dueDate = moment().add(7, 'days').format('MMM DD YYYY');
+      const dueDate = moment().add(7, 'days').format('YYYY-DD-MM');
 
       const params = {
         customerID: this.state.chosenCustomer.id,
