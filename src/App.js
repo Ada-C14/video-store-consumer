@@ -54,8 +54,13 @@ export default function App() {
     const CHECKOUT_URL = `${BASE_URL}/rentals/${selectedVideo.title}/check-out?customer_id=${selectedCustomer.id}&due_date=${Timestamp()}`
     axios.post(CHECKOUT_URL)
       .then((response) => {
-        const data = response.data;
-        console.log(data)
+        // const data = response.data;
+        // console.log(data)
+
+        alert(`${selectedVideo.title} has been successfully checked out by ${selectedCustomer.name}.`)
+        // to reinitiate the video and customer
+        setSelectedCustomer(null)
+        setSelectedVideo(null)
       })
       .catch((error) => {
         setErrorMessage(error.message);
@@ -65,8 +70,8 @@ export default function App() {
   return (
     <Router>
       <div>
-        {/* { selectedVideo && selectedVideo.title}
-        { selectedCustomer && selectedCustomer.name} */}
+        <span>Video to Checkout: { selectedVideo ? selectedVideo.title : 'has not been selected'}{'; '}
+        Customer: { selectedCustomer ? selectedCustomer.name: 'has not been selected'}{' '}</span>
 
         {selectedVideo && selectedCustomer && (
           <button onClick={checkout}>
