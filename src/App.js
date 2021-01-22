@@ -114,8 +114,8 @@ const App = () => {
           <Route path="/customers">
             <Customers url={localAPI} setCustomerIDCallback={selectCustomerID} setCustomerNameCallback={selectCustomerName} />
           </Route>
-          <Route path="/search">
-            <Search />
+          <Route path="/search"  >
+            <Search url={localAPI} />
           </Route>
           <Route path="/">
             <Home />
