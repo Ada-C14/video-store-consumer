@@ -25,7 +25,14 @@ const Customers = (props) => {
       id={cust.id}
       name={cust.name}
       onClickCallback={props.onClickCallback}
+      registeredAt={cust.registered_at}
+      phone={cust.phone}
       key={cust.id} 
+      address={cust.address}
+      city={cust.city}
+      postalCode={cust.postal_code}
+      accountCredit={cust.account_credit}
+      videosCheckedOutCount={cust.videos_checked_out_count}
     />);
   });
 
