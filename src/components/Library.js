@@ -53,7 +53,7 @@ const Library = (props) => {
 
   return (
     <div>
-      <h2>Video Library</h2>
+      <h2 className="display-4">Video Library</h2>
       {errorMessage ? <div><p className="validation-errors-display">{errorMessage}</p></div> : ''}
       {props.selectedVideo? < SelectedVideo selectedVideo={props.selectedVideo}/> : ''}
 

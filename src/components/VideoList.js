@@ -55,11 +55,9 @@ const VideoList = (props) => {
   })
   return (
     <div data-testid={props.keyWord}>
-      <div className="validation-errors-display">
-        <h2 className="validation-errors-display__list">
-          {errorMessage ? `${errorMessage}` : ''}
-        </h2>
-      </div>
+      <h2 className={errorMessage ? (errorMessage.includes('already') ? 'text-warning' : 'text-success') : ''}>
+        {errorMessage ? `${errorMessage}` : ''}
+      </h2>
       <div className="list">
         {videoComponents}
       </div>

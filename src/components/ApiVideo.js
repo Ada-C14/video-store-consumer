@@ -23,6 +23,7 @@ const ApiVideo = (props) => {
         <br/>{new Date(props.releaseDate).getFullYear()}
         <br/> 
           <button
+            className="btn btn-outline-primary btn-sm"
             onClick={onFormSubmit}>
             Add to Library
           </button>

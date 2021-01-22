@@ -3,16 +3,10 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import { Table } from 'react-bootstrap'
 import SingleCustomer from './SingleCustomer';
-import InnerSearchBar from './InnerSearchBar';
 
 const Customers = (props) => {
   const [customerList, setCustomerList] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
-  const [search, setSearch] = useState('');
-
-  const resetSearch = () => {
-    setSearch('')
-  }
 
   useEffect(() => {
     axios.get(`${props.url}${props.focus}`)
@@ -48,18 +42,12 @@ const Customers = (props) => {
   })
   return (
     <div>
+      <h2 className="display-4">Customer List</h2>
       <div className="validation-errors-display">
         <h2 className="validation-errors-display__list">
           {errorMessage ? `${errorMessage}` : ''}
         </h2>
       </div>
-      <div>
-        <InnerSearchBar content="Search Customers"
-                        search={search}
-                        setSearch={setSearch}
-                        resetCallback={resetSearch}/>
-      </div>
-
       <Table striped bordered hover variant="light">
         <thead>
           <tr>
