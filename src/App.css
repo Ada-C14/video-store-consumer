@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@900&family=Roboto:wght@300&display=swap');
 
+.navbar {
+  background-color: #e50914;
+}
+
 .navbar-logo {
   font-family: 'Fraunces', serif;
   font-size: 2rem;
@@ -8,28 +12,27 @@
 }
 
 .navbar-logo:hover {
-  color: orangered;
+  color: orange;
   text-decoration: none;
 }
 
-a.navbar-wrapper {
+/* a.navbar-wrapper {
   padding: 24px 20px 8px 20px;
-}
+} */
 
 .navbar-link {
-  color: lightskyblue;
+  color: white;
   text-decoration: none;
 }
 
 .navbar-link:hover {
-  color: orangered;
+  color: greenyellow;
   text-decoration: none;
 }
 
 .selected {
-  color: lightgrey;
+  color: white;
   text-decoration: none;
-  padding: 0;
 }
 
 a.navbar-button.nav-link {
@@ -51,6 +54,19 @@ img {
 
 * {
   font-family: 'Roboto', sans-serif;
+}
+
+.video-grid {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  margin: -10px;
+  background-color: black;
+}
+
+.video-grid-items.img {
+  flex-grow: 1;
 }
 
 .App {

@@ -90,7 +90,7 @@ const Search = () => {
                 <Form className="search" onSubmit={onSubmitHandler}>
                     <Form.Label>Search The Movie Database</Form.Label>
                     <Row>
-                        <Col xs="6">
+                        <Col xs="9">
                             <Form.Control
                             type="text"
                             placeholder="Search TMDB"

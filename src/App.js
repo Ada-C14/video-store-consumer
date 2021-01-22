@@ -1,8 +1,8 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Nav, Navbar, Button} from 'react-bootstrap'
+import {Nav, Navbar, Button, Container} from 'react-bootstrap'
 
 import CustomerList from './components/CustomerList';
 import VideoLibrary from './components/VideoLibrary';
@@ -18,12 +18,11 @@ import {
 } from 'react-router-dom';
 import Detail from './components/Detail';
 
-const App = () => {
-  
+const App = (props) => {
+
   const [selectedVideo, setSelectedVideo] = useState(null)
   const [selectedCustomer, setSelectedCustomer] = useState(null)
   const [errorMessage, setErrorMessage] = useState('')
-
 
   const handleVideoChange = ((selectedData) => {
       setSelectedVideo(selectedData.value)
@@ -56,61 +55,112 @@ const App = () => {
       });
   };
 
-  const HomePageGrid = () // working on this now SM
+
+  //// this is an experiment ////
+
+  const allVideosURL = 'http://localhost:3000/videos'
+
+  const [videos, setVideos] = useState([])
+  
+  useEffect(() => {
+      axios.get(allVideosURL)
+      .then((response) => {
+          const RailsApiVideoList = response.data
+          setVideos(RailsApiVideoList);
+      })
+      .catch((error) => {
+          console.log(error.message);
+      });
+  }, []);
+
+  function VideoGrid() {  
+    const videoGrid = videos.map((video) =>
+        <li key={video.id} className="video-grid-item">
+            <img src={video.image_url}></img>
+        </li>
+        );
+        return (
+        <ul className="video-grid">{videoGrid}</ul>
+        );
+    }
+
+    //////////
+
   
     return (
 
       <div className="App">
       <Router> 
 
-        <Navbar bg="dark" className="navbar">
-          <Nav>
+        <Navbar collapseOnSelect expand="lg" className="navbar">
+
+        <Nav.Link>
+          <Link to="/" exact={true} className="navbar-logo">The Video Store</Link>
+        </Nav.Link>
+
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+
+        <Nav className="mr-auto">
+
+
           <Nav.Link>
-            <Link to="/" exact={true} className="navbar-logo">Video Store</Link>
-          </Nav.Link>
-          <Nav.Link className="navbar-wrapper">
               <Link to="/search" exact={true} className="navbar-link">Search</Link>
           </Nav.Link>
-          <Nav.Link className="navbar-wrapper">
+
+          <Nav.Link>
               <Link to="/customers" exact={true} className="navbar-link">Customers</Link>
           </Nav.Link>
-          <Nav.Link className="navbar-wrapper">
+
+          <Nav.Link>
               <Link to="/library" exact={true} className="navbar-link">Video Library</Link>
           </Nav.Link>
 
-          <Nav.Link className="navbar-wrapper justify-content-end">
-            <Link to="/library" className="selected navbar-link">Selected Video: <strong>{selectedVideo &&(selectedVideo.title)} </strong></Link>
+        </Nav>
+
+        <Nav className="ml-auto">
+          <Nav.Link>
+            <Link to="/library" className="navbar-link">Video: {selectedVideo &&(selectedVideo.title)} </Link>
           </Nav.Link>
 
-          <Nav.Link className="navbar-wrapper justify-content-end">
-            <Link to="/customers" className="selected navbar-link">Customer: <strong>{selectedCustomer &&(selectedCustomer.name)} </strong></Link>
+          <Nav.Link>
+            <Link to="/customers" className="navbar-link">Customer: {selectedCustomer &&(selectedCustomer.name)} </Link>
           </Nav.Link>
-
-          <Nav.Link className="navbar-button">
+        </Nav>
+        <Nav className="ml-auto">
+          <Nav.Link>
           {selectedVideo && selectedCustomer ? 
             <Button className="customer-button" onClick={() => addRental()}>
                 Checkout
             </Button> : ''}
-          </Nav.Link>
+
+        </Nav.Link>
 
           </Nav>
+          </Navbar.Collapse>
         </Navbar>
       
         
         <Switch>
           <Route exact={true} path="/">
-            <p>Homepage!</p>
+            <VideoGrid/>
           </Route>
           <Route path="/search">
-            <Search />
+            <Container>
+              <Search />
+            </Container>
           </Route>
           <Route exact path="/customers">
-            <CustomerList onSelectCustomer={handleCustomerChange} selectedCustomer={selectedCustomer}/>
-            <SelectedCustomer customer={selectedCustomer}/>
+            <Container>
+              <CustomerList onSelectCustomer={handleCustomerChange} selectedCustomer={selectedCustomer}/>
+              <SelectedCustomer customer={selectedCustomer}/>
+            </Container>
           </Route>
           <Route exact  path="/library">
-            <VideoLibrary addRental={addRental} selectedCustomer={selectedCustomer}  onSelectVideo={handleVideoChange} selectedVideo={selectedVideo}/>
-            <SelectedVideo video={selectedVideo}/>
+            <Container>
+              <VideoLibrary addRental={addRental} selectedCustomer={selectedCustomer}  onSelectVideo={handleVideoChange} selectedVideo={selectedVideo}/>
+              <SelectedVideo video={selectedVideo}/>
+            </Container>
           </Route>
 
           <Route exact  path="/detail">
