@@ -31,7 +31,7 @@ const Rental = (props) => {
             .then((response) => {
                 setAlert(`You have successfully rented ${props.video.title}!`);
                 setError('');
-            // clear sessionContext after rental made
+            
             props.setSelectedCustomer(null);
             props.setSelectedMovie(null);
             })
