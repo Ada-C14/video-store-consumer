@@ -10,28 +10,23 @@ const RentalForm = (props) => {
         return date
         
     }
-    // console.log(props.selectedVideo)
-    // console.log(`${props.url}/rentals/${props.selectedVideo.title}/check-out?customer_id=${props.selectedCustomer.id}&due_date=${setDueDate()}`)
-    const queryParams = {
-        /* eslint-disable camelcase */
-        customer_id: props.selectedCustomer.id,
-        due_date: setDueDate()
-        /* eslint-enable camelcase */
-    };
-    const checkout = (queryParams) => {
-        
-        axios.post(`${props.url}/rentals/${props.selectedVideo.title}/check-out`, queryParams)
+
+    const checkout = () => {
+        axios.post(`${props.url}/rentals/${props.selectedVideo.title}/check-out?customer_id=${props.selectedCustomer.id}&due_date=${setDueDate()}`)
             .then(response => {
                 setMessage(`${props.selectedCustomer.name} successully checked out ${props.selectedVideo.title}. It is due on ${setDueDate()}`)
             })
             .catch(error => {
                 setMessage(error)
-            })
+            });
+        props.selectedCustomer.videosCheckedOutCount += 1
     }
 
 
+
+
     const form = 
-    <button onClick={(props) => checkout(props)}>Checkout</button>
+    <button onClick={() => checkout()}>Checkout</button>
 
     const error = 
     <h1>Please Select a Video and Customer to make a rental!</h1>

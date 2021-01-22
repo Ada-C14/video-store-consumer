@@ -5,6 +5,13 @@
   src: url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+
+@font-face {
+  font-family: 'Monoton', cursive;
+  src: url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+}
+
 .App {
   text-align: center;
 }
@@ -22,39 +29,62 @@
   text-align: center;
   font-size: large;
   text-decoration: none;
-  background-image: url('./vhs tapes.jpg');
+  background-image: url('./g2yfzfx.jpg');
 }
 
 .storename {
     font-size: 70px;
     font-family: 'Press Start 2P', cursive;
-    background-color: pink;
+    /* font-family: 'Press Start 2P', cursive; */
+    /* background-color: pink; */
+    color: white;
+    outline-width: 1px;
+    outline-color: black;
+    text-shadow: 5px 0 0 #000, 0 -1px 0 #000, 0 5px 0 #000, -1px 0 0 #000;
 }
 
 /* ul .selected {
   list-style-type: none;
 } */
 .nav {
+  color: rgb(162, 238, 213);
   display: inline;
   padding: 30px;
-  font-size: 20px;
-  text-decoration: none;
-  font-family: 'Press Start 2P', cursive;
-  background-color: black;
+  font-size: 30px;
+  font-family: 'Monoton', cursive;
+  /* background-color: black; */
+  text-shadow: 2px 0 0 #000, 0 -1px 0 #000, 0 2px 0 #000, -1px 0 0 #000;
 }
+
+.nav a {
+  text-shadow: 2px 0 0 #000, 0 -1px 0 #000, 0 2px 0 #000, -1px 0 0 #000;
+  color: rgb(162, 238, 213);
+  text-decoration: none;
+  font-family: 'Monoton', cursive;
+  font-size: 25px;
+}
+
 .selected {
-  background-color: black;
+  /* background-color: black; */
   padding-right: 30px;
+  background-color: white;
 }
 li {
-  display: inline;
+  
   color: pink;
+  display: inline;
+  font-family: 'Press Start 2P', cursive;
+  /* color: pink; */
   padding: 30px;
+  padding-right: 30px;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+  font-size: 15px;
 }
 
 ul {
   list-style-type: none;
   /* background-color: black; */
+  padding-right: 30px;
 }
 
 /* li.nav {
@@ -64,6 +94,10 @@ ul {
   text-decoration: none;
   font-family: 'Press Start 2P', cursive;
 } */
+
+body {
+  background-color: rgb(122, 233, 233);
+}
 
 
 .App-title {

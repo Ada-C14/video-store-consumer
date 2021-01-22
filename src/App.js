@@ -56,7 +56,7 @@ const App = () => {
     <Router>
       <div>
         <header className="App-header">
-        <img src={'./vhs tapes.jpg'} alt="header" />
+        {/* <img src={'./g2yfzfx.jpg'} alt="header" /> */}
           <h1 className="storename">Video Store</h1>
           <nav> 
             <ul className="nav">
@@ -82,6 +82,7 @@ const App = () => {
             {selectedVideo ? <li>Selected Video: {selectedVideo.title}</li> : ''}
           </ul>
         </header>
+        <body>
         <Switch>
           <Route path='/search'>
             <VideoSearch url={API_BASE_URL} addVideoCallback={addVideo} />
@@ -99,6 +100,7 @@ const App = () => {
             Welcome
           </Route>
         </Switch>
+        </body>
       </div>
     </Router>
   );
