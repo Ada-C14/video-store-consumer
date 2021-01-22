@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import MovieSearchBar from './MovieSearchBar.js';
 import Navbar from './Navbar.js';

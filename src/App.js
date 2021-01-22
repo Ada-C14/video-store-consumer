@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import CustomerList from './components/CustomerList.js';
 import MovieLibrary from './components/MovieLibrary.js';
-import MovieSearchBar from './components/MovieSearchBar.js';
 import MovieSearchResults from './components/MovieSearchResults.js';
 import Homepage from './components/Homepage.js';
 import axios from 'axios';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from 'react-router-dom';
 import './App.css';
 
