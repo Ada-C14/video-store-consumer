@@ -4,6 +4,8 @@ import axios from 'axios';
 import SearchForm from './SearchForm';
 import SearchResult from './SearchResult';
 
+import './SearchResult.css';
+
 const VideoSearch = (props) => {
   const [searchResults, setSearchResults] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -21,19 +23,19 @@ const VideoSearch = (props) => {
   const searchResultComponents = searchResults.map((videoObj, i) => {
     return (
       <SearchResult
-      key={i}
-      title={videoObj.title}
-      overview={videoObj.overview}
-      releaseDate={videoObj.release_date}
-      imageUrl={videoObj.image_url}
-      externalId={videoObj.external_id}
-      addVideoCallback={props.addVideoCallback} />
+        key={i}
+        title={videoObj.title}
+        overview={videoObj.overview}
+        releaseDate={videoObj.release_date}
+        imageUrl={videoObj.image_url}
+        externalId={videoObj.external_id}
+        url={props.url} />
     );
   });
 
   return (
-    <div className="board">
-      { errorMessage ? <div>{errorMessage}</div> : '' }
+    <div>
+      {errorMessage ? <p className="error-msg">{errorMessage}</p> : ''}
       <SearchForm searchVideosCallback={searchVideos} />
       {searchResultComponents}
     </div>
@@ -41,8 +43,7 @@ const VideoSearch = (props) => {
 };
 
 VideoSearch.propTypes = {
-  url: PropTypes.string.isRequired,
-  addVideoCallback: PropTypes.func.isRequired
+  url: PropTypes.string.isRequired
 };
 
 export default VideoSearch;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,8 +9,6 @@ import VideoSearch from './components/VideoSearch';
 import VideoLibrary from './components/VideoLibrary';
 import Customers from './components/Customers';
 import RentalForm from './components/RentalForm';
-import axios from 'axios';
-// import Header from './Header';
 
 import './App.css';
 
@@ -19,19 +17,6 @@ const App = () => {
 
   const [selectedCustomer, setSelectedCustomer] = useState(null);
   const [selectedVideo, setSelectedVideo] = useState(null);
-  const [videoList, setVideoList] = useState([]);
-  const [errorMessage, setErrorMessage] = useState('');
-
-  useEffect(() => {
-    axios.get(`${API_BASE_URL}/videos`)
-      .then((response) => {
-        const apiVideoList = response.data
-        setVideoList(apiVideoList);
-      })
-      .catch((error) => {
-        setErrorMessage(error.message);
-      });
-    }, []);
 
   const selectCustomer = (customer) => {
     setSelectedCustomer(customer);
@@ -41,22 +26,10 @@ const App = () => {
     setSelectedVideo(video);
   };
 
-  const addVideo = (videoObj) => {
-    axios.post(`${API_BASE_URL}/videos`, videoObj)
-      .then((response) => {
-        setVideoList([...videoList, videoObj]);
-        setErrorMessage('Video has been added to the library')
-      })
-      .catch((error) => {
-        setErrorMessage('Video is already in the library');
-      });
-  };
-
   return (
     <Router>
       <div>
         <header className="App-header">
-        {/* <img src={'./g2yfzfx.jpg'} alt="header" /> */}
           <h1 className="storename">Video Store</h1>
           <nav> 
             <ul className="nav">
@@ -85,16 +58,16 @@ const App = () => {
         <body>
         <Switch>
           <Route path='/search'>
-            <VideoSearch url={API_BASE_URL} addVideoCallback={addVideo} />
+            <VideoSearch url={API_BASE_URL} />
           </Route>
           <Route path='/library'>
-            <VideoLibrary url={API_BASE_URL} onClickCallback={selectVideo} videos={videoList} errorMessage={errorMessage} />
+            <VideoLibrary url={API_BASE_URL} onClickCallback={selectVideo} />
           </Route>
           <Route path="/customers">
             <Customers url={API_BASE_URL} onClickCallback={selectCustomer} />
           </Route>
           <Route path="/checkout">
-            <RentalForm selectedCustomer={selectedCustomer} selectedVideo={selectedVideo} url={API_BASE_URL}/>
+            <RentalForm url={API_BASE_URL} selectedCustomer={selectedCustomer} selectedVideo={selectedVideo} />
           </Route>
           <Route path="/">
             Welcome

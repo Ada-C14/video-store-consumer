@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 import './SearchResult.css';
 
 const SearchForm = (props) => {
-  const addSearchResult = () => {
-    const searchResult = {
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const addSearchResult = (event) => {
+    event.preventDefault();
+
+    const videoObj = {
       title: props.title,
       overview: props.overview,
       /* eslint-disable camelcase */
@@ -15,14 +21,22 @@ const SearchForm = (props) => {
       /* eslint-enable camelcase */
     };
 
-    props.addVideoCallback(searchResult);
+    axios.post(`${props.url}/videos`, videoObj)
+      .then((response) => {
+        setSuccessMessage(`Video ${props.externalId} has been added to the library`)
+      })
+      .catch((error) => {
+        setErrorMessage(`Video ${props.externalId} is already in the library`);
+      });
   };
 
   return (
     <div className="search-result">
+      {successMessage ? <p className="success-msg">{successMessage}</p> : ''}
+      {errorMessage ? <p className="error-msg">{errorMessage}</p> : ''}
       <img src={props.imageUrl} alt={props.title} />
       <div className="video-description">
-        <h3>{props.title}</h3>
+        <h4>{props.title}</h4>
         <p>Release Date: {props.releaseDate}</p>
         <p>Overview: {props.overview}</p>
         <button onClick={addSearchResult}>Add to Video Library</button>
@@ -37,7 +51,7 @@ SearchForm.propTypes = {
   releaseDate: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
   externalId: PropTypes.number.isRequired,
-  addVideoCallback: PropTypes.func.isRequired
+  url: PropTypes.string.isRequired
 };
 
 export default SearchForm;

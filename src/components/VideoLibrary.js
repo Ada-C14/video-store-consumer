@@ -1,10 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Video from './Video';
+import axios from 'axios';
 
 const VideoLibrary = (props) => {
-    console.log(props.videos);
-    const videoComponents = props.videos.map(video => {
+    const [videoList, setVideoList] = useState([]);
+    const [errorMessage, setErrorMessage] = useState('');
+
+    useEffect(() => {
+        axios.get(`${props.url}/videos`)
+        .then((response) => {
+            const apiVideoList = response.data
+            setVideoList(apiVideoList);
+        })
+        .catch((error) => {
+            setErrorMessage(error.message);
+        });
+        }, []);
+
+    const videoComponents = videoList.map(video => {
         return (<Video 
             id={video.id}
             title={video.title}
@@ -19,8 +33,8 @@ const VideoLibrary = (props) => {
 
     return (
         <div>
-            <h3>Our Video Library</h3>
-            {props.errorMessage ? <div><h2 className="error-msg">{props.errorMessage}</h2></div> : ''}
+            <h2 className="header">📼 Library 📼</h2>
+            {errorMessage ? <p className="error-msg">{errorMessage}</p> : ''}
             {videoComponents}
         </div>
     );
@@ -28,18 +42,7 @@ const VideoLibrary = (props) => {
 
 VideoLibrary.propTypes = {
     url: PropTypes.string.isRequired,
-    onClickCallback: PropTypes.func.isRequired,
-    videos: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.number.isRequired,
-            title: PropTypes.string.isRequired,
-            overview: PropTypes.string.isRequired,
-            releaseDate: PropTypes.string.isRequired,
-            imageUrl: PropTypes.string.isRequired,
-            externalId: PropTypes.number.isRequired
-        })
-    ),
-    errorMessage: PropTypes.string.isRequired    
+    onClickCallback: PropTypes.func.isRequired  
 }
 
 export default VideoLibrary;

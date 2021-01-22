@@ -31,7 +31,7 @@ const Customers = (props) => {
 
 return (
   <div>
-    <h3>Our Loyal Customers</h3>
+    <h3 className="header">Our Customers 📇</h3>
     <p>{errorMessage}</p>
     {customerComponents}
   </div>

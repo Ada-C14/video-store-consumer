@@ -35,33 +35,29 @@
 .storename {
     font-size: 70px;
     font-family: 'Press Start 2P', cursive;
-    /* font-family: 'Press Start 2P', cursive; */
-    /* background-color: pink; */
     color: white;
     outline-width: 1px;
     outline-color: black;
-    text-shadow: 5px 0 0 #000, 0 -1px 0 #000, 0 5px 0 #000, -1px 0 0 #000;
+    text-shadow: 6px 0 0 #000, 0 -1px 0 #000, 0 6px 0 #000, -1px 0 0 #000;
 }
 
 /* ul .selected {
   list-style-type: none;
 } */
-.nav {
+/* .nav {
   color: rgb(162, 238, 213);
   display: inline;
   padding: 30px;
   font-size: 30px;
   font-family: 'Monoton', cursive;
-  /* background-color: black; */
-  text-shadow: 2px 0 0 #000, 0 -1px 0 #000, 0 2px 0 #000, -1px 0 0 #000;
-}
+} */
 
 .nav a {
-  text-shadow: 2px 0 0 #000, 0 -1px 0 #000, 0 2px 0 #000, -1px 0 0 #000;
-  color: rgb(162, 238, 213);
+  text-shadow: 3px 0 0 #000, 0 -1px 0 #000, 0 3px 0 #000, -1px 0 0 #000;
+  color: #6cefeb;
   text-decoration: none;
-  font-family: 'Monoton', cursive;
-  font-size: 25px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.25rem;
 }
 
 .selected {
@@ -69,6 +65,7 @@
   padding-right: 30px;
   background-color: white;
 }
+
 li {
   
   color: pink;
@@ -96,7 +93,7 @@ ul {
 } */
 
 body {
-  background-color: rgb(122, 233, 233);
+  background-color: #fde35a;
 }
 
 

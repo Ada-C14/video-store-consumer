@@ -5,3 +5,11 @@
 .search-result, .video-description {
   margin: 2rem;
 }
+
+.success-msg {
+  color: green;
+}
+
+.error-msg {
+  color: red;
+}
