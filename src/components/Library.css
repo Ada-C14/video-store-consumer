@@ -1,0 +1,12 @@
+.grid-columns {
+    column-count: 2;
+    display: flex;
+    flex-wrap: wrap;
+    width: auto;
+    text-align: center;
+    margin: auto;
+  }
+
+.body-header {
+  text-align: center;
+}
