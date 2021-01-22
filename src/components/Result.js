@@ -12,7 +12,8 @@ const Result = (props) => {
 }
 
 Result.propTypes = {
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  // eslint-disable-next-line camelcase
   release_date: PropTypes.string,
 
 };
