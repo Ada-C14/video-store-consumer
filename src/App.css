@@ -1,28 +1,70 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Sofia&display=swap');
+
+* {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  background-color: #fffbee;
+}
+
+body {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 125px auto 40px;
+}
+
+main {
+  padding: 15px 15px;
+}
+
+header {
+  background-color: rgb(175, 215, 255);
+  font-family: 'Sofia', cursive;
+}
+
+.title {
+  font-size: 60px;
   text-align: center;
+  color: #ff6d94;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+nav ul {
+  list-style-type: none;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  padding: 5px 10%;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+nav li {
+  display: inline-block;
+  font-size: 1.3em;
 }
 
-.App-title {
-  font-size: 1.5em;
+nav a {
+  text-decoration: none;
 }
 
-.App-intro {
-  font-size: large;
+nav a:hover {
+  font-weight: bold;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.selected {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  padding: 5px 20px;
+  background-color: rgb(247, 197, 253);
+}
+
+.error-msg {
+  font-style: italic;
+  color: red;
 }
