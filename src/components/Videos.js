@@ -43,6 +43,7 @@ const Videos = (props) => {
           <thead>
             <tr className="table-primary">
               <th scope="col">Poster</th>
+              <th scope="col">Title</th>
               <th scope="col">Overview</th>
               <th scope="col">Release Date</th>
               <th scope="col">Select For Rental?</th>

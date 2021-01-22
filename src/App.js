@@ -41,8 +41,8 @@ function App() {
           <h1><a href="/">RETRO VIDEO DISTRO</a></h1>
           <span>
             <button className="btn btn-outline-danger"><Link to="/">Home</Link></button>
-            <button className="btn btn-outline-danger"><Link to="/library">Video Library</Link></button>
             <button className="btn btn-outline-danger"><Link to="/customers">Customer Index</Link></button>
+            <button className="btn btn-outline-danger"><Link to="/library">Video Library</Link></button>
             <button className="btn btn-outline-danger"><Link to="/search">Search</Link></button>
             <Checkout selectedVideoCallback={selectVideo} selectedCustomerCallback={selectCustomer}baseUrl={BASE_URL} selectedCustomer={selectedCustomer} selectedVideo={selectedVideo} />
           </span>
@@ -54,12 +54,12 @@ function App() {
           <Switch>
           <Route exact path="/">
             <Home />
+          </Route> 
+          <Route path="/customers">
+            <Customers baseUrl={BASE_URL} selectedCustomerCallback={selectCustomer}/>
           </Route>
           <Route path="/library">
             <Videos baseUrl={BASE_URL} selectedVideoCallback={selectVideo}/>
-          </Route>
-          <Route path="/customers">
-            <Customers baseUrl={BASE_URL} selectedCustomerCallback={selectCustomer}/>
           </Route>
           <Route path="/checkout">
             <h1>Checkout Deets Will Go Here</h1>
