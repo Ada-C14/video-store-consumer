@@ -3,6 +3,7 @@ import SearchForm from './SearchForm';
 import Video from './Video';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import './Search.css';
 
 const Search = (props) => {
 
@@ -84,17 +85,24 @@ const Search = (props) => {
         </div>
     })
     return (
-        <div className="search">
-            <SearchForm onSubmitCallback={searchVideo} className="form"/>
-            {/* if nothing was selected the button is disabled */}
-            <button 
-            disabled={getSelectedVideos().length===0}
-            onClick={addToLibrary}
-            > 
+        <div>
+            <div className="search">
+                <div className="search-form">
+                <SearchForm 
+                onSubmitCallback={searchVideo}
+                className="search"
+                />
+                {/* if nothing was selected the button is disabled */}
+                <button 
+                disabled={getSelectedVideos().length===0}
+                onClick={addToLibrary}
+                > 
                 Add selected to the library
-            </button>
-            {errorMessage ? <div>{errorMessage}</div> : '' }
-            {videosComponentsList}
+                </button>
+                </div>
+                {errorMessage ? <div>{errorMessage}</div> : '' }
+                {videosComponentsList}
+            </div>
         </div>
         );
     };
