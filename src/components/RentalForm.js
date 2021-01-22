@@ -29,7 +29,7 @@ const RentalForm = (props) => {
     const validRental = (props.selectedCustomer === null || props.selectedVideo === null ) ? error : form
 
     const customerInfo = props.selectedCustomer === null ? '' : <section className="cust_info">
-    <h4>Customer Information</h4>   
+    <h3>Customer Information</h3>   
     <p>Name: {props.selectedCustomer.name}</p>
     <p>Phone Number: {props.selectedCustomer.phone}</p>
     <p>Member Since: {props.selectedCustomer.registeredAt.substr(0, 10)}</p>

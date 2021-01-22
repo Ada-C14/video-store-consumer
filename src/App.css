@@ -1,16 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
-
-@font-face {
-  font-family: 'Press Start 2P', cursive;
-  src: url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
-
-@font-face {
-  font-family: 'Monoton', cursive;
-  src: url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
-}
+@import url('https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap');
 
 .App {
   text-align: center;
@@ -59,7 +48,8 @@
 
 .selected p {
   color: #6cefeb;
-  font-family: 'Monoton', cursive;
+  /* font-family: 'Monoton', cursive; */
+  font-family: 'Racing Sans One', cursive;
   text-shadow: 2px 0 0 #000, 0 -1px 0 #000, 0 2px 0 #000, -1px 0 0 #000;
   margin-top: 0;
   margin-bottom: 0.5rem;
@@ -75,6 +65,7 @@ li {
 
 body {
   background-color: #fde35a;
+  font-family: 'Racing Sans One', cursive;
 }
 
 .App-title {
