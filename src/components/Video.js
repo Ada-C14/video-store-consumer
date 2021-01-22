@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 const Video = (props) => {
   return (
-    <span>
-      {props.title} - {props.overview} - {props.release_date}
-      {/* <img alt= "Movie Poster"> {props.image_url}</img> */}
-    </span>
+    <div className="video-box">
+      <span className='video-image'><img src={props.imageUrl} alt={`${props.title} movie cover`}/></span>
+      <span>{props.title} - {props.overview} - {props.release_date}</span>
+    </div>
     
   );
   
