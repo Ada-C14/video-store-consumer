@@ -18,8 +18,8 @@ const App = () => {
   
   const [currentCustomer, setCurrentCustomer] = useState(null) 
   const [videoList, setVideoList] = useState([]);
-  const [selectedVideo,setSelectedVideo]= useState(null);
-  const [errorMessage,setErrorMessage] = useState(null);
+  const [selectedVideo, setSelectedVideo]= useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   // useEffect(() => {
   //   axios.get(`${API_URL_BASE}customers`)
@@ -40,16 +40,28 @@ const App = () => {
       setCurrentCustomer(customer);
     }
   }
+  const selectVideo = (video) => {
+    if (selectedVideo && video.id === selectedVideo.id) {
+      setSelectedVideo(null);
+    } else {
+      setSelectedVideo(video);
+    }
+  }
 
+  
+// add a callback function that reset the states to null
     return (
       <Router>
         <div className="App">
-          <p>{currentCustomer.name}</p>
           <Nav />
+          <Selected video={selectedVideo} customer={currentCustomer} />
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/search" component={Search} />
-            <Route path="/library" component={Library} />
+            <Route path="/library">
+              <Library 
+              onSelectVideo={selectVideo}/>
+            </Route>
             <Route path="/customers">
               <Customers
               selectCustomerCallback={selectCustomer}/>
