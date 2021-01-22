@@ -16,7 +16,6 @@ const VideoCollection = (props) => {
             setVideoList(response.data);
         })
         .catch((error) => {
-            // Still need to handle errors
             setErrorMessage(error.message);
         });
     }, []);
@@ -41,18 +40,9 @@ const VideoCollection = (props) => {
   
 };
 
-// StudentCollection.propTypes = {
-//   students: PropTypes.arrayOf(PropTypes.shape(
-//     {
-//       fullName: PropTypes.string.isRequired,
-//       email: PropTypes.string,
-//       present: PropTypes.bool,
-//       id: PropTypes.number.isRequired,
-//     },
-//   )),
-//   onUpdateStudent: PropTypes.func.isRequired,
-// }
-
-
+VideoCollection.propTypes = {
+    onSelectVideo: PropTypes.func.isRequired,
+    showButton: PropTypes.func.isRequired,
+};
 
 export default VideoCollection;
