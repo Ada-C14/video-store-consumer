@@ -17,11 +17,11 @@ const SearchForm = ({ onSubmitCallback }) => {
     
     return (
         <div className="search-form">
-            <h4>Need to add a movie to your library?</h4>
+            <h3>Need to add a movie to your library?</h3>
             <form className="search-form__form" onSubmit={ onSubmitSearch } >
                 <label>Title:</label>
                 <input type="text" value={titleField} onChange={ onInputChange } />
-                <input type="submit" value="Search" />
+                <input type="submit" value="Search" className="btn btn-primary"/>
             </form>
         </div>
     );

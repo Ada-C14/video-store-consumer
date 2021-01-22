@@ -27,7 +27,6 @@ const SearchResultList = () => {
 
     const addFilm = (newFilm) => {
         // TODO pass base URL down in props
-        console.log('addFilmCalled')
         axios.post(`http://localhost:3000/videos`, newFilm)
             .then((response) => {
                 // TODO - display a message to let user know
@@ -37,7 +36,6 @@ const SearchResultList = () => {
             })
             .catch((error) => {
                 // TODO - display error message?
-                console.log(error.response)
                 setError(error.response.data.errors);
                 setAlert('');
             });
@@ -62,9 +60,9 @@ const SearchResultList = () => {
         <div>
             <SearchForm onSubmitCallback={searchSubmit} />
             {/* TODO - style errors and alerts to be more obvious */}
-            <div>{ error ? error : '' }</div>
-            <div>{ alert ? alert : '' }</div>
-            <h3>Search Results</h3>
+            { error ? <div className="alert alert-warning">{error}</div> : '' }
+            { alert ? <div className="alert alert-success">{alert}</div> : '' }
+            <h4>Search Results</h4>
             <table className="table">
                 <thead>
                     <tr>

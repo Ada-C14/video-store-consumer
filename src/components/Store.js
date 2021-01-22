@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import VideoLibrary from './VideoLibrary'
 import CustomerList from './CustomerList';
 import SearchResultList from './SearchResultList';
+<<<<<<< HEAD
 import Rental from './Rental';
+=======
+import './Store.css';
+>>>>>>> master
 
 import {
     BrowserRouter as Router,
@@ -29,19 +33,19 @@ const Store = () => {
     return (
         <Router>
         <div>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
+          <nav className="navbar navbar-default">
+            <ul className="nav navbar-nav">
+              <li className="nav-item">
+                <Link to="/" className="nav-link">Home</Link>
               </li>
-              <li>
-                <Link to="/search">Search</Link>
+              <li className="nav-item">
+                <Link to="/search" className="nav-link">Search</Link>
               </li>
-              <li>
-                <Link to='/customers'>Customers</Link>
+              <li className="nav-item">
+                <Link to='/customers' className="nav-link">Customers</Link>
               </li>
-              <li>
-                <Link to="/library">Library</Link>
+              <li className="nav-item">
+                <Link to="/library" className="nav-link">Library</Link>
               </li>
               <li>
                 <Link to="/library">Rental</Link>
