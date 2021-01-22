@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { NavLink, Switch, Route } from 'react-router-dom';
 import VideoLibrary from './components/VideoLibrary';
+import VideoSearch from './components/VideoSearch';
 
 
 
@@ -49,6 +50,7 @@ const Home = () => (
 const Search = () => (
   <div className='search'>
     <h1>Search for a new video</h1>
+    <VideoSearch />
   </div>
 );
 
@@ -67,7 +69,7 @@ const Customers = () => (
 );
 
 return(  <div className='app'>
-<h1>React Router Demo</h1>
+<h1>Leah and Mackenzie's Video Store</h1>
 <h3> {selectedVideoTitle !== '' ? `Selected Video: ${selectedVideoTitle}` : null} </h3>
 <Navigation />
 <Main />
