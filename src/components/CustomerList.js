@@ -22,6 +22,7 @@ const CustomerList = (props) => {
     })
   }, [])
 
+
   // SORT?
 
   return (
