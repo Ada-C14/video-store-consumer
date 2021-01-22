@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from 'react';
+import React, {useState } from 'react';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import logo from './logo.svg';
 import axios from 'axios';
@@ -6,14 +6,14 @@ import './App.css';
 import AddMovieForm from './components/AddMovieForm';
 import VideoCollection from './components/VideoCollection';
 import CustomerCollection from './components/CustomerCollection';
-import { Navbar, Nav, Form, Button, FormControl } from 'react-bootstrap';
+import { Navbar, Nav, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const API_URL_BASE = 'http://localhost:3000/';
 
 const App = () => {
-  const [selectedVideo, setSelectedVideo] = useState(null);
+  const [selectedVideo, setSelectedVideo] = useState('none');
   const [selectedCustomer, setSelectedCustomer] = useState({
     id: null,
     name: 'none',
@@ -65,8 +65,8 @@ const App = () => {
     } else {
       return (
       <div>
-        <span>Currently Selected Video: {selectedVideo}</span>
-        <span>Currently Selected Customer: {selectedCustomer.name}</span>
+        <span>Selected Video: {selectedVideo}</span>
+        <span>Selected Customer: {selectedCustomer.name}</span>
       </div>)
     }
   };
@@ -82,6 +82,7 @@ const App = () => {
             <Nav.Link as={Link} to='/customers'>Customers</Nav.Link>
             <Nav.Link as={Link} to='/search'>Search</Nav.Link>
           </Nav>
+          {/* <Navbar.Header>Hello</Navbar.Header> */}
           {checkoutMessageNav()}
           <Button variant="outline-info" onClick={checkOut}>Check Out</Button>
         </Navbar>
