@@ -13,8 +13,17 @@ const Customer = (props) => {
 }
 
 Customer.propTypes = {
+    id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    onClickCallback: PropTypes.func.isRequired
+    onClickCallback: PropTypes.func.isRequired,
+    registeredAt: PropTypes.string.isRequired,
+    address: PropTypes.string.isRequired,
+    city: PropTypes.string.isRequired,
+    state: PropTypes.string.isRequired,
+    postalCode: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
+    accountCredit: PropTypes.string.isRequired,
+    videosCheckedOutCount: PropTypes.string.isRequired,
 }
 
 export default Customer;
