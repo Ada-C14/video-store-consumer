@@ -13,6 +13,7 @@ import Customers from './components/Customers';
 import Videos from './components/Videos';
 import Home from './components/Home';
 import SearchBar from './components/SearchBar';
+import Checkout from './components/Checkout'
 
 function App() {
 
@@ -45,10 +46,11 @@ function App() {
         <nav>
           <h1><a href="/">RETRO VIDEO DISTRO</a></h1>
           <span>
-          <button type="button" class="btn btn-outline-danger"><Link to="/">Home</Link></button>
-          <button type="button" class="btn btn-outline-danger"><Link to="/library">Video Library</Link></button>
-          <button type="button" class="btn btn-outline-danger"><Link to="/customers">Customer Index</Link></button>
-          <button type="button" class="btn btn-outline-danger"><Link to="/search">Search</Link></button>
+          <button className="btn btn-outline-danger"><Link to="/">Home</Link></button>
+          <button className="btn btn-outline-danger"><Link to="/library">Video Library</Link></button>
+          <button className="btn btn-outline-danger"><Link to="/customers">Customer Index</Link></button>
+          <button className="btn btn-outline-danger"><Link to="/search">Search</Link></button>
+          <Checkout baseUrl={BASE_URL} selectedCustomer={selectedCustomer} selectedVideo={selectedVideo} />
           <ul>
             <li>{selectedCustomer && selectedCustomer.name} </li>
             <li>{selectedVideo && selectedVideo.title}</li>
