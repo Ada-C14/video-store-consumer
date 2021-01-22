@@ -1,0 +1,31 @@
+.customers-table {
+  margin-left: 20%;
+  font-family: arial, sans-serif;
+  width: 60%;
+  color:black;
+  text-align: center;
+  padding-bottom: 2em;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.customers-table-name {
+  width: 33%;
+  text-align: left;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.customers-table-ac-cred{
+  width: 33%;
+  text-align: center;
+}
+
+.customers-table-select{
+  width: 33%;
+  text-align: right;
+}
+
+h2 {
+  text-align: center;
+}
