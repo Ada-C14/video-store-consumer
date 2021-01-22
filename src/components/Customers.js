@@ -23,8 +23,8 @@ const CustomerList = (props) => {
       .catch((error) => {
           setErrorMessage(error.message);
           console.log(errorMessage);
-        }, []);
-      });
+        });
+      }, []);
 
     return (
       <div>

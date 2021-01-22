@@ -2,7 +2,7 @@ import {React, useState, useEffect} from 'react'
 import Select from 'react-select'
 import PropTypes from 'prop-types'
 import axios from 'axios'
-import CustomerList from './CustomerList'
+import CustomerList from './Customers.js'
 import {Container} from 'react-bootstrap'
 
 

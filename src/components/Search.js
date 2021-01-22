@@ -2,7 +2,7 @@ import {React, useState, useEffect} from 'react'
 import {Select} from 'react-select'
 import axios from 'axios'
 import {Form, Container, ListGroup, Button, Row, Col} from 'react-bootstrap'
-
+import {toast} from 'react-toastify'
 const Search = () => {
 
     const SearchApiUrl = 'http://localhost:3000/videos?query='
@@ -19,6 +19,7 @@ const Search = () => {
     const onSubmitHandler = (event) => {
         event.preventDefault()
         setSubmittedSearchTerm(searchTerm)
+
     }
 
     const addToLibraryHandler = (event, video) => {
@@ -31,6 +32,7 @@ const Search = () => {
         .then((response) => {
             const results = response.data
             setSearchResults(results);
+            
         })
         .catch((error) => {
             setErrorMessage(error.message);
@@ -57,10 +59,12 @@ const Search = () => {
         
         axios.post(PostURL)
         .then((response) => {
-            setErrorMessage('Video successfully added')
+            setErrorMessage('Video successfully added!')
+            toast.success('success!', {autoClose: 2000})
         })
         .catch((error) => {
             setErrorMessage('Video not successfully added');
+            console.log(error)
         });
     })
 
