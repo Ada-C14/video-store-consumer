@@ -8,14 +8,15 @@
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
+  background-color: #ffd700;
+  height: 200px;
   padding: 20px;
-  color: white;
+  color: black;
 }
 
 .App-title {
   font-size: 1.5em;
+  margin-top: 50px;
 }
 
 .App-intro {
@@ -26,3 +27,8 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.Link {
+  color: center;
+}
+
