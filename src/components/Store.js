@@ -68,6 +68,8 @@ const Store = () => {
               <Rental 
                 customer={selectedCustomer}
                 video={selectedVideo}
+                setSelectedCustomer={setSelectedCustomer}
+                setSelectedVideo={setSelectedVideo}
               />
             </Route>
           </Switch>

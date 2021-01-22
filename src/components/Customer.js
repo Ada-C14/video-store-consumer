@@ -6,7 +6,8 @@ const Customer = (props) => {
 
     const onButtonClick = () => {
         const selected = {
-            id: props.id
+            id: props.id,
+            name: props.name
         }
         props.selectCustomerCallback(selected);
     }
