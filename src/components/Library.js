@@ -54,8 +54,10 @@ const Library = (props) => {
 
   return (
     <div>
-      <h2 className="display-4">Video Library</h2>
-      {errorMessage ? <div><p className="validation-errors-display">{errorMessage}</p></div> : ''}
+      <h2 className="display-5 m-4 pb-5">Video Library</h2>
+      {/* <h2 className={errorMessage ? (errorMessage.includes('Success') ? 'text-success' : 'text-warning') : ''}>
+        {errorMessage ? `${errorMessage}` : ''}
+      </h2> */}
       {props.selectedVideo? < SelectedVideo selectedVideo={props.selectedVideo}/> : ''}
 
         <Table striped bordered hover variant="light">

@@ -15,7 +15,7 @@ import cow from './cow.png';
 import './App.css';
 import CheckOut from './components/CheckOut';
 import CheckIn from './components/CheckIn';
-import { Navbar, Nav, NavLink,Form, FormControl, Button, Image } from 'react-bootstrap'
+import { Navbar, Nav, NavLink,Form, FormControl, Button, Image, Table } from 'react-bootstrap'
 import {LinkContainer} from 'react-router-bootstrap'
 
 
@@ -24,16 +24,18 @@ import {LinkContainer} from 'react-router-bootstrap'
 const BASE_URL = 'http://localhost:3000/'
 
 const App = () => {
-  const [selectedVideo, setSelectedVideo] = useState(null)
-  const [selectedCustomer, setSelectedCustomer] = useState(null)
+  const [selectedVideo, setSelectedVideo] = useState(null);
+  const [selectedCustomer, setSelectedCustomer] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
 
   const chooseVideo = (videoData) => {
-    setSelectedVideo(videoData)
+    setSelectedVideo(videoData);
+    setErrorMessage(null);
   }
 
   const chooseCustomer = (id) => {
-    setSelectedCustomer(id.id)
+    setSelectedCustomer(id.id);
+    setErrorMessage(null);
   }
 
   const checkOut = (rental) => {
@@ -62,6 +64,13 @@ const App = () => {
     });
 
     setSelectedVideo(null)
+    setSelectedCustomer(null)
+  }
+
+  const deselectedVideoSubmit = () => {
+    setSelectedVideo(null)
+  }
+  const deselectedCustomerSubmit = () => {
     setSelectedCustomer(null)
   }
 
@@ -101,21 +110,67 @@ const App = () => {
                       customer={selectedCustomer}
                       checkInCallback={checkIn} />
           </div>
+{/* 
           <div className='selection-statements'>
             <div className={selectedVideo ? 'selection' : 'no-selection'}>
               <p>{ selectedVideo ? `Video: ${selectedVideo.title }` : 'Video not selected'}</p>
+              {selectedVideo ? <button
+                  className="btn btn-outline-primary btn-sm"
+                  onClick={deselectedVideoSubmit}>
+                  Deselected Video
+                </button> : ''}
             </div>
             <div className={selectedCustomer ? 'selection' : 'no-selection'}>
               <p>{ selectedCustomer ? `Customer ID: ${selectedCustomer}` : 'Customer not selected'}</p>
+              {selectedCustomer ? <button
+                  className="btn btn-outline-primary btn-sm"
+                  onClick={deselectedCustomerSubmit}>
+                  Deselected Customer
+                </button> : ''}
             </div>
-          </div>
+          </div> */}
 
 
         </Navbar>
-        <div>
-          <p>{errorMessage ? <div className="validation-errors-display">{errorMessage}</div> : ''}</p>
+        <div className="text-lg-center">
+          <h4 className={errorMessage ? (errorMessage.includes('completed') ? 'text-success border border-success' : 'text-danger border border-danger') : ''}>       
+            {errorMessage ? `${errorMessage}` : ''}
+          </h4>
         </div>
 
+        <table className="float-right text-left mt-4">
+            <tbody>
+              <tr>
+                  <td className={selectedVideo ? 'selection' : 'no-selection'}>
+                    <p>{ selectedVideo ? `Video: ${selectedVideo.title }` : 'Video not selected'}</p>
+                  </td>
+                  <td className="text-right">
+                    {selectedVideo ? <button
+                      className="btn btn-outline-primary btn-sm"
+                      onClick={deselectedVideoSubmit}>
+                      Deselected Video
+                      </button> : <button
+                      className="btn btn-outline-primary btn-sm disabled">
+                      Select a Video </button>}
+                  </td>
+                  <td className="visually-hidden">Video</td>
+              </tr>
+              <tr>
+                  <td className={selectedCustomer ? 'selection' : 'no-selection'}>
+                    <p>{ selectedCustomer ? `Customer ID: ${selectedCustomer}` : 'Customer not selected'}</p>
+                  </td>
+                  <td className="text-right">
+                    {selectedCustomer ? <button
+                    className="btn btn-outline-primary btn-sm"
+                    onClick={deselectedCustomerSubmit}>
+                    Deselected Customer
+                    </button> : <button
+                    className="btn btn-outline-primary btn-sm disabled">
+                    Select a Customer </button> }
+                  </td>
+              </tr>      
+            </tbody>
+          </table>
 
         <Switch>
           <Route path="/search" component={Search}>

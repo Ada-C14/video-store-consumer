@@ -42,7 +42,7 @@ const Customers = (props) => {
   })
   return (
     <div>
-      <h2 className="display-4">Customer List</h2>
+      <h2 className="display-5 m-4 pb-5">Customer List</h2>
       <div className="validation-errors-display">
         <h2 className="validation-errors-display__list">
           {errorMessage ? `${errorMessage}` : ''}

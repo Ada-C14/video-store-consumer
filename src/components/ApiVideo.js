@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './ApiVideo.css';
-import { Navbar, Nav, NavLink,Form, FormControl, Button, Image } from 'react-bootstrap'
 
 const ApiVideo = (props) => {
   // event handlers
@@ -23,10 +22,11 @@ const ApiVideo = (props) => {
       <figcaption>{props.title} 
         <br/>{new Date(props.releaseDate).getFullYear()}
         <br/> 
-          <Button
+          <button
+            className="btn btn-outline-primary btn-sm"
             onClick={onFormSubmit}>
             Add to Library
-          </Button>
+          </button>
       </figcaption>
     </figure> 
   )

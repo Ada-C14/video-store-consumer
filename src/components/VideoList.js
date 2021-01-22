@@ -55,9 +55,9 @@ const VideoList = (props) => {
   })
   return (
     <div data-testid={props.keyWord}>
-      <h2 className={errorMessage ? (errorMessage.includes('already') ? 'text-warning' : 'text-success') : ''}>
+      <h4 className={errorMessage ? (errorMessage.includes('already') ? 'text-warning border border-warning' : 'text-success border border-success') : ''}>
         {errorMessage ? `${errorMessage}` : ''}
-      </h2>
+      </h4>
       <div className="list">
         {videoComponents}
       </div>

@@ -11,23 +11,23 @@ const SingleCustomer = (props) => {
   }
 
   return (
-      <tr>
-      <th>
+    <tr>
+      <td>
         <Button
           onClick={onSelect}>
             Select
         </Button>
-      </th>
-      <th>{props.id}</th>  
-      <th>{props.name}</th>
-      <th>{props.accountCredit}</th>
-      <th>{props.videosCheckedOutCount}</th>
-      <th>{props.address}</th>
-      <th>{props.city}</th>
-      <th>{props.state}</th>
-      <th>{props.postalCode}</th>
-      <th>{props.phone}</th>
-      <th>{props.registeredAt}</th>
+      </td>
+      <td>{props.id}</td>  
+      <td>{props.name}</td>
+      <td>{props.accountCredit}</td>
+      <td>{props.videosCheckedOutCount}</td>
+      <td>{props.address}</td>
+      <td>{props.city}</td>
+      <td>{props.state}</td>
+      <td>{props.postalCode}</td>
+      <td>{props.phone}</td>
+      <td>{props.registeredAt}</td>
     </tr>
   )
 }

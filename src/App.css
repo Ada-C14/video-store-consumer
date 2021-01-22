@@ -37,7 +37,7 @@
 }
 
 .selection {
-  color: white;
+  color: blue;
   margin-top: 18px;
 }
 
@@ -57,4 +57,14 @@
 .validation-errors-display, 
 .validation-errors-display__list {
   font-size: 1em;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
