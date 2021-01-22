@@ -1,8 +1,8 @@
 .app-header {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
-  background-color: #3c4752;
-  padding: 2em 2em 1em;
+  background-color:black;
+  padding: 1em 1em 1em;
   text-align: center;
 }
 
@@ -29,9 +29,10 @@
 .app-header ul a {
   font-size: 1.2em;
   font-weight: 800;
-  color: #00adb5;
-  letter-spacing: 0.1em;
+  color: white;
+  letter-spacing: 0.2em;
   text-decoration: none;
+  padding-bottom: 20px;
 }
 
 .app-header ul a:hover {
@@ -40,14 +41,14 @@
 
 .app-header__selections {
   grid-column: 3 / 4;
-  max-height: 150px;
+  max-height: 200px;
   box-shadow: 7px 7px #AC3B61;
-  background-color:#00adb5;
+  background-color:lightgreen;
   padding: 1em 2em 2em 1em;
 }
 
 .app-header__selections h2 {
-  color: #3c4752;
+  color: white;
 }
 
 .app-header__selections p {
@@ -61,8 +62,8 @@
 }
 
 .app-footer {
-  background-color: #3c4752;
-  color: #00adb5;
+  background-color:black;
+  color: white;
   text-align: center;
   width: 100%;
   height: 50px;

@@ -17,7 +17,6 @@ function AppRouter() {
   const [errorMessage, setErrorMessage] = useState(null);
   const [successMessage, setSucessMessage] = useState(null);
 
-
   const rentalButton = () => {
     if (!(selectVideo.id === null) && !(selectCustomer.id) === null) {
       return true;
@@ -43,7 +42,7 @@ function AppRouter() {
       <div>
         <header className="app-header">
           <div className='app-header__nav'>
-            <h1>AM Video Store</h1>
+            <h1>A&M Video Store</h1>
             <ul>
               <li><Link to="/">Home</Link></li>
               <li><Link to="/search">Search</Link></li>
@@ -55,6 +54,9 @@ function AppRouter() {
               {selectCustomer && <div className='selected-item'>Selected Customer: {selectCustomer.name}</div>}
               {selectVideo && <div className='selected-item'>Selected Video: {selectVideo.title}</div>}
               <button onClick={rentalButton}>Checkout</button>
+              {/* Tp be implemented */}
+              <button>Reestart</button> 
+
               {successMessage ?
                 <div>
                   <h3 className="validation-errors-display">{successMessage}</h3>
@@ -84,7 +86,7 @@ function AppRouter() {
       </div>
       <main></main>
       <footer className='app-footer'>
-        <p> &copy; A & M Video Store - 2021</p>
+        <p> &copy; A&M Video Store - 2021</p>
       </footer>
 
     </Router>

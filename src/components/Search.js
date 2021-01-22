@@ -63,7 +63,8 @@ const Search = (props) => {
         {searchResult.map((video) => (
           <React.Fragment key={video.ext}>
             <tr></tr>
-            <td className='.videos-table-title'>{video.title}</td>
+            <td className='videos-table-title'>{video.title}</td>
+            <td className='videos-table-date'>{video.release_date}</td>
             <td className='videos-table-select'><button onClick={() => addVideoLibrary(video)}>Add to Library</button></td>
           </React.Fragment>
         ))

@@ -2,16 +2,28 @@
   margin-left: 20%;
   font-family: arial, sans-serif;
   width: 60%;
-  background-color: #3c4752;
-  opacity: 0.7;
-  color: white;
+  color:black;
   text-align: center;
-
+  padding-bottom: 2em;
+  padding-right: 0;
+  padding-left: 0;
 }
 
 .customers-table-name {
-  text-indent: 10%;  
+  width: 33%;
   text-align: left;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.customers-table-ac-cred{
+  width: 33%;
+  text-align: center;
+}
+
+.customers-table-select{
+  width: 33%;
+  text-align: right;
 }
 
 h2 {

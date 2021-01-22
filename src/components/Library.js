@@ -23,14 +23,14 @@ const Library = (props) => {
   return (
     <div>
       { errorMessage ? <div><h2 className="validation-errors-display">{errorMessage}</h2></div> : ''}
-      <h2> Videos Library</h2>
+      <h2> Videos List</h2>
       <table className="videos-table">
         {videoList.map((video) => (
           <React.Fragment key={video.id}>
             <tr></tr>
             <td className='videos-table-title'>{video.title}</td>
-            <td className='videos-table-title'>{video.release_date}</td>
-            <td><button onClick={() => props.onSelectVideoCallback(video)}>Select</button></td>
+            <td className='videos-table-date'>{video.release_date}</td>
+            <td className='videos-table-select'><button onClick={() => props.onSelectVideoCallback(video)}>Select</button></td>
           </React.Fragment>
         ))
         }
