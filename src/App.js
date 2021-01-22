@@ -22,8 +22,6 @@ function App() {
   const [ selectedCustomer, setSelectedCustomer ] = useState(null)
   const [ selectedVideo, setSelectedVideo ] = useState(null)
 
-
-
   // select function - what is used to id whats been selected
   const selectCustomer = (customer) => {
     setSelectedCustomer(customer) }
@@ -41,7 +39,6 @@ function App() {
       <div className="App">
         <header className="App-header tiledBackground">
           <img src={logo} className="App-logo" alt="logo" />
-          {/* <h1 className="App-title">Welcome to React</h1> */}
         </header>
         <nav>
           <h1><a href="/">RETRO VIDEO DISTRO</a></h1>

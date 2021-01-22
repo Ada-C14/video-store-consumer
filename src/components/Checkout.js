@@ -26,7 +26,7 @@ const Checkout = (props) => {
           setCheckoutSuccessMessage(`Customer ${props.selectedCustomer.name} has checked out ${props.selectedVideo.title}`)
           })
       .catch((error) => {
-
+         // ADD STUFF HERE IF TIME
       });
     }
 

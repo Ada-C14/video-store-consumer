@@ -1,21 +1,21 @@
 import axios from 'axios';
+// import React, { useState } from 'react';
 
 const SearchResult = (props) => {
+
 const { video } = props
+// const [ addSuccessMessage, setAddSuccessMessage ] = useState(null)
+
 const addVideo = () => {
-console.log(video)
-console.log(props.baseUrl)
+
   axios.post(`${props.baseUrl}/videos`, video)
     .then((response) => {
-      // What should we do when we know the post request worked?
       console.log(response)
-      // const updatedData = [...studentList, response.data];
-      // setStudentList(updatedData);
-      // setErrorMessage('');
+
+      document.getElementById('button').className = 'btn btn-secondary disabled'; 
     })
     .catch((error) => {
-      // What should we do when we know the post request failed?
-      // setErrorMessage(error.message);
+      // ADD STUFF HERE IF TIME
     });
 }
 
@@ -25,7 +25,7 @@ console.log(props.baseUrl)
             <th scope="row"><img src={video.image_url} className="w-75" alt="poster" /></th>
             <th scope="row">{video.title}</th>
             <td>{video.release_date}</td>
-            <td><button onClick={addVideo} class="btn btn-outline-primary">Add!</button></td>
+            <td><button onClick={addVideo} className="btn btn-primary" id='button'>Add!</button></td>
         </tr>
     )
   }
