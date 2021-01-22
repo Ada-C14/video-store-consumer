@@ -27,8 +27,8 @@ const Library = (props) => {
     })
 
     return (
-        <div className= 'Video-rental-library'>
-            <h1 className= 'body-header'>Video Rental Library</h1>
+        <div className='Video-rental-library'>
+            <h1 className='body-header'>Video Rental Library</h1>
             <section className= 'grid-columns'>
             {movieComponents}
             </section>

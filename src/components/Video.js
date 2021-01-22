@@ -10,7 +10,7 @@ const Video = (props) => {
                 <h3>{props.title}</h3>
                 <img src={props.image_url} alt="video cover"/>
                 <p>{props.overview}</p>
-                <p>Release date: {props.release_date}</p>
+                <p>Release date: {props.releaseDate}</p>
             </ul>
         </div>
         );

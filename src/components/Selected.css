@@ -1,0 +1,16 @@
+.selected {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 4vh;
+    background: rgb(0, 120, 160);
+    color: white;
+}
+
+.selected-items {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: right;
+    list-style: none;
+}

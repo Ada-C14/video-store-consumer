@@ -77,8 +77,7 @@ const App = () => {
       <Router>
         <div className="App">
           <Nav />
-          <Selected video={selectedVideo} customer={currentCustomer}/>
-          <button className="checkout-button" onClick= {checkoutVideo}><strong>Checkout</strong></button>
+          <Selected video={selectedVideo} customer={currentCustomer} onCheckout={checkoutVideo}/>
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/search" component={Search} />

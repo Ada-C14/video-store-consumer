@@ -54,43 +54,47 @@ const Search = (props) => {
         axios.post(API_URL_BASE + 'videos', {videos: selectedVideos})
         .then((response) => {
             setSelectedVideosIds({});
+            alert(`Successfully added to the library`);
         })
         .catch((error) => {
             setErrorMessage(error.message);
+            alert(`Successfully added to the library`);
         });
 
     }
 
     const videosComponentsList = videosList.map((video) => {
         return <div key={`div${video.external_id}`}>
+
             <input type="checkbox" 
             value={video.external_id} //value of the checkbox is video id
             // check if selectedVideosIds contains video with corresponding id with true value
             checked={selectedVideosIds[video.external_id]?true:false} 
             onChange={selectVideo}
+            className="checkbox"
             />
-        <Video
-        title={video.title}
-        overview={video.overview}
-        release_date={video.release_date}
-        image_url={video.image_url}
-        id={video.external_id}
-        key={video.external_id}
-        />
+            <Video
+                title={video.title}
+                overview={video.overview}
+                releaseDate={video.release_date}
+                image_url={video.image_url}
+                id={video.external_id}
+                key={video.external_id}
+            />
         </div>
     })
     return (
-        <div>
-        <SearchForm onSubmitCallback={searchVideo} />
-        {/* if nothing was selected the button is disabled */}
-        <button 
-        disabled={getSelectedVideos().length===0}
-        onClick={addToLibrary}
-        > 
-            Add selected to the library
-        </button>
-        {errorMessage ? <div>{errorMessage}</div> : '' }
-        {videosComponentsList}
+        <div className="search">
+            <SearchForm onSubmitCallback={searchVideo} className="form"/>
+            {/* if nothing was selected the button is disabled */}
+            <button 
+            disabled={getSelectedVideos().length===0}
+            onClick={addToLibrary}
+            > 
+                Add selected to the library
+            </button>
+            {errorMessage ? <div>{errorMessage}</div> : '' }
+            {videosComponentsList}
         </div>
         );
     };
