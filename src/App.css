@@ -22,7 +22,6 @@
 }
 
 .App-header {
-  /* background-color: #222; */
   height: 300px;
   padding-top: 100px;
   color: white;
@@ -33,24 +32,13 @@
 }
 
 .storename {
-    font-size: 70px;
-    font-family: 'Press Start 2P', cursive;
-    color: white;
-    outline-width: 1px;
-    outline-color: black;
-    text-shadow: 6px 0 0 #000, 0 -1px 0 #000, 0 6px 0 #000, -1px 0 0 #000;
+  font-size: 70px;
+  font-family: 'Press Start 2P', cursive;
+  color: white;
+  outline-width: 1px;
+  outline-color: black;
+  text-shadow: 6px 0 0 #000, 0 -1px 0 #000, 0 6px 0 #000, -1px 0 0 #000;
 }
-
-/* ul .selected {
-  list-style-type: none;
-} */
-/* .nav {
-  color: rgb(162, 238, 213);
-  display: inline;
-  padding: 30px;
-  font-size: 30px;
-  font-family: 'Monoton', cursive;
-} */
 
 .nav a {
   text-shadow: 3px 0 0 #000, 0 -1px 0 #000, 0 3px 0 #000, -1px 0 0 #000;
@@ -61,39 +49,33 @@
 }
 
 .selected {
-  padding-right: 30px;
   background-color: white;
+  width: 50%;
+  height: 4rem;
+  margin-left: auto;
+  margin-right: auto;
+  border: 0.15rem solid black;
+}
+
+.selected p {
+  color: #6cefeb;
+  font-family: 'Monoton', cursive;
+  text-shadow: 2px 0 0 #000, 0 -1px 0 #000, 0 2px 0 #000, -1px 0 0 #000;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
 }
 
 li {
-  color: #6cefeb;
   display: inline;
-  font-family: 'Press Start 2P', cursive;
-  /* color: pink; */
-  padding: 30px;
+  padding: 1rem;
   padding-right: 30px;
   text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
   font-size: 15px;
 }
 
-ul {
-  list-style-type: none;
-  /* background-color: black; */
-  padding-right: 30px;
-}
-
-/* li.nav {
-  display: inline;
-  padding: 30px;
-  font-size: 20px;
-  text-decoration: none;
-  font-family: 'Press Start 2P', cursive;
-} */
-
 body {
   background-color: #fde35a;
 }
-
 
 .App-title {
   font-size: 1.5em;
@@ -101,9 +83,4 @@ body {
 
 .App-intro {
   font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }

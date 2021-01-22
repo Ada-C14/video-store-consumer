@@ -50,10 +50,10 @@ const App = () => {
               </li>
             </ul>
           </nav>
-          <ul className="selected">
-            {selectedCustomer ? <li>Selected Customer: {selectedCustomer.name}</li> : ''}
-            {selectedVideo ? <li>Selected Video: {selectedVideo.title}</li> : ''}
-          </ul>
+          <div className="selected">
+            {selectedCustomer ? <p>Selected Customer: {selectedCustomer.name}</p> : ''}
+            {selectedVideo ? <p>Selected Video: {selectedVideo.title}</p> : ''}
+          </div>
         </header>
         <body>
         <Switch>
