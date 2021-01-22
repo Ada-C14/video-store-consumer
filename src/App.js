@@ -38,15 +38,16 @@ function App() {
           <img src={logo} className="App-logo" alt="logo" />
         </header>
         <nav>
-          <h1><a href="/">RETRO VIDEO DISTRO</a></h1>
-          <span>
-            <button className="btn btn-outline-danger"><Link to="/">Home</Link></button>
-            <button className="btn btn-outline-danger"><Link to="/library">Video Library</Link></button>
-            <button className="btn btn-outline-danger"><Link to="/customers">Customer Index</Link></button>
-            <button className="btn btn-outline-danger"><Link to="/search">Search</Link></button>
+          <div className="nav d-flex justify-content-between">
+              <h1><a href="/">RETRO VIDEO DISTRO</a></h1>
+            <span>
+              <button className="btn btn-outline-danger"><Link to="/">Home</Link></button>
+              <button className="btn btn-outline-danger"><Link to="/library">Video Library</Link></button>
+              <button className="btn btn-outline-danger"><Link to="/customers">Customer Index</Link></button>
+              <button className="btn btn-outline-danger"><Link to="/search">Search</Link></button>
+            </span>
             <Checkout selectedVideoCallback={selectVideo} selectedCustomerCallback={selectCustomer}baseUrl={BASE_URL} selectedCustomer={selectedCustomer} selectedVideo={selectedVideo} />
-          </span>
-          <br></br><br></br>
+          </div>
           <img src={divider} className="divider" alt="stars divider" />
           <br></br><br></br>
         </nav>

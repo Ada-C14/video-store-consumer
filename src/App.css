@@ -40,5 +40,15 @@
 
 .divider {
   height: 30px;
+  padding-top: 8px;
 }
 
+.nav {
+  padding: 5px;
+  border-bottom: 2px dotted;
+  color: grey;
+}
+
+.nav > * {
+  padding: 8px;
+}
