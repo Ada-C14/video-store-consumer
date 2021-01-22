@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 const DisplayCustomerDetail = ({ customer }) => {
   return(
     <div className="video-container">
-      <h3>Customer Details:</h3>
-        <p><span>Name:</span> { customer.name },  <span>Registered At: </span> { customer.registered_at }</p>
+      <h3>{ customer.name }</h3>
+        <p><span>Registered At: </span> { customer.registered_at }</p>
 
         <ul>
           <li><span>Address: </span> { customer.address }</li>

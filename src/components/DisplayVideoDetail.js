@@ -6,10 +6,9 @@ const DisplayVideoDetail = ({ addToLibraryCallback, video }) => {
   if (!video.title) return null; 
 
   return <div className="video-container">
-    <h3>Video Details:</h3>
-    <h5>
-      <span className="video-details">Video: </span>{video.title}
-    </h5>
+    <h3>
+      <span className="video-details"></span>{video.title}
+    </h3>
     <p>
       <span className="video-details">Release Date: </span>{video.release_date},
       <span className="video-details">Overview: </span>{video.overview}
