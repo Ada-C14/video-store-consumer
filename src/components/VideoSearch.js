@@ -26,7 +26,8 @@ const VideoSearch = (props) => {
       overview={videoObj.overview}
       releaseDate={videoObj.release_date}
       imageUrl={videoObj.image_url}
-      externalId={videoObj.external_id} />
+      externalId={videoObj.external_id}
+      addVideoCallback={props.addVideoCallback} />
     );
   });
 
@@ -41,6 +42,7 @@ const VideoSearch = (props) => {
 
 VideoSearch.propTypes = {
   url: PropTypes.string.isRequired,
+  addVideoCallback: PropTypes.func.isRequired
 };
 
 export default VideoSearch;
