@@ -1,6 +1,7 @@
 import {React, useState, useEffect} from 'react'
 import {Select} from 'react-select'
 import axios from 'axios'
+import {Form, Container, ListGroup, Button, Row, Col} from 'react-bootstrap'
 
 const Search = () => {
 
@@ -65,28 +66,45 @@ const Search = () => {
 
     function ListSearchResults() {
         const listItems = searchResults.map((video) =>
-        <li key={video.id}>
-            <button onClick={(event) => addToLibraryHandler(event, video)} type="submit">Add to Your Library</button>
-            {video.title}
-        </li>
+        <Row>
+            <Col sm={4} lg={2}>
+                <img src={video.image_url} />
+            </Col>
+            <Col sm={8} m={6} lg={8} className="video-details">
+                <h4><strong>{video.title}</strong></h4>
+                <p>Released: {video.release_date}</p>
+                <p>{video.overview}</p>
+                <Button onClick={(event) => addToLibraryHandler(event, video)} type="submit">Add to Your Library</Button>
+            </Col>
+        </Row>
         );
     return (
-    <ul>{listItems}</ul>
+    <ListGroup>{listItems}</ListGroup>
     )}
 
     return(
         <div>
-        <form className="search" onSubmit={onSubmitHandler}>
-            <input
-                type="text"
-                placeholder="Search TMDB Database"
-                value={searchTerm}
-                onChange={handleChange}
-                />
-                <button type="submit">Submit</button>
-        </form>
-        
+            <br/>
+            <Container>
+            <h3>Search</h3>
+                <Form className="search" onSubmit={onSubmitHandler}>
+                    <Form.Label>Search The Movie Database</Form.Label>
+                    <Row>
+                        <Col xs="6">
+                            <Form.Control
+                            type="text"
+                            placeholder="Search TMDB"
+                            value={searchTerm}
+                            onChange={handleChange}
+                            />
+                        </Col>
+                        <Col xs="auto">
+                            <Button type="submit">Submit</Button>
+                        </Col>
+                    </Row>
+                </Form>
         <ListSearchResults />
+        </Container>
 
         </div>
     )

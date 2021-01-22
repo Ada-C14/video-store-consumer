@@ -2,7 +2,7 @@ import {React, useState, useEffect} from 'react'
 import Select from 'react-select'
 import PropTypes from 'prop-types'
 import axios from 'axios';
-import {Container} from 'react-bootstrap'
+import {Container, Form} from 'react-bootstrap'
 import SelectedVideo from './SelectedVideo';
 
 
@@ -35,9 +35,10 @@ const VideoLibrary = (props) => {
 
     return (
         <div>
+            <br/>
             <Container>
             <h3>Video Library</h3>
-            <h4>Search or Select a Video: </h4>
+            <Form.Label>Select or Search for a Video: </Form.Label>
                 <Select
                     value={props.selectedVideo}
                     onChange={props.onSelectVideo}
@@ -51,6 +52,7 @@ const VideoLibrary = (props) => {
                     })}
                 />  
             </Container>
+            <br/>
         </div>
     )
 }

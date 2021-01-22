@@ -2,7 +2,7 @@ import React, { Component, useState } from 'react';
 import './App.css';
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Nav, Navbar} from 'react-bootstrap'
+import {Nav, Navbar, Button} from 'react-bootstrap'
 
 import CustomerList from './components/CustomerList';
 import VideoLibrary from './components/VideoLibrary';
@@ -55,40 +55,42 @@ const App = () => {
         setErrorMessage(error.message);
       });
   };
+
+  const HomePageGrid = () // working on this now SM
   
     return (
 
       <div className="App">
       <Router> 
 
-        <Navbar bg="dark">
+        <Navbar bg="dark" className="navbar">
           <Nav>
           <Nav.Link>
-            <Link to="/" exact={true}>Video Store</Link>
+            <Link to="/" exact={true} className="navbar-logo">Video Store</Link>
           </Nav.Link>
-          <Nav.Link>
-              <Link to="/search" exact={true}>Search</Link>
+          <Nav.Link className="navbar-wrapper">
+              <Link to="/search" exact={true} className="navbar-link">Search</Link>
           </Nav.Link>
-          <Nav.Link>
-              <Link to="/customers" exact={true}>Customers</Link>
+          <Nav.Link className="navbar-wrapper">
+              <Link to="/customers" exact={true} className="navbar-link">Customers</Link>
           </Nav.Link>
-          <Nav.Link>
-              <Link to="/library" exact={true}>Video Library</Link>
-          </Nav.Link>
-
-          <Nav.Link>
-            Selected Video: {selectedVideo &&(selectedVideo.title)}
+          <Nav.Link className="navbar-wrapper">
+              <Link to="/library" exact={true} className="navbar-link">Video Library</Link>
           </Nav.Link>
 
-          <Nav.Link>
-            Selected Customer: {selectedCustomer &&(selectedCustomer.name)}
+          <Nav.Link className="navbar-wrapper justify-content-end">
+            <Link to="/library" className="selected navbar-link">Selected Video: <strong>{selectedVideo &&(selectedVideo.title)} </strong></Link>
           </Nav.Link>
 
-          <Nav.Link>
+          <Nav.Link className="navbar-wrapper justify-content-end">
+            <Link to="/customers" className="selected navbar-link">Customer: <strong>{selectedCustomer &&(selectedCustomer.name)} </strong></Link>
+          </Nav.Link>
+
+          <Nav.Link className="navbar-button">
           {selectedVideo && selectedCustomer ? 
-            <button className="customer-button" onClick={() => addRental()}>
+            <Button className="customer-button" onClick={() => addRental()}>
                 Checkout
-            </button> : ''}
+            </Button> : ''}
           </Nav.Link>
 
           </Nav>

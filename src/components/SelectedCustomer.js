@@ -14,7 +14,7 @@ const SelectedCustomer = (props) => {
         customer &&(
         <div>
             <Container>
-                <h4>{customer.name}</h4>
+                <h4><strong>{customer.name}</strong></h4>
                 <p>Customer ID# {customer.id}</p>
                 <p>{customer.phone}</p>
                 <p>Address: {customer.address} <br/> {customer.city}, {customer.state} {customer.postal_code}</p>

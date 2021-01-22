@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Select from 'react-select';
 import axios from 'axios'
 
-import {Container} from 'react-bootstrap'
+import {Container, Form} from 'react-bootstrap'
 
 const CustomerList = (props) => {
     
@@ -28,9 +28,10 @@ const CustomerList = (props) => {
 
     return (
       <div>
+        <br/>
         <Container>
-          <h3>All Customers</h3>
-          <h4>Search or Select a Customer: </h4> 
+          <h3>Customers</h3>
+          <Form.Label>Select or Search for a Customer: </Form.Label>
           <Select
                       value={props.selectedCustomer}
                       onChange={props.onSelectCustomer}
@@ -44,6 +45,7 @@ const CustomerList = (props) => {
                       })}
                   /> 
         </Container>
+        <br/>
       </div>
   )  
 }
