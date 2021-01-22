@@ -39,18 +39,21 @@ const App = () => {
   }
 
   const checkOut = (rental) => {
-    console.log(rental.dueDate)
-    axios.post(`${BASE_URL}rentals/${rental.video.title}/check-out?customer_id=${rental.customer}&due_date=${rental.dueDate}`, rental)
-    .then((response) => {
-      setErrorMessage(`Successufully checked out ${rental.video.title}`);
-    })
-    .catch((error) => {
-      // setErrorMessage(error.message);
-      setErrorMessage(`Checkout unsuccessful`);
-    });
+    // console.log(rental.dueDate)
+    if (rental.video.availableInventory > 0) {
+      axios.post(`${BASE_URL}rentals/${rental.video.title}/check-out?customer_id=${rental.customer}&due_date=${rental.dueDate}`, rental)
+      .then((response) => {
+        setErrorMessage(`Successufully checked out ${rental.video.title}`);
+      })
+      .catch((error) => {
+        // setErrorMessage(error.message);
+        setErrorMessage(`Checkout unsuccessful`);
+      });
+      setSelectedVideo(null)
+      setSelectedCustomer(null)
+    }
 
     setSelectedVideo(null)
-    setSelectedCustomer(null)
   }
 
   const checkIn = (rental) => {
@@ -148,7 +151,7 @@ const App = () => {
                     {selectedVideo ? <button
                       className="btn btn-outline-primary btn-sm"
                       onClick={deselectedVideoSubmit}>
-                      Deselected Video
+                      Deselect Video
                       </button> : <button
                       className="btn btn-outline-primary btn-sm disabled">
                       Select a Video </button>}
@@ -163,7 +166,7 @@ const App = () => {
                     {selectedCustomer ? <button
                     className="btn btn-outline-primary btn-sm"
                     onClick={deselectedCustomerSubmit}>
-                    Deselected Customer
+                    Deselect Customer
                     </button> : <button
                     className="btn btn-outline-primary btn-sm disabled">
                     Select a Customer </button> }
