@@ -31,7 +31,11 @@ ul {
   list-style: none;
 }
 
-/* can change nav later, snagged this from tutorial */
+button {
+  background-color: white;
+  border-color: black;
+}
+
 nav ul {
   list-style: none;
   display: flex;
