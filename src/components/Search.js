@@ -27,7 +27,7 @@ const Search = (props) => {
   return (
     <div>
       <form onSubmit={onFormSubmit} ><div>
-        <h1>Search Video Database </h1>
+        <h1>SEARCH VIDEO DATABASE</h1>
         <label htmlFor="searchTerm"></label></div>
         <input className='search-bar'
           name="searchTerm"
