@@ -1,10 +1,8 @@
 import axios from 'axios';
-// import React, { useState } from 'react';
 
 const SearchResult = (props) => {
 
 const { video } = props
-// const [ addSuccessMessage, setAddSuccessMessage ] = useState(null)
 
 const addVideo = () => {
 
@@ -22,8 +20,8 @@ const addVideo = () => {
     return (
 
         <tr class="table-active">
-            <th scope="row"><img src={video.image_url} className="w-75" alt="poster" /></th>
-            <th scope="row">{video.title}</th>
+            <th scope="row"><img src={video.image_url} className="" alt="poster" /></th>
+            <th scope="row">{video.overview}</th>
             <td>{video.release_date}</td>
             <td><button onClick={addVideo} className="btn btn-primary" id='button'>Add!</button></td>
         </tr>
