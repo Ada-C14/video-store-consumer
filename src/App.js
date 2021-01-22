@@ -53,8 +53,12 @@ const App = () => {
       <div className="p-3">
         <div className="CheckoutReturn">
           {selectedVideo && selectedCustomer && <Checkout video={selectedVideo.title} customer={selectedCustomer}/>}
+        </div>
+        <br></br>
+        <div className="CheckoutReturn">
           {selectedVideo && selectedCustomer && <Return video={selectedVideo.title} customer={selectedCustomer}/>}
         </div>
+        <br></br>
 
         <Switch>
           <Route path="/videos">

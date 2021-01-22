@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+// import FlashMessage from 'react-flash-message';
 const BASE_URL = 'http://localhost:3000/rentals';
 const axios = require('axios');
 
+
 const Checkout = (props) => {
   const [checkoutMessage, setCheckoutMessage] = useState('');
+  const [isCheckingOut, setIsCheckingOut] = useState(false);
 
   const checkoutVideo = () => {
     if (!props.video) {
@@ -32,14 +34,23 @@ const Checkout = (props) => {
   const onSubmitCheckout = (event) => {
     event.preventDefault();
     checkoutVideo();
+    setIsCheckingOut(true)
+    setTimeout(() => {
+      setIsCheckingOut(false)
+    }, 5000)
   }
 
   return(
     <span>
-      <button class="btn btn-success" onClick={ onSubmitCheckout }>
+      <button className="btn btn-success" onClick={ onSubmitCheckout }>
         Check Out Video
       </button>
-      <p>{ checkoutMessage }</p>
+      {
+        isCheckingOut &&
+        <div className="alert alert-info">
+          <p>{ checkoutMessage }</p>
+        </div>
+      }
     </span>
   );
 }

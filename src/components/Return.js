@@ -5,35 +5,41 @@ const axios = require('axios');
 
 const Return = (props) => {
   const [returnMessage, setReturnMessage] = useState();
-
+  const [isReturning, setIsReturning] = useState(false);
 
   const onSubmitReturn = () => {
     if (!props.video) {
-        return;
+      return;
     }
 
-
-axios.post(`${BASE_URL}/${props.video}/return`, {}, {
-    params: {
+    axios.post(`${BASE_URL}/${props.video}/return`, {}, {
+      params: {
         'customer_id': props.customer.id
-        
-    }
+      }
     }).then((response) => {
-    setReturnMessage(props.customer.name + ' returned: ' + props.video );
-    console.log('Successfully Returned Video' + props.video);
+      setReturnMessage(props.customer.name + ' returned: ' + props.video);
+      console.log('Successfully Returned Video' + props.video);
+      setIsReturning(true)
+      setTimeout(() => {
+        setIsReturning(false)
+      }, 5000)
     }).catch((error) => {
-    alert('Failed to check out video');
-    console.log('FAILED ON API CALL');
+      alert('Failed to check out video');
+      console.log('FAILED ON API CALL');
     });
-}
+  }
 
-
-return(
+  return (
     <span>
-      <button class="btn btn-info" onClick={ onSubmitReturn }>
-      Return Video
+      <button className="btn btn-info" onClick={ onSubmitReturn }>
+        Return Video
       </button>
-      <p>{ returnMessage }</p>
+      {
+        isReturning &&
+        <div className="alert alert-info">
+          <p>{ returnMessage }</p>
+        </div>
+      }
     </span>
   );
 }
