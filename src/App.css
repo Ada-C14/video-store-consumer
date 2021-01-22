@@ -28,6 +28,28 @@
   border-color: #222;
 }
 
+.Nav-bar {
+  list-style-type: none;
+  margin: 0;
+  overflow: hidden;
+  background-color: 000000;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li {
+  float: left;
+  display: inline;
+  float: left;
+  width: 25.0%;
+  color: white;
+  font-size: large;
+
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

@@ -24,7 +24,7 @@ const CustomerList = (props) => {
       const customerComponents = customerList.map((customer) => {
         return (
           errorMessage == null ?
-          <Link onClick={() => props.setSelectedCustomer(customer)}>
+          <Link onClick={() => props.onCustomerSelected(customer)}>
             <Customer 
               key={customer.id}
               id={customer.id}

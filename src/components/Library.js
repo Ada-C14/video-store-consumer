@@ -3,17 +3,19 @@ import axios from 'axios';
 import Video from './Video'; 
 import API from '../ApiSupport'
 import { Link } from 'react-router-dom';
+import './Library.css';
 
 
 
 const Library = (props) => {
+  const [videoList, setVideoList] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
     API.get(`videos`)
       .then((response) => {
         const apiVideoList = response.data; 
-        props.setVideoList(apiVideoList);
+        setVideoList(apiVideoList);
       })
       .catch((error) => {
         setErrorMessage('Could not retrieve videos from library');
@@ -23,10 +25,10 @@ const Library = (props) => {
 
   
 
-  const videoComponents = props.videoList.map((video) => {
+  const videoComponents = videoList.map((video) => {
     return (
       errorMessage == null ?
-      <Link onClick={() => props.onClickVideo(video)}>
+      <Link onClick={() => props.onVideoSelected(video)}>
         <Video 
             id={video.id}
             key={video.id}
@@ -41,7 +43,7 @@ const Library = (props) => {
   })
 
     return (
-      <div>
+      <div className="Video-box">
         {videoComponents}
       </div>
     )

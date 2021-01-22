@@ -17,26 +17,48 @@ import API from './ApiSupport'
 const App = () => {
   const [selectedCustomer, setSelectedCustomer] = useState(null);
   const [selectedVideo, setSelectedVideo] = useState(null);
-  const [videoList, setVideoList] = useState([]);
+  // const [videoList, setVideoList] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
-  const onClickVideo = (video) => {
-    setSelectedVideo(video);
-  }
+  // const onClickVideo = (video) => {
+  //   setSelectedVideo(video);
+  // }
 
-  const addVideo = (video) => {
-    API.post(`videos`, video)
+  // POST /rentals/:title/check-out
+
+  const handleCheckout = () => {
+    let todaysDate = new Date();
+    todaysDate.setDate(todaysDate.getDate() + 7);
+
+    API.post(`rentals/${selectedVideo.title}/check-out`, {
+      // eslint-disable-next-line camelcase
+      customer_id: selectedCustomer.id,
+      // eslint-disable-next-line camelcase
+      due_date: todaysDate,
+
+    })
       .then((response) => {
-        const updatedLibrary = [...videoList, response.data]
-        console.log('Video successfully added.');
-        setVideoList(updatedLibrary);
-        setErrorMessage('');
+        console.log(`${selectedVideo.title} successfully checked out to ${selectedCustomer.name}.`);
       })
       .catch((error) => {
-        setErrorMessage('Video could not be added');
+        setErrorMessage(`Error: ${selectedVideo.title} can't be checked out to ${selectedCustomer.name}.`);
         console.log(errorMessage);
       });
   }
+
+  // const addVideo = (video) => {
+  //   API.post(`videos`, video)
+  //     .then((response) => {
+  //       const updatedLibrary = [...videoList, response.data]
+  //       console.log('Video successfully added.');
+  //       setVideoList(updatedLibrary);
+  //       setErrorMessage('');
+  //     })
+  //     .catch((error) => {
+  //       setErrorMessage('Video could not be added');
+  //       console.log(errorMessage);
+  //     });
+  // }
 
   
   // const updateLibrary = (updatedVideo) => {
@@ -57,7 +79,7 @@ const App = () => {
   return (
     <Router>
       <div>
-        <nav>
+        <nav className="Nav-bar">
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -75,9 +97,9 @@ const App = () => {
         </nav>
 
         <span className="App-cart" >
-            
-            {selectedCustomer !== null ? `${selectedCustomer.name}` : `Select a customer` }
-            {selectedVideo !== null ? `${selectedVideo.title}` : `Select a video` }
+            <button onClick={handleCheckout}>Check Out</button>
+            {selectedCustomer !== null ? selectedCustomer.name : 'Select a customer' }
+            {selectedVideo !== null ?   `` : 'Select a video' }
           </span>
 
         {/* A <Switch> looks through its children <Route>s and
@@ -87,13 +109,13 @@ const App = () => {
             <Customer />
           </Route>
           <Route path="/customers" >
-            <CustomerList setSelectedCustomer={setSelectedCustomer} />
+            <CustomerList onCustomerSelected={setSelectedCustomer} />
           </Route>
           <Route path="/search">
             <Search />
           </Route>
           <Route path="/library">
-            <Library onClickVideo={onClickVideo} videoList={videoList} setVideoList={setVideoList} onAddVideo={addVideo} />
+            <Library onVideoSelected={setSelectedVideo} />
           </Route>
           <Route path="/">
             <Home />
