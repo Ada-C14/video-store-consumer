@@ -22,7 +22,6 @@ const VideoList = (props) => {
 
   return (
   <div className="VideoList">
-    <h3>Video List:</h3>
     { generateVideoButtons }
   </div>);
 };

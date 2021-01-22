@@ -22,7 +22,6 @@ const CustomerList = (props) => {
 
   return (
   <div className="CustomerList">
-    <h3>Customer List:</h3>
     { generateCustomerButtons }
   </div>);
 };

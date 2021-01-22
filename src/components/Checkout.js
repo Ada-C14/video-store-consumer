@@ -37,7 +37,7 @@ const Checkout = (props) => {
   return(
     <span>
       <button class="btn btn-success" onClick={ onSubmitCheckout }>
-      Check Out Video
+        Check Out Video
       </button>
       <p>{ checkoutMessage }</p>
     </span>
