@@ -61,7 +61,7 @@ const App = () => {
 
   const checkoutMessageNav = () => {
     if (checkoutMessage) {
-      return (<span>{checkoutMessage}</span>);
+      return (<div className='checkout'>{checkoutMessage}</div>);
     } else {
       return (
       <div>
