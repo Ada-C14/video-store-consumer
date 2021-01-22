@@ -26,6 +26,10 @@ const App = () => {
 
   // POST /rentals/:title/check-out
 
+  // const onClickCustomer = (customer) => {
+  //   setSelectedCustomer(customer);
+  // }
+
   const handleCheckout = () => {
     let todaysDate = new Date();
     todaysDate.setDate(todaysDate.getDate() + 7);
@@ -38,43 +42,28 @@ const App = () => {
 
     })
       .then((response) => {
-        console.log(`${selectedVideo.title} successfully checked out to ${selectedCustomer.name}.`);
+        alert(`${selectedVideo.title} successfully checked out to ${selectedCustomer.name}.`);
+        setSelectedVideo(null);
+        setSelectedCustomer(null);
       })
       .catch((error) => {
-        setErrorMessage(`Error: ${selectedVideo.title} can't be checked out to ${selectedCustomer.name}.`);
-        console.log(errorMessage);
+        alert(`Error: ${selectedVideo.title} can't be checked out to ${selectedCustomer.name}.`);
       });
   }
-
-  // const addVideo = (video) => {
-  //   API.post(`videos`, video)
-  //     .then((response) => {
-  //       const updatedLibrary = [...videoList, response.data]
-  //       console.log('Video successfully added.');
-  //       setVideoList(updatedLibrary);
-  //       setErrorMessage('');
-  //     })
-  //     .catch((error) => {
-  //       setErrorMessage('Video could not be added');
-  //       console.log(errorMessage);
-  //     });
-  // }
-
-  
-  // const updateLibrary = (updatedVideo) => {
-  //   const videos = [];
-
-  //   libraryList.forEach((video) => {
-  //     if (video.id === updatedVideo.id) {
-  //       videos.push(updatedVideo);
-  //     } else {
-  //       videos.push(video);
-  //     }
-  //   });
-
-  //   setSelectedVideo(videos);
-  // }
-  
+// this could be moved to the search item level if we wanted
+  const addVideo = (video) => {
+    API.post(`videos`, video)
+      .then((response) => {
+        // next time we visit the videos page retrieves videos again, so we don't need to update 
+        // const updatedLibrary = [...videoList, response.data]
+        alert('Video successfully added');
+        // setVideoList(updatedLibrary);
+        setErrorMessage('');
+      })
+      .catch((error) => {
+        alert('Video could not be added');
+      });
+  }
 
   return (
     <Router>
@@ -97,7 +86,8 @@ const App = () => {
         </nav>
 
         <span className="App-cart" >
-            <button onClick={handleCheckout}>Check Out</button>
+            {selectedCustomer && selectedVideo ? <button onClick={handleCheckout}>Check Out</button> : null}
+            {/* <button onClick={handleCheckout}>Check Out</button> */}
             {selectedCustomer !== null ? selectedCustomer.name : 'Select a customer' }
             {selectedVideo !== null ?   selectedVideo.title : 'Select a video' }
           </span>
@@ -112,7 +102,7 @@ const App = () => {
             <CustomerList onCustomerSelected={setSelectedCustomer} />
           </Route>
           <Route path="/search">
-            <Search />
+            <Search addVideoCallback={addVideo}/>
           </Route>
           <Route path="/library">
             <Library onVideoSelected={setSelectedVideo} />

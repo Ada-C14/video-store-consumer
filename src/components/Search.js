@@ -3,7 +3,7 @@ import API from '../ApiSupport'
 import SearchItem from './SearchItem';
 
 
-const Search = () => {
+const Search = (props) => {
   const [searchList, setSearchList] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -32,12 +32,15 @@ const Search = () => {
         {
           searchList.map(item => {
             return (
-              <SearchItem
-                id={item.external_id}
-                title={item.title}
-                overview={item.overview}
-                release_date={item.release_date}
-                image_url={item.image_url}
+              <SearchItem 
+                key={item.external_id}
+                video={item}
+                // id={item.external_id}
+                // title={item.title}
+                // overview={item.overview}
+                // release_date={item.release_date}
+                // image_url={item.image_url}
+                addVideoCallback={props.addVideoCallback}
                 />
             )
           })
