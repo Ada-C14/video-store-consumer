@@ -3,6 +3,9 @@ import VideoLibrary from './components/VideoLibrary';
 import CustomerList from './components/CustomerList';
 import axios from 'axios';
 import moment from 'moment';
+import './components/CustomerList.css'
+import {Table} from 'react-bootstrap';
+
 
 import React, { Component } from 'react';
 import './App.css';
@@ -85,31 +88,34 @@ class App extends Component {
     
     return (
       <Router>
+        
       <div>
-        <nav>
-          <p> {this.state.message} </p>
-          <ul>
-            <li>
-              <Link to='/'>Home</Link>
-            </li>
-            <li>
-              <Link to='/search'>Video Search</Link>
-            </li>
-            <li>
-              <Link to='/library'>Video Library</Link>
-            </li>
-            <li>
-
-              <Link to='/customers'>Customers</Link>
-            </li>
-            </ul>
-            <ol>
-              <li>Selected Customer: {this.state.chosenCustomer.name}</li>
-              <li>Selected Video:{this.state.chosenVideo.title}</li>
-              <button onClick={this.checkoutVideo} className= { `button button-large ${ this.visibility() }` }>
+        <nav className='navigation'>
+          <Table className="table-sm customer-table__table">
+                <thead>
+                    <tr className="customer-table__header-row">
+                        <th scope="col">Selected Customer</th>
+                        <th scope="col">Selected Video</th>
+                        <th scope="col">CHECKOUT</th>
+                        <th scope="col">Video</th>
+                        <th scope="col">Video</th>
+                        <th scope="col">Customer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr className="customer-table__table-row">
+            <td>{this.state.chosenCustomer.name}</td>
+            <td>{this.state.chosenVideo.title}</td>
+            <td><button onClick={this.checkoutVideo} className= { `button button-large ${ this.visibility() }` }>
                 Check out {this.state.chosenVideo.title} to {this.state.chosenCustomer.name}
-              </button>
-            </ol>
+              </button></td>
+            <td><Link to='/search'>SEARCH</Link></td>
+            <td><Link to='/library'>LIBRARY</Link></td>
+            <td><Link to='/customers'>LIST</Link></td>
+        </tr>
+                </tbody>
+            </Table>
+          <p> {this.state.message} </p>
         </nav>
 
         <Switch>
