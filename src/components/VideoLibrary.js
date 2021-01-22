@@ -4,14 +4,15 @@ import Video from './Video';
 
 
 const VideoLibrary = (props) => {
+    console.log(props.videos);
     const videoComponents = props.videos.map(video => {
         return (<Video 
             id={video.id}
             title={video.title}
             overview={video.overview}
-            release_date={video.releaseDate}
-            image_url={video.imageUrl}
-            // external_id={video.externalId} 
+            releaseDate={video.release_date}
+            imageUrl={video.image_url}
+            // externalId={video.external_id} 
             key={video.id} 
             onClickCallback={props.onClickCallback}
         />);
