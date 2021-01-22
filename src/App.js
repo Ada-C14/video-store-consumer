@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState } from 'react';
 // import './App/css';
 import Nav from './components/Nav';
 import Selected from './components/Selected';
@@ -32,7 +32,6 @@ const App = () => {
   // }, []); 
 
   const selectCustomer = (customer) => {
-    console.log(customer)
     if (currentCustomer && customer.id === currentCustomer.id) {
       setCurrentCustomer(null)
     } else {
@@ -47,13 +46,32 @@ const App = () => {
     }
   }
 
-  
+  const checkoutVideo = () => {
+
+    const date = new Date ();
+    date.setDate(date.getDate() + 7);
+    
+    axios.post(API_URL_BASE + 'rentals/' + selectedVideo + '/check-out?customer_id=' + currentCustomer.id + '&due_date=' + date)
+
+    .then((response) => {
+      console.log(response)
+      alert(`Successfully checked out ${selectedVideo.title}`)
+    })
+    .catch((error) => {
+      alert(`Sorry, we were unable to check out ${selectedVideo.title}`)
+      setErrorMessage(error.message);
+    });
+    setSelectedVideo(null)
+    setCurrentCustomer(null)
+  }
+
 // add a callback function that reset the states to null
     return (
       <Router>
         <div className="App">
           <Nav />
-          <Selected video={selectedVideo} customer={currentCustomer} />
+          <Selected video={selectedVideo} customer={currentCustomer}/>
+          <button className="checkout-button" onClick= {checkoutVideo}><strong>Checkout</strong></button>
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/search" component={Search} />
