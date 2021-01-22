@@ -1,7 +1,8 @@
 import React, { Component, useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import axios from 'axios'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Nav, Navbar} from 'react-bootstrap'
 
 import CustomerList from './components/CustomerList';
 import VideoLibrary from './components/VideoLibrary';
@@ -13,7 +14,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Link
+  Link,
 } from 'react-router-dom';
 import Detail from './components/Detail';
 
@@ -57,36 +58,36 @@ const App = () => {
   
     return (
 
-      <Router>
+      <div className="App">
+      <Router> 
 
+        <Navbar bg="dark">
+          <Nav>
+          <Nav.Link>
+            <Link to="/" exact={true}>Video Store</Link>
+          </Nav.Link>
+          <Nav.Link>
+              <Link to="/search" exact={true}>Search</Link>
+          </Nav.Link>
+          <Nav.Link>
+              <Link to="/customers" exact={true}>Customers</Link>
+          </Nav.Link>
+          <Nav.Link>
+              <Link to="/library" exact={true}>Video Library</Link>
+          </Nav.Link>
+          </Nav>
+        </Navbar>
+      
       <SelectedVideo video={selectedVideo}/>
       <SelectedCustomer customer={selectedCustomer}/>
 
         {/* <VideoLibrary/> */}
         {/* <SelectedVideo video={selectedVideo}/> */}
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/" exact={true}>Home</Link>
-            </li>
-            <li>
-              <Link to="/search">Search</Link>
-            </li>
-            <li>
-              <Link to="/customers" exact={'true'}>Customers</Link>
-            </li>
-            <li>
-              <Link to="/library" exact={true}>Video Library</Link>
-            </li>
-          </ul>
-        </nav>
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
+        
+        
         <Switch>
           <Route exact={true} path="/">
-            {/* <Home /> */}
+            <p>Homepage!</p>
           </Route>
           <Route path="/search">
             <Search />
@@ -102,11 +103,10 @@ const App = () => {
             <Detail />
           </Route>
         </Switch>
-      </div>
-    </Router>
+      </Router>
+    </div>
   );
 
-
-          }
+}
 
 export default App;
