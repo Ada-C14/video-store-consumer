@@ -12,7 +12,7 @@ const Selected = (props) => {
         <div>
             {selectedVideoInfo}
             {selectedCustomerInfo}
-            <button>Checkout</button>
+            {/* <button>Checkout</button> */}
         </div>
         );
     };

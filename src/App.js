@@ -4,6 +4,7 @@ import Nav from './components/Nav';
 import Selected from './components/Selected';
 import Search from './components/Search';
 import axios from 'axios';
+import moment from 'moment';
 
 import Library from './components/Library';
 
@@ -18,6 +19,7 @@ const App = () => {
   
   const [currentCustomer, setCurrentCustomer] = useState(null) 
   const [selectedVideo, setSelectedVideo]= useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
 
 
   // useEffect(() => {
@@ -45,13 +47,18 @@ const App = () => {
       setSelectedVideo(video);
     }
   }
+  const getDueDate = () => {
+    const date = new Date()
+    date.setDate(date.getDate() + 7)
+  return (moment(date).format('MMM, D YYYY'));
+  }
 
   const checkoutVideo = () => {
 
-    const date = new Date ();
-    date.setDate(date.getDate() + 7);
+    // const date = new Date();
+    // date.setDate(date.getDate() + 7);
     
-    axios.post(API_URL_BASE + 'rentals/' + selectedVideo + '/check-out?customer_id=' + currentCustomer.id + '&due_date=' + date)
+    axios.post(API_URL_BASE + 'rentals/' + selectedVideo.title + '/check-out?customer_id=' + currentCustomer.id + '&due_date=' + getDueDate())
 
     .then((response) => {
       console.log(response)
