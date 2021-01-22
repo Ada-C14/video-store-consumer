@@ -38,7 +38,7 @@ const App = () => {
     const today = new Date();
     today.setDate(today.getDate() + 7);
 
-    if (selectedCustomer === null || selectedVideo === null) {
+    if (selectedCustomer.name === 'None' || selectedVideo === 'None') {
       setcheckoutMessage('Need to select a customer and video')
       return null
     }
@@ -47,10 +47,10 @@ const App = () => {
     .then((response) => {
       console.log(response);
       setcheckoutMessage(`Checked out ${selectedVideo} successfully to ${selectedCustomer.name}!`);
-      setSelectedVideo(null);
+      setSelectedVideo('None');
       setSelectedCustomer({
         id: null,
-        name: 'none',
+        name: 'None',
       });
     })
     .catch((error) => {
