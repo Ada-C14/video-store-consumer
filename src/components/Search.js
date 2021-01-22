@@ -4,17 +4,30 @@ import axios from 'axios';
 
 import Result from './Result';
 
-const Search = () => {
-  const [errorMessage, setErrorMessage] = useState([]);
-  const [query, setQuery] = useState([]);
+const Search = (props) => {
+  const [formField, setFormField] = useState(null)
+  const [errorMessage, setErrorMessage] = useState(null);
   const [results, setResults] = useState([]);
 
-  const API_URL_BASE = 'http://localhost:3000'
+  const onInputChange = (event) => {
+    setFormField(event.target.value);
+  };
+
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+
+    if (formField !== null) {
+      fetchSearchResults(formField)
+    }
+    
+    setFormField(null)
+  }
 
   const fetchSearchResults = (query) => {
-    axios.get(`${API_URL_BASE}/videos?query=${query}`)
+    
+    axios.get(`${props.url}/videos?query=${query}`)
     .then((response) => {
-      let newSearch = response.data;
+      const newSearch = response.data;
       setResults(newSearch)
       console.log(results)
 
@@ -26,33 +39,29 @@ const Search = () => {
     
   }
 
-  const searchQueryOnChange = (event) => {
-    const query = event.target.value;
-    setQuery(query);
-    fetchSearchResults(query)
-};
-
-
-
   const searchResults = results.map((result) => {
     return(
-    <Result title={result.title} overview={result.overview}
+    <Result object={result} title={result.title} overview={result.overview}
     release_date={result.release_date}
-    key={result.id} />
+    key={result.id} url={props.url} />
     )
   })
 
-    return (
-        <form>
-          <input
-            type="text"
-            className="search-box"
-            placeholder="Search for..."
-            onChange={searchQueryOnChange}
-          />
-          {searchResults}
-        </form>
-    );
+  return (
+    <form onSubmit={onFormSubmit} >
+      <h1>Search for movies:</h1>
+      <label hrmlFor="searchTerm">Search</label>
+      <input className='search-bar'
+        name="searchTerm"
+        id="searchTerm"
+        onChange={ onInputChange }
+        value={formField}
+        placeholder="Search for..." 
+      />
+      <input type="submit" name="Submit" />
+      { searchResults }
+    </form>
+  );
 };
 
 export default Search;
