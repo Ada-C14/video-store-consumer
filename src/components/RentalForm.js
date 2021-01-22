@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
 const RentalForm = (props) => {
+    const [message, setMessage] = useState('')
     const setDueDate = () => {
         
         // let date = new Date()
@@ -12,13 +13,19 @@ const RentalForm = (props) => {
         return date
     }
 
-    const checkout = (props, duedate) => {
-        axios.post(`${props.url}/rentals/${props.selectedVideo.title}/check-out?customer_id=${props.selectedCustomer.id}&due_date=`).then()
+    const checkout = (props) => {
+        axios.post(`${props.url}/rentals/${props.selectedVideo.title}/check-out?customer_id=${props.selectedCustomer.id}&due_date=${setDueDate()}`)
+            .then(response => {
+                setMessage(`${props.selectedCustomer} successully checked out ${props.selectedVideo.title}. It is due on ${setDueDate()}`)
+            })
+            .catch(error => {
+                setMessage(error)
+            })
     }
 
 
-    const form = 
-    <h1>form</h1>
+    const form = <h1>form</h1>
+    // <button onClick={(props) => checkout(props)}>Checkout</button>
 
     const error = 
     <h1>Please Select a Video and Customer to make a rental!</h1>
@@ -27,8 +34,9 @@ const RentalForm = (props) => {
     
     return (
         <div>
+            {/* {props.selectedVideo} */}
+            {message}
             {validRental}
-            {setDueDate()}
         </div>
     );
 }
