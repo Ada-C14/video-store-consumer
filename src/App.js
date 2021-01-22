@@ -15,6 +15,7 @@ import {
   Switch,
   Link
 } from 'react-router-dom';
+import Detail from './components/Detail';
 
 const App = () => {
   
@@ -24,7 +25,6 @@ const App = () => {
 
 
   const handleVideoChange = ((selectedData) => {
-
       setSelectedVideo(selectedData.value)
   })
 
@@ -40,13 +40,15 @@ const App = () => {
   const addRental = () => {
     axios
       .post(`http://localhost:3000/rentals/${selectedVideo.title}/check-out`, {
-        customerId: selectedCustomer.id,
-        dueDate: new Date(
+        customer_id: selectedCustomer.id,
+        due_date: new Date(
           Date.now() + 1000 /*sec*/ * 60 /*min*/ * 60 /*hour*/ * 24 /*day*/ * 7
         ),
       })
-      .then(() => {
-        resetState();
+
+      .then((res) => {
+      window.location = '/detail'
+        //resetState();
       })
       .catch((error) => {
         setErrorMessage(error.message);
@@ -90,11 +92,14 @@ const App = () => {
             <Search />
           </Route>
           <Route exact path="/customers">
-  
             <CustomerList onSelectCustomer={handleCustomerChange} selectedCustomer={selectedCustomer}/>
           </Route>
           <Route exact  path="/library">
-            <VideoLibrary selectedCustomer={selectedCustomer}  onSelectVideo={handleVideoChange} selectedVideo={selectedVideo}/>
+            <VideoLibrary addRental={addRental} selectedCustomer={selectedCustomer}  onSelectVideo={handleVideoChange} selectedVideo={selectedVideo}/>
+          </Route>
+
+          <Route exact  path="/detail">
+            <Detail />
           </Route>
         </Switch>
       </div>
