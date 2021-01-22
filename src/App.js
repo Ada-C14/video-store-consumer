@@ -3,10 +3,21 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
 } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Container from 'react-bootstrap/Container';
+import {
+  Navbar,
+  Nav,
+  NavDropdown,
+  Form,
+  FormControl,
+  Button,
+  Card,
+ } from 'react-bootstrap';
 
 import Library from './components/Library'
 import Customers from './components/Customers'
@@ -65,10 +76,13 @@ const App = () => {
   }
 
   return (
+    <Container>
     <Router>
       <div>
-        <nav>
-          <ul>
+      <Navbar bg="light" expand="lg">
+      <Navbar.Brand href="#home">R&R Video</Navbar.Brand>
+      {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
+        <Nav className="mr-auto">
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -81,7 +95,7 @@ const App = () => {
             <li>
               <Link to="/search">Search</Link>
             </li>
-          </ul>
+          </Nav>
           <span>
             Selected Video: { selectedVideo } 
             Selected Customer:  { selectedCustomerName }
@@ -89,9 +103,8 @@ const App = () => {
           </span>
           <div>
             { errorMessage }
+          
           </div>
-        </nav>
-
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
@@ -108,13 +121,24 @@ const App = () => {
             <Home />
           </Route>
         </Switch>
+        </Navbar>
       </div>
     </Router>
+    <Card style={{ width: '18rem'}}>
+  <Card.Body>
+    <Card.Title>Welcome to R&R Video</Card.Title>
+    <Card.Text>
+      Be Kind, Rewind
+    </Card.Text>
+    
+  </Card.Body>
+</Card>
+    </Container>
   );
 }
 
 function Home() {
-  return <h2>Home</h2>;
+  return (<h2 className="Welcome"></h2> )
 }
 
 export default App;

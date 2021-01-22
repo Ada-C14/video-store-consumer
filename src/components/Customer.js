@@ -10,7 +10,10 @@ const Customer = (props) => {
 }
 
 Customer.propTypes = {
-  
+  name: PropTypes.string.isRequired,
+  tel: PropTypes.string.isRequired,
+  videosCheckedCount: PropTypes.number.isRequired
+
 };
 
 export default Customer;

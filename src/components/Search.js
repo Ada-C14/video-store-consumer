@@ -41,7 +41,9 @@ const Search = (props) => {
 
   const searchResults = results.map((result) => {
     return(
+
     <Result object={result} title={result.title} overview={result.overview}
+
     release_date={result.release_date}
     key={result.id} url={props.url} />
     )

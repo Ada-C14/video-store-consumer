@@ -41,10 +41,19 @@ const Result = (props) => {
       <button onClick={ onClickChangeFormState }>Options</button>
 
       { formShowState ? addVideoForm() : null }
+
       {/* <img alt= "Movie Poster"> {props.image_url}</img> */}
     </div>
     
   );
 }
 
-export default Result;
+
+Result.propTypes = {
+  title: PropTypes.string.isRequired,
+  // eslint-disable-next-line camelcase
+  release_date: PropTypes.string,
+
+};
+
+export default Result
