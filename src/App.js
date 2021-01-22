@@ -13,10 +13,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const API_URL_BASE = 'http://localhost:3000/';
 
 const App = () => {
-  const [selectedVideo, setSelectedVideo] = useState('none');
+  const [selectedVideo, setSelectedVideo] = useState('None');
   const [selectedCustomer, setSelectedCustomer] = useState({
     id: null,
-    name: 'none',
+    name: 'None',
   });
   const [checkoutMessage, setcheckoutMessage] = useState(null);
 

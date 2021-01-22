@@ -106,7 +106,7 @@ const AddMovieForm = (props) => {
             value="Search"
           />
         </form> */}
-        <Form onSubmit={onSearch}>
+        <Form inline onSubmit={onSearch}>
         { errorMessage ? <div><h2 className="error-msg">{errorMessage}</h2></div> : '' }
           <div>
             {/* <label htmlFor="movieName">Movie Name:</label> */}
