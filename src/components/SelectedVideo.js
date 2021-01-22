@@ -1,8 +1,5 @@
-import {React, useState, useEffect} from 'react'
-import Select from 'react-select'
-import PropTypes from 'prop-types'
-import axios from 'axios'
-import VideoLibrary from './VideoLibrary'
+import React from 'react'
+import { Container, Row, Col} from 'react-bootstrap'
 
 
 const SelectedVideo = (props) => {
@@ -12,10 +9,18 @@ const SelectedVideo = (props) => {
     return(
         video &&(
         <div>
-            <h3>{video.title}</h3>
-            <p>{video.overview}</p>
-            <p>Released: {video.release_date}</p>
-            <img src={video.image_url} />
+            <Container>
+                <Row>
+                    <Col md={2}>
+                        <img src={video.image_url} />
+                    </Col>
+                    <Col md={4}>
+                        <h4>{video.title}</h4>
+                        <p>Released: {video.release_date}</p>
+                        <p>{video.overview}</p>
+                    </Col>
+                </Row>
+            </Container>
         </div>
         ))
     }
