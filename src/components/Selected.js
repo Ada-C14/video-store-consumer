@@ -13,6 +13,7 @@ const Selected = (props) => {
         <div>
             {selectedVideoInfo}
             {selectedCustomerInfo}
+            <button>Checkout</button>
         </div>
         );
     };

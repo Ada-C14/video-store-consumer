@@ -17,9 +17,8 @@ const App = () => {
 
   
   const [currentCustomer, setCurrentCustomer] = useState(null) 
-  const [videoList, setVideoList] = useState([]);
   const [selectedVideo, setSelectedVideo]= useState(null);
-  const [errorMessage, setErrorMessage] = useState(null);
+
 
   // useEffect(() => {
   //   axios.get(`${API_URL_BASE}customers`)
