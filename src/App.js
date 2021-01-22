@@ -131,8 +131,8 @@ const App = () => {
 
         <div>
           <p>{errorMessage ? <div><h2 className="validation-errors-display">{errorMessage}</h2></div> : ''}</p>
-          <p>{ selectedVideo ? `Selected Video - ${selectedVideo.title }` : 'No video selected'}</p>
-          <p>{ selectedCustomer ? `Selected Customer - ${selectedCustomer }` : 'No customer selected'}</p>
+          <p>{ selectedVideo ? `Selected video: ${selectedVideo.title }` : 'Video not selected'}</p>
+          <p>{ selectedCustomer ? `Selected customer ID: ${selectedCustomer}` : 'Customer not selected'}</p>
         </div>
 
         <Switch>
