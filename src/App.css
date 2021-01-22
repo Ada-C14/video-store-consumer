@@ -8,14 +8,15 @@
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
+  background-color: #ffd700;
+  height: 200px;
   padding: 20px;
-  color: white;
+  color: black;
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 2em;
+  margin-top: 50px;
 }
 
 .App-intro {
@@ -25,4 +26,45 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.Link {
+  color: center;
+}
+
+.btn {
+  margin-right: 10px
+}
+
+.selection {
+  color: blue;
+  margin-top: 18px;
+}
+
+.no-selection {
+  color: red;
+  margin-top: 18px;
+}
+
+.selection-statements {
+  text-align: right;
+}
+
+.cow {
+  padding-left: 50px;
+}
+
+.validation-errors-display, 
+.validation-errors-display__list {
+  font-size: 1em;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
