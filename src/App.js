@@ -75,15 +75,25 @@ const App = () => {
           <Nav.Link>
               <Link to="/library" exact={true}>Video Library</Link>
           </Nav.Link>
+
+          <Nav.Link>
+            Selected Video: {selectedVideo &&(selectedVideo.title)}
+          </Nav.Link>
+
+          <Nav.Link>
+            Selected Customer: {selectedCustomer &&(selectedCustomer.name)}
+          </Nav.Link>
+
+          <Nav.Link>
+          {selectedVideo && selectedCustomer ? 
+            <button className="customer-button" onClick={() => addRental()}>
+                Checkout
+            </button> : ''}
+          </Nav.Link>
+
           </Nav>
         </Navbar>
       
-      <SelectedVideo video={selectedVideo}/>
-      <SelectedCustomer customer={selectedCustomer}/>
-
-        {/* <VideoLibrary/> */}
-        {/* <SelectedVideo video={selectedVideo}/> */}
-        
         
         <Switch>
           <Route exact={true} path="/">
@@ -103,6 +113,10 @@ const App = () => {
             <Detail />
           </Route>
         </Switch>
+
+        <SelectedVideo video={selectedVideo}/>
+        <SelectedCustomer customer={selectedCustomer}/>
+
       </Router>
     </div>
   );

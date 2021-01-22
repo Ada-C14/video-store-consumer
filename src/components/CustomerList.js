@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Select from 'react-select';
 import axios from 'axios'
 
+import {Container} from 'react-bootstrap'
+
 const CustomerList = (props) => {
     
   const allCustomersURL = 'http://localhost:3000/customers'
@@ -26,6 +28,7 @@ const CustomerList = (props) => {
 
     return (
       <div>
+        <Container>
           <h3>All Customers</h3>
           <h4>Search or Select a Customer: </h4>
          
@@ -41,6 +44,7 @@ const CustomerList = (props) => {
                     };
                     })}
                 /> 
+        </Container>
       </div>
   )  
 }

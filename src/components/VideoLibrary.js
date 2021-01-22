@@ -2,7 +2,7 @@ import {React, useState, useEffect} from 'react'
 import Select from 'react-select'
 import PropTypes from 'prop-types'
 import axios from 'axios';
-
+import {Container} from 'react-bootstrap'
 
 
 const VideoLibrary = (props) => {
@@ -34,6 +34,7 @@ const VideoLibrary = (props) => {
 
     return (
         <div>
+            <Container>
             <h3>Video Library</h3>
             <h4>Search or Select a Video: </h4>
                 <Select
@@ -48,17 +49,7 @@ const VideoLibrary = (props) => {
                     };
                     })}
                 />  
-                {props.selectedVideo && props.selectedCustomer ? 
-                    <button
-                    className="customer-button"
-                    onClick={() => props.addRental()}
-                   
-                  >
-                    {''}
-                    Checkout
-                  </button>
-                  : ''
-}
+            </Container>
         </div>
     )
 }
