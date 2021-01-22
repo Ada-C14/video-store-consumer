@@ -2,21 +2,17 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import './Videos.css'
+import Search from './Search'
 
-const Videos = ( {videoURL, newVideo, onVideoSelected} ) => {
-  const [videoList, setvideoList] = useState([]);
+const Videos = ({ videoURL, onVideoSelected }) => {
+  const [videoList, setVideoList] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
-  // is newVideo in VideoList?
   useEffect(() => {
-    if (newVideo !== undefined && !videoList.includes(newVideo)) {
-      setvideoList(newVideo);
-    }
     axios.get(videoURL)
       .then((response) => {
         const videos = response.data;
-        console.log(videos)
-        setvideoList(videos);
+        setVideoList(videos);
       })
       .catch((error) => {
         setErrorMessage(error.message);
@@ -24,22 +20,18 @@ const Videos = ( {videoURL, newVideo, onVideoSelected} ) => {
       });
   }, []);
 
-  
-
   const showVideos = videoList.map((video) => {
     const helperFunction = () => {
       onVideoSelected(video)
     }
 
     return (
-      <div>
-          {/* <p>{video.id} {video.title}</p>  */}
-          <img 
+      <div key={video.id}>
+        <img
           className='video'
-          src={video.image_url} 
-          alt={video.title}/>
-          <button onClick={helperFunction}>Select for checkout</button>
-
+          src={video.image_url}
+          alt={video.title} />
+        <button onClick={helperFunction}>Select for checkout</button>
         {/* TODO, decide what else to include?
         Choices are:
         overview
@@ -49,7 +41,7 @@ const Videos = ( {videoURL, newVideo, onVideoSelected} ) => {
       </div>
     )
   })
- 
+
 
   return (
     <div className='video'>
