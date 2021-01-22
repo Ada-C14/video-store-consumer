@@ -36,7 +36,7 @@ const Search = () => {
 
   const searchResults = results.map((result) => {
     return(
-    <Result title={result.title} overview={result.overview}
+    <Result title={result.title} 
     release_date={result.release_date}
     key={result.id} />
     )

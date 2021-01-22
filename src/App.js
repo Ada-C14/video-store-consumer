@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Library from './components/Library'
 import Customers from './components/Customers'
@@ -114,7 +115,7 @@ const App = () => {
 }
 
 function Home() {
-  return <h2>Home</h2>;
+  return <h2 className="site-title">Rose Video</h2>;
 }
 
 export default App;
