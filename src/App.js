@@ -47,14 +47,12 @@ class App extends Component {
   
   checkoutVideo = () => {
     if (this.state.chosenVideo && this.state.chosenCustomer) {
-      const title = this.state.chosenVideo.title
-      const dueDate = moment().add(7, 'days').format('YYYY-MM-DD');
-    
-
+      const title = this.state.chosenVideo.title    
+      const dueDate = new Date(new Date().getTime()+(1*24*60*60*1000))
       const params = {
         'customer_id': this.state.chosenCustomer.id,
         'video_id': this.state.chosenVideo.id,
-        'due_date': dueDate,
+        'due_date': dueDate
       }
     
       const checkoutURL = this.API_URL + `/rentals/${title}/check-out`;
