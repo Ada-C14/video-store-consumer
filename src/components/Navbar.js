@@ -9,7 +9,7 @@ const Navbar = (props) => {
   return (
     <div>
       { isHomepage
-        ? <div className='top-nav'>
+        ? <div className='top-nav-homepage'>
           <h2><Link to="/">video store</Link></h2>
         </div>
         : <div className='top-nav'>

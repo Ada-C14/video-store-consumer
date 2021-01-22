@@ -5,6 +5,13 @@
   align-items: center;
 }
 
+.top-nav-homepage {
+  display: flex;
+  margin: auto;
+  height: 15vh;
+  align-items: center;
+}
+
 .main-fns {
   margin: auto;
   width: 50%;

@@ -3,21 +3,19 @@
 }
 
 .homepage {
-  height: 60vh;
+  height: 100vh;
   width: 45vw;
-  margin: auto 5% auto 10%;
+  margin: auto 5% auto 5%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
 }
 
 .homepage-rental {
-  height: 90vh;
+  height: 100vh;
   width: 45vw;
-  margin: auto 5% auto 10%;
+  margin: auto 5% 8% 5%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
 }
 
 .rentalInfoContainer {
@@ -97,4 +95,17 @@
   background-color: #d0eba6;
   border: 2px solid #699622;
   color: #699622;
+}
+
+.img-carousel {
+  width: 40%;
+  height: 120vh;
+  position: absolute;
+  right: 0;
+  background-image: url('https://goodtimes.sc/wp-content/uploads/2018/01/film1803-call-me-by-your-name.gif');
+  opacity: 80%;
+}
+
+.starter-homepage {
+  margin-top: 10%;
 }

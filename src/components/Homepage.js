@@ -9,12 +9,17 @@ const Homepage = (props) => {
   const customer = props.customer;
   const movie = props.movie;
 
+  const homepageImages = [
+    
+  ];
+
   return (
     <div>
-      <Navbar home={true}/>
+      {/* <Navbar home={true}/> */}
       {/* <Navbar home={movie && customer ? false : true}/> */}
       <div className='homepage-container'>
         <div className={ movie || customer ? 'homepage-rental' : 'homepage'}>
+          <Navbar home={true}/>
           {/* <h1>{ props.rentedMessage ? props.rentedMessage : '' }</h1> */}
           { movie || customer 
             ? <div>
@@ -64,11 +69,13 @@ const Homepage = (props) => {
                 }
               </div>
             </div>
-            : [<h1>start a rental</h1>,
-              <div className='btn-container'>
-                <div className='main-btn'><Link to='/library'>movies</Link></div>
-                <div className='main-btn'><Link to='/customers'>customers</Link></div>
-              </div>]
+            : <div className='starter-homepage'>
+                <h1>start a rental</h1>
+                <div className='btn-container'>
+                  <div className='main-btn'><Link to='/library'>movies</Link></div>
+                  <div className='main-btn'><Link to='/customers'>customers</Link></div>
+                </div>
+              </div>
           }
           <br />
           <h1>search for a movie</h1>

@@ -45,15 +45,6 @@ a:hover {
   background-color: #bdeecf;
 }
 
-.img-carousel {
-  width: 40%;
-  height: 100vh;
-  position: absolute;
-  right: 0;
-  background-image: url('https://goodtimes.sc/wp-content/uploads/2018/01/film1803-call-me-by-your-name.gif');
-  opacity: 80%;
-}
-
 button {
   border: 2px solid #277f86;
   border-radius: 10px;
