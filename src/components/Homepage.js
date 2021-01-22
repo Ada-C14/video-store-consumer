@@ -13,6 +13,7 @@ const Homepage = (props) => {
   const calcDaysOverdue = (dueDate) => {
     return Math.floor((Date.now() - Date.parse(dueDate))/(1000*60*60*24))
   }
+
   const overdueList = props.overdue.map((person) => {
     const daysOverdue = calcDaysOverdue(person.due_date)
     return <p className='overdue-text'>{EMOJI_LIST.sample()} <b>{person.name}</b> still has <b>{person.title}</b> which is <b>{daysOverdue} {daysOverdue > 1 ? 'days' : 'day'} </b> overdue {EMOJI_LIST.sample()} </p>
