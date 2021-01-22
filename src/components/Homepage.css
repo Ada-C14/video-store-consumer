@@ -1,0 +1,131 @@
+.homepage-container {
+  display: flex;
+}
+
+.homepage {
+  height: 100vh;
+  width: 45vw;
+  margin: auto 5% auto 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+.homepage-rental {
+  height: 100vh;
+  width: 45vw;
+  margin: auto 5% 8% 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+.rentalInfoContainer {
+  display: flex;
+  margin-bottom: 0;
+}
+
+.rental-info {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.top-info {
+  display: flex;
+  justify-content: flex-start;
+  margin-right: 3%;
+  margin-bottom: 3%;
+}
+
+.img-container {
+  display: flex;
+  align-items: center;
+  width: 80%;
+}
+
+.movie-rental {
+  margin-right: 10%;
+}
+
+.customer-rental {
+  margin-left: 10%;
+}
+
+.rental-text {
+  margin: 0;
+}
+
+.rental-text-main {
+  margin-top: 0;
+  margin-bottom: 5%;
+}
+
+.customer-img {
+  max-width: 225px;
+}
+
+.missingRentalInfo-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 200px;
+  align-items: center;
+}
+
+.missingRentalInfo {
+  height: 250px;
+  width: 200px;
+  border: 2px solid #277f86;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.missingRentalInfo .main-btn {
+  margin: auto;
+  width: 80%;
+}
+
+.checkout {
+  display: flex;
+  margin-bottom: 3%;
+}
+
+.checkout button {
+  width: 50%;
+  font-size: larger;
+  background-color: #d0eba6;
+  border: 2px solid #699622;
+  color: #699622;
+}
+
+.img-carousel {
+  width: 40%;
+  height: 120vh;
+  position: absolute;
+  right: 0;
+  opacity: 80%;
+  transition: all 2s ease;
+}
+
+.cmbyn1 {
+  background-image: url(https://images-na.ssl-images-amazon.com/images/I/51F9Al5INYL._AC_.jpg);
+}
+
+.cmbyn2 {
+  background-image: url('https://goodtimes.sc/wp-content/uploads/2018/01/film1803-call-me-by-your-name.gif');
+}
+
+.hp {
+  background-image: url(https://m.media-amazon.com/images/M/MV5BNjQ3NWNlNmQtMTE5ZS00MDdmLTlkZjUtZTBlM2UxMGFiMTU3XkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_.jpg);
+}
+
+.titanic {
+  background-image: url(https://d9nvuahg4xykp.cloudfront.net/-6663344105692847038/-2492229357160751325.jpg);
+}
+
+.pulp-fiction {
+  background-image: url(https://m.media-amazon.com/images/I/71c05lTE03L._AC_SY741_.jpg);
+}
+
+.starter-homepage {
+  margin-top: 10%;
+}

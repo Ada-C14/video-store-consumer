@@ -1,28 +1,65 @@
-.App {
+* {
+  background-color: #f6f7f2;
+  color: #277f86;
+  /* border: 2px solid black; */
+}
+
+a {
+  font-weight: 800;
+}
+
+a:link {
+  text-decoration: none;
+  color: #277f86;
+}
+
+a:visited {
+  text-decoration: none;
+  color: #277f86;
+}
+
+a:hover {
+  color: #e28c59;
+}
+
+.btn-container {
+  display: flex;
+  width: 100%;
+}
+
+.main-btn {
+  display: flex;
+  width: 100%;
+  height: 40px;
+  border: 2px solid #277f86;
+  font-size: larger;
   text-align: center;
+  margin-right: 10%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: #bdeecf;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.main-btn a {
+  background-color: #bdeecf;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+button {
+  border: 2px solid #277f86;
+  border-radius: 10px;
+  background-color: #bdeecf;
+  height: 40px;
+  font-weight: 800;
 }
 
-.App-title {
-  font-size: 1.5em;
+button:hover, .main-btn:hover {
+  border: 2px solid #C05B21;
+  color: #C05B21;
+  background-color: #F0C2A8;
 }
 
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.main-btn:hover a {
+  background-color: #F0C2A8;
+  color: #C05B21;
 }
