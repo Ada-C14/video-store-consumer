@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700&display=swap');
+
 body { 
-  padding-top: 85px; 
+  padding-top: 65px; 
 }
 
 body, h1, h2, h3, h4, h5, h6 {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Bodoni Moda', serif;
 }
 
 .App {
@@ -35,6 +37,7 @@ body, h1, h2, h3, h4, h5, h6 {
   color:aliceblue;
   padding: 8px;
 }
+
 
 span {
   color:aliceblue;
