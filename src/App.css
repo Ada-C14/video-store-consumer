@@ -26,3 +26,11 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.disabled {
+  opacity: 0.1;
+}
+
+.disabled:hover {
+  background-color: #F41861;
+}

@@ -1,6 +1,9 @@
 import VideoSearch from './components/VideoSearch';
 import VideoLibrary from './components/VideoLibrary';
 import CustomerList from './components/CustomerList';
+import axios from 'axios';
+import moment from 'moment';
+
 import React, { Component } from 'react';
 import './App.css';
 
@@ -17,6 +20,8 @@ class App extends Component {
     super();
     this.state = {
       chosenCustomer: {},
+      chosenVideo: {},
+      message: null,
     }
   }
 
@@ -28,6 +33,52 @@ class App extends Component {
     this.setState({chosenVideo})
   }
 
+  setMessage = (message) => {
+    this.setState({message})
+  }
+
+  resetRentalQueue = () => {
+    console.log('Rental Queue CLEARED');
+    this.setState({
+      chosenCustomer: {},
+      chosenVideo:{},
+    })
+  };
+  
+  checkoutVideo = () => {
+    if (this.state.chosenVideo && this.state.chosenCustomer) {
+      const title = this.state.chosenVideo.title
+      const dueDate = moment().add(7, 'days').format('YYYY-DD-MM');
+
+      const params = {
+        customerID: this.state.chosenCustomer.id,
+        videoID: this.state.chosenVideo.id,
+        dueDate: dueDate,
+      }
+    
+      const checkoutURL = this.API_URL + `/rentals/${title}/check-out`;
+
+      axios.post(checkoutURL, params)
+      .then(() => {
+        this.setMessage(`${this.state.chosenVideo.title} was successfully checked out to ${this.state.chosenCustomer.name}`);
+        this.resetRentalQueue();
+      })
+      .catch((error) => {
+        this.setMessage(error.message)
+      });
+    } else {
+      this.setMessage('Nothing done, make sure you have a customer and video selected')
+    }
+  }
+
+  visibility = () => {
+    if (this.state.chosenCustomer.name && this.state.chosenVideo.title) {
+      return ''
+    } else {
+      return 'disabled'
+    }
+  }
+
   API_URL = 'http://localhost:3000'
   
 
@@ -37,6 +88,7 @@ class App extends Component {
       <Router>
       <div>
         <nav>
+          <p> {this.state.message} </p>
           <ul>
             <li>
               <Link to='/'>Home</Link>
@@ -51,9 +103,14 @@ class App extends Component {
 
               <Link to='/customers'>Customers</Link>
             </li>
-            <li>{this.state.chosenCustomer.name}</li>
-            <li>{this.state.chosenVideo}</li>
-          </ul>
+            </ul>
+            <ol>
+              <li>Selected Customer: {this.state.chosenCustomer.name}</li>
+              <li>Selected Video:{this.state.chosenVideo.title}</li>
+              <button onClick={this.checkoutVideo} className= { `button button-large ${ this.visibility() }` }>
+                Check out {this.state.chosenVideo.title} to {this.state.chosenCustomer.name}
+              </button>
+            </ol>
         </nav>
 
         <Switch>
@@ -71,8 +128,7 @@ class App extends Component {
             selectCustomerCallback={this.selectCustomer}
             url={this.API_URL}/>
           }/>
-          <Route path="/">
-
+          <Route path='/'>
             <Home />
           </Route>
         </Switch>
@@ -89,20 +145,6 @@ function Library() {
   return <h2>About</h2>;
 }
 
-// function Customers() {
-//   return <h2>Users</h2>;
-// }
-
-
-      // <div className="App">
-      //   <header className="App-header">
-      //     <img src={logo} className="App-logo" alt="logo" />
-      //     <h1 className="App-title">Welcome to React</h1>
-      //   </header>
-      //   <p className="App-intro">
-      //     To get started, edit <code>src/App.js</code> and save to reload.
-      //   </p>
-      // </div>
   };
 };
 
