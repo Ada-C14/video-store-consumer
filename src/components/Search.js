@@ -9,7 +9,6 @@ import './Search.css'
 const Search = ({ videoURL }) => {
   const [videoResult, setVideoResult] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
-  //const []
 
   const getVideo = (video) => {
     axios.get(videoURL, {
@@ -28,35 +27,33 @@ const Search = ({ videoURL }) => {
   }
   // add the selected Video (clicked on) to the video library 
   const imageClick = (video) => {
-    console.log(video.title);
-    axios.post(videoURL, video)
-      .then((response) => {
-        <Videos newVideo={response.data} />
-      })
-      .catch((error) => {
-        setErrorMessage(error.message);
-      })
+      axios.post(videoURL, video)
+        .then((response) => {
+        })
+        .catch((error) => {
+          setErrorMessage(error.message);
+        })
       return (
         <div></div>
       );
-
-    // <Videos newVideo={videoResult}/>
   }
 
   const showVideoResult = videoResult.map((video) => {
     return (
-      <div className='image-container'>
+      <div 
+      className='image-container'
+      key={video.id}>
         {/* TODO:
         Conditional Rendering, if title, show the image, if not say "sorry, not found" or something like that :) */}
         <img
           src={video.image_url}
           alt={video.title}
-           />
-          <figcaption
+        />
+        <figcaption
           className='image-caption'
           onClick={() => imageClick(video)}>
-            <h1>Add</h1>
-          </figcaption>
+          <h1>Add</h1>
+        </figcaption>
       </div>
     );
   })
