@@ -124,7 +124,13 @@ const App = () => {
         </Navbar>
       </div>
     </Router>
-    <Card style={{ width: '18rem'}}>
+    </Container>
+  );
+}
+
+function Home() {
+  return (<Container>
+    <Card >
   <Card.Body>
     <Card.Title>Welcome to R&R Video</Card.Title>
     <Card.Text>
@@ -133,12 +139,7 @@ const App = () => {
     
   </Card.Body>
 </Card>
-    </Container>
-  );
-}
-
-function Home() {
-  return (<h2 className="Welcome"></h2> )
+  </Container> )
 }
 
 export default App;
