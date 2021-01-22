@@ -4,12 +4,15 @@ import './App.css';
 import { NavLink, Switch, Route } from 'react-router-dom';
 import VideoLibrary from './components/VideoLibrary';
 import VideoSearch from './components/VideoSearch';
-
+import CustomerList from './components/CustomerList';
 
 
 const App = () => {
 const [selectedVideoID, setSelectedVideoID] = useState('');
 const [selectedVideoTitle, setSelectedVideoTitle] = useState('');
+
+const [selectedCustomerID, setSelectedCustomerID] = useState('');
+const [selectedCustomerName, setSelectedCustomerName] = useState('');
 
 // 1. pass down function all the way to entry
 // 2. make button to be able to select them
@@ -18,6 +21,12 @@ const onClickLibraryCallback = (video) => {
   setSelectedVideoID(video.id);
   setSelectedVideoTitle(video.title);
   console.log('onClickLibraryCallback was called')
+}
+
+const onClickCustomerListCallback = (customer) => {
+  setSelectedCustomerID(customer.id);
+  setSelectedCustomerName(customer.name);
+  console.log('onClickCustomerListCallback called')
 }
 
 
@@ -65,6 +74,7 @@ const Library = () => (
 const Customers = () => (
   <div className = 'customers'>
     <h1>List of customers</h1>
+    <CustomerList listCallback={onClickCustomerListCallback}/>
   </div>
 );
 
