@@ -16,54 +16,18 @@ const ApiVideo = (props) => {
     });
   }
 
-  const onInventoryChange = (event) => {
-    event.preventDefault();
-    const newInventory = 
-    props.addVideoCallback({
-      externalId: props.externalId, 
-      title: props.title,
-      overview: props.overview,
-      releaseDate: props.releaseDate,
-      imageUrl: props.imageUrl,    
-    });
-  }
-
   return (
-    <table className="table">
-      <tr>
-        <th>External Id</th>  
-        <th>Title</th>
-        <th>Overview</th>
-        <th>Release Date</th>
-        <th>Image URL</th>
-        <th></th>
-      </tr>
-      <tr>
-        <th>{props.externalId}</th>  
-        <th>{props.title}</th>
-        <th>{props.overview}</th>
-        <th>{props.releaseDate}</th>
-        <th><img 
-              src={props.imageUrl}
-              alt={props.title} />
-        </th>
-        <th>
-        <form>
-          <label>Inventory:</label>
-            <input
-              id="inventory"
-              name="inventory"
-              // onChange={onInventoryChange}
-              // value={formFields.inventory}
-            />
-        </form>
+    <figure className="video">
+      <img src={props.imageUrl} alt={props.title} />
+      <figcaption>{props.title} 
+        <br/>{new Date(props.releaseDate).getFullYear()}
+        <br/> 
           <button
             onClick={onFormSubmit}>
             Add to Library
           </button>
-        </th> 
-      </tr>
-    </table>
+      </figcaption>
+    </figure> 
   )
 }
 

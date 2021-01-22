@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import ApiVideo from './ApiVideo';
+import './VideoList.css';
 
 
 const VideoList = (props) => {
@@ -31,7 +32,7 @@ const VideoList = (props) => {
   }, [props.keyWord]);
 
   const addVideo = (video) => {
-    axios.post(`${props.url}${props.focus}?external_id=${video.externalId}&release_date=${video.releaseDate}&image_url=${video.imageUrl}`, video)
+    axios.post(`${props.url}${props.focus}`, video)
     .then((response) => {
       setErrorMessage(`"${video.title}" is added`);
     })
@@ -59,7 +60,7 @@ const VideoList = (props) => {
           {errorMessage ? `${errorMessage}` : ''}
         </h2>
       </div>
-      <div className="board">
+      <div className="list">
         {videoComponents}
       </div>
     </div>
