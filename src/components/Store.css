@@ -4,4 +4,5 @@
     flex-direction: row;
     justify-content: space-around;
     min-width: 100%;
+    font-size: 20px !important;
 }

@@ -63,10 +63,10 @@ const Rental = (props) => {
         if (props.video !== null && props.customer !== null) {
             return (
                 <div>
-                    <button onClick={() => rentVideo()} >
+                    <button className="btn btn-primary mr-1" onClick={() => rentVideo()} >
                         Rent Movie
                     </button>
-                    <button onClick={() => returnVideo()} >
+                    <button className="btn btn-primary mr-1" onClick={() => returnVideo()} >
                         Return Movie
                     </button>
                 </div>
@@ -81,13 +81,17 @@ const Rental = (props) => {
             
             <img className="center" src={scarecrow} alt="Scarecrowz Video" />;
             
-            <h3>Select a Video and Customer to Check-out or Check-in a VIDEO!</h3>
+            <h3 className="selection-header text-center">Select a Video and Customer to Check-out or Check-in a VIDEO!</h3>
             <div>
-              <p>Selected Movie: <strong>{props.video === null ? 'no movie selected' : props.video.title}</strong></p>
-              <p>Selected Customer: <strong>{props.customer === null ? 'no customer selected' : props.customer.name}</strong></p>
-            </div>
-            <div className="rental-buttons">
-                {rentalButtons()}
+                <div className="footer">
+                    <div className="footer-div">
+                        <p>Selected Video: <strong>{props.video === null ? 'no video selected' : props.video.title}</strong></p>
+                        <p>Selected Customer: <strong>{props.customer === null ? 'no customer selected' : props.customer.name}</strong></p>
+                    </div>
+                    <div className="footer-div-button">
+                        {rentalButtons()}
+                    </div>
+                </div>
             </div>
         </div>
     )

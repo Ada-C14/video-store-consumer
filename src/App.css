@@ -2,12 +2,30 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 75%;
+  width: 55%;
 }
 
-.rental-button {
+.footer {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  min-width: 100%;
+  justify-content: space-between;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  margin: 10px;
+
+}
+
+.footer-div, .footer-div-button {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.footer-div-button {
+  margin-top: 15px;
+}
+
+.selection-header {
+  color: #2887d1;
+  padding-bottom: 25px;
 }
