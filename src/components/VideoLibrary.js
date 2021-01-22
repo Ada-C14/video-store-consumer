@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Video from './Video';
-import './VideoLibrary.css'
+
 
 const VideoLibrary = (props) => {
 

@@ -33,7 +33,7 @@ const Rental = (props) => {
                 setError('');
             
             props.setSelectedCustomer(null);
-            props.setSelectedMovie(null);
+            props.setSelectedVideo(null);
             })
             .catch((error) => {
                 setError('Could not create a rental. Not enough inventory.');
@@ -44,7 +44,7 @@ const Rental = (props) => {
 
     const returnVideo = () => {
         if (props.video !== null && props.customer !== null) {
-        axios.post(`http://localhost:4000/rentals/${props.video.title}/return?customer_id=${props.customer.id}`)
+        axios.post(`http://localhost:3000/rentals/${props.video.title}/return?customer_id=${props.customer.id}`)
             .then((response) => {
                 setAlert(`Thank you for returning ${props.video.title}!`);
                 setError('');
@@ -79,14 +79,14 @@ const Rental = (props) => {
             { error ? <div className="alert alert-warning">{error}</div> : '' }
             { alert ? <div className="alert alert-success">{alert}</div> : '' }
             
-            <img src={scarecrow} alt="Scarecrowz Video" />;
+            <img className="center" src={scarecrow} alt="Scarecrowz Video" />;
             
             <h3>Select a Video and Customer to Check-out or Check-in a VIDEO!</h3>
             <div>
               <p>Selected Movie: <strong>{props.video === null ? 'no movie selected' : props.video.title}</strong></p>
               <p>Selected Customer: <strong>{props.customer === null ? 'no customer selected' : props.customer.name}</strong></p>
             </div>
-            <div>
+            <div className="rental-buttons">
                 {rentalButtons()}
             </div>
         </div>
