@@ -1,7 +1,6 @@
 import VideoSearch from './components/VideoSearch';
 import VideoLibrary from './components/VideoLibrary';
 import CustomerList from './components/CustomerList';
-import Rentals from './components/Rentals';
 import axios from 'axios';
 import moment from 'moment';
 
@@ -129,14 +128,6 @@ class App extends Component {
             selectCustomerCallback={this.selectCustomer}
             url={this.API_URL}/>
           }/>
-          {/* <Route path="/rentals" component={props =>
-          <Rentals { ...props } 
-          selectedVideo={this.state.chosenVideo}
-          selectedCustomer={this.state.chosenCustomer}
-          resetCallback={this.resetRentalQueue}
-          url={this.API_URL}
-          setMessage={this.setMessage}/>
-          }/> */}
           <Route path='/'>
             <Home />
           </Route>
@@ -154,20 +145,6 @@ function Library() {
   return <h2>About</h2>;
 }
 
-// function Customers() {
-//   return <h2>Users</h2>;
-// }
-
-
-      // <div className="App">
-      //   <header className="App-header">
-      //     <img src={logo} className="App-logo" alt="logo" />
-      //     <h1 className="App-title">Welcome to React</h1>
-      //   </header>
-      //   <p className="App-intro">
-      //     To get started, edit <code>src/App.js</code> and save to reload.
-      //   </p>
-      // </div>
   };
 };
 
