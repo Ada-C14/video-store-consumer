@@ -8,7 +8,6 @@ const Selected = (props) => {
     if(props.customer) {
         selectedCustomerInfo = <div>{props.customer.name}</div>
     }
-
     return (
         <div>
             {selectedVideoInfo}
@@ -16,5 +15,4 @@ const Selected = (props) => {
         </div>
         );
     };
-
 export default Selected;

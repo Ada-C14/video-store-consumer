@@ -16,6 +16,9 @@ return (
 		<Link to="/customers">
 			<li>Customers</li>
 		</Link>
+		{/* <Link to="/checkout">
+			<li>Checkout</li>
+		</Link> */}
         </ul> 
     </nav>
 );

@@ -13,15 +13,3 @@
     grid-template-columns: 1fr 5fr 1fr;
     align-items: center;
   }
-
-  .customer__content {
-    grid-column-start: 2;
-  
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-  
-    text-align: center;
-    font-weight: 100;
-    overflow: hidden;
-  }
