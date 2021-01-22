@@ -51,7 +51,7 @@ const VideoLibrary = (props) => {
                 {props.selectedVideo && props.selectedCustomer ? 
                     <button
                     className="customer-button"
-                   // onClick={addRental}
+                    onClick={() => props.addRental()}
                    
                   >
                     {''}
