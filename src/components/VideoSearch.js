@@ -28,11 +28,11 @@ const VideoSearch = (props) => {
     const videosListComponent = videos.map((video) => {
         return <SearchResult
         key={video.id}
-        id={video.external_id}
+        external_id={video.external_id}
         title={video.title}
         overview={video.overview}
         release_date={video.release_date}
-        imageURL={video.image_url}
+        image_url={video.image_url}
         />
     })
     
