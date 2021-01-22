@@ -40,7 +40,7 @@ const App = () => {
 
   const checkOut = (rental) => {
     // console.log(rental.dueDate)
-    if (rental.video.availableInventory > 0) {
+    // if (rental.video.availableInventory > 0) {
       axios.post(`${BASE_URL}rentals/${rental.video.title}/check-out?customer_id=${rental.customer}&due_date=${rental.dueDate}`, rental)
       .then((response) => {
         setErrorMessage(`Successufully checked out ${rental.video.title}`);
@@ -49,11 +49,11 @@ const App = () => {
         // setErrorMessage(error.message);
         setErrorMessage(`Checkout unsuccessful`);
       });
-      setSelectedVideo(null)
-      setSelectedCustomer(null)
-    }
-
+    //   setSelectedVideo(null)
+    //   setSelectedCustomer(null)
+    // }
     setSelectedVideo(null)
+    setSelectedCustomer(null)
   }
 
   const checkIn = (rental) => {
