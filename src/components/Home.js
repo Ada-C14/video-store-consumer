@@ -1,14 +1,17 @@
 import React from 'react';
 import './Home.css';
 
-const Home = (props) => {
+class Home extends React.Component {
+
+  render() {
+
   return (
     <main>
-      <div className="container">
-        <h1>Welcome</h1>
-      </div>
-    </main>
+        <img src="/images/cinema.jpeg" alt="video_time "className="homepage-pic"
+        />
+      </main>
   );
+  }
 };
 
 export default Home;
