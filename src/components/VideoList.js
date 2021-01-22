@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import ApiVideo from './ApiVideo';
+import './VideoList.css';
 
 
 const VideoList = (props) => {
@@ -59,7 +60,7 @@ const VideoList = (props) => {
           {errorMessage ? `${errorMessage}` : ''}
         </h2>
       </div>
-      <div className="board">
+      <div className="list">
         {videoComponents}
       </div>
     </div>
