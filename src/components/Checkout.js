@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, {useState} from 'react';
+import React from 'react';
 import './Checkout.css'
 import humps from 'humps';
 
@@ -7,14 +7,6 @@ const BASE_API_URL = 'http://localhost:3000';
 
 const Checkout = (props) => {
   const {video, customer} = props
-  const [alert, setAlert] = useState('');
-
-  if (alert) {
-    setTimeout(() => {
-      setAlert('');
-    }, 3000)
-  }
-
 
   const handleClick = () => {
     const date = new Date();
@@ -27,21 +19,21 @@ const Checkout = (props) => {
         dueDate: date
       }))
     .then( (response) => {
-      setAlert(` successfully checked out ${video.title} to ${customer.name}`)
+      props.setDisplayMessage(` successfully checked out ${video.title} to ${customer.name}`)
       props.videoCallback(null);
       props.customerCallback(null);
     })
     .catch( (error) => {
-      setAlert(error.message);
+      props.setDisplayMessage(error.message);
     })
   }
   return (
     <div className="checkout__content">
       <div className="checkout">
-        {alert && <p>{alert}</p>}
         {video && <h3 className="checkout__text">Video Selected: <em>{video.title}</em></h3>}
         {customer && <h3 className="checkout__text">Customer Selected: <em>{customer.name}</em></h3>}
         {(video && customer) && <button className="checkout__btn" onClick={handleClick}>CHECKOUT</button>}  
+        {/* {(video || customer) && <button className="checkout__btn" onClick={handleClick}>CANCEL</button>}   */}
       </div>
     </div>
   )

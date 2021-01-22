@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import humps from 'humps';
-import PropTypes from 'prop-types';
+import './AddVideo.css';
+// import humps from 'humps';
+// import PropTypes from 'prop-types';
 const axios = require('axios')
+
 
 
 const BASE_URL = 'http://localhost:3000/add';
@@ -16,28 +18,28 @@ const AddVideo = (props) => {
     }
 
     useEffect(() => {
-        if (AddedVideo.title == undefined) {
+        if (AddedVideo.title === undefined) {
             return;
         }
-        axios.post(BASE_URL, humps.decamelizeKeys({
-            externalId: AddedVideo.external_id,
-            title: AddedVideo.title,
-            imageUrl: AddedVideo.image_url,
-            overview: AddedVideo.overview,
-            releaseDate: AddedVideo.release_date,
-        }))
+        axios.post(BASE_URL, AddedVideo)
 
-        .then((response) => {
-            console.log(AddedVideo.title + 'added! Cool!');
-            console.log(response.data);
-        })
-        .catch((error) => {
-            console.log(error.response.data.errors);
-            console.log('Unable to add this title to the library.')
-        });
-    }, [AddedVideo]);
+            .then((response) => {
+                if (response.data) {
+                    props.setDisplayMessage(AddedVideo.title + ' added! Cool!');
+                    console.log(response.data);
+                } else {
+                    props.setDisplayMessage(AddedVideo.title + ' has already been added');
+                }
+            })
+            .catch((error) => {
+                console.log(error.response.data.errors);
+                props.setDisplayMessage('Unable to add this title to the library.');
+            });
 
-    return <button onClick = {onSubmitAdd}>
+        setAddedVideo('');
+    },[AddedVideo]);
+
+    return <button className="add-to-video__button" onClick = {onSubmitAdd}>
         Add to Library
     </button>
 } ;

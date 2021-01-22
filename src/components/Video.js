@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Video.css';
 
 
 const Video = (props) => {
@@ -8,7 +9,7 @@ const Video = (props) => {
         props.onClickCallBack(props.video);
     }
 
-    return <button onClick = {onVideoClick}>
+    return <button className="video-result" onClick = {onVideoClick}>
         {props.video.title}
     </button>
 

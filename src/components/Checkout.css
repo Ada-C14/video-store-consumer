@@ -28,27 +28,28 @@
 }
 
 .checkout em {
-  color: #4599ed;
+  color: #2F2E2C;
   font-style: normal;
   font-size: 1.5rem;
+  font-weight: 800;
 }
 
 .checkout__btn {
-  margin-left: 2rem;
-  /* height: 2rem; */
-  padding: 0.75rem;
-  border: none;
-  background-color: rgb(227, 227, 227);
-  border-radius: 5px;
-  font-weight: bold;
   font-size: 1rem;
+  padding: 0.5em 0.75em;
+  border-radius: 5px;
+  border: none;
+  background-color: #2F2E2C;
+  color: white;
+  transition: 0.1s ease-out;
+  margin-left: 1rem;
 }
 
 .checkout__btn:hover {
-  background-color: #4599ed;
+  background-color: #2F2E2C;
   color: white;
 }
 
-/* .checkout__text {
-  display: inline;
-} */
+.checkout__text {
+  font-weight: 400;
+}

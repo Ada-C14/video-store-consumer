@@ -13,6 +13,7 @@ const Library = (props) => {
     axios.get(API_BASE_URL + '/videos')
       .then( (response) => {
         setLibraryVideos(response.data);
+        console.log('library mounts');
       })
       .catch( (error) => {
         //todo: update this to display to the screen
@@ -20,6 +21,7 @@ const Library = (props) => {
       })
   }, [])
 
+  console.log('does this happen again');
   const libraryVideoComponents = libraryVideos.map(video => {
     return <LibraryVideo key={video.id} data={video} videoCallback={props.videoCallback} activeCallback={setActive} isActive={active === video.id} />
   })
