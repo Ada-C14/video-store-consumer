@@ -1,7 +1,9 @@
-import React, { useState, useEffect, Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { Table } from 'react-bootstrap'
 import SelectedVideo from './SelectedVideo'
+
 
 const Library = (props) => {
   const [videoLibrary, setVideoLibrary] = useState([]);
@@ -54,8 +56,8 @@ const Library = (props) => {
       {errorMessage ? <div><h2 className="validation-errors-display">{errorMessage}</h2></div> : ''}
       {props.selectedVideo? < SelectedVideo selectedVideo={props.selectedVideo}/> : ''}
 
-        <table>
-          <tbody>
+        <Table striped bordered hover variant="light">
+          <thead>
             <tr>
               <th>Video ID</th>  
               <th>Title</th>
@@ -63,9 +65,11 @@ const Library = (props) => {
               <th>Release Date</th>
               <th>Select</th>
             </tr>
+          </thead>
+          <tbody>  
             {renderTableData}
           </tbody>
-        </table>
+        </Table>
     </div>
   )
 }

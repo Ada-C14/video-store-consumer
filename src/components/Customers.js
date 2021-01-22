@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { Table } from 'react-bootstrap'
 import SingleCustomer from './SingleCustomer';
 
 const Customers = (props) => {
@@ -46,22 +47,26 @@ const Customers = (props) => {
           {errorMessage ? `${errorMessage}` : ''}
         </h2>
       </div>
-      <table className="table">
-        <tr>
-          <th>Id</th>  
-          <th>Name</th>
-          <th>Account Credit</th>
-          <th>Videos Checked out Count</th>
-          <th>Address</th>
-          <th>City</th>
-          <th>State</th>
-          <th>Postal Code</th>
-          <th>Phone#</th>
-          <th>Registered At</th>
-          <th>Select</th>
-        </tr>
+      <Table striped bordered hover variant="light">
+        <thead>
+          <tr>
+            <th>Id</th>  
+            <th>Name</th>
+            <th>Account Credit</th>
+            <th>Videos Checked out Count</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Postal Code</th>
+            <th>Phone#</th>
+            <th>Registered At</th>
+            <th>Select</th>
+          </tr>
+        </thead>
+        <tbody>
           {customerComponents}
-      </table>
+        </tbody>
+      </Table>
     </div>
   )
 }
