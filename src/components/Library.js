@@ -1,9 +1,7 @@
 import React, { useEffect, useState} from 'react'; 
-import axios from 'axios';
 import Video from './Video'; 
 import API from '../ApiSupport'
 import { Link } from 'react-router-dom';
-import './Library.css';
 
 const Library = (props) => {
   const [videoList, setVideoList] = useState([]);

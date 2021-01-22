@@ -18,18 +18,9 @@ import './components/Library.css';
 const App = () => {
   const [selectedCustomer, setSelectedCustomer] = useState(null);
   const [selectedVideo, setSelectedVideo] = useState(null);
-  // const [videoList, setVideoList] = useState([]);
+
   const [errorMessage, setErrorMessage] = useState(null);
 
-  // const onClickVideo = (video) => {
-  //   setSelectedVideo(video);
-  // }
-
-  // POST /rentals/:title/check-out
-
-  // const onClickCustomer = (customer) => {
-  //   setSelectedCustomer(customer);
-  // }
 
   const handleCheckout = () => {
     let todaysDate = new Date();
@@ -117,58 +108,5 @@ const App = () => {
   );
 }
 
-
-// }
-
-// class App extends Component {
-
-// render() 
-// // {
-//   return (
-//     <Router>
-//     <div>
-//       <nav>
-//         <ul>
-//           <li>
-//             <Link to="/">Home</Link>
-//           </li>
-//           <li>
-//             <Link to="/search">Search</Link>
-//           </li>
-//           <li>
-//             <Link to="/library">Library</Link>
-//           </li>
-//           <li>
-//             <Link to="/customers">Customers</Link>
-//           </li>
-//         </ul>
-//       </nav>
-
-//       <span className = "App-cart" >test</span>
-
-//       {/* A <Switch> looks through its children <Route>s and
-//           renders the first one that matches the current URL. */}
-//       <Switch>
-//       <Route path="/customers/:id" component={Customer}>
-//         <Customer />
-//         </Route>
-//         <Route path="/customers" >
-//           <CustomerList />
-//         </Route>
-//         <Route path="/search">
-//           <Search />
-//         </Route>
-//         <Route path="/library">
-//           <Library />
-//         </Route>
-//         <Route path="/">
-//           <Home />
-//         </Route>
-//       </Switch>
-//     </div>
-//   </Router>
-//   );
-// }
-// }
 
 export default App;
