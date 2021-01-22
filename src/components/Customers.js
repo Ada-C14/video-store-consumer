@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import Customer from './Customer';
 
-// import './Customers.css';
+import './Customers.css';
 
 const Customers = (props) => {
   const [customerList, setCustomerList] = useState([]);
@@ -20,27 +20,35 @@ const Customers = (props) => {
     });
   }, []);
 
-  const customerComponents = customerList.map((cust) => {
+  const customerComponents = customerList.map((customer) => {
     return (<Customer 
-      id={cust.id}
-      name={cust.name}
+      id={customer.id}
+      name={customer.name}
       onClickCallback={props.onClickCallback}
-      registeredAt={cust.registered_at}
-      phone={cust.phone}
-      key={cust.id} 
-      address={cust.address}
-      city={cust.city}
-      postalCode={cust.postal_code}
-      accountCredit={cust.account_credit}
-      videosCheckedOutCount={cust.videos_checked_out_count}
+      registeredAt={customer.registered_at}
+      phone={customer.phone}
+      key={customer.id} 
+      address={customer.address}
+      city={customer.city}
+      postalCode={customer.postal_code}
+      accountCredit={customer.account_credit}
+      videosCheckedOutCount={customer.videos_checked_out_count}
     />);
   });
 
 return (
   <div>
-    <h3 className="header">Our Customers 📇</h3>
+    <h2 className="header">Our Customers 📇</h2>
     {errorMessage ? <p>{errorMessage}</p> : ''}
-    {customerComponents}
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Member Since</th>
+        <th># Videos Checked Out</th>
+        <th className="select-header"></th>
+      </tr>
+      {customerComponents}
+    </table>
   </div>
 );
 };
