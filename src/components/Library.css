@@ -1,0 +1,12 @@
+.list-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  max-width: 100%;
+}
+
+h1 {
+  text-align: center;
+  font-size: 30px;
+}

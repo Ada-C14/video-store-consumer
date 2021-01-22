@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px; /* 5px rounded corners */
+  width: 500px;
+  padding: 5px;
+  margin: 5px;
+}
+.video-image {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+.video-description {
+  padding: 5px;
+}
+
+.selected-video {
+  box-shadow: 0 4px 8px 0 rgba(9, 112, 43, 1);
+}

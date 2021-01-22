@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Nosifer&display=swap');
+
+.shame {
+  color: red;
+  font-family: 'Nosifer', cursive;
+  font-size: 5rem;
+}
+
+.overdue-text {
+  font-size: 2rem;
+  text-align: center;
+}
