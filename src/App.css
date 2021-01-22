@@ -1,4 +1,78 @@
+html {
+  box-sizing: border-box;
+  /* overflow: hidden; */
+  height: 100%;
+  background-color: #FFC40A;
+
+}
+#root {
+  height: 100%;
+
+}
+
+body {
+  height: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+}
+
 .App {
+  /* width: 90%; */
+  margin: 0 auto;
+  /* padding: 20px; */
+  display: grid;
+  grid-template-columns: 1fr [main-start] 5fr [main-end] 1fr;
+  grid-template-rows: auto;
+  font-family: "Roboto", sans-serif;
+  /* background-image: url("./homepage-hero3.png") ;
+  background-size: cover;
+  background-repeat: repeat;
+  height: 100%; */
+ 
+}
+
+.main-content {
+  grid-column: main;
+
+}
+
+/* .hero-image {
+  background-image: url("./homepage-hero.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  grid-column: 1 / -1;
+
+} */
+
+.display-message {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr [main-start] 5fr [main-end] 1fr;
+  background-color: white;
+  padding: 2rem 0;
+
+}
+
+.display-message > h1 {
+  grid-column: main;
+  text-align: center;
+  color: #679BF1;
+}
+/* h1 {
+  margin-bottom: 20px;
+}
+
+p {
+  margin-bottom: 15px;
+} */
+
+/* .App {
   text-align: center;
 }
 
@@ -25,4 +99,4 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}
+} */

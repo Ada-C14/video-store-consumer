@@ -1,0 +1,10 @@
+.search-detail__container {
+  grid-column: 1;
+  grid-row: 2;
+  margin-right: 2rem;
+}
+
+.search-detail__title,
+.search-detail__overview {
+  font-size: 1rem;
+}

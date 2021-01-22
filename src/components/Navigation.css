@@ -1,0 +1,26 @@
+nav ul {
+  list-style: none;
+  display: flex;
+  background-color: #2F2E2C;
+  /* margin-bottom: 20px; */
+  justify-content: center;
+}
+
+nav {
+  grid-column: 1 / -1 ;
+  /* margin-bottom: 3rem; */
+}
+
+nav ul li {
+  padding: 4rem 2rem;
+  font-size: 2rem;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.current {
+  border-bottom: 2px solid white;
+}
