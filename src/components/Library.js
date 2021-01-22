@@ -25,15 +25,18 @@ const Library = (props) => {
 
   const showVideos = videos.map((video) => {
     return(
-        <div>
-          <input type='radio' id={video.id} name='video' value={video.title} onChange={ onChangeValue } />
-          <label htmlFor={video.title}><Video key={video.id} id={video.id} title={video.title} overview={video.overview} release_date={video.release_date} /></label>
-        </div>
+      <div>
+        <input type='radio' id={video.id} name='video' value={video.title} onChange={ onChangeValue } />
+        <label htmlFor={video.title}>
+          <Video key={video.id} id={video.id} title={video.title} overview={video.overview} release_date={video.release_date} imageUrl={video.image_url} />
+        </label>
+      </div>
     );
   });
 
   return (
     <div>
+      <h1>Video Library</h1>
         {showVideos}
     </div>
   )

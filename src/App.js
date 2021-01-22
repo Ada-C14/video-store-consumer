@@ -60,8 +60,8 @@ const App = () => {
 
     axios.post(`${localAPI}/rentals/${selectedVideo}/check-out?customer_id=${selectedCustomerID}&due_date=${date}`)
     .then((response) => {
-      console.log(`Movie titled ${selectedVideo} checked out to Customer ID: ${selectedCustomerID}`)
-      setErrorMessage(`Movie titled ${selectedVideo} checked out to Customer ID: ${selectedCustomerID}`)
+      console.log(`Movie titled ${selectedVideo} checked out to cusomter: ${selectedCustomerName}`)
+      setErrorMessage(`Movie titled ${selectedVideo} checked out to cusomter: ${selectedCustomerName}`)
     })
     .catch((error) => {
       setErrorMessage(`Unable to checkout movie titled ${selectedVideo} to Customer ID: ${selectedCustomerID}`);
@@ -75,74 +75,61 @@ const App = () => {
       <button onClick={ checkOutVideo } >Check Out</button>
     )
   }
-    const link = {
-      color: 'white',
-      backgroundColor: 'lightPink',
-      padding: '3px',
-      fontFamily: 'Arial'
-    };
-    const selection = {
-      color: 'white',
-      backgroundColor: 'lightPink',
-      padding: '3px',
-      fontFamily: 'Arial'
-    }
-    const logo = {
-      color: 'pink',
-      font: 'times',
-      
-    }
     
   return (
-    <Container>
+
     <Router>
-      <div>
-      <Navbar bg="light" expand="lg">
-      <Navbar.Brand style={logo} href="#home">R&R Video</Navbar.Brand>
-      {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
-        <Nav className="mr-auto">
-            <li>
-              <Link style={link} to="/">Home</Link>
-            </li>
-            <li>
-              <Link style={link} to="/library">Library</Link>
-            </li>
-            <li>
-              <Link  style={link} to="/customers">Customers</Link>
-            </li>
-            <li>
-              <Link style={link} to="/search">Search</Link>
-            </li>
-          </Nav>
-          <span style={selection}>
-            Selected Video: { selectedVideo } 
-            Selected Customer:  { selectedCustomerName }
-            { selectedVideo !== null && selectedCustomerID !== null ? checkOutVideoBtn() : null }
-          </span>
-          <div>
-            { errorMessage }
-          
-          </div>
-        {/* A <Switch> looks through its children <Route>s and
+      <body>
+        <header>
+
+          <nav> 
+            <ul>
+              <li><h1 className="title">Rose Video</h1></li>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/library">Library</Link>
+              </li>
+              <li>
+                <Link to="/customers">Customers</Link>
+              </li>
+              <li>
+                <Link to="/search">Search</Link>
+              </li>
+            </ul>
+          </nav>
+        </header>
+       
+        <span className="selected" >
+          <span>Selected Video: { selectedVideo } </span>
+          <span>Selected Customer:  { selectedCustomerName }</span>
+          <span>{ selectedVideo !== null && selectedCustomerID !== null ? checkOutVideoBtn() : null }</span>
+        </span>
+        <div className="selected error-msg">
+          { errorMessage }
+        </div>
+        <main>
+            {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/library">
-            <Library url={localAPI} setSelectedVideoCallback={selectVideo} />
-          </Route>
-          <Route path="/customers">
-            <Customers url={localAPI} setCustomerIDCallback={selectCustomerID} setCustomerNameCallback={selectCustomerName} />
-          </Route>
-          <Route path="/search"  >
-            <Search url={localAPI} />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-        </Navbar>
-      </div>
+          <Switch>
+            <Route path="/library">
+              <Library url={localAPI} setSelectedVideoCallback={selectVideo} />
+            </Route>
+            <Route path="/customers">
+              <Customers url={localAPI} setCustomerIDCallback={selectCustomerID} setCustomerNameCallback={selectCustomerName} />
+            </Route>
+            <Route path="/search"  >
+              <Search url={localAPI} />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </main>
+      
+      </body>
     </Router>
-    </Container>
   );
 }
 
