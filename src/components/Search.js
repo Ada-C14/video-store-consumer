@@ -35,7 +35,7 @@ const Search = (props) => {
   }
 
   return (
-    <div className='form-control container' style={ { textAlign: 'center'} }>
+    <div className='form-control container' style={ { height: 'auto', textAlign: 'center' } }>
       <input className='form-control form-control-sm' type='text' value={ searchTerm } onChange={ editSearchTerm } placeholder='Enter a video title...' />
       <br></br>
       <h3>Here are the search results:</h3>

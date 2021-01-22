@@ -50,47 +50,47 @@ const App = () => {
         </h3>
       </nav>
 
-      <div className="CheckoutReturn">
-           { selectedVideo && selectedCustomer && <Checkout video={ selectedVideo.title } customer={ selectedCustomer } /> }
-           { selectedVideo && selectedCustomer && <Return video={ selectedVideo.title } customer={ selectedCustomer } /> }
-      </div>
+      <div className="p-3">
+        <div className="CheckoutReturn">
+          {selectedVideo && selectedCustomer && <Checkout video={selectedVideo.title} customer={selectedCustomer}/>}
+          {selectedVideo && selectedCustomer && <Return video={selectedVideo.title} customer={selectedCustomer}/>}
+        </div>
 
-      <Switch>
-        <Route path="/videos">
-          <Videos setSelectedVideoCallBack={ setSelectedVideoCallBack } />
-        </Route>
-        <Route path="/customers">
-          <Customers setSelectedCustomerCallBack={ setSelectedCustomerCallBack } />
-        </Route>
-        <Route path="/search">
-          <Search />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
-      </Switch>
+        <Switch>
+          <Route path="/videos">
+            <Videos setSelectedVideoCallBack={setSelectedVideoCallBack}/>
+          </Route>
+          <Route path="/customers">
+            <Customers setSelectedCustomerCallBack={setSelectedCustomerCallBack}/>
+          </Route>
+          <Route path="/search">
+            <Search/>
+          </Route>
+          <Route path="/">
+            <Home/>
+          </Route>
+        </Switch>
 
-
-
-      {
-        (selectedCustomer || selectedVideo) &&
-        <div className="container pt-4">
-          <div className="row">
-            <div className="col">
-              {
-                selectedCustomer &&
-                <DisplayCustomerDetail customer={ selectedCustomer } />
-              }
-            </div>
-            <div className="col">
-              {
-                selectedVideo &&
-                <DisplayVideoDetail video={ selectedVideo } />
-              }
+        {
+          (selectedCustomer || selectedVideo) &&
+          <div className="container pt-4">
+            <div className="row">
+              <div className="col">
+                {
+                  selectedCustomer &&
+                  <DisplayCustomerDetail customer={selectedCustomer}/>
+                }
+              </div>
+              <div className="col">
+                {
+                  selectedVideo &&
+                  <DisplayVideoDetail video={selectedVideo}/>
+                }
+              </div>
             </div>
           </div>
-        </div>
-      }
+        }
+      </div>
     </Router>
   );
 };
