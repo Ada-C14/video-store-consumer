@@ -2,11 +2,8 @@ import React, { useState } from 'react';
 import VideoLibrary from './VideoLibrary'
 import CustomerList from './CustomerList';
 import SearchResultList from './SearchResultList';
-<<<<<<< HEAD
 import Rental from './Rental';
-=======
 import './Store.css';
->>>>>>> master
 
 import {
     BrowserRouter as Router,
@@ -47,9 +44,6 @@ const Store = () => {
               <li className="nav-item">
                 <Link to="/library" className="nav-link">Library</Link>
               </li>
-              <li>
-                <Link to="/library">Rental</Link>
-              </li>
             </ul>
           </nav>
 
@@ -69,15 +63,13 @@ const Store = () => {
                 selectedVideo={selectedVideo}
               />
             </Route>
-            <Route path="/library">
+           
+            <Route path="/">
               <Rental 
                 customer={selectedCustomer}
                 video={selectedVideo}
               />
             </Route>
-            {/* <Route path="/">
-              <Home />
-            </Route> */}
           </Switch>
         </div>
       </Router>
