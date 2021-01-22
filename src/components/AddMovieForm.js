@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Video from './Video';
@@ -12,24 +12,9 @@ const AddMovieForm = (props) => {
   const { promisify } = require('util')
   const sleep = promisify(setTimeout)
 
-
   const [movieName, setMovieName] = useState('');
   const [videoList, setVideoList] = useState([]);
-  // const [runSearch, setRunSearch] = useState(false)
   const [errorMessage, setErrorMessage] = useState(null);
-
-  // useEffect((movieName) => {
-  //   console.log(movieName);
-  //   axios.get(BASE_URL + '/videos?query=' + movieName)
-  //     .then((response) => {
-  //       console.log(videoList);
-  //       setVideoList(response.data);
-  //     })
-  //     .catch((error) => {
-  //       setErrorMessage(error.message);
-  //       console.log(error.message);
-  //     });
-  // }, [runSearch]);
 
   const search = (movieName) => {
     sleep(2000).then(axios.get(BASE_URL + '/videos?query=' + movieName)
@@ -50,7 +35,7 @@ const AddMovieForm = (props) => {
   const onSearch = (event) => {
     setErrorMessage(null);
     event.preventDefault();
-    if (movieName != '') {
+    if (movieName !== '') {
       search(movieName);  
     }
     setMovieName('');
@@ -75,15 +60,9 @@ const AddMovieForm = (props) => {
       setErrorMessage('test')
     }
 
-    console.log(videoList);
-
-  
     return videoList.map((video, i) => {
       return(
       <li key={i}>
-        {/* <Video title={video.title} overview={video.overview} 
-        release_date={video.released_date} image_url={video.image_url} 
-        onAddLibraryCallback={addToLibrary} external_id={video.external_id}/> */}
         <Video video={video} onAddLibraryCallback={addToLibrary} 
         external_id={video.external_id}
         showButton={props.showButton}/>
@@ -91,29 +70,15 @@ const AddMovieForm = (props) => {
     )});
   }
     
-
   return (
     <div className="movie-search-page">
       <div className="movie-search-form">
-        {/* <form onSubmit={onSearch}>
+        <Form onSubmit={onSearch}>
         { errorMessage ? <div><h2 className="error-msg">{errorMessage}</h2></div> : '' }
           <div>
-            <label htmlFor="movieName">Movie Name:</label>
-            <input name="movieName" onChange={onMovieChange} value={movieName}/>
-          </div>
-          <input
-            type="submit"
-            value="Search"
-          />
-        </form> */}
-        <Form inline onSubmit={onSearch}>
-        { errorMessage ? <div><h2 className="error-msg">{errorMessage}</h2></div> : '' }
-          <div>
-            {/* <label htmlFor="movieName">Movie Name:</label> */}
             <FormControl type='text' placeholder='Search Movie' onChange={onMovieChange} value={movieName}/>
             <Button type="submit" variant="outline-info">Search</Button>
           </div>
-          
         </Form>
     </div>
     <div className="video-list">
@@ -124,7 +89,7 @@ const AddMovieForm = (props) => {
 }
 
 AddMovieForm.propTypes = {
-  
+  showButton: PropTypes.string.isRequired,
 };
 
 export default AddMovieForm;

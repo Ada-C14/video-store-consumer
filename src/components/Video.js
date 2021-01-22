@@ -7,11 +7,6 @@ import './Video.css'
 const Video = (props) => {
   const [status, setStatus] = useState('');
 
-
-  // const onInventoryChange = (event) => {
-  //   setInventory(event.target.value);
-  // };
-
   const onAddVideo = (event) => {
     setStatus(null);
     event.preventDefault();
@@ -33,14 +28,6 @@ const Video = (props) => {
           <li><h1>{props.video.title}</h1></li>
           <li><strong>Overview: </strong>{props.video.overview}</li>
           <li><strong>Release Date: </strong>{props.video.release_date}</li>
-          {/* <li>
-            <form onSubmit={onAddVideo}>
-            <div>
-              <label htmlFor="inventory">Inventory:</label>
-              <input name="inventory" onChange={onInventoryChange} value={inventory}/>
-            </div>
-            </form>
-      </li> */}
           <li>{button()}</li>
          { status ? <div><h2 className="video-status">{status}</h2></div> : '' }
         </div>
@@ -50,7 +37,8 @@ const Video = (props) => {
 }
 
 Video.propTypes = {
-
+  onAddLibraryCallback: PropTypes.func,
+  onSelectVideo: PropTypes.func,
 };
 
 export default Video;

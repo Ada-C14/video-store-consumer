@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 
@@ -17,18 +17,11 @@ const Customer = (props) => {
             <li><Button variant="outline-info" onClick={() => props.onSelectCustomer(props.customer.id, props.customer.name)}>Select Customer</Button></li>
         </div>
     </ul>
-    // <tr>
-    //     <td>{props.customer.name}</td>
-    //     <td>{props.customer.address}</td>
-    //     <td>{props.customer.phone}</td>
-    //     <td>{props.customer.account_credit}</td>
-    //     <td>{props.customer.videos_checked_out}</td>
-    // </tr>
     );
 }
 
 Customer.propTypes = {
-
+    onSelectCustomer: PropTypes.func.isRequired,
 };
 
 export default Customer;
