@@ -77,10 +77,10 @@ const App = () => {
       <div className="App">
         <Navbar fixed='top' bg="dark" variant="dark">
           <Nav className="mr-auto">
-            <Link to='/'>Home</Link>
-            <Link to='/library'>Library</Link>
-            <Link to='/customers'>Customers</Link>
-            <Link to='/search'>Search</Link>
+          <Nav.Link as={Link}to='/'>Home</Nav.Link>
+            <Nav.Link as={Link} to='/library'>Library</Nav.Link>
+            <Nav.Link as={Link} to='/customers'>Customers</Nav.Link>
+            <Nav.Link as={Link} to='/search'>Search</Nav.Link>
           </Nav>
           {checkoutMessageNav()}
           <Button variant="outline-info" onClick={checkOut}>Check Out</Button>
