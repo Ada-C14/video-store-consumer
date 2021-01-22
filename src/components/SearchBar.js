@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-// import './SearchBar.css'
+import './Search.css'
 
 const SearchBar = (props) => {
 
@@ -26,7 +26,7 @@ const SearchBar = (props) => {
   return (
 		<main>
 			<form onSubmit={ onSubmitHandler }>
-				<h1>Search for a Movie</h1>
+				<h1>Search for a Video</h1>
 				<div>
 					<div>
 						<input
