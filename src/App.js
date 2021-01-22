@@ -51,10 +51,6 @@ function App() {
           <button className="btn btn-outline-danger"><Link to="/customers">Customer Index</Link></button>
           <button className="btn btn-outline-danger"><Link to="/search">Search</Link></button>
           <Checkout baseUrl={BASE_URL} selectedCustomer={selectedCustomer} selectedVideo={selectedVideo} />
-          <ul>
-            <li>{selectedCustomer && selectedCustomer.name} </li>
-            <li>{selectedVideo && selectedVideo.title}</li>
-          </ul>
           </span>
           <br></br><br></br>
           <img src={divider} className="divider" alt="stars divider" />

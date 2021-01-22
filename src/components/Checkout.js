@@ -1,17 +1,20 @@
 import axios from 'axios';
-// {selectedCustomer, selectedVideo, baseUrl}
+import React, { useState } from 'react';
+import './Checkout.css';
+
 const Checkout = (props) => {
 
-  console.log(props.selectedCustomer)
-  console.log(props.selectedVideo)
-  console.log(props.baseUrl)
+  const [ checkoutSuccessMessage, setCheckoutSuccessMessage ] = useState(null)
+  const [ checkoutErrorMessage, setCheckoutErrorMessage ] = useState(null)
 
-const checkout = () => {
+  const checkout = () => {
 
-    const theFuture = new Date(new Date().getTime()+(7*24*60*60*1000));
+    if (props.selectedVideo === null || props.selectedVideo === null) {
+      setCheckoutErrorMessage(`Please select a customer & video!`)
+      return;
+    }
 
-    console.log(props.selectedCustomer)
-    console.log(props.baseUrl)
+  const theFuture = new Date(new Date().getTime()+(7*24*60*60*1000));
 
   axios.post(`${props.baseUrl}/rentals/${props.selectedVideo.title}/check-out`, {}, {
       params: {
@@ -20,6 +23,7 @@ const checkout = () => {
       }})        
       .then((response) => {
           console.log(response)
+          setCheckoutSuccessMessage(`Customer ${props.selectedCustomer.name} has checked out ${props.selectedVideo.title}`)
           })
       .catch((error) => {
 
@@ -27,12 +31,16 @@ const checkout = () => {
     }
 
     return (
-    <div>
-        <ul>
-            <li>{props.selectedCustomer && props.selectedCustomer.name} </li>
-            <li>{props.selectedVideo && props.selectedVideo.title}</li>
-        </ul>
-        <button onClick={checkout} className="btn btn-outline-primary">Checkout</button>
+    <div className="container">
+      <br></br>
+      <h5>Rental Checkout</h5>
+      { checkoutSuccessMessage ? <span><br></br><h5>{checkoutSuccessMessage}</h5></span> : <span /> }
+      { props.selectedVideo === null || props.selectedVideo === null ? <span><br></br><h5>{checkoutErrorMessage}</h5></span> : <span /> }
+        <div className="box w-50 container">
+              <h5>Selected Customer: { props.selectedCustomer ? props.selectedCustomer.name : <span>None</span> }</h5>
+              <h5>Selected Video: {props.selectedVideo ? props.selectedVideo.title : <span>None</span> }</h5>
+          <button onClick={checkout} className="btn btn-outline-primary">Checkout!</button>
+        </div>
     </div>
     )
   }
