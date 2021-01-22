@@ -5,11 +5,11 @@ Congratulations! You're submitting your assignment!
 Question | Answer
 :------------- | :-------------
 Paste a link to the PR for your API |
-For each person in your pair, describe something you learned from your partner during this project |
-What was one area of React you gained more clarity on during this assignment? |
-Describe how you solved the problem of having lists of movies that look mostly the same but have different content |
-Describe how you handled rentals with React |
-Describe a DOM event your application handled |
+For each person in your pair, describe something you learned from your partner during this project | CSS doesn't have to be ugly.  
+What was one area of React you gained more clarity on during this assignment? | Feel more confident in handling callbacks, useState, and developed a better understanding of useEffect.  Implimenting callbacks, and using Axios were also places we gained some clarity.  But you said 1, so let's stick with Axios requests.  
+Describe how you solved the problem of having lists of movies that look mostly the same but have different content | I'll tell you what we didn't do, use partials.  Created tables in the returns and used a generate method to display each object seperately.
+Describe how you handled rentals with React | Set states to hold the current customer and video (both params required to post to the API).  Created buttons, that triggered a callback function changing the states upon selections.  Handled in a component called checkout, which handled the post request and checked for param requirements being met.
+Describe a DOM event your application handled | ?? OnInputChange & OnFormSubmit - they were handled in our SearchForm component.  (Is 'DOM event' where we passed in event as a param?)...
 Did you use any functional stateless components? What for? |
 Did you use any container components? What for? |
-Do you have any recommendations on how we could improve this project for the next cohort? |
+Do you have any recommendations on how we could improve this project for the next cohort? | 
