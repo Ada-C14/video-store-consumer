@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+@font-face {
+  font-family: 'Press Start 2P', cursive;
+  src: url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+}
+
+.button {
+    size: 40px;
+    font-family: 'Press Start 2P', cursive;
+    height: 30px;
+    margin-left: 650px;
+}
+
+.cust_info {
+    padding-top: 10px;
+    margin: 2rem;
+}
+
+.error {
+    text-align: center;
+    padding-top: 30px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.rental-form {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
