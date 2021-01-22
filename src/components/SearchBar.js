@@ -15,7 +15,7 @@ const SearchBar = (props) => {
     >
       <label htmlFor="header-search">
         <span className="visually-hidden" >
-          Search Video Library
+          <h2>Search Video Library</h2>
         </span>
       </label>
       <input

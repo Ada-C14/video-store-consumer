@@ -11,6 +11,7 @@ import Library from './components/Library';
 import Customers from './components/Customers';
 import vhs from './VHS.jpg';
 import popcorn from './popcorn.png';
+import cow from './cow.png';
 import './App.css';
 import CheckOut from './components/CheckOut';
 import CheckIn from './components/CheckIn';
@@ -39,10 +40,11 @@ const App = () => {
     console.log(rental.dueDate)
     axios.post(`${BASE_URL}rentals/${rental.video.title}/check-out?customer_id=${rental.customer}&due_date=${rental.dueDate}`, rental)
     .then((response) => {
-      setErrorMessage('');
+      setErrorMessage(`Successufully checked out ${rental.video.title}`);
     })
     .catch((error) => {
-      setErrorMessage(error.message);
+      // setErrorMessage(error.message);
+      setErrorMessage(`Checkout unsuccessful`);
     });
 
     setSelectedVideo(null)
@@ -56,7 +58,7 @@ const App = () => {
     })
     .catch((error) => {
       // setErrorMessage(error.message);
-      setErrorMessage('Unable to find checkout!');
+      setErrorMessage(`Return unsuccessful: this customer didn't rent ${rental.video.title}`);
     });
 
     setSelectedVideo(null)
@@ -69,7 +71,7 @@ const App = () => {
         <header className="App-header">
           <img src={vhs} className="App-logo" alt="logo" />
 
-          <h1 className="App-title">Ting-Yi and Anya's Movie Shop!</h1>
+          <h1 className="App-title">🐮 The Moo-vie Shop! 🐮</h1>
         </header>
 
         <Navbar bg="dark" variant="dark">
@@ -86,6 +88,7 @@ const App = () => {
             <LinkContainer to='/search'>
               <Nav.Link>Search</Nav.Link>
             </LinkContainer>
+            
           </Nav>
 
           <div class='btn'>
@@ -100,42 +103,17 @@ const App = () => {
           </div>
           <div className='selection-statements'>
             <div className={selectedVideo ? 'selection' : 'no-selection'}>
-              <p>{ selectedVideo ? `Selected video: ${selectedVideo.title }` : 'Video not selected'}</p>
+              <p>{ selectedVideo ? `Video: ${selectedVideo.title }` : 'Video not selected'}</p>
             </div>
             <div className={selectedCustomer ? 'selection' : 'no-selection'}>
-              <p>{ selectedCustomer ? `Selected customer ID: ${selectedCustomer}` : 'Customer not selected'}</p>
+              <p>{ selectedCustomer ? `Customer ID: ${selectedCustomer}` : 'Customer not selected'}</p>
             </div>
           </div>
+
+
         </Navbar>
-
-        {/* <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          // <li>
-          //   <Link to="/search">Video Search</Link>
-          // </li>
-          <li>
-            <Link to="/library">Video Library</Link>
-          </li>
-          <li>
-            <Link to="/customers">Customer List</Link>
-          </li>
-        </ul> */}
-
-        {/* <div>
-          <CheckOut video={selectedVideo}
-                    customer={selectedCustomer}
-                    checkOutCallback={checkOut} />
-        </div> */}
-        {/* <div>
-          <CheckIn video={selectedVideo}
-                    customer={selectedCustomer}
-                    checkInCallback={checkIn} />
-        </div> */}
-
         <div>
-          <p>{errorMessage ? <div><h2 className="validation-errors-display">{errorMessage}</h2></div> : ''}</p>
+          <p>{errorMessage ? <div className="validation-errors-display">{errorMessage}</div> : ''}</p>
         </div>
 
 
@@ -169,6 +147,10 @@ export default App;
 
 function Home() {
   return (
-    <img src={popcorn} alt="logo" />)
+    <div>
+      <img src={popcorn} alt="movie snacks" />
+      <img src={cow} alt="cow" className='cow'/>
+    </div>
+    )
 
 }
