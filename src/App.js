@@ -104,9 +104,11 @@ const App = () => {
           </Route>
           <Route exact path="/customers">
             <CustomerList onSelectCustomer={handleCustomerChange} selectedCustomer={selectedCustomer}/>
+            <SelectedCustomer customer={selectedCustomer}/>
           </Route>
           <Route exact  path="/library">
             <VideoLibrary addRental={addRental} selectedCustomer={selectedCustomer}  onSelectVideo={handleVideoChange} selectedVideo={selectedVideo}/>
+            <SelectedVideo video={selectedVideo}/>
           </Route>
 
           <Route exact  path="/detail">
@@ -114,8 +116,6 @@ const App = () => {
           </Route>
         </Switch>
 
-        <SelectedVideo video={selectedVideo}/>
-        <SelectedCustomer customer={selectedCustomer}/>
 
       </Router>
     </div>

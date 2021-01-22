@@ -3,6 +3,7 @@ import Select from 'react-select'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 import CustomerList from './CustomerList'
+import {Container} from 'react-bootstrap'
 
 
 const SelectedCustomer = (props) => {
@@ -12,9 +13,15 @@ const SelectedCustomer = (props) => {
     return(
         customer &&(
         <div>
-            <h3>{customer.name}</h3>
-            <p>{customer.address}</p>
-            {/* <img>{image}</img> */}
+            <Container>
+                <h4>{customer.name}</h4>
+                <p>Customer ID# {customer.id}</p>
+                <p>{customer.phone}</p>
+                <p>Address: {customer.address} <br/> {customer.city}, {customer.state} {customer.postal_code}</p>
+
+                <p>Account Credit: {customer.account_credit}<br/>
+                Videos Checked Out: {customer.videos_checked_out_count}</p>
+            </Container>
         </div>
         ))
     }

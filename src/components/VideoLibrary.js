@@ -3,6 +3,7 @@ import Select from 'react-select'
 import PropTypes from 'prop-types'
 import axios from 'axios';
 import {Container} from 'react-bootstrap'
+import SelectedVideo from './SelectedVideo';
 
 
 const VideoLibrary = (props) => {

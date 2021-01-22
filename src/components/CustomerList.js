@@ -30,20 +30,19 @@ const CustomerList = (props) => {
       <div>
         <Container>
           <h3>All Customers</h3>
-          <h4>Search or Select a Customer: </h4>
-         
-        <Select
-                    value={props.selectedCustomer}
-                    onChange={props.onSelectCustomer}
-                    options={customers.map((customer, index) => {
-                    
-                    return {
-                    label: customer.name,
-                    value: customer,
-                    key: index
-                    };
-                    })}
-                /> 
+          <h4>Search or Select a Customer: </h4> 
+          <Select
+                      value={props.selectedCustomer}
+                      onChange={props.onSelectCustomer}
+                      options={customers.map((customer, index) => {
+                      
+                      return {
+                      label: customer.name,
+                      value: customer,
+                      key: index
+                      };
+                      })}
+                  /> 
         </Container>
       </div>
   )  
