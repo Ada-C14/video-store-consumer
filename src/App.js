@@ -5,6 +5,7 @@ import { NavLink, Switch, Route } from 'react-router-dom';
 import VideoLibrary from './components/VideoLibrary';
 import VideoSearch from './components/VideoSearch';
 import CustomerList from './components/CustomerList';
+import PostToRails from './components/PostToRails';
 
 
 const App = () => {
@@ -13,6 +14,10 @@ const [selectedVideoTitle, setSelectedVideoTitle] = useState('');
 
 const [selectedCustomerID, setSelectedCustomerID] = useState('');
 const [selectedCustomerName, setSelectedCustomerName] = useState('');
+
+const [message, setMessage] = useState('');
+
+
 
 // 1. pass down function all the way to entry
 // 2. make button to be able to select them
@@ -27,6 +32,19 @@ const onClickCustomerListCallback = (customer) => {
   setSelectedCustomerID(customer.id);
   setSelectedCustomerName(customer.name);
   console.log('onClickCustomerListCallback called')
+}
+
+const onSuccessfulRental = () => {
+  setMessage('');
+  setSelectedCustomerID('');
+  setSelectedCustomerName('');
+  setSelectedVideoID('');
+  setSelectedVideoTitle('');
+  setMessage(`You successfully checked out!`)
+}
+
+const onFailedRental = () =>{
+  setMessage('Rental incomplete.  Make sure to select a video and customer.')
 }
 
 
@@ -53,6 +71,7 @@ const Main = () => (
 const Home = () => (
   <div className='home'>
     <h1>Welcome to Video Store</h1> 
+    <PostToRails video={selectedVideoTitle} customer={selectedCustomerID} onSuccessfulRental={onSuccessfulRental} onFailedRental={onFailedRental}/> 
   </div>
 );
 
@@ -82,6 +101,7 @@ return(  <div className='app'>
 <h1>Leah and Mackenzie's Video Store</h1>
 <h3> {selectedVideoTitle !== '' ? `Selected Video: ${selectedVideoTitle}` : null} </h3>
 <h3> {selectedCustomerName !== '' ? `Selected Customer: ${selectedCustomerName}` : null} </h3>
+<h3> {message !== '' ? message : null} </h3> 
 <Navigation />
 <Main />
 </div>
