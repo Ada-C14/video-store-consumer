@@ -32,7 +32,7 @@ const VideoList = (props) => {
   }, [props.keyWord]);
 
   const addVideo = (video) => {
-    axios.post(`${props.url}${props.focus}?external_id=${video.externalId}&release_date=${video.releaseDate}&image_url=${video.imageUrl}`, video)
+    axios.post(`${props.url}${props.focus}`, video)
     .then((response) => {
       setErrorMessage(`"${video.title}" is added`);
     })
