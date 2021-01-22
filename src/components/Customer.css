@@ -1,0 +1,9 @@
+.customer {
+  display: flex;
+  text-align: center;
+  margin: 2rem;
+}
+
+.select-button {
+  margin-left: 1rem;
+}

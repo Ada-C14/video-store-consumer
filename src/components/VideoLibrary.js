@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Video from './Video';
 
-
 const VideoLibrary = (props) => {
     console.log(props.videos);
     const videoComponents = props.videos.map(video => {

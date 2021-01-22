@@ -25,10 +25,6 @@ const Customers = (props) => {
       id={cust.id}
       name={cust.name}
       onClickCallback={props.onClickCallback}
-      // overview={cust.overview}
-      // release_date={cust.releaseDate}
-      // image_url={cust.imageUrl}
-      // external_id={cust.externalId} 
       key={cust.id} 
     />);
   });
