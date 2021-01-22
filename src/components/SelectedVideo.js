@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 // import './SelectedVideo.css';
+import { Navbar, Nav, NavLink,Form, FormControl, Button, Image, Table } from 'react-bootstrap'
 
 const SelectedVideo = (props) => {  
   return (
-    <div>
-      <tr>
-        <th>Title</th>  
-        <th>Overview</th>
-        <th>Release Date</th>
-        <th>Inventory</th>
-        <th>Available Inventory</th>
-      </tr>
-      <tr>
-        <td>{props.title}</td>
-        <td>{props.selectedVideo.overview}</td>
-        <td>{props.selectedVideo.release_date}</td>
-        <td>{props.selectedVideo.inventory}</td>
-        <td>{props.selectedVideo.available_inventory}</td>
-      </tr>
-    </div>
+    <Table striped bordered hover variant='light'>
+      <thead>
+        <tr>
+          <th>Title</th>  
+          <th>Overview</th>
+          <th>Release Date</th>
+          <th>Inventory</th>
+          <th>Available Inventory</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{props.selectedVideo.title}</td>
+          <td>{props.selectedVideo.overview}</td>
+          <td>{props.selectedVideo.release_date}</td>
+          <td>{props.selectedVideo.inventory}</td>
+          <td>{props.selectedVideo.available_inventory}</td>
+        </tr>
+      </tbody>
+    </Table>
   );
 };
 
