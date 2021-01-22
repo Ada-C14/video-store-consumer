@@ -14,6 +14,9 @@ function AppRouter() {
 
   const [selectCustomer, setSelectCustomer] = useState(undefined);
   const [selectVideo, setSelectVideo] = useState(undefined);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [successMessage, setSucessMessage] = useState(null);
+
 
   const rentalButton = () => {
     if (!(selectVideo.id === null) && !(selectCustomer.id) === null) {
@@ -27,11 +30,11 @@ function AppRouter() {
       // eslint-disable-next-line camelcase
       { customer_id: selectCustomer.id, due_date: dueDate.toISOString() })
       .then(response => {
-        alert('video checked out!')
+        setSucessMessage(`Video checked out! Return date: ${dueDate}`)
       })
       .catch(error => {
         console.log(error)
-        alert('Failed to check out');
+        setErrorMessage('Failed to check out');
       });
   };
 
@@ -52,15 +55,21 @@ function AppRouter() {
               {selectCustomer && <div className='selected-item'>Selected Customer: {selectCustomer.name}</div>}
               {selectVideo && <div className='selected-item'>Selected Video: {selectVideo.title}</div>}
               <button onClick={rentalButton}>Checkout</button>
+              {successMessage ?
+                <div>
+                  <h3 className="validation-errors-display">{successMessage}</h3>
+                </div> : ''}
+              {errorMessage ?
+                <div>
+                  <h3 className="validation-errors-display">{errorMessage}</h3>
+                </div> : ''}
             </div>
           </div>
         </header>
 
-        <main></main>
-
         <Switch>
           <Route path="/search">
-            <Search  />
+            <Search />
           </Route>
           <Route path="/library">
             <Library onSelectVideoCallback={setSelectVideo} />
@@ -73,13 +82,14 @@ function AppRouter() {
           </Route>
         </Switch>
       </div>
-
+      <main></main>
       <footer className='app-footer'>
-        <p> &copy; AM Video Store - 2021</p>
+        <p> &copy; A & M Video Store - 2021</p>
       </footer>
 
     </Router>
   );
 }
+
 
 export default AppRouter;
