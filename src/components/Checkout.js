@@ -4,7 +4,7 @@ const BASE_URL = 'http://localhost:3000/rentals';
 const axios = require('axios');
 
 const Checkout = (props) => {
-  const [CheckoutMessage, setCheckoutMessage] = useState('');
+  const [checkoutMessage, setCheckoutMessage] = useState('');
 
   const checkoutVideo = () => {
     if (!props.video) {
@@ -39,7 +39,7 @@ const Checkout = (props) => {
       <button className='Checkout-checkIn-checkOut MainButton' onClick={ onSubmitCheckout }>
       Check Out Video
       </button>
-      <p>{ CheckoutMessage }</p>
+      <p>{ checkoutMessage }</p>
     </span>
   );
 }

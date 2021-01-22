@@ -47,24 +47,12 @@ const App = () => {
             <Link className="nav-link" to="/videos">Videos</Link>
           </li>
         </ul>
-        
-        <ul>
-        <li className="nav-item">
-            <Link className="nav-link" to="/checkout">Check-Out</Link>
-        </li>
-        <li className="nav-item">
-            <Link className="nav-link" to="/return">Return</Link>
-        </li>
-        </ul>
         </h3>
       </nav>
 
       <div className="CheckoutReturn">
-           { selectedVideo && <Checkout video={ selectedVideo.title } customer={ selectedCustomer } /> }
-           { selectedVideo && <Return video={ selectedVideo.title } customer={ selectedCustomer } /> }
-           {/* { selectedVideo && <button className="MainButton" onClick = {this.onClearSelection.bind(this)}>Clear Video/Customer</button> } */}
-           {/* { selectedVideo && <p className = "ShowSelected">  <Videos />  Video: {selectedVideo.title}</p> }
-           { selectedCustomer && <p className = "ShowSelected"> <Customers/> Customer: {selectedCustomer.name}</p> } */}
+           { selectedVideo && selectedCustomer && <Checkout video={ selectedVideo.title } customer={ selectedCustomer } /> }
+           { selectedVideo && selectedCustomer && <Return video={ selectedVideo.title } customer={ selectedCustomer } /> }
       </div>
 
       <Switch>

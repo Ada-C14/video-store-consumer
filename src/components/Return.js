@@ -4,7 +4,7 @@ const BASE_URL = 'http://localhost:3000/rentals';
 const axios = require('axios');
 
 const Return = (props) => {
-  const [ReturnMessage, setReturnMessage] = useState();
+  const [returnMessage, setReturnMessage] = useState();
 
 
   const onSubmitReturn = () => {
@@ -15,8 +15,8 @@ const Return = (props) => {
 
 axios.post(`${BASE_URL}/${props.video}/return`, {}, {
     params: {
-        'customer_id': props.customer.id,
-        'due_date': formattedDueDate,
+        'customer_id': props.customer.id
+        
     }
     }).then((response) => {
     setReturnMessage(props.customer.name + ' returned: ' + props.video );
@@ -30,10 +30,10 @@ axios.post(`${BASE_URL}/${props.video}/return`, {}, {
 
 return(
     <span>
-      <button className='Checkout-checkIn-checkOut MainButton' onClick={ onSubmitCheckout }>
+      <button className='Checkout-checkIn-checkOut MainButton' onClick={ onSubmitReturn }>
       Return Video
       </button>
-      <p>{ CheckoutMessage }</p>
+      <p>{ returnMessage }</p>
     </span>
   );
 }
