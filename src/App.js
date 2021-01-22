@@ -4,6 +4,7 @@ import {
   Switch,
   Route,
   Link,
+  withRouter,
 } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
@@ -74,29 +75,46 @@ const App = () => {
       <button onClick={ checkOutVideo } >Check Out</button>
     )
   }
-
+    const link = {
+      color: 'white',
+      backgroundColor: 'lightPink',
+      padding: '3px',
+      fontFamily: 'Arial'
+    };
+    const selection = {
+      color: 'white',
+      backgroundColor: 'lightPink',
+      padding: '3px',
+      fontFamily: 'Arial'
+    }
+    const logo = {
+      color: 'pink',
+      font: 'times',
+      
+    }
+    
   return (
     <Container>
     <Router>
       <div>
       <Navbar bg="light" expand="lg">
-      <Navbar.Brand href="#home">R&R Video</Navbar.Brand>
+      <Navbar.Brand style={logo} href="#home">R&R Video</Navbar.Brand>
       {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
         <Nav className="mr-auto">
             <li>
-              <Link to="/">Home</Link>
+              <Link style={link} to="/">Home</Link>
             </li>
             <li>
-              <Link to="/library">Library</Link>
+              <Link style={link} to="/library">Library</Link>
             </li>
             <li>
-              <Link to="/customers">Customers</Link>
+              <Link  style={link} to="/customers">Customers</Link>
             </li>
             <li>
-              <Link to="/search">Search</Link>
+              <Link style={link} to="/search">Search</Link>
             </li>
           </Nav>
-          <span>
+          <span style={selection}>
             Selected Video: { selectedVideo } 
             Selected Customer:  { selectedCustomerName }
             { selectedVideo !== null && selectedCustomerID !== null ? checkOutVideoBtn() : null }
