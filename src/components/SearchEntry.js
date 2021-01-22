@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 const LibraryEntry = (props) => {
     return (
     <div> 
-        <p>
+        <h5>{props.title}</h5>
+        <img src={props.image_url} alt={props.title}/>
+        {/* <p>
         <button 
-            onClick={() => {props.libraryCallback(
+            onClick={() => {props.searchCallback(
             {id: props.id, 
             title: props.title}
             )
@@ -16,7 +18,7 @@ const LibraryEntry = (props) => {
             <img src={props.image_url} alt={props.title}/>
             <p>Select {props.title}</p>
         </button>
-        </p>
+        </p> */}
     </div>
     )
     

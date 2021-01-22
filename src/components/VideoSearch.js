@@ -24,7 +24,7 @@ const VideoSearch = (props) => {
         setErrors(error.message);
         console.log(error.message);
         })
-    }, [submit])
+    }, [submit, fullUrl])
 
     const onSearchChange = (event) => {
         setQuery(event.target.value);
