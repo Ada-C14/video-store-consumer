@@ -37,7 +37,7 @@ const VideoLibrary = (props) => {
     <div className='videoLibrary'>
       <ul>
         {videos.map( (video) => {
-          return (<li key={video.id}>{<LibraryEntry id={video.id} title={video.title} libraryCallback={props.libraryCallback}/>}</li>);
+          return (<li key={video.id}>{<LibraryEntry id={video.id} title={video.title} image_url={video.image_url} libraryCallback={props.libraryCallback}/>}</li>);
           })
         }
       </ul>
