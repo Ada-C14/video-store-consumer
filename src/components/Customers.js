@@ -7,35 +7,35 @@ const baseURL = 'http://localhost:3000'
 
 const Customers = (props) => {
   const [customerList, setCustomerList] = useState([]);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
     axios.get(baseURL + '/customers')
       .then(response => {
         setCustomerList(response.data);
+        setErrorMessage('');
       })
-      .catch(() => {
-        alert('Failed to select customers');
+      .catch((error) => {
+        setErrorMessage(error.message);
       });
   }, []);
 
   return (
-    <main>
     <div>
+      { errorMessage ? <div><h2 className="validation-errors-display">{errorMessage}</h2></div> : ''}
       <h2>Customers List</h2>
       <table className="customers-table">
         {customerList.map((customer) => (
           <React.Fragment key={customer.id}>
             <tr></tr>
             <td className='customers-table-name'>{customer.name}</td>
-            <td className='customers-table-phone'>{customer.phone}</td>
-            <td className='customers-table-ac-cred'>{customer.account_credit}</td>
-            <td className='customers-table'><button onClick={() => props.onSelectCustomerCallback(customer)}>Select</button></td>
+            <td className='customers-table-name'>{customer.account_credit}</td>
+            <td className='customers-table-select'><button onClick={() => props.onSelectCustomerCallback(customer)}>Select</button></td>
           </React.Fragment>
         ))
         }
       </table>
     </div>
-    </main>
   )
 }
 

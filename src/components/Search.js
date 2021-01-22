@@ -10,9 +10,10 @@ const Search = (props) => {
 
   const [searchResult, setSearchResult] = useState([]);
   const [videoList, setVideoList] = useState([]);
-  
-  const videoApi = (searchTitle) => {
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [successMessage, setSucessMessage] = useState(null);
 
+  const videoApi = (searchTitle) => {
     axios.get(baseURL, {
       params: {
         query: searchTitle
@@ -20,10 +21,10 @@ const Search = (props) => {
     })
       .then((response) => {
         setSearchResult(response.data);
-
+        setErrorMessage('');
       })
-      .catch(() => {
-        alert('Failed to search video');
+      .catch((error) => {
+        setErrorMessage(error.message);
       });
   };
 
@@ -38,35 +39,39 @@ const Search = (props) => {
         const updateVideoList = videoList;
         updateVideoList.push(video);
         setVideoList(updateVideoList);
-        alert('Video added to the library');
+        setSucessMessage('Video successfull added to the library');
       })
       .catch(error => {
         console.log(error)
-        alert('This video cannot be added to the library');
+        setErrorMessage('This video is already added to the library');
       });
   };
 
   return (
-    <main>
     <div>
-      <table className='videos-table'>
-       
-      <SearchBar addSearchCallback={videoApi} />
-
-      {searchResult.map((video) => (
+      { successMessage ?
         <div>
-           <tr>
-          <td className='.videos-table-title'>{video.title}</td>
-        <td className='videos-table-select'><button key={video.external_id} onClick={() => addVideoLibrary(video)}>Add to Library</button></td>
-        </tr>
-        </div>
-      ))
-      }
+          <h2 className="validation-errors-display">{successMessage}</h2>
+        </div> : ''}
+      { errorMessage ?
+        <div>
+          <h2 className="validation-errors-display">{errorMessage}</h2>
+        </div> : ''}
+      <SearchBar addSearchCallback={videoApi} />
+      <h2>Add Videos to Library</h2>
+      <table className='videos-table'>
+        {searchResult.map((video) => (
+          <React.Fragment key={video.ext}>
+            <tr></tr>
+            <td className='.videos-table-title'>{video.title}</td>
+            <td className='videos-table-select'><button onClick={() => addVideoLibrary(video)}>Add to Library</button></td>
+          </React.Fragment>
+        ))
+        }
       </table>
     </div>
-    </main>
   )
-  
+
 }
 
 Search.propTypes = {

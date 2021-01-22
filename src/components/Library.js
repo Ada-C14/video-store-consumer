@@ -7,26 +7,30 @@ const baseURL = 'http://localhost:3000'
 
 const Library = (props) => {
   const [videoList, setVideoList] = useState([]);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
     axios.get(baseURL)
       .then(response => {
         setVideoList(response.data);
+        setErrorMessage('');
       })
-      .catch(() => {
-        alert('Failed to select videos');
+      .catch((error) => {
+        setErrorMessage(error.message);
       });
   }, []);
 
   return (
     <div>
+      { errorMessage ? <div><h2 className="validation-errors-display">{errorMessage}</h2></div> : ''}
       <h2> Videos Library</h2>
       <table className="videos-table">
         {videoList.map((video) => (
           <React.Fragment key={video.id}>
             <tr></tr>
             <td className='videos-table-title'>{video.title}</td>
-            <td className='videos-table-select'><button onClick={() => props.onSelectVideoCallback(video)}>Select</button></td>
+            <td className='videos-table-title'>{video.release_date}</td>
+            <td><button onClick={() => props.onSelectVideoCallback(video)}>Select</button></td>
           </React.Fragment>
         ))
         }
@@ -37,6 +41,6 @@ const Library = (props) => {
 
 Library.propTypes = {
   onSelectVideoCallback: PropTypes.func.isRequired,
-videoList: PropTypes.array.isRequired
+  videoList: PropTypes.array.isRequired
 }
 export default Library;
