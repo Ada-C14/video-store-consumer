@@ -69,8 +69,8 @@ export default function App() {
 
   return (
     <Router>
-      <div>
-        <span>Video to Checkout: { selectedVideo ? selectedVideo.title : 'has not been selected'}{'; '}
+      <div className="App-header">
+        <span className='App-title'>Video to Checkout: { selectedVideo ? selectedVideo.title : 'has not been selected'}{'; '}
         Customer: { selectedCustomer ? selectedCustomer.name: 'has not been selected'}{' '}</span>
 
         {selectedVideo && selectedCustomer && (
@@ -80,7 +80,7 @@ export default function App() {
         )
         }
 
-        <nav>
+        <nav className='topnav'>
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -119,38 +119,5 @@ export default function App() {
   );
 }
 
-// function Home() {
-//   return <h2>Home</h2>;
-// }
 
-// // re-named to customer singular (problem with import Customers otherwise
-// function Customer() {
-//   return <h2>Customers</h2>;
-// }
-
-// function Search() {
-//   return <h2>Search</h2>;
-// }
-
-// function Library() {
-//   return <h2>Library</h2>;
-// }
-
-// class App extends Component {
-//   render() {
-//     return (
-//       <div className="App">
-//         <header className="App-header">
-//           <img src={logo} className="App-logo" alt="logo" />
-//           <h1 className="App-title">Welcome to React</h1>
-//         </header>
-//         <p className="App-intro">
-//           To get started, edit <code>src/App.js</code> and save to reload.
-//         </p>
-//       </div>
-//     );
-//   }
-// }
-
-// export default App;
 

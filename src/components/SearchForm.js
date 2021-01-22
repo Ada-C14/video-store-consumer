@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import './SearchForm.css'
 
 const SearchForm = ({ getVideo }) => {
   const initState = {
@@ -20,14 +21,14 @@ const SearchForm = ({ getVideo }) => {
   }
 
   return (
-    <div>
-      <h1>Search for Video:</h1>
+    <div className='background'>
+      <h1>Search for Video</h1>
       <form
         className="new-video-form__form"
         onSubmit={onFormSubmit}>
         <label
           className="new-video-form__form-label">
-          Title:</label>
+          Title    </label>
         <textarea
           name='text'
           placeholder='ex: The Land before Time'

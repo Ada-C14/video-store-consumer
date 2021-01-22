@@ -1,0 +1,22 @@
+.new-video-form__form-button  {
+  background: rgb(59, 58, 58);
+  border-radius: 8px;
+  color: white;
+}
+
+.background {
+  color:rgb(59, 58, 58);
+}
+
+.blankInput {
+  background-color: rgb(170, 83, 220)
+}
+
+.typedInput {
+  background-color: rgb(91, 184, 153)
+}
+
+textarea {
+  outline: none;
+  border: 1px solid #888;
+}
