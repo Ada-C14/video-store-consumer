@@ -87,10 +87,7 @@ const App = () => {
               <Nav.Link>Search</Nav.Link>
             </LinkContainer>
           </Nav>
-          {/* <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="outline-info">Search</Button>
-          </Form> */}
+
           <div class='btn'>
             <CheckOut video={selectedVideo}
                         customer={selectedCustomer}
@@ -100,6 +97,14 @@ const App = () => {
             <CheckIn video={selectedVideo}
                       customer={selectedCustomer}
                       checkInCallback={checkIn} />
+          </div>
+          <div className='selection-statements'>
+            <div className={selectedVideo ? 'selection' : 'no-selection'}>
+              <p>{ selectedVideo ? `Selected video: ${selectedVideo.title }` : 'Video not selected'}</p>
+            </div>
+            <div className={selectedCustomer ? 'selection' : 'no-selection'}>
+              <p>{ selectedCustomer ? `Selected customer ID: ${selectedCustomer}` : 'Customer not selected'}</p>
+            </div>
           </div>
         </Navbar>
 
@@ -132,12 +137,7 @@ const App = () => {
         <div>
           <p>{errorMessage ? <div><h2 className="validation-errors-display">{errorMessage}</h2></div> : ''}</p>
         </div>
-        <div className={selectedVideo ? 'selection' : 'no-selection'}>
-          <p>{ selectedVideo ? `Selected video: ${selectedVideo.title }` : 'Video not selected'}</p>
-        </div>
-        <div className={selectedCustomer ? 'selection' : 'no-selection'}>
-          <p>{ selectedCustomer ? `Selected customer ID: ${selectedCustomer}` : 'Customer not selected'}</p>
-        </div>
+
 
         <Switch>
           <Route path="/search" component={Search}>

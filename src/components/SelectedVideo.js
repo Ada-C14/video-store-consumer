@@ -5,7 +5,7 @@ import { Navbar, Nav, NavLink,Form, FormControl, Button, Image, Table } from 're
 
 const SelectedVideo = (props) => {  
   return (
-    <Table striped bordered hover variant='light'>
+    <Table striped bordered hover variant='dark' size='sm'>
       <thead>
         <tr>
           <th>Title</th>  

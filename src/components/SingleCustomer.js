@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Navbar, Nav, NavLink,Form, FormControl, Button, Image } from 'react-bootstrap'
 
 const SingleCustomer = (props) => {
   const onSelect = (event) => {
@@ -10,7 +11,13 @@ const SingleCustomer = (props) => {
   }
 
   return (
-    <tr>
+      <tr>
+      <th>
+        <Button
+          onClick={onSelect}>
+            Select
+        </Button>
+      </th>
       <th>{props.id}</th>  
       <th>{props.name}</th>
       <th>{props.accountCredit}</th>
@@ -21,12 +28,6 @@ const SingleCustomer = (props) => {
       <th>{props.postalCode}</th>
       <th>{props.phone}</th>
       <th>{props.registeredAt}</th>
-      <th>
-        <button
-          onClick={onSelect}>
-            Select
-        </button>
-      </th>
     </tr>
   )
 }

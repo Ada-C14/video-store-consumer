@@ -1,5 +1,6 @@
 import React from 'react';
 import './SearchBar.css';
+import { Navbar, Nav, NavLink,Form, FormControl, Button, Image } from 'react-bootstrap'
 
 const SearchBar = (props) => {
 
@@ -13,7 +14,7 @@ const SearchBar = (props) => {
       onSubmit={clearSubmit}
     >
       <label htmlFor="header-search">
-        <span className="visually-hidden">
+        <span className="visually-hidden" >
           Search Video Library
         </span>
       </label>
@@ -25,7 +26,7 @@ const SearchBar = (props) => {
         placeholder="Search Video Library"
         name="s"
       />
-      <button type="submit">Clear Search</button>
+      <Button type="submit">Clear Search</Button>
     </form>
   );
 };

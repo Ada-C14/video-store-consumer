@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import { Table } from 'react-bootstrap'
 import SelectedVideo from './SelectedVideo'
+import { Navbar, Nav, NavLink,Form, FormControl, Button, Image } from 'react-bootstrap'
 
 
 const Library = (props) => {
@@ -35,17 +36,17 @@ const Library = (props) => {
   const renderTableData = videoLibrary.map((video) => {
     return (
       <tr key={video.id}>
+        <td>
+          <Button className='table-button'
+            onClick={() => selectVideo(video.title)}
+          >
+            Select
+          </Button>
+        </td>
         <td>{video.id}</td>
         <td>{video.title}</td>
         <td>{video.overview}</td>
         <td>{video.release_date}</td>
-        <td>
-          <button
-            onClick={() => selectVideo(video.title)}
-          >
-            Select
-          </button>
-        </td>
       </tr>
     )
   });
@@ -59,11 +60,11 @@ const Library = (props) => {
         <Table striped bordered hover variant="light">
           <thead>
             <tr>
+              <th>Select</th>
               <th>Video ID</th>  
               <th>Title</th>
               <th>Overview</th>
               <th>Release Date</th>
-              <th>Select</th>
             </tr>
           </thead>
           <tbody>  

@@ -50,17 +50,17 @@ const Customers = (props) => {
       <Table striped bordered hover variant="light">
         <thead>
           <tr>
+            <th>Select</th>
             <th>Id</th>  
             <th>Name</th>
             <th>Account Credit</th>
-            <th>Videos Checked out Count</th>
+            <th># of Videos Out</th>
             <th>Address</th>
             <th>City</th>
             <th>State</th>
             <th>Postal Code</th>
-            <th>Phone#</th>
+            <th>Phone #</th>
             <th>Registered At</th>
-            <th>Select</th>
           </tr>
         </thead>
         <tbody>

@@ -15,7 +15,7 @@ const Search = (props) => {
   return (
     <div className="App">
       <header>
-        <h1>Search Video library</h1>
+        <h2>Search Video Library</h2>
       </header>
       <SearchBar searchQuery={searchQuery}
                  setSearchQuery={setSearchQuery}
