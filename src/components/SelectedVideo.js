@@ -8,7 +8,8 @@ const SelectedVideo = (props) => {
     <Table striped bordered hover variant='dark' size='sm'>
       <thead>
         <tr>
-          <th>Title</th>  
+          <th>Title</th> 
+          <th>Image</th>  
           <th>Overview</th>
           <th>Release Date</th>
           <th>Inventory</th>
@@ -18,6 +19,7 @@ const SelectedVideo = (props) => {
       <tbody>
         <tr>
           <td>{props.selectedVideo.title}</td>
+          <td><img src={props.selectedVideo.image_url} alt={props.selectedVideo.title} /></td>
           <td>{props.selectedVideo.overview}</td>
           <td>{props.selectedVideo.release_date}</td>
           <td>{props.selectedVideo.inventory}</td>
