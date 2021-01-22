@@ -54,21 +54,19 @@
 
 .nav a {
   text-shadow: 3px 0 0 #000, 0 -1px 0 #000, 0 3px 0 #000, -1px 0 0 #000;
-  color: #6cefeb;
+  color: #eb7cac;
   text-decoration: none;
   font-family: 'Press Start 2P', cursive;
   font-size: 1.25rem;
 }
 
 .selected {
-  /* background-color: black; */
   padding-right: 30px;
   background-color: white;
 }
 
 li {
-  
-  color: pink;
+  color: #6cefeb;
   display: inline;
   font-family: 'Press Start 2P', cursive;
   /* color: pink; */

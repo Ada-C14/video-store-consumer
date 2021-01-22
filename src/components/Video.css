@@ -1,12 +1,14 @@
 .video {
-    display: flex;
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
-.video, .video-description {
-    margin: 2rem;
+.movie-title {
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
-.button {
-    align-self: start;
-    font-family: 'Permanent Marker', Helvetica, sans-serif;
+.release-year {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
 }

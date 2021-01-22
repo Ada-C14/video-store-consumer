@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Video from './Video';
 import axios from 'axios';
 
+import './VideoLibrary.css'
+
 const VideoLibrary = (props) => {
     const [videoList, setVideoList] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
@@ -35,7 +37,7 @@ const VideoLibrary = (props) => {
         <div>
             <h2 className="header">📼 Library 📼</h2>
             {errorMessage ? <p className="error-msg">{errorMessage}</p> : ''}
-            {videoComponents}
+            <div className="grid-container">{videoComponents}</div>
         </div>
     );
 }
