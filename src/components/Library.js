@@ -27,6 +27,7 @@ const Library = (props) => {
         const newSelectedVideo = response.data
         props.selectVideoCallback(newSelectedVideo)
         setErrorMessage(`Success! Selected ${ title }`);
+        // setErrorMessage(` Selected ${ title }`);
       })
       .catch((error) => {
         setErrorMessage(`Unable to select "${ title }"`);
