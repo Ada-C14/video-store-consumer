@@ -22,7 +22,7 @@ function AppRouter() {
 
     const dueDate = new Date();
     dueDate.setDate(dueDate.getDate() + 10);
-    
+
     axios.post(`${baseURL}/rentals/${selectVideo.title}/check-out`,
       // eslint-disable-next-line camelcase
       { customer_id: selectCustomer.id, due_date: dueDate.toISOString() })
@@ -60,7 +60,7 @@ function AppRouter() {
 
         <Switch>
           <Route path="/search">
-            <Search />
+            <Search  />
           </Route>
           <Route path="/library">
             <Library onSelectVideoCallback={setSelectVideo} />

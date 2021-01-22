@@ -28,10 +28,11 @@ const Search = (props) => {
   };
 
   const addVideoLibrary = (video) => {
+    console.log(video)
     axios({
       method: 'post',
       url: `${baseURL}/videos`,
-      body: video
+      params: video
     })
       .then((response) => {
         const updateVideoList = videoList;

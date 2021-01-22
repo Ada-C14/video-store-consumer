@@ -27,6 +27,8 @@ const Customers = (props) => {
           <React.Fragment key={customer.id}>
             <tr></tr>
             <td className='customers-table-name'>{customer.name}</td>
+            <td className='customers-table-phone'>{customer.phone}</td>
+            <td className='customers-table-ac-cred'>{customer.account_credit}</td>
             <td className='customers-table'><button onClick={() => props.onSelectCustomerCallback(customer)}>Select</button></td>
           </React.Fragment>
         ))
