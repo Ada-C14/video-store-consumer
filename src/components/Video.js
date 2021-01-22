@@ -7,10 +7,10 @@ const Video = (props) => {
         <div className="video">
             <img src={props.imageUrl} alt={props.title} />
             <div className="video-description">
-                <h5>{props.title}</h5>
+                <h3>{props.title}</h3>
                 <p>{props.releaseDate}</p>
-                <h6>{props.overview}</h6>
-                <button className="button" id={props.id} onClick={() => props.onClickCallback(props)}>Select</button>
+                <p>{props.overview}</p>
+                <button onClick={() => props.onClickCallback(props)}>Select</button>
             </div>
         </div>
     )
