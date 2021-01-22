@@ -22,6 +22,37 @@
   font-size: large;
 }
 
+.App-cart {
+  float: right;
+  width: 25%;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 12px;
+  padding: 20px;
+}
+
+.Nav-bar {
+  list-style-type: none;
+  margin: 0;
+  overflow: hidden;
+  background-color: 000000;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li {
+  float: left;
+  display: inline;
+  float: left;
+  width: 25.0%;
+  color: white;
+  font-size: large;
+
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
