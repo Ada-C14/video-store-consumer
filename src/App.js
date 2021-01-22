@@ -22,8 +22,6 @@ function App() {
   const [ selectedCustomer, setSelectedCustomer ] = useState(null)
   const [ selectedVideo, setSelectedVideo ] = useState(null)
 
-
-
   // select function - what is used to id whats been selected
   const selectCustomer = (customer) => {
     setSelectedCustomer(customer) }
@@ -41,7 +39,6 @@ function App() {
       <div className="App">
         <header className="App-header tiledBackground">
           <img src={logo} className="App-logo" alt="logo" />
-          {/* <h1 className="App-title">Welcome to React</h1> */}
         </header>
         <nav>
           <h1><a href="/">RETRO VIDEO DISTRO</a></h1>
@@ -51,10 +48,6 @@ function App() {
           <button className="btn btn-outline-danger"><Link to="/customers">Customer Index</Link></button>
           <button className="btn btn-outline-danger"><Link to="/search">Search</Link></button>
           <Checkout baseUrl={BASE_URL} selectedCustomer={selectedCustomer} selectedVideo={selectedVideo} />
-          <ul>
-            <li>{selectedCustomer && selectedCustomer.name} </li>
-            <li>{selectedVideo && selectedVideo.title}</li>
-          </ul>
           </span>
           <br></br><br></br>
           <img src={divider} className="divider" alt="stars divider" />

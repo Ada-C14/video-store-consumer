@@ -1,0 +1,9 @@
+ul {
+    list-style: none;
+}
+
+.box {
+    border: 4px solid;
+    padding: 5px;
+    color: pink;
+}
