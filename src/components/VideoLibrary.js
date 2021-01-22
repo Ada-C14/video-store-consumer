@@ -36,8 +36,10 @@ const VideoLibrary = (props) => {
 
   return (
     <div className='VideoLibrary'>
-      <h3> Video Library</h3>
+      <h3 className= 'body-header'> Video Library</h3>
+      <section className= 'grid-columns'>
       { videoLibraryComponent }
+      </section>
       {/* {errorMessage ? <div><h2 className="error-display">{errorMessage}</h2></div> : ''} */}
     </div>
   );

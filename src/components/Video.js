@@ -13,7 +13,7 @@ const Video = (props) => {
       <img src={props.imageURL} alt={props.title}/>
       <h3>{props.title}</h3>
       <p>Release Date: {props.release_date}</p>
-      <p>Overview: {props.overview}</p>
+      {/* <p>Overview: {props.overview}</p> */}
       <button onClick={() => {props.videoCallback(props.video)}}> Select Video</button>
     </div>
   );
