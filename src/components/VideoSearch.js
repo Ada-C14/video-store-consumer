@@ -32,6 +32,7 @@ const VideoSearch = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         setSubmit(query);
+
     }
 
     videos.sort((a,b) => (a.title > b.title) ? 1 : -1)
@@ -48,7 +49,7 @@ const VideoSearch = (props) => {
             </form>
             <ul>
                 {videos.map( (video) => {
-                return (<li key={video.id}>{<SearchEntry id={video.id} title={video.title} image_url={video.image_url} />}</li>);
+                return (<li key={video.external_id}>{<SearchEntry id={video.external_id} title={video.title} image_url={video.image_url} release_date={video.release_date} overview={video.overview}/>}</li>);
                 })
                 }
             </ul>

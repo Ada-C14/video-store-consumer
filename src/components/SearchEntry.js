@@ -2,9 +2,11 @@ import React, { Component, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 const LibraryEntry = (props) => {
+    const year = props.release_date.substring(0,4);
+    
     return (
     <div> 
-        <h5>{props.title}</h5>
+        <h5>{props.title} - {year}</h5>
         <img src={props.image_url} alt={props.title}/>
         {/* <p>
         <button 
