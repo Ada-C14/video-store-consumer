@@ -29,21 +29,35 @@
     font-family: 'Press Start 2P', cursive;
 }
 
-ul {
+/* ul .selected {
   list-style-type: none;
-  padding-top: 70px
-}
-
-li {
+} */
+.nav {
   display: inline;
   padding: 30px;
   font-size: 20px;
   text-decoration: none;
   font-family: 'Press Start 2P', cursive;
 }
-li Link {
-  text-decoration: none;
+
+li {
+  display: inline;
+  color: pink;
+  padding: 30px;
 }
+
+ul {
+  list-style-type: none;
+}
+
+/* li.nav {
+  display: inline;
+  padding: 30px;
+  font-size: 20px;
+  text-decoration: none;
+  font-family: 'Press Start 2P', cursive;
+} */
+
 
 .App-title {
   font-size: 1.5em;
