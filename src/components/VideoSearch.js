@@ -6,9 +6,9 @@ import SearchEntry from './SearchEntry';
 
 const VideoSearch = (props) => { 
     const [query, setQuery] = useState(' ')
-    const [submit, setSubmit] = useState('')
+    const [submit, setSubmit] = useState(' ')
 
-    const fullUrl = `http://localhost:3000/videos?query=<${query}>`;
+    const fullUrl = `http://localhost:3000/videos?query=<${submit}>`;
 
     const [videos, setVideos] = useState([]);
     const [errors, setErrors] = useState(null);
@@ -31,7 +31,7 @@ const VideoSearch = (props) => {
     }
     const handleSubmit = (event) => {
         event.preventDefault();
-        setSubmit(event.target.value);
+        setSubmit(query);
     }
 
     videos.sort((a,b) => (a.title > b.title) ? 1 : -1)
