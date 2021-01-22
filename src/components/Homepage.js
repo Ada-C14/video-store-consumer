@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import MovieSearchBar from './MovieSearchBar.js';
@@ -10,12 +10,30 @@ const Homepage = (props) => {
   const movie = props.movie;
 
   const homepageImages = [
-    
+    'cmbyn1',
+    'pulp-fiction',
+    'titanic',
+    'cmbyn2',
+    'hp'
   ];
+
+  const [counter, setCounter] = useState(0);
+
+  useEffect(() => {
+    const s = setInterval(() => {
+      let newCounter = counter;
+      if (counter === homepageImages.length - 1) {
+        setCounter(0);
+      } else {
+        setCounter(newCounter + 1);
+      }
+    }, 3000);
+
+    return () => clearInterval(s);
+  }, [counter]);
 
   return (
     <div>
-      {/* <Navbar home={true}/> */}
       {/* <Navbar home={movie && customer ? false : true}/> */}
       <div className='homepage-container'>
         <div className={ movie || customer ? 'homepage-rental' : 'homepage'}>
@@ -85,7 +103,7 @@ const Homepage = (props) => {
             movie={props.movie ? movie.title : ''} 
           />
         </div>
-        <div className='img-carousel'></div>
+        <div className={`img-carousel ${homepageImages[counter]}`}></div>
       </div>
     </div>
   );

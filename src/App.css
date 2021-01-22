@@ -51,9 +51,6 @@ button {
   background-color: #bdeecf;
   height: 40px;
   font-weight: 800;
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
 }
 
 button:hover, .main-btn:hover {

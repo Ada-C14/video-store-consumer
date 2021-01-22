@@ -24,7 +24,6 @@ ul {
   display: inline;
   width: 100%;
   display: flex;
-  /* justify-content: space-around; */
 }
 
 li {
@@ -52,7 +51,6 @@ i {
 }
 
 .nav-rental-info {
-  /* width: 40%; */
   display: flex;
   flex-direction: row !important;
   justify-content: space-evenly;

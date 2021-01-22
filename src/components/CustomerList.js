@@ -33,7 +33,7 @@ const CustomerList = props => {
     <div>
       <Navbar customer={props.customer} movie={props.movie} checkoutCallback={props.checkoutCallback} />
       <div className='list'>
-        { alert ? alert : '' }
+        { alert ? <div className='movie-library-alert'>{alert}</div> : '' }
         <ul className='customer-list'>
           { customers.map((customer) => 
             <li key={customer.id} className='customer-id'>
