@@ -70,7 +70,7 @@ const App = () => {
             <RentalForm url={API_BASE_URL} selectedCustomer={selectedCustomer} selectedVideo={selectedVideo} />
           </Route>
           <Route path="/">
-            Welcome
+            <div className="welcome">Welcome to Beauttie & Taylor's Video Store! 🎉</div>
           </Route>
         </Switch>
         </body>

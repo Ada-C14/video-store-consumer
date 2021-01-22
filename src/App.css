@@ -74,3 +74,9 @@ body {
 .App-intro {
   font-size: large;
 }
+
+.welcome {
+  font-size: 4rem;
+  text-align: center;
+  padding-top: 2rem;
+}
