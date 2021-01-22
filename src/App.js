@@ -21,10 +21,11 @@ function AppRouter() {
     };
 
     const dueDate = new Date();
-    dueDate.setDate(dueDate.getDate() + 10); 
+    dueDate.setDate(dueDate.getDate() + 10);
+    
     axios.post(`${baseURL}/rentals/${selectVideo.title}/check-out`,
       // eslint-disable-next-line camelcase
-      { customer_id: selectCustomer.id, due_date: dueDate.toISOString()})
+      { customer_id: selectCustomer.id, due_date: dueDate.toISOString() })
       .then(response => {
         alert('video checked out!')
       })
@@ -55,6 +56,7 @@ function AppRouter() {
           </div>
         </header>
 
+        <main></main>
 
         <Switch>
           <Route path="/search">

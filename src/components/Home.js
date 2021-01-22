@@ -1,6 +1,14 @@
-// import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-// import axios from 'axios';
-// import Home from './components/'
+import React from 'react';
+import './Home.css';
 
-// import './Home.css';
+const Home = (props) => {
+  return (
+    <main>
+      <div className="container">
+        <h1>Welcome</h1>
+      </div>
+    </main>
+  );
+};
+
+export default Home;

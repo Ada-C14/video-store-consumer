@@ -46,17 +46,24 @@ const Search = (props) => {
   };
 
   return (
+    <main>
     <div>
+      <table className='videos-table'>
+       
       <SearchBar addSearchCallback={videoApi} />
 
       {searchResult.map((video) => (
         <div>
-          <span>{video.title}</span>
-        <button key={video.external_id} onClick={() => addVideoLibrary(video)}>Add to Library</button>
+           <tr>
+          <td className='.videos-table-title'>{video.title}</td>
+        <td className='videos-table-select'><button key={video.external_id} onClick={() => addVideoLibrary(video)}>Add to Library</button></td>
+        </tr>
         </div>
       ))
       }
+      </table>
     </div>
+    </main>
   )
   
 }

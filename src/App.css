@@ -61,14 +61,12 @@
 }
 
 .app-footer {
-  display: grid;
-  /* grid-template-columns: 1fr 3fr 1fr; */
   background-color: #3c4752;
   color: #00adb5;
   text-align: center;
   width: 100%;
   height: 50px;
-  position: absolute;
+  position: fixed;
   overflow: hidden;
   bottom: 0;
 }
