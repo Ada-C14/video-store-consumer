@@ -19,7 +19,7 @@ const CheckIn = (props) => {
       <Button variant="outline-info"
           onClick={onSubmit}
           disabled={!props.customer || !props.video} >
-            Check In
+            Return
       </Button>
     </div>
   );
