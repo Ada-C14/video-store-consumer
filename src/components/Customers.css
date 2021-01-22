@@ -1,0 +1,11 @@
+.customers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(89, 165, 210);
+    font-family: 'Nixie One', cursive;
+}
+
+.customers-hover:hover {
+    color: orange;
+}

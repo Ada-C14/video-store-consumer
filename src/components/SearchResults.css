@@ -1,0 +1,5 @@
+.search_results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

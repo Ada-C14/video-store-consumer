@@ -26,3 +26,29 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.navbar-brand {
+  font-family: 'Nixie One', sans-serif;
+}
+
+.nav-link {
+  color:rgb(89, 165, 210);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 17px;
+}
+
+.nav-link:hover {
+  color: orange;
+}
+
+.page {
+  background-color: lightgoldenrodyellow;
+}
+
+.page-title {
+  font-family: 'Nixie One', sans-serif;
+  text-align: center;
+  color: black;
+  padding: 1%;
+  font-size: 3em;
+}
