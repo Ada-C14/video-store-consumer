@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 
 
 const Library = (props) => {
+  const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
     API.get(`videos`)
@@ -15,7 +16,8 @@ const Library = (props) => {
         props.setVideoList(apiVideoList);
       })
       .catch((error) => {
-        props.setErrorMessage('Could not retrieve videos from library');
+        setErrorMessage('Could not retrieve videos from library');
+        console.error(error);
       });
   }, []);
 
@@ -23,17 +25,18 @@ const Library = (props) => {
 
   const videoComponents = props.videoList.map((video) => {
     return (
-      props.errorMessage == null ?
+      errorMessage == null ?
       <Link onClick={() => props.onClickVideo(video)}>
         <Video 
             id={video.id}
+            key={video.id}
             title={video.title}
             overview={video.overview}
             releaseDate={video.release_date} 
             imageUrl={video.image_url}
             externalId={video.external_id}
             /> </Link>
-            : props.errorMessage
+            : errorMessage
         )
   })
 

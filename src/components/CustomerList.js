@@ -20,32 +20,26 @@ const CustomerList = (props) => {
             setErrorMessage('Could not retrieve customers');
           });
       }, []);
-
-      const onButtonClick = () => {
-  
-        props.onClickCustomer({
-          id: props.id
-        });
-      }
     
       const customerComponents = customerList.map((customer) => {
         return (
           errorMessage == null ?
-          <Link onClick={() => props.onClickCustomer(customer)}>
+          <Link onClick={() => props.setSelectedCustomer(customer)}>
             <Customer 
-                key={customer.id}
-                id={customer.id}
-                registeredAt={customer.registered_at}
-                address={customer.address}
-                state={customer.state}
-                postalCode={customer.postal_code}
-                phone={customer.phone}
-                accountCredit={customer.account_credit}
-                name={customer.name}
-                videosCheckedOutCount={customer.videos_checked_out_count}
-                /> </Link>
-            : errorMessage
-          )
+              key={customer.id}
+              id={customer.id}
+              registeredAt={customer.registered_at}
+              address={customer.address}
+              state={customer.state}
+              postalCode={customer.postal_code}
+              phone={customer.phone}
+              accountCredit={customer.account_credit}
+              name={customer.name}
+              videosCheckedOutCount={customer.videos_checked_out_count}
+            />
+          </Link>
+          : errorMessage
+        )
       })
     
         return (

@@ -20,10 +20,6 @@ const App = () => {
   const [videoList, setVideoList] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
-  const onClickCustomer = (customer) => {
-    setSelectedCustomer(customer);
-  }
-
   const onClickVideo = (video) => {
     setSelectedVideo(video);
   }
@@ -91,13 +87,13 @@ const App = () => {
             <Customer />
           </Route>
           <Route path="/customers" >
-            <CustomerList onClickCustomer={onClickCustomer} />
+            <CustomerList setSelectedCustomer={setSelectedCustomer} />
           </Route>
           <Route path="/search">
             <Search />
           </Route>
           <Route path="/library">
-            <Library onClickVideo={onClickVideo} videoList={videoList} onAddVideo={addVideo} errorMessage={errorMessage}/>
+            <Library onClickVideo={onClickVideo} videoList={videoList} setVideoList={setVideoList} onAddVideo={addVideo} />
           </Route>
           <Route path="/">
             <Home />
