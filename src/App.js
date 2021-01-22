@@ -24,11 +24,11 @@ const App = () => {
   useEffect(() => {
     axios.get(`${API_BASE_URL}/videos`)
       .then((response) => {
-          const apiVideoList = response.data
-          setVideoList(apiVideoList);
+        const apiVideoList = response.data
+        setVideoList(apiVideoList);
       })
       .catch((error) => {
-          setErrorMessage(error.message);
+        setErrorMessage(error.message);
       });
     }, []);
 
@@ -76,8 +76,8 @@ const App = () => {
             </ul>
           </nav>
           <ul className="selected">
-            {selectedCustomer ? <li>Current Selected Customer: {selectedCustomer.name}</li> : ''}
-            {selectedVideo ? <li>Current Selected Video: {selectedVideo.title}</li> : ''}
+            {selectedCustomer ? <li>Selected Customer: {selectedCustomer.name}</li> : ''}
+            {selectedVideo ? <li>Selected Video: {selectedVideo.title}</li> : ''}
           </ul>
         </header>
         <Switch>
@@ -100,7 +100,6 @@ const App = () => {
       </div>
     </Router>
   );
-
 }
 
 export default App;

@@ -1,9 +1,8 @@
 .video {
     display: flex;
-    margin: 2rem;
 }
-  
-.video-description {
+
+.video, .video-description {
     margin: 2rem;
 }
 
