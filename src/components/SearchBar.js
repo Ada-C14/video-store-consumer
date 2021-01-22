@@ -1,5 +1,6 @@
-import axios from 'axios';
 import React, { useState } from 'react';
+import axios from 'axios';
+import PropTypes from 'prop-types';
 import SearchForm from './SearchForm';
 import SearchResult from './SearchResult';
 
@@ -9,24 +10,21 @@ const SearchBar = (props) => {
 
     const searchVideo = (searchQuery) => { 
 
-        axios.get(`${props.baseUrl}/videos?query=${searchQuery}`)
+    axios.get(`${props.baseUrl}/videos?query=${searchQuery}`)
         .then((response) => {
-          console.log(response.data);
-          setSearchResultList(response.data);
+            console.log(response.data);
+            setSearchResultList(response.data);
         })
         .catch((error) => {
-          // setErrorMessage(error.message);
-          // console.log(error.message);
+            // setErrorMessage(error.message);
+            // console.log(error.message);
         });
-
     };
 
-
     const generateSearchResults = (searchResults) => {
+    
     let searchResultComponentArray = [];
-
     for (const result of searchResults) 
-
     {
         searchResultComponentArray.push(
         <SearchResult
@@ -36,7 +34,6 @@ const SearchBar = (props) => {
         />
         )
     }
-
     return searchResultComponentArray;
     }; 
 
@@ -56,6 +53,7 @@ const SearchBar = (props) => {
                     <thead>
                     <tr className="table-primary">
                     <th scope="col">Poster</th>
+                    <th scope="col">Title</th>
                     <th scope="col">Overview</th>
                     <th scope="col">Release Date</th>
                     <th scope="col">Add To Library?</th>
@@ -70,12 +68,10 @@ const SearchBar = (props) => {
             }
         </div>
     )
-  }
-  
-  SearchBar.propTypes = {
-    // DONT FORGET TO FILL ME OUT!
-    // addCardCallback: PropTypes.func.isRequired
-    };
-    
-  
-  export default SearchBar;    
+}
+
+SearchBar.propTypes = {
+    baseUrl: PropTypes.string.isRequired
+};
+
+export default SearchBar;    

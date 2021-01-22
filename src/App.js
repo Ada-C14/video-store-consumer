@@ -29,11 +29,8 @@ function App() {
     setSelectedVideo(video)
   }
 
-
   // return display of selected Cust/Vid
   // rental button - triggers event that posts to checkout
-
-
   return (
     <Router>
       <div className="App">
@@ -43,11 +40,11 @@ function App() {
         <nav>
           <h1><a href="/">RETRO VIDEO DISTRO</a></h1>
           <span>
-          <button className="btn btn-outline-danger"><Link to="/">Home</Link></button>
-          <button className="btn btn-outline-danger"><Link to="/library">Video Library</Link></button>
-          <button className="btn btn-outline-danger"><Link to="/customers">Customer Index</Link></button>
-          <button className="btn btn-outline-danger"><Link to="/search">Search</Link></button>
-          <Checkout baseUrl={BASE_URL} selectedCustomer={selectedCustomer} selectedVideo={selectedVideo} />
+            <button className="btn btn-outline-danger"><Link to="/">Home</Link></button>
+            <button className="btn btn-outline-danger"><Link to="/library">Video Library</Link></button>
+            <button className="btn btn-outline-danger"><Link to="/customers">Customer Index</Link></button>
+            <button className="btn btn-outline-danger"><Link to="/search">Search</Link></button>
+            <Checkout selectedVideoCallback={selectVideo} selectedCustomerCallback={selectCustomer}baseUrl={BASE_URL} selectedCustomer={selectedCustomer} selectedVideo={selectedVideo} />
           </span>
           <br></br><br></br>
           <img src={divider} className="divider" alt="stars divider" />

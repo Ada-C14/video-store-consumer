@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import Video from './Video';
 
 const Videos = (props) => {
@@ -34,32 +35,32 @@ const Videos = (props) => {
     return videoComponentArray;
   };
 
-    return (
-      <div>
-        <h1><em>Video List</em></h1>
-        <section className="container w-75">
-          <table className="table table-hover">
-            <thead>
-              <tr className="table-primary">
-                <th scope="col">Poster</th>
-                <th scope="col">Overview</th>
-                <th scope="col">Release Date</th>
-                <th scope="col">Select For Rental?</th>
-              </tr>
-            </thead>
-            <tbody>
-                {generateVideos(videoList)}
-            </tbody>
-          </table>
-        </section>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <h1><em>Video List</em></h1>
+      <section className="container w-75">
+        <table className="table table-hover">
+          <thead>
+            <tr className="table-primary">
+              <th scope="col">Poster</th>
+              <th scope="col">Overview</th>
+              <th scope="col">Release Date</th>
+              <th scope="col">Select For Rental?</th>
+            </tr>
+          </thead>
+          <tbody>
+              {generateVideos(videoList)}
+          </tbody>
+        </table>
+      </section>
+    </div>
+  );
+}
 
 Videos.propTypes = {
-  // DONT FORGET TO FILL ME OUT!
-  // addCardCallback: PropTypes.func.isRequired
-  };
+  selectedVideoCallback: PropTypes.func.isRequired , 
+  baseUrl: PropTypes.string.isRequired ,
+};
   
 
 export default Videos;

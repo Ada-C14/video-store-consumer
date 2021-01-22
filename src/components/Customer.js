@@ -1,3 +1,6 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
 const Customer = (props) => {
   const customer = props.customer
   return (
@@ -13,8 +16,7 @@ const Customer = (props) => {
 }
 
 Customer.propTypes = {
-  // DONT FORGET TO FILL ME OUT!
-  // addCardCallback: PropTypes.func.isRequired
+  selectedCustomerCallback: PropTypes.func.isRequired
   };
   
 

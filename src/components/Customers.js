@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import Customer from './Customer';
 
 const Customers = (props) => {
@@ -15,7 +16,7 @@ const Customers = (props) => {
       })
       .catch((error) => {
         setErrorMessage(error.message);
-        console.log(error.message);
+        console.log(errorMessage);
       });
   }, [`${props.baseUrl}/customers`]);
 
@@ -59,8 +60,8 @@ const Customers = (props) => {
   }
 
 Customers.propTypes = {
-  // DONT FORGET TO FILL ME OUT!
-  // addCardCallback: PropTypes.func.isRequired
+ baseUrl: PropTypes.string.isRequired, 
+ selectedCustomerCallback: PropTypes.func.isRequired
   };
   
 
