@@ -11,11 +11,15 @@ import Library from './components/Library';
 import Search from './components/Search';
 import CustomerList from './components/CustomerList';
 import Customer from './components/Customer';
+import API from '../ApiSupport'
 
 
 const App = () => {
   const [selectedCustomer, setSelectedCustomer] = useState(null);
   const [selectedVideo, setSelectedVideo] = useState(null);
+  const [videoList, setVideoList] = useState([]);
+  const [errorMessage, setErrorMessage] = useState(null);
+
   const onClickCustomer = (customer) => {
     setSelectedCustomer(customer);
   }
@@ -23,6 +27,36 @@ const App = () => {
   const onClickVideo = (video) => {
     setSelectedVideo(video);
   }
+
+  const addVideo = (video) => {
+    API.post(`videos`, video)
+      .then((response) => {
+        const updatedLibrary = [...videoList, response.data]
+        console.log('Video successfully added.');
+        setVideoList(updatedLibrary);
+        setErrorMessage('');
+      })
+      .catch((error) => {
+        setErrorMessage('Video could not be added');
+        console.log(errorMessage);
+      });
+  }
+
+  
+  // const updateLibrary = (updatedVideo) => {
+  //   const videos = [];
+
+  //   libraryList.forEach((video) => {
+  //     if (video.id === updatedVideo.id) {
+  //       videos.push(updatedVideo);
+  //     } else {
+  //       videos.push(video);
+  //     }
+  //   });
+
+  //   setSelectedVideo(videos);
+  // }
+  
 
   return (
     <Router>
@@ -43,13 +77,11 @@ const App = () => {
             </li>
           </ul>
         </nav>
- 
 
         <span className="App-cart" >
-         
             
-             {selectedCustomer !== null ? `${selectedCustomer.name}` : `Select a customer` }
-             {selectedVideo !== null ? `${selectedVideo.title}` : `Select a video` }
+            {selectedCustomer !== null ? `${selectedCustomer.name}` : `Select a customer` }
+            {selectedVideo !== null ? `${selectedVideo.title}` : `Select a video` }
           </span>
 
         {/* A <Switch> looks through its children <Route>s and
@@ -65,7 +97,7 @@ const App = () => {
             <Search />
           </Route>
           <Route path="/library">
-            <Library onClickVideo={onClickVideo}/>
+            <Library onClickVideo={onClickVideo} videoList={videoList} onAddVideo={addVideo} errorMessage={errorMessage}/>
           </Route>
           <Route path="/">
             <Home />

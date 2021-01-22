@@ -7,23 +7,23 @@ import { Link } from 'react-router-dom';
 
 
 const Library = (props) => {
-  const [videoList, setVideoList] = useState([]);
-  const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
     API.get(`videos`)
       .then((response) => {
         const apiVideoList = response.data; 
-        setVideoList(apiVideoList);
+        props.setVideoList(apiVideoList);
       })
       .catch((error) => {
-        setErrorMessage('Could not retrieve videos from library');
+        props.setErrorMessage('Could not retrieve videos from library');
       });
   }, []);
 
-  const videoComponents = videoList.map((video) => {
+  
+
+  const videoComponents = props.videoList.map((video) => {
     return (
-      errorMessage == null ?
+      props.errorMessage == null ?
       <Link onClick={() => props.onClickVideo(video)}>
         <Video 
             id={video.id}
@@ -33,7 +33,7 @@ const Library = (props) => {
             imageUrl={video.image_url}
             externalId={video.external_id}
             /> </Link>
-            : errorMessage
+            : props.errorMessage
         )
   })
 
