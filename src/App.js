@@ -10,6 +10,7 @@ import VideoLibrary from './components/VideoLibrary';
 import Customers from './components/Customers';
 import RentalForm from './components/RentalForm';
 import axios from 'axios';
+// import Header from './Header';
 
 import './App.css';
 
@@ -55,6 +56,7 @@ const App = () => {
     <Router>
       <div>
         <header className="App-header">
+        <img src={'./vhs tapes.jpg'} alt="header" />
           <h1 className="storename">Video Store</h1>
           <nav> 
             <ul className="nav">
@@ -91,7 +93,7 @@ const App = () => {
             <Customers url={API_BASE_URL} onClickCallback={selectCustomer} />
           </Route>
           <Route path="/checkout">
-            <RentalForm selectedCustomer={selectedCustomer} selectedVideo={selectedVideo}/>
+            <RentalForm selectedCustomer={selectedCustomer} selectedVideo={selectedVideo} url={API_BASE_URL}/>
           </Route>
           <Route path="/">
             Welcome

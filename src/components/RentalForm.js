@@ -5,18 +5,24 @@ import axios from 'axios';
 const RentalForm = (props) => {
     const [message, setMessage] = useState('')
     const setDueDate = () => {
-        
-        // let date = new Date()
-        // date.setDate(date + 7)
-        // return date.toISOString().split('T')[0]
         const date = new Date(new Date(new Date().setDate(new Date().getDate()+7)).toString().split('GMT')[0]+' UTC').toISOString().split('T')[0]
+        console.log(typeof(date) === 'string')
         return date
+        
     }
-
-    const checkout = (props) => {
-        axios.post(`${props.url}/rentals/${props.selectedVideo.title}/check-out?customer_id=${props.selectedCustomer.id}&due_date=${setDueDate()}`)
+    // console.log(props.selectedVideo)
+    // console.log(`${props.url}/rentals/${props.selectedVideo.title}/check-out?customer_id=${props.selectedCustomer.id}&due_date=${setDueDate()}`)
+    const queryParams = {
+        /* eslint-disable camelcase */
+        customer_id: props.selectedCustomer.id,
+        due_date: setDueDate()
+        /* eslint-enable camelcase */
+    };
+    const checkout = (queryParams) => {
+        
+        axios.post(`${props.url}/rentals/${props.selectedVideo.title}/check-out`, queryParams)
             .then(response => {
-                setMessage(`${props.selectedCustomer} successully checked out ${props.selectedVideo.title}. It is due on ${setDueDate()}`)
+                setMessage(`${props.selectedCustomer.name} successully checked out ${props.selectedVideo.title}. It is due on ${setDueDate()}`)
             })
             .catch(error => {
                 setMessage(error)
@@ -24,8 +30,8 @@ const RentalForm = (props) => {
     }
 
 
-    const form = <h1>form</h1>
-    // <button onClick={(props) => checkout(props)}>Checkout</button>
+    const form = 
+    <button onClick={(props) => checkout(props)}>Checkout</button>
 
     const error = 
     <h1>Please Select a Video and Customer to make a rental!</h1>
@@ -34,7 +40,7 @@ const RentalForm = (props) => {
     
     return (
         <div>
-            {/* {props.selectedVideo} */}
+            
             {message}
             {validRental}
         </div>

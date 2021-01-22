@@ -15,18 +15,20 @@
 }
 
 .App-header {
-  background-color: #222;
+  /* background-color: #222; */
   height: 300px;
   padding-top: 100px;
   color: white;
   text-align: center;
   font-size: large;
   text-decoration: none;
+  background-image: url('./vhs tapes.jpg');
 }
 
 .storename {
     font-size: 70px;
     font-family: 'Press Start 2P', cursive;
+    background-color: pink;
 }
 
 /* ul .selected {
@@ -38,8 +40,12 @@
   font-size: 20px;
   text-decoration: none;
   font-family: 'Press Start 2P', cursive;
+  background-color: black;
 }
-
+.selected {
+  background-color: black;
+  padding-right: 30px;
+}
 li {
   display: inline;
   color: pink;
@@ -48,6 +54,7 @@ li {
 
 ul {
   list-style-type: none;
+  /* background-color: black; */
 }
 
 /* li.nav {
