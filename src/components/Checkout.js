@@ -7,22 +7,25 @@ const Checkout = (props) => {
   console.log(props.baseUrl)
 
 const checkout = () => {
-    // const theFuture = new Date(new Date().getTime()+(7*24*60*60*1000));
+
+    const theFuture = new Date(new Date().getTime()+(7*24*60*60*1000));
 
     console.log(props.selectedCustomer)
     console.log(props.baseUrl)
 
-    // axios.post(`${props.baseUrl}/rentals/${props.selectedVideo.title}/check-out`, {
-    //     props.selectedCustomer.id,
-    //     theFuture
-    // })
-    //     .then((response) => {
-    //     console.log(response)
-    //     })
-    //     .catch((error) => {
+  axios.post(`${props.baseUrl}/rentals/${props.selectedVideo.title}/check-out`, {}, {
+      params: {
+        'customer_id': props.selectedCustomer.id,
+        'due_date': theFuture.toJSON(),
+      }})        
+      .then((response) => {
+          console.log(response)
+          })
+      .catch((error) => {
 
-    //     });
+      });
     }
+
     return (
     <div>
         <ul>
