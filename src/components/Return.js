@@ -30,7 +30,7 @@ axios.post(`${BASE_URL}/${props.video}/return`, {}, {
 
 return(
     <span>
-      <button className='Checkout-checkIn-checkOut MainButton' onClick={ onSubmitReturn }>
+      <button class="btn btn-info" onClick={ onSubmitReturn }>
       Return Video
       </button>
       <p>{ returnMessage }</p>
