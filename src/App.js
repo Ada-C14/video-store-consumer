@@ -50,7 +50,7 @@ const App = () => {
               </li>
             </ul>
           </nav>
-          <div className="selected">
+          <div className={selectedCustomer || selectedVideo ? 'selected' : ''}>
             {selectedCustomer ? <p>Selected Customer: {selectedCustomer.name}</p> : ''}
             {selectedVideo ? <p>Selected Video: {selectedVideo.title}</p> : ''}
           </div>
