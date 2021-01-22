@@ -23,7 +23,7 @@ const Library = (props) => {
       .then((response) => {
         const newSelectedVideo = response.data
         props.selectVideoCallback(newSelectedVideo)
-        setErrorMessage(`"${ title }" is selected`);
+        setErrorMessage(`Success! Selected ${ title }`);
       })
       .catch((error) => {
         setErrorMessage(`Unable to select "${ title }"`);
@@ -59,8 +59,8 @@ const Library = (props) => {
 
   return (
     <div>
-      <h1>Video Library</h1>
-      {errorMessage ? <div><h2 className="validation-errors-display">{errorMessage}</h2></div> : ''}
+      <h2>Video Library</h2>
+      {errorMessage ? <div><p className="validation-errors-display">{errorMessage}</p></div> : ''}
       {props.selectedVideo? < SelectedVideo selectedVideo={props.selectedVideo}/> : ''}
 
         <table>
