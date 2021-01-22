@@ -3,7 +3,10 @@ import VideoLibrary from './components/VideoLibrary';
 import CustomerList from './components/CustomerList';
 import axios from 'axios';
 import moment from 'moment';
-// import './Bootstrap.css'
+
+import './components/CustomerList.css'
+import {Table} from 'react-bootstrap';
+
 import React, { Component } from 'react';
 import './App.css';
 
@@ -47,19 +50,12 @@ class App extends Component {
   
   checkoutVideo = () => {
     if (this.state.chosenVideo && this.state.chosenCustomer) {
-      const title = this.state.chosenVideo.title
-      // const dueDate = moment().add(7, 'days').format('YYYY-MM-DD');
-      // const getDueDate = () => {
-      //   const date = new Date();
-      //   date.setDate(date.getDate() + 7);
-      //   return (moment(date).format('MMM, D, YYYY'))
-      // }
+      const title = this.state.chosenVideo.title    
       const dueDate = new Date(new Date().getTime()+(1*24*60*60*1000))
       const params = {
         'customer_id': this.state.chosenCustomer.id,
         'video_id': this.state.chosenVideo.id,
         'due_date': dueDate
-        // getDueDate(),
       }
     
       const checkoutURL = this.API_URL + `/rentals/${title}/check-out`;
@@ -92,31 +88,34 @@ class App extends Component {
     
     return (
       <Router>
+        
       <div>
-        <nav>
-          <p> {this.state.message} </p>
-          <ul>
-            <li>
-              <Link to='/'>Home</Link>
-            </li>
-            <li>
-              <Link to='/search'>Video Search</Link>
-            </li>
-            <li>
-              <Link to='/library'>Video Library</Link>
-            </li>
-            <li>
-
-              <Link to='/customers'>Customers</Link>
-            </li>
-            </ul>
-            <ol>
-              <li>Selected Customer: {this.state.chosenCustomer.name}</li>
-              <li>Selected Video:{this.state.chosenVideo.title}</li>
-              <button onClick={this.checkoutVideo} className= { `button button-large ${ this.visibility() }` }>
+        <nav className='navigation'>
+          <Table className="table-sm customer-table__table">
+                <thead>
+                    <tr className="customer-table__header-row">
+                        <th scope="col">Selected Customer</th>
+                        <th scope="col">Selected Video</th>
+                        <th scope="col">CHECKOUT</th>
+                        <th scope="col">Video</th>
+                        <th scope="col">Video</th>
+                        <th scope="col">Customer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr className="customer-table__table-row">
+            <td>{this.state.chosenCustomer.name}</td>
+            <td>{this.state.chosenVideo.title}</td>
+            <td><button onClick={this.checkoutVideo} className= { `button button-large ${ this.visibility() }` }>
                 Check out {this.state.chosenVideo.title} to {this.state.chosenCustomer.name}
-              </button>
-            </ol>
+              </button></td>
+            <td><Link to='/search'>SEARCH</Link></td>
+            <td><Link to='/library'>LIBRARY</Link></td>
+            <td><Link to='/customers'>LIST</Link></td>
+        </tr>
+                </tbody>
+            </Table>
+          <p> {this.state.message} </p>
         </nav>
 
         <Switch>
