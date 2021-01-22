@@ -10,7 +10,6 @@ const VideoLibrary = ({ baseUrl, videoLibrary, setVideoLibraryCallback, setVideo
     axios.get(baseUrl+'videos')
       .then( response => {
         setVideoLibraryCallback(response.data)
-        setTimeout(() => setErrorMessage(null), 6000);
       })
       .catch( error => {
         const errors = error.response.data.errors
