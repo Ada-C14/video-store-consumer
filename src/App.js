@@ -9,8 +9,8 @@ import axios from 'axios';
 import Search from './components/Search';
 import Library from './components/Library';
 import Customers from './components/Customers';
-import logo from './logo.svg';
 import vhs from './VHS.jpg';
+import popcorn from './popcorn.png';
 import './App.css';
 import CheckOut from './components/CheckOut';
 import CheckIn from './components/CheckIn';
@@ -72,30 +72,31 @@ const App = () => {
           <h1 className="App-title">Ting-Yi and Anya's Movie Shop!</h1>
         </header>
 
-        <Navbar bg="dark" variant="dark"> <LinkContainer to="/">
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-          </LinkContainer>
+        <Navbar bg="dark" variant="dark">
           <Nav className="mr-auto">
+            <LinkContainer to='/'>
+              <Nav.Link>Home</Nav.Link>
+            </LinkContainer>
             <LinkContainer to='/library'>
-              <Nav.Link>Video Select</Nav.Link>
+              <Nav.Link>Videos</Nav.Link>
             </LinkContainer>
             <LinkContainer to='/customers'>
-              <Nav.Link>Customer Select</Nav.Link>
+              <Nav.Link>Customers</Nav.Link>
             </LinkContainer>
             <LinkContainer to='/search'>
-              <Nav.Link>External Library</Nav.Link>
+              <Nav.Link>Search</Nav.Link>
             </LinkContainer>
           </Nav>
           {/* <Form inline>
             <FormControl type="text" placeholder="Search" className="mr-sm-2" />
             <Button variant="outline-info">Search</Button>
           </Form> */}
-          <div>
+          <div class='btn'>
             <CheckOut video={selectedVideo}
                         customer={selectedCustomer}
                         checkOutCallback={checkOut} />
           </div>
-          <div>
+          <div class='btn'>
             <CheckIn video={selectedVideo}
                       customer={selectedCustomer}
                       checkInCallback={checkIn} />
@@ -163,5 +164,7 @@ export default App;
 
 
 function Home() {
-  return <h2>Home</h2>;
+  return (
+    <img src={popcorn} alt="logo" />)
+
 }
