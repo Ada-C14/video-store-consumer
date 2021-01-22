@@ -1,9 +1,13 @@
-ul {
+/* ul {
     list-style: none;
-}
+} */
 
-.box {
+/* .box {
     border: 4px solid;
     padding: 5px;
     color: hotpink ;
+} */
+
+.button {
+    margin: 3px;
 }
