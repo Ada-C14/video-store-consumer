@@ -99,7 +99,7 @@ const App = () => {
         <span className="App-cart" >
             <button onClick={handleCheckout}>Check Out</button>
             {selectedCustomer !== null ? selectedCustomer.name : 'Select a customer' }
-            {selectedVideo !== null ?   `` : 'Select a video' }
+            {selectedVideo !== null ?   selectedVideo.title : 'Select a video' }
           </span>
 
         {/* A <Switch> looks through its children <Route>s and
