@@ -9,5 +9,14 @@ const Video = (props) => {
     </span>
     
   );
-}
+  
+  
+};
+
+Video.propTypes = {
+  title: PropTypes.string.isRequired,
+  overview: PropTypes.string,
+  // eslint-disable-next-line camelcase
+  release_date: PropTypes.string
+};
 export default Video;
