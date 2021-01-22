@@ -12,6 +12,7 @@ import Search from './components/Search';
 import CustomerList from './components/CustomerList';
 import Customer from './components/Customer';
 import API from './ApiSupport'
+import './components/Library.css';
 
 
 const App = () => {
@@ -89,7 +90,7 @@ const App = () => {
             {selectedCustomer && selectedVideo ? <button onClick={handleCheckout}>Check Out</button> : null}
             {/* <button onClick={handleCheckout}>Check Out</button> */}
             {selectedCustomer !== null ? selectedCustomer.name : 'Select a customer' }
-            {selectedVideo !== null ?   selectedVideo.title : 'Select a video' }
+            {selectedVideo !== null ?   selectedVideo.title : ` \n Select a video`  }
           </span>
 
         {/* A <Switch> looks through its children <Route>s and

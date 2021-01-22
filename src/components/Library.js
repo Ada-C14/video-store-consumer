@@ -5,8 +5,6 @@ import API from '../ApiSupport'
 import { Link } from 'react-router-dom';
 import './Library.css';
 
-
-
 const Library = (props) => {
   const [videoList, setVideoList] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -43,7 +41,7 @@ const Library = (props) => {
   })
 
     return (
-      <div className="Video-box">
+      <div>
         {videoComponents}
       </div>
     )
