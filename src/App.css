@@ -1,28 +1,64 @@
 .App {
   text-align: center;
+  /* background-color: #22254b; */
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+.navbar{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background: rgb(73, 79, 82);
   color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
+.nav-link{
+  width: 60%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
 }
 
-.App-intro {
-  font-size: large;
+.link{
+  color: white;
+  text-decoration: none;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.link:hover{
+  color: white;
+}
+
+.Home:hover {
+  color: #EC7063;
+  font-weight: bolder;
+}
+
+.Customer:hover {
+  color: yellow;
+  font-weight: bolder;
+}
+
+.VideoLibrary:hover {
+  color: #D35400;
+  font-weight: bolder;
+}
+
+.Search:hover {
+  color: #D4AC0D;
+  font-weight: bolder;
+}
+
+.router__div--selected-item {
+  background-color: rgb(165, 127, 255);
+  font-size: smaller;
+}
+
+.router__button--check-out {
+  /* color:cadetblue; */
+  background-color: rgb(77, 253, 253);
+}
+
+.overdue {
+  background-color: #FF727B;
 }

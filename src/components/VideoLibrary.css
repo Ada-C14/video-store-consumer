@@ -1,0 +1,65 @@
+.move-container {
+  border-radius: 25px;
+  margin: 25px;
+  margin-top: 25px;
+  width: 450px;
+  height: 520px;
+  padding: 20px 5px 20px 5px;
+  display: inline-grid;
+  align-items: center;
+  justify-self: center;
+  background-color: #373b69;
+}
+
+.additional-details{
+  font-size: 20px;
+  list-style: none;
+}
+.movie-title:hover{
+  color: brown;
+}
+
+.movie-details{
+  position: relative;
+  overflow: hidden;
+
+}
+
+.video-title{
+  color: white;
+  padding-bottom: 30px;
+}
+
+.movie-release-date {
+  font-size: 15px;
+  /* font-style: italic; */
+  padding: 15px 45px;
+  font-weight: 700;
+  color: white;
+
+}
+
+.release-date {
+  font-size: 20px;
+  /* font-style: italic; */
+  padding: 15px 10px;
+  font-weight: 300;
+  color: white;
+
+}
+
+.video-overview {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  transform: translatey(100%);
+  transition: transform 0.2s ease-in-out;
+  text-align: center;
+  list-style: none;
+}
+
+.movie-details:hover .video-overview {
+  transform: translatey(0);
+}
