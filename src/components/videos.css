@@ -1,7 +1,8 @@
 .video {
   display: flex;
   flex-wrap: wrap;
-  padding: 10px; 
+	padding: 10px; 
+	background-color: skyblue;
 }
 
 /* Thanks: https://codepen.io/maheshambure21/pen/GgVbVW */
@@ -28,7 +29,7 @@ video.effect-chico figcaption::before {
 	right: 30px;
 	bottom: 30px;
 	left: 30px;
-	border: 1px solid #fff;
+	/* border: 1px solid #fff; */
 	content: '';
 	-webkit-transform: scale(1.1);
 	transform: scale(1.1);
@@ -58,3 +59,4 @@ video.effect-chico:hover p {
 	-webkit-transform: scale(1);
 	transform: scale(1);
 }
+

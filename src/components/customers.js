@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import './Customers.css'
 
 const Customers = (props) => {
   const CUSTOMER_URL = 'http://localhost:3000/customers';
@@ -25,7 +26,7 @@ const Customers = (props) => {
     }
 
     return (
-      <div>
+      <div className='background'>
           <p>{customer.id} {customer.name}</p>
           <button onClick={helperFunction}>Select for checkout</button>
         {/* TODO, decide what else to include?
