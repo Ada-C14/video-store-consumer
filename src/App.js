@@ -11,7 +11,7 @@ import Library from './components/Library';
 import Search from './components/Search';
 import CustomerList from './components/CustomerList';
 import Customer from './components/Customer';
-import API from '../ApiSupport'
+import API from './ApiSupport'
 
 
 const App = () => {
