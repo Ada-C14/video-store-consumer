@@ -81,6 +81,7 @@ const Customers = () => (
 return(  <div className='app'>
 <h1>Leah and Mackenzie's Video Store</h1>
 <h3> {selectedVideoTitle !== '' ? `Selected Video: ${selectedVideoTitle}` : null} </h3>
+<h3> {selectedCustomerName !== '' ? `Selected Customer: ${selectedCustomerName}` : null} </h3>
 <Navigation />
 <Main />
 </div>

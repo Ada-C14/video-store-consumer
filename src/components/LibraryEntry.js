@@ -19,6 +19,7 @@ const LibraryEntry = (props) => {
       <img src={props.image_url} alt={props.title}/>
       <p>Select {props.title}</p>
     </button>
+    <p> </p>
     </p>
     </div>
   )

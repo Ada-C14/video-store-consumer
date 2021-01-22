@@ -5,7 +5,9 @@ import PropTypes from 'prop-types';
 // name, id and account credit
 
 const CustomerEntry = (props) => {
-  return (<button
+  return (
+  <div>
+  <button
     onClick={() => {props.listCallback(
       {id: props.id,
       name: props.name,
@@ -15,6 +17,8 @@ const CustomerEntry = (props) => {
   }>
     {props.name}
   </button>  
+  <p>  </p>
+  </div>
   )
 }
 

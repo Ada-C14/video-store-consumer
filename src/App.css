@@ -27,6 +27,10 @@
   to { transform: rotate(360deg); }
 }
 
+ul {
+  list-style: none;
+}
+
 /* can change nav later, snagged this from tutorial */
 nav ul {
   list-style: none;
