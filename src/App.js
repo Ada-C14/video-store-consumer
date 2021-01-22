@@ -55,12 +55,12 @@ function App() {
           <Switch>
           <Route exact path="/">
             <Home />
+          </Route> 
+          <Route path="/customers">
+            <Customers baseUrl={BASE_URL} selectedCustomerCallback={selectCustomer}/>
           </Route>
           <Route path="/library">
             <Videos baseUrl={BASE_URL} selectedVideoCallback={selectVideo}/>
-          </Route>
-          <Route path="/customers">
-            <Customers baseUrl={BASE_URL} selectedCustomerCallback={selectCustomer}/>
           </Route>
           <Route path="/checkout">
             <h1>Checkout Deets Will Go Here</h1>
