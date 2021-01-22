@@ -10,6 +10,7 @@ import Search from './components/Search';
 import Library from './components/Library';
 import Customers from './components/Customers';
 import logo from './logo.svg';
+import vhs from './VHS.jpg';
 import './App.css';
 import CheckOut from './components/CheckOut';
 import CheckIn from './components/CheckIn';
@@ -65,12 +66,12 @@ const App = () => {
     <Router>
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <img src={vhs} className="App-logo" alt="logo" />
 
-          <h1 className="App-title">Welcome to Ting-Yi and Anya's Movie Store!</h1>
+          <h1 className="App-title">Ting-Yi and Anya's Movie Shop!</h1>
         </header>
 
-        <Navbar bg="light" variant="light"> <LinkContainer to="/">
+        <Navbar bg="dark" variant="dark"> <LinkContainer to="/">
           <Navbar.Brand href="#home">Navbar</Navbar.Brand>
           </LinkContainer>
           <Nav className="mr-auto">
