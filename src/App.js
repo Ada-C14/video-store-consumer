@@ -4,11 +4,15 @@ import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Nav, Navbar, Button, Container} from 'react-bootstrap'
 
-import CustomerList from './components/CustomerList';
+import CustomerList from './components/Customers';
 import VideoLibrary from './components/VideoLibrary';
 import SelectedVideo from './components/SelectedVideo';
 import Search from './components/Search'
 import SelectedCustomer from './components/SelectedCustomer';
+import {toast} from 'react-toastify'
+
+import 'react-toastify/dist/ReactToastify.css';
+
 
 import {
   BrowserRouter as Router,
@@ -18,7 +22,10 @@ import {
 } from 'react-router-dom';
 import Detail from './components/Detail';
 
+
 const App = (props) => {
+
+  toast.configure();
 
   const [selectedVideo, setSelectedVideo] = useState(null)
   const [selectedCustomer, setSelectedCustomer] = useState(null)
@@ -38,17 +45,21 @@ const App = (props) => {
   };
 
   const addRental = () => {
+
     axios
       .post(`http://localhost:3000/rentals/${selectedVideo.title}/check-out`, {
         customer_id: selectedCustomer.id,
         due_date: new Date(
           Date.now() + 1000 /*sec*/ * 60 /*min*/ * 60 /*hour*/ * 24 /*day*/ * 7
-        ),
+        )
       })
 
       .then((res) => {
-      window.location = '/detail'
-        //resetState();
+    
+        toast.success(`${selectedCustomer.name} has successfully checked out ${selectedVideo.title}`);
+        resetState()
+        setTimeout(function(){  window.location = '/'}, 5000)
+  
       })
       .catch((error) => {
         setErrorMessage(error.message);
@@ -84,8 +95,8 @@ const App = (props) => {
         );
     }
 
-    //////////
 
+  // const HomePageGrid = () // working on this now SM
   
     return (
 
