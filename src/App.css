@@ -1,28 +1,104 @@
-.App {
+
+
+.checkout {
   text-align: center;
+  padding: 5px ;
+  font-size:15px;
+  background-color: pink;
+
+  
+
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.movie {
+  padding: 1px ;
+  font-size:25px;
+  background-color: pink;
+  display: inline-box;
+  font-family: 'Helvetica Neue', sans-serif;
+
+
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
+.directions {
+  padding: 1px ;
+  font-size:20px;
+  background-color: pink;
+  display: inline-box;
+  font-family: 'Fantasy	', sans-serif;
+
+}
+
+
+.customer {
+  padding: 1px ;
+  font-size:25px;
+  display: inline-box;
+  font-family: 'Helvetica Neue', sans-serif;
+
+
+}
+
+.button {
+  font-size:20px;
+
+}
+
+.navbar {
+  color:#999;
+  /* background:rgba(247, 244, 244, 0.5); */
+  padding:20px;
+  font-size:20px;
+  text-decoration:none;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  /* position: fixed; Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  text-align: center;
+    background-image: url("https://t4.ftcdn.net/jpg/02/52/89/41/240_F_252894144_hW1DLUX9zrCLh64ScJGbc2r3HhPFsGfQ.jpg");
+
+}
+
+.nav-link-list  {
+  display: inline-block;
+  list-style: none;
+  text-align: center;
+  padding: 10px ;
   padding: 20px;
-  color: white;
+  background-color: #f7a2f77a;  
 }
 
-.App-title {
-  font-size: 1.5em;
+a {
+  text-decoration: none;
+}
+.nav-link-list:hover{
+  border:none;
+  background:rgba(215, 153, 243, 0.479);
+  background:#fff;
+  padding:30px 30px;
+  color:#1b1b1b;
+  width: 100;
+
 }
 
-.App-intro {
-  font-size: large;
+
+.App-main-div {
+  padding: 100px ;
+  /* background-color: purple; */
+
+
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.welcome-banner {
+  padding: 50px;
+  font-size: 50px;
+  color: rgb(41, 38, 38); 
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 100px; font-weight: bold; 
+  letter-spacing: -1px; 
+  line-height: 1; text-align: center; 
+  /* background-image: url("https://ak.picdn.net/shutterstock/videos/7018603/thumb/1.jpg"); */
+
 }
+

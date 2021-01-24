@@ -1,0 +1,23 @@
+.searchbar {
+    background-color: rgba(245, 219, 223, 0.692);
+    padding: 10px ;
+    margin-bottom:5px;
+    text-align: center;
+
+} 
+
+.submit {
+    padding: 1px;
+    
+} 
+
+h1 {
+    text-align: center;
+    
+}
+
+.searchform {
+    text-align: center;
+    
+
+}
