@@ -1,5 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=EB+Garamond&family=Libre+Baskerville&display=swap');
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Balsamiq Sans', cursive;
+  font-family: 'EB Garamond', serif;
+  font-family: 'Libre Baskerville', serif;
+  min-height: 100vh;
 }
+
+.material-icons {
+  margin-top: 50px;
+  padding: 0 10px;
+}
+
+.main {
+  margin: 30px;
+  width: 250px;
+}
+
+.movieTitle {
+  color:#004d40;
+  font-size: larger;
+  font-weight: bolder;
+}
+.card-list {
+  /* height: 100px; */
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: space-evenly;
+  padding-top: 60px;
+
+  }
+
+  .card-list-cus{
+    display:flex;
+    flex-wrap:wrap;
+    height: 100px;
+    padding-left: 10px;
+
+  }
+
+  .card-image {
+    border-radius: 20px;
+  }
+
+  .button {
+    display: flex;
+    justify-content: center;
+    
+  }
+
+  .card {
+    padding: 10px;
+  }
+
+  .date-text {
+    text-align: center;
+    color:#138f7a;
+    font-weight: bold;
+
+  }
+ 
+  .container {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-evenly;
+  }
+
+  .card-title{
+  color:#004d40;
+  font-weight: bolder; 
+  }
+
+
+  .movieTitle {
+    text-align: center;
+    padding-top: 15px;
+    
+  }
+
+  .customer-padding{
+    padding-top: 40px;
+  }
+
+.parallax-container {
+  min-height: 380px;
+  line-height: 0;
+  height: auto;
+  color: rgba(255,255,255,.9);
+
+
+}
+  .parallax-container .parallax {
+    width: 100%;
+
+}
+
+  .brand-text {
+    margin-left: 80px;
+  }
+
+.brand-logo {
+  height: auto;
+  width: auto;
+  max-height: 65px;
+  max-width: 250px;
+  margin-left: -60px;
+}
+
+
+

@@ -4,5 +4,15 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const Home = () => {
+  return (
+    <div>
+      <App />
+    </div>
+  );
+};
+
+ReactDOM.render(<Home />, document.getElementById('root'));
 registerServiceWorker();
+
+export default Home;
